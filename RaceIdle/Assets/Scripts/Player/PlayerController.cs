@@ -18,8 +18,8 @@ public class PlayerController : MonoBehaviour
 
     #region Properties
 
+    public Animator Animator => CurrentAnimator(_skinAnimatorID);
     public Vector3 PlayerDirection { get; set; }
-
     public Transform Transform => this.transform;
 
     #endregion

@@ -123,6 +123,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cd0b5fe86f35a949a744729a0334e35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 2
+  type: 3
   coll: {fileID: 1739480614590244399}
   body: {fileID: 3186773868837287054}
