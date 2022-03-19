@@ -13,19 +13,19 @@ public class PlayerSlash : MonoBehaviour
     private bool _isFirstTap = false;
     private bool _canSlash = true;
 
-    private void Update()
-    {
-#if UNITY_EDITOR
-        if(Input.GetMouseButtonUp(0) && !_isFirstTap)
-            StartCoroutine(DoubleTap());
-#elif UNITY_ANDROID
-        if(Input.touchCount > 0)
-        {
-            if(Input.GetTouch(0).phase == TouchPhase.Ended && !_isFirstTap)
-                StartCoroutine(DoubleTap());
-        }
-#endif
-    }
+//    private void Update()
+//    {
+//#if UNITY_EDITOR
+//        if(Input.GetMouseButtonUp(0) && !_isFirstTap)
+//            StartCoroutine(DoubleTap());
+//#elif UNITY_ANDROID
+//        if(Input.touchCount > 0)
+//        {
+//            if(Input.GetTouch(0).phase == TouchPhase.Ended && !_isFirstTap)
+//                StartCoroutine(DoubleTap());
+//        }
+//#endif
+//    }
 
     private void Slash()
     {
@@ -69,5 +69,11 @@ public class PlayerSlash : MonoBehaviour
         _canSlash = true;
     }
 
-    
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.TryGetComponent(out JunkCar junkcar))
+            Slash();
+    }
+
 }

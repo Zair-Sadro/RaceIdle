@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4089882425938279032}
-  - component: {fileID: 4843337791643247649}
   - component: {fileID: 2005072018761105557}
   - component: {fileID: 2446386226988740981}
+  - component: {fileID: 5888783870546779946}
   - component: {fileID: 3836711527628405445}
   - component: {fileID: 5817895113798000732}
   - component: {fileID: 3621148476801170997}
@@ -38,19 +38,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &4843337791643247649
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2292793153911396789}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 3.4257581, z: 1}
-  m_Center: {x: 0, y: 1.7871209, z: 0}
 --- !u!65 &2005072018761105557
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -80,6 +67,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!136 &5888783870546779946
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2292793153911396789}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.8
+  m_Height: 4
+  m_Direction: 1
+  m_Center: {x: 0, y: 2, z: 0}
 --- !u!114 &3836711527628405445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,9 +139,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbcba09b87028d44090aa0d665d039a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doubleTapTime: 0
+  activeHammerCollTime: 0.5
   controller: {fileID: 3836711527628405445}
   hammerColl: {fileID: 0}
-  activeHammerCollTime: 0.5
 --- !u!1 &6425204493022092808
 GameObject:
   m_ObjectHideFlags: 0
