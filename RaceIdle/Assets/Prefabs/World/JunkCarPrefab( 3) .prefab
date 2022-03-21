@@ -72,6 +72,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damagePerHit: 10
   maxHealth: 50
+  respawnNoDamageTime: 0
   hpFillImage: {fileID: 6402956646247568234}
 --- !u!1 &6402956645547425943
 GameObject:
@@ -372,6 +373,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6402956647059530012}
     m_Modifications:
+    - target: {fileID: 2432371035567080156, guid: 0bf8f5236a0d88a4a8c4728cdb684e32,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e4f0208d598c411469dedc7391e157ae, type: 2}
+    - target: {fileID: 2558514177652984943, guid: 0bf8f5236a0d88a4a8c4728cdb684e32,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1a1bd32a6c322ff4b916a776a9bc1a38, type: 2}
+    - target: {fileID: 4516238042100550067, guid: 0bf8f5236a0d88a4a8c4728cdb684e32,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e4f0208d598c411469dedc7391e157ae, type: 2}
     - target: {fileID: 5953258664812940361, guid: 0bf8f5236a0d88a4a8c4728cdb684e32,
         type: 3}
       propertyPath: m_RootOrder
@@ -432,6 +448,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Model
       objectReference: {fileID: 0}
+    - target: {fileID: 7643949832344517997, guid: 0bf8f5236a0d88a4a8c4728cdb684e32,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 48beaeb6ae5fa944a8bda621aa9e3265, type: 2}
+    - target: {fileID: 9114078086434917348, guid: 0bf8f5236a0d88a4a8c4728cdb684e32,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 657662180e6eac0409e510cc14a3e31f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bf8f5236a0d88a4a8c4728cdb684e32, type: 3}
 --- !u!1 &1934585541155631420 stripped
