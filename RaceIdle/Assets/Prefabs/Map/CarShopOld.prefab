@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9099481322691965062}
   - component: {fileID: 6459056063567873100}
   m_Layer: 0
-  m_Name: AutoShop
+  m_Name: CarShopOld
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
