@@ -24,14 +24,14 @@ public class TileSetter : MonoBehaviour
     private bool _isInBenchZone;
     private bool _isGivingTiles;
 
-    private BenchTower _currentBench;
+    private MachineTool _currentBench;
 
     private List<Tile> _tiles = new List<Tile>();
 
     public UnityEvent OnTilePickUp;
     public UnityEvent OnTileRemove;
     public event Action<int> OnTilesCountChanged;
-    public event Action<BenchTower> OnBenchZoneEnter;
+    public event Action<MachineTool> OnBenchZoneEnter;
     public event Action OnBenchZoneExit;
 
     public List<Tile> Tiles => _tiles;
@@ -136,9 +136,9 @@ public class TileSetter : MonoBehaviour
     }
     
 
-    private void OnTrigger(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (other.TryGetComponent(out BenchTower t))
+        if (other.TryGetComponent(out MachineTool t))
         {
             _currentBench = t;
             OnBenchZoneEnter?.Invoke(t);
@@ -148,7 +148,7 @@ public class TileSetter : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.TryGetComponent(out BenchTower t))
+        if (other.TryGetComponent(out MachineTool t))
         {
             _isInBenchZone = false;
             OnBenchZoneExit?.Invoke();
