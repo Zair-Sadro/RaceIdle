@@ -14,6 +14,7 @@ public class MachineTool : MonoBehaviour
     public ToolMachineData MachineData => _machineData;
     public MachineLevelType CurrentLevel => _currentLevel;
 
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out TileSetter player))
