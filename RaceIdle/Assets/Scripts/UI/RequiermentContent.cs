@@ -6,10 +6,10 @@ public class RequiermentContent : MonoBehaviour
 {
     [SerializeField] private RequiermentTile _requiermentPrefab;
 
-    private MachineTool _machine;
+    private BaseMachineTool _machine;
     private List<RequiermentTile> _createdRequierments = new List<RequiermentTile>();
 
-    public void Init(MachineTool m)
+    public void Init(BaseMachineTool m)
     {
         _machine = m;
     }
@@ -26,7 +26,7 @@ public class RequiermentContent : MonoBehaviour
 
     public void CreateRequierments()
     {
-        var requierments = _machine.MachineData.GetNextMachineLevel(_machine.CurrentLevel).Requierments;
+        var requierments = _machine.MachineData.GetNextMachineLevel(_machine.CurrentActiveMachine.Level).Requierments;
         
         for (int i = 0; i < requierments.Count; i++)
         {

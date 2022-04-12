@@ -15,10 +15,15 @@ MonoBehaviour:
   _tileProduct: {fileID: 6833116095248578317, guid: 2b9620acefc33eb48831fbe418b94fab,
     type: 3}
   _levels:
+  - _level: 0
+    _createTime: 0
+    _tilePerCreateTime: 0
+    _maxTiles: 0
+    _requierments: []
   - _level: 1
-    _createTime: 30
-    _tilePerCreateTime: 1
-    _maxTiles: 30
+    _createTime: 0
+    _tilePerCreateTime: 0
+    _maxTiles: 0
     _requierments:
     - _type: 0
-      _amount: 10
+      _amount: 12
