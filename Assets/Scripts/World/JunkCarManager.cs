@@ -42,6 +42,13 @@ public class JunkCarManager : MonoBehaviour
     private IEnumerator CarRespawn(float time, JunkCar car)
     {
         yield return new WaitForSeconds(time);
+        var parts = car.GetCarParts();
+
+        for (int i = 0; i < parts.Count; i++)
+        {
+            parts[i].gameObject.SetActive(true);
+        }
+
         car.transform.DOScale(1, 0.1f);
         car.gameObject.SetActive(true);
         yield return new WaitForSeconds(car.RespawnNoDamageTime);

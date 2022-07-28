@@ -238,6 +238,12 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+--- !u!1 &343679676 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2468735434091496143, guid: 34dd0d2d54ebe894ea570f471c26093d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1536316559}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &379458571
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -437,6 +443,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &685729088 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6232166171242034064, guid: 34dd0d2d54ebe894ea570f471c26093d,
+    type: 3}
+  m_PrefabInstance: {fileID: 3287805014274633762}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &688519514 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6232166171242034064, guid: 34dd0d2d54ebe894ea570f471c26093d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1536316559}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &779470939
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -509,6 +527,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7226119739456865103, guid: 34dd0d2d54ebe894ea570f471c26093d,
+        type: 3}
+      propertyPath: carParts.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7226119739456865103, guid: 34dd0d2d54ebe894ea570f471c26093d,
+        type: 3}
+      propertyPath: carParts.Array.data[0]
+      value: 
+      objectReference: {fileID: 1078893387}
+    - target: {fileID: 7226119739456865103, guid: 34dd0d2d54ebe894ea570f471c26093d,
+        type: 3}
+      propertyPath: carParts.Array.data[1]
+      value: 
+      objectReference: {fileID: 884942674}
+    - target: {fileID: 7226119739456865103, guid: 34dd0d2d54ebe894ea570f471c26093d,
+        type: 3}
+      propertyPath: carParts.Array.data[2]
+      value: 
+      objectReference: {fileID: 1440369624}
+    - target: {fileID: 7226119739456865103, guid: 34dd0d2d54ebe894ea570f471c26093d,
+        type: 3}
+      propertyPath: carParts.Array.data[3]
+      value: 
+      objectReference: {fileID: 1459804894}
+    - target: {fileID: 7226119739456865103, guid: 34dd0d2d54ebe894ea570f471c26093d,
+        type: 3}
+      propertyPath: carParts.Array.data[4]
+      value: 
+      objectReference: {fileID: 1411344473}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34dd0d2d54ebe894ea570f471c26093d, type: 3}
 --- !u!4 &779470940 stripped
@@ -563,13 +611,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &884942674 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4083323505511618173, guid: 34dd0d2d54ebe894ea570f471c26093d,
+    type: 3}
+  m_PrefabInstance: {fileID: 779470939}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &942566763
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-2144300
+  m_Name: pb_Mesh-4276
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -727,6 +781,42 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1078893387 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2468735434091496143, guid: 34dd0d2d54ebe894ea570f471c26093d,
+    type: 3}
+  m_PrefabInstance: {fileID: 779470939}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1123965990 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2468735434091496143, guid: 34dd0d2d54ebe894ea570f471c26093d,
+    type: 3}
+  m_PrefabInstance: {fileID: 3287805014274633762}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1411344473 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8019353716502509793, guid: 34dd0d2d54ebe894ea570f471c26093d,
+    type: 3}
+  m_PrefabInstance: {fileID: 3287805014274633762}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1440369624 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6232166171242034064, guid: 34dd0d2d54ebe894ea570f471c26093d,
+    type: 3}
+  m_PrefabInstance: {fileID: 779470939}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1446441647 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4083323505511618173, guid: 34dd0d2d54ebe894ea570f471c26093d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1536316559}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1459804894 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6462894163524165962, guid: 34dd0d2d54ebe894ea570f471c26093d,
+    type: 3}
+  m_PrefabInstance: {fileID: 779470939}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1536316559
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -734,6 +824,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 813545055}
     m_Modifications:
+    - target: {fileID: 1852507581505181704, guid: 34dd0d2d54ebe894ea570f471c26093d,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1852507582163405814, guid: 34dd0d2d54ebe894ea570f471c26093d,
         type: 3}
       propertyPath: m_IsActive
@@ -824,6 +919,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7226119739456865103, guid: 34dd0d2d54ebe894ea570f471c26093d,
+        type: 3}
+      propertyPath: carParts.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7226119739456865103, guid: 34dd0d2d54ebe894ea570f471c26093d,
+        type: 3}
+      propertyPath: carParts.Array.data[0]
+      value: 
+      objectReference: {fileID: 343679676}
+    - target: {fileID: 7226119739456865103, guid: 34dd0d2d54ebe894ea570f471c26093d,
+        type: 3}
+      propertyPath: carParts.Array.data[1]
+      value: 
+      objectReference: {fileID: 1446441647}
+    - target: {fileID: 7226119739456865103, guid: 34dd0d2d54ebe894ea570f471c26093d,
+        type: 3}
+      propertyPath: carParts.Array.data[2]
+      value: 
+      objectReference: {fileID: 688519514}
+    - target: {fileID: 7226119739456865103, guid: 34dd0d2d54ebe894ea570f471c26093d,
+        type: 3}
+      propertyPath: carParts.Array.data[3]
+      value: 
+      objectReference: {fileID: 1616327408}
+    - target: {fileID: 7226119739456865103, guid: 34dd0d2d54ebe894ea570f471c26093d,
+        type: 3}
+      propertyPath: carParts.Array.data[4]
+      value: 
+      objectReference: {fileID: 1411344473}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34dd0d2d54ebe894ea570f471c26093d, type: 3}
 --- !u!4 &1536316560 stripped
@@ -844,13 +969,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96dbc19b1ea45744286747e1ad1800d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1616327408 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6462894163524165962, guid: 34dd0d2d54ebe894ea570f471c26093d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1536316559}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1713142735
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-2197356
+  m_Name: pb_Mesh-1984
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1008,6 +1139,12 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1718699857 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4083323505511618173, guid: 34dd0d2d54ebe894ea570f471c26093d,
+    type: 3}
+  m_PrefabInstance: {fileID: 3287805014274633762}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1767713880
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1077,6 +1214,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 400ae1c92d3d7164c98601f4394b0931, type: 3}
+--- !u!1 &1995182955 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6462894163524165962, guid: 34dd0d2d54ebe894ea570f471c26093d,
+    type: 3}
+  m_PrefabInstance: {fileID: 3287805014274633762}
+  m_PrefabAsset: {fileID: 0}
 --- !u!20 &2034087459 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 8060544002711214578, guid: 52d2b0a52016aad4a9fe67f96ebc7b9e,
@@ -1485,6 +1628,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7226119739456865103, guid: 34dd0d2d54ebe894ea570f471c26093d,
+        type: 3}
+      propertyPath: carParts.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7226119739456865103, guid: 34dd0d2d54ebe894ea570f471c26093d,
+        type: 3}
+      propertyPath: carParts.Array.data[0]
+      value: 
+      objectReference: {fileID: 1123965990}
+    - target: {fileID: 7226119739456865103, guid: 34dd0d2d54ebe894ea570f471c26093d,
+        type: 3}
+      propertyPath: carParts.Array.data[1]
+      value: 
+      objectReference: {fileID: 1718699857}
+    - target: {fileID: 7226119739456865103, guid: 34dd0d2d54ebe894ea570f471c26093d,
+        type: 3}
+      propertyPath: carParts.Array.data[2]
+      value: 
+      objectReference: {fileID: 685729088}
+    - target: {fileID: 7226119739456865103, guid: 34dd0d2d54ebe894ea570f471c26093d,
+        type: 3}
+      propertyPath: carParts.Array.data[3]
+      value: 
+      objectReference: {fileID: 1995182955}
+    - target: {fileID: 7226119739456865103, guid: 34dd0d2d54ebe894ea570f471c26093d,
+        type: 3}
+      propertyPath: carParts.Array.data[4]
+      value: 
+      objectReference: {fileID: 1411344473}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34dd0d2d54ebe894ea570f471c26093d, type: 3}
 --- !u!114 &3287805014274633763 stripped
@@ -1665,6 +1838,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8905867243112414722, guid: 2b21398dc92a318409b9270340353750,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8905867243112414973, guid: 2b21398dc92a318409b9270340353750,
         type: 3}
