@@ -15,9 +15,10 @@ MonoBehaviour:
   debugShaders:
     debugReplacementPS: {fileID: 4800000, guid: cf852408f2e174538bcd9b7fda1c5ae7,
       type: 3}
-  m_RendererFeatures: []
-  m_RendererFeatureMap: 
-  m_UseNativeRenderPass: 0
+  m_RendererFeatures:
+  - {fileID: 5466797067628725003}
+  m_RendererFeatureMap: 0b4328fbf7f6dd4b
+  m_UseNativeRenderPass: 1
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
   shaders:
@@ -44,7 +45,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_DefaultStencilState:
-    overrideStencilState: 0
+    overrideStencilState: 1
     stencilReference: 0
     stencilCompareFunction: 8
     passOperation: 0
@@ -52,8 +53,44 @@ MonoBehaviour:
     zFailOperation: 0
   m_ShadowTransparentReceive: 1
   m_RenderingMode: 0
-  m_DepthPrimingMode: 0
+  m_DepthPrimingMode: 2
   m_AccurateGbufferNormals: 0
   m_ClusteredRendering: 0
   m_TileSize: 32
-  m_IntermediateTextureMode: 1
+  m_IntermediateTextureMode: 0
+--- !u!114 &5466797067628725003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53652ea9d731bdf4598e05918db50c78, type: 3}
+  m_Name: ScreenSpaceOutlines
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  renderPassEvent: 1000
+  outlinesLayerMask:
+    serializedVersion: 2
+    m_Bits: 2147483647
+  outlinesOccluderLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  outlineSettings:
+    outlineColor: {r: 0.0754717, g: 0.0754717, b: 0.0754717, a: 0.7529412}
+    outlineScale: 0.6
+    depthThreshold: 19.5
+    robertsCrossMultiplier: 138
+    normalThreshold: 0.524
+    steepAngleThreshold: 0.2
+    steepAngleMultiplier: 25
+  viewSpaceNormalsTextureSettings:
+    colorFormat: 7
+    depthBufferBits: 49
+    filterMode: 0
+    backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+    perObjectData: 0
+    enableDynamicBatching: 0
+    enableInstancing: 0

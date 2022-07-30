@@ -25,4 +25,8 @@ public class JunkTilesSpawn : MonoBehaviour
 
         return newList;
     }
+    public Tile GetTile()
+    {
+        return _junkTilesPool.GetFreeObject();
+    }
 }
