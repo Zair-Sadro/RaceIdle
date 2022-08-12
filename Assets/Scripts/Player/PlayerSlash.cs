@@ -20,9 +20,10 @@ public class PlayerSlash : MonoBehaviour
     {
         _canSlash = false;
         controller.Animator.SetTrigger("Slash");
-        hammerColl.gameObject.SetActive(true);
+        hammerColl.enabled = true;
+
         yield return new WaitForSeconds(time);
-        hammerColl.gameObject.SetActive(false);
+        hammerColl.enabled = false;
         _canSlash = true;
     }
 
