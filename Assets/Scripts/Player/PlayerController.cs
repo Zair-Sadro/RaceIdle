@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 using UnityEngine.Events;
 
 
@@ -9,6 +10,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody body;
     [SerializeField] private FloatingJoystick joystick;
     [SerializeField] private ParticleSystem dustParticle;
+
+    [SerializeField] private MeshRenderer _hummerr;
+
 
     [Header("Skins")]
     [SerializeField] private List<Animator> skins = new List<Animator>();
@@ -24,6 +28,11 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
+    private void Start()
+    {
+        TakeHummer(false);
+    }
+
     private void OnEnable()
     {
         CheckSkin();
@@ -33,6 +42,18 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "hummerzone")
+       TakeHummer(true);
+
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.tag == "hummerzone")
+        TakeHummer(false);
     }
 
     private void Move()
@@ -45,14 +66,21 @@ public class PlayerController : MonoBehaviour
             {
                 transform.rotation = Quaternion.LookRotation(body.velocity);
                 CurrentAnimator(_skinAnimatorID).SetBool("Run", true);
-                // dustParticle.gameObject.SetActive(true);
+                // dustParticle.gameObject.SetColliderActive(true);
             }
         }
         else
         {
             CurrentAnimator(_skinAnimatorID).SetBool("Run", false);
-           // dustParticle.gameObject.SetActive(false);
+           // dustParticle.gameObject.SetColliderActive(false);
         }
+    }
+    private void TakeHummer(bool value)
+    {
+
+        _hummerr.enabled = value;
+
+
     }
 
     private void CheckSkin()

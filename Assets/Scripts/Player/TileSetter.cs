@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using DG.Tweening;
 using UnityEngine.Events;
+using Zenject;
 
 public class TileSetter : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class TileSetter : MonoBehaviour
     [Space]
     [SerializeField] private float timeToRemoveTile;
 
+    [Inject] private ResourceTilesSpawn _resourceTilesSpawn;
+
     private float _currentRemovingTime;
     private bool _isInBenchZone;
     private bool _isGivingTiles;
@@ -31,6 +34,7 @@ public class TileSetter : MonoBehaviour
     public UnityEvent OnTilePickUp;
     public UnityEvent OnTileRemove;
     public event Action<int> OnTilesCountChanged;
+    public event Action<bool> OnTilesMaxCapacity;
     public event Action<MachineTool> OnBenchZoneEnter;
     public event Action OnBenchZoneExit;
 
@@ -40,6 +44,7 @@ public class TileSetter : MonoBehaviour
     private void Start()
     {
         _currentRemovingTime = timeToRemoveTile;
+        OnTilesMaxCapacity += SetTilesColliderStatus;
     }
 
 
@@ -132,10 +137,23 @@ public class TileSetter : MonoBehaviour
         {
             AddTile(tile);
             OnTilePickUp?.Invoke();
+
+            if (_tiles.Count == maxTiles)
+                OnTilesMaxCapacity.Invoke(false);
+         
         }
+        
     }
     
-
+    private void SetTilesColliderStatus(bool value)
+    {
+        var tiles = _resourceTilesSpawn.GetAllActiveTiles();
+        foreach (var tile in tiles)
+        {
+            tile.SetColliderActive(value);
+            
+        }
+    }
     private void OnTriggerStay(Collider other)
     {
         if (other.TryGetComponent(out MachineTool t))

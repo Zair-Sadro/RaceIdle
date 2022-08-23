@@ -2,14 +2,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class JunkCarManager : MonoBehaviour
 {
     [SerializeField] private float spawnCoolDown;
-    [SerializeField] private JunkTilesSpawn tileSpawn;
     [SerializeField] private List<JunkCar> junkCars = new List<JunkCar>();
 
-    private List<JunkCar> _destroyedCars = new List<JunkCar>();
+    [Inject] private ResourceTilesSpawn tileSpawn;
+
 
     private void Start()
     {
@@ -24,7 +25,7 @@ public class JunkCarManager : MonoBehaviour
 
     public void ExplodeTiles(JunkCar car)
     {
-        var tileList = tileSpawn.GetRandomJunkTiles(3, 5);
+        var tileList = tileSpawn.GetRandomTiles(3, 5);
         var pos = new Vector3(car.transform.position.x, car.transform.position.y + 1f, car.transform.position.z);
 
         for (int i = 0; i < tileList.Count; i++)

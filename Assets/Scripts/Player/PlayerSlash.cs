@@ -1,38 +1,41 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using Zenject;
 
 public class PlayerSlash : MonoBehaviour
 {
     [SerializeField] private float activeHammerCollTime;
-    [SerializeField] private PlayerController controller;
-    [SerializeField] private Collider hammerColl;
+    [SerializeField] private float delayBeforeDamage;
+
+    [Inject] private PlayerController controller;
 
     private bool _canSlash = true;
-
-    private void Slash()
+    private void Slash(JunkCar car)
     {
-        if(_canSlash)
+        if (_canSlash)
+        {
             StartCoroutine(SlashRoutine(activeHammerCollTime));
+            car.TakeDamage(delayBeforeDamage);
+        }
+           
     }
 
     private IEnumerator SlashRoutine(float time)
     {
         _canSlash = false;
         controller.Animator.SetTrigger("Slash");
-        hammerColl.gameObject.SetActive(true);
+
         yield return new WaitForSeconds(time);
-        hammerColl.gameObject.SetActive(false);
         _canSlash = true;
     }
-
 
     private void OnTriggerStay(Collider other)
     {
         if (other.TryGetComponent(out JunkCar junkcar))
         {
             if(junkcar.CanBeDamaged)
-                Slash();
+                Slash(junkcar);
         }
     }
 
