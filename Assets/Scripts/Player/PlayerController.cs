@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 using UnityEngine.Events;
 
 
@@ -11,15 +10,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private FloatingJoystick joystick;
     [SerializeField] private ParticleSystem dustParticle;
 
-    [SerializeField] private Transform _hummer;
-
-
     [Header("Skins")]
     [SerializeField] private List<Animator> skins = new List<Animator>();
 
 
     private int _skinAnimatorID;
-    private Vector3 _hummerScale;
 
     #region Properties
 
@@ -28,12 +23,6 @@ public class PlayerController : MonoBehaviour
     public Transform Transform => this.transform;
 
     #endregion
-
-    private void Start()
-    {
-        _hummerScale = _hummer.transform.localScale;
-        TakeHummer(false);
-    }
 
     private void OnEnable()
     {
@@ -44,18 +33,6 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.tag == "hummerzone")
-       TakeHummer(true);
-
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        if(other.tag == "hummerzone")
-        TakeHummer(false);
     }
 
     private void Move()
@@ -76,13 +53,6 @@ public class PlayerController : MonoBehaviour
             CurrentAnimator(_skinAnimatorID).SetBool("Run", false);
            // dustParticle.gameObject.SetActive(false);
         }
-    }
-    private void TakeHummer(bool value)
-    {
-
-        _hummer.gameObject.SetActive(value);
-
-
     }
 
     private void CheckSkin()
