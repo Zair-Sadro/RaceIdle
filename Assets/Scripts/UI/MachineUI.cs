@@ -19,7 +19,7 @@ public class MachineUI : MonoBehaviour
 
     private void Start()
     {
-        _content.Init(_machine);
+        _content?.Init(_machine);
     }
 
     private void OnBuildZoneExit()

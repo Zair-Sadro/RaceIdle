@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using DG.Tweening;
 using System.Collections.Generic;
+using System.Collections;
 
 public class JunkCar : MonoBehaviour, IDamageable
 {
@@ -28,7 +29,7 @@ public class JunkCar : MonoBehaviour, IDamageable
         _partsIndex =0;
         _junkCarManager = carManager;
         CanBeDamaged = true;
-        hpFillImage.gameObject.SetActive(false);
+        HPBarHide();
     }
 
     public void OnRespawn()
@@ -36,12 +37,14 @@ public class JunkCar : MonoBehaviour, IDamageable
         CanBeDamaged = true;
         _currentHealth = maxHealth;
         _partsIndex = 0;
-        hpFillImage.gameObject.SetActive(false);
+        HPBarHide();
     }
 
     public void TakeDamage(float delay)
     {
         transform.DORewind();
+        HPBarShow();
+
         transform.DOShakeScale(0.2f, 0.2f)
             .SetDelay(delay)
             .OnComplete(() => 
@@ -56,7 +59,7 @@ public class JunkCar : MonoBehaviour, IDamageable
                     carpart.gameObject.SetActive(false);
                 });
 
-             hpFillImage.gameObject.SetActive(true);
+
              _currentHealth -= damagePerHit;
              hpFillImage.fillAmount = _currentHealth / maxHealth;
              _junkCarManager.ExplodeTile(this);
@@ -112,5 +115,27 @@ public class JunkCar : MonoBehaviour, IDamageable
             return arr;
         
     }
-   
+
+    #region HPBar visibility (Видимость хп машины)
+    bool show;
+    private void HPBarShow()
+    {
+        hpFillImage.gameObject.SetActive(true);
+
+        StopCoroutine(ShowTimer());
+        StartCoroutine(ShowTimer());
+    }
+    private void HPBarHide()
+    {
+        hpFillImage.gameObject.SetActive(false);
+    }
+    private IEnumerator ShowTimer()
+    {
+        yield return new WaitForSeconds(1f);
+
+        if (hpFillImage.isActiveAndEnabled)
+            HPBarHide();
+    }
+    #endregion
+
 }

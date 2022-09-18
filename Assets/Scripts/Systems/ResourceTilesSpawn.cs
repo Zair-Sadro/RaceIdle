@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 //CanBeInjected//
 public class ResourceTilesSpawn : MonoBehaviour
@@ -9,6 +10,8 @@ public class ResourceTilesSpawn : MonoBehaviour
     [SerializeField] private int maxTilesAmount;
 
     [SerializeField] private Transform _resorceTilesParent;
+
+    [Inject] private TileSetter _tileSetter;
 
     private ObjectPooler<Tile> _tilesPool;
 
@@ -30,7 +33,18 @@ public class ResourceTilesSpawn : MonoBehaviour
     }
     public Tile GetTile()
     {
-        return _tilesPool.GetFreeObject();
+        var tile = _tilesPool.GetFreeObject();
+
+        if (_tileSetter.MaxTilesCapacity())
+        {
+            tile.SetColliderActive(false);
+        }
+        else
+        {
+            tile.SetColliderActive(true);
+        }
+
+        return tile;
     }
     public List<Tile> GetAllActiveTiles()
     {

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class MachineTool : MonoBehaviour
 {
@@ -14,16 +15,16 @@ public class MachineTool : MonoBehaviour
     public ToolMachineData MachineData => _machineData;
     public MachineLevelType CurrentLevel => _currentLevel;
 
-
+    [Inject] private TileSetter _tileSetter;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out TileSetter player))
+        if (other.CompareTag("Player"))
             OnBuildZoneEnter?.Invoke();
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.TryGetComponent(out TileSetter player))
+        if (other.CompareTag("Player"))
             OnBuildZoneExit?.Invoke();
     }
 

@@ -29,17 +29,19 @@ public class TileSetter : MonoBehaviour
 
     private BaseMachineTool _currentBench;
 
-    private List<Tile> _tiles = new List<Tile>();
+    private List<Tile> _colectedTiles = new List<Tile>();
     private List<Tile> _givenTiles = new List<Tile>();
 
     public UnityEvent OnTilePickUp;
     public UnityEvent OnTileRemove;
+    private bool maxCapacity;
+
     public event Action<int> OnTilesCountChanged;
     public event Action<bool> OnTilesMaxCapacity;
     public event Action<MachineTool> OnBenchZoneEnter;
     public event Action OnBenchZoneExit;
 
-    public List<Tile> Tiles => _tiles;
+    public List<Tile> Tiles => _colectedTiles;
     public List<Tile> GivenTiles => _givenTiles;
 
 
@@ -55,15 +57,15 @@ public class TileSetter : MonoBehaviour
         tile.OnBack();
         tile.transform.SetParent(setupPoint);
 
-        if (_tiles.Count % tilesRow == 0)
-            tile.transform.localPosition = new Vector3(0, yOffset * _tiles.Count, 0);
+        if (_colectedTiles.Count % tilesRow == 0)
+            tile.transform.localPosition = new Vector3(0, yOffset * _colectedTiles.Count, 0);
         else
-            tile.transform.localPosition = new Vector3(0, yOffset * (_tiles.Count - 1), zOffset);
+            tile.transform.localPosition = new Vector3(0, yOffset * (_colectedTiles.Count - 1), zOffset);
 
         tile.transform.localRotation = Quaternion.Euler(0, 90, 0);
         tile.transform.localScale = tilesScale;
-        _tiles.Add(tile);
-        OnTilesCountChanged?.Invoke(_tiles.Count);
+        _colectedTiles.Add(tile);
+        OnTilesCountChanged?.Invoke(_colectedTiles.Count);
     }
 
     public void RemoveTiles(Action towerTileIncrease)
@@ -75,11 +77,11 @@ public class TileSetter : MonoBehaviour
     private IEnumerator RemovingTile(Action towerTileIncrease)
     {
         _isGivingTiles = true;
-        for (int i = _tiles.Count - 1; i >= 0; i--)
+        for (int i = _colectedTiles.Count - 1; i >= 0; i--)
         {
             yield return new WaitForSeconds(timeToRemoveTile);
 
-            _givenTiles.Add(_tiles[i]);
+            _givenTiles.Add(_colectedTiles[i]);
             ClearTiles(i);
             OnTileRemove?.Invoke();
             towerTileIncrease();
@@ -89,11 +91,11 @@ public class TileSetter : MonoBehaviour
 
     private void ClearTiles(int index)
     {
-        _tiles[index].gameObject.SetActive(false);
-        _tiles[index].OnGround();
-        _tiles[index].transform.SetParent(tilesSpawnerParent);
-        _tiles.Remove(_tiles[index]);
-        OnTilesCountChanged?.Invoke(_tiles.Count);
+        _colectedTiles[index].gameObject.SetActive(false);
+        _colectedTiles[index].OnGround();
+        _colectedTiles[index].transform.SetParent(tilesSpawnerParent);
+        _colectedTiles.Remove(_colectedTiles[index]);
+        OnTilesCountChanged?.Invoke(_colectedTiles.Count);
     }
 
     public void StopRemovingTiles()
@@ -105,13 +107,13 @@ public class TileSetter : MonoBehaviour
 
     private void SortTiles()
     {
-        if (_tiles.Count <= 0)
+        if (_colectedTiles.Count <= 0)
             return;
 
         List<Tile> sortTiles = new List<Tile>();
-        for (int i = _tiles.Count - 1; i >= 0; i--)
+        for (int i = _colectedTiles.Count - 1; i >= 0; i--)
         {
-            sortTiles.Add(_tiles[i]);
+            sortTiles.Add(_colectedTiles[i]);
             ClearTiles(i);
         }
 
@@ -124,7 +126,7 @@ public class TileSetter : MonoBehaviour
 
     public  void RemoveTilesAtCount(int count)
     {
-        if (_tiles.Count <= 0 || count > _tiles.Count)
+        if (_colectedTiles.Count <= 0 || count > _colectedTiles.Count)
             return;
 
         for (int i = count - 1; i >= 0; i--)
@@ -134,35 +136,43 @@ public class TileSetter : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.TryGetComponent(out Tile tile) && _tiles.Count < maxTiles)
-        {
-            AddTile(tile);
-            OnTilePickUp?.Invoke();
-
-            if (_tiles.Count == maxTiles)
-                OnTilesMaxCapacity.Invoke(false);
-         
-        }
-        
-    }
-    
     private void SetTilesColliderStatus(bool value)
     {
         var tiles = _resourceTilesSpawn.GetAllActiveTiles();
         foreach (var tile in tiles)
         {
             tile.SetColliderActive(value);
-            
+
         }
     }
+
+    public bool MaxTilesCapacity()
+    {
+        maxCapacity = _colectedTiles.Count == maxTiles;
+        return maxCapacity;
+
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent(out Tile tile) && _colectedTiles.Count < maxTiles)
+        {
+            AddTile(tile);
+            OnTilePickUp?.Invoke();
+
+            if (MaxTilesCapacity())
+                OnTilesMaxCapacity.Invoke(false); // Отлючаем коллайдеры всех активных тайлов
+         
+        }
+        
+    }
+
     private void OnTriggerStay(Collider other)
     {
         if (other.TryGetComponent(out BaseMachineTool t))
         {
             _currentBench = t;
-            OnBenchZoneEnter?.Invoke(t);
+          //  OnBenchZoneEnter?.Invoke(t);
             _isInBenchZone = true;
         }
     }

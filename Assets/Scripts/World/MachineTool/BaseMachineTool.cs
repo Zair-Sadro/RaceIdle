@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Zenject;
 
 public class BaseMachineTool : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class BaseMachineTool : MonoBehaviour
 
     public ToolMachineData MachineData => _machineData;
     public MachineToolEntity CurrentActiveMachine => _currentActiveMachine;
+
+    [Inject] private TileSetter _tileSetter;
 
     private void Awake()
     {
@@ -52,7 +55,7 @@ public class BaseMachineTool : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.TryGetComponent(out TileSetter player))
+        if (other.CompareTag("Player"))
         {
             //if(requierments met)
             //   {
@@ -61,19 +64,19 @@ public class BaseMachineTool : MonoBehaviour
             //   }
             //
 
-            PlaceTiles(player);
+            PlaceTiles();
         }
             
     }
 
-    private void PlaceTiles(TileSetter player)
+    private void PlaceTiles()
     {
-        player.RemoveTiles(() => Debug.Log("Giving tiles"));
+        _tileSetter.RemoveTiles(() => Debug.Log("Giving tiles"));
 
-        for (int i = 0; i < player.GivenTiles.Count; i++)
-            _currentTilesInMachine.Add(player.GivenTiles[i]);
+        for (int i = 0; i < _tileSetter.GivenTiles.Count; i++)
+            _currentTilesInMachine.Add(_tileSetter.GivenTiles[i]);
 
-        player.GivenTiles.Clear();
+        _tileSetter.GivenTiles.Clear();
     }
 
     private void CreateMachine(MachineLevelType level)
