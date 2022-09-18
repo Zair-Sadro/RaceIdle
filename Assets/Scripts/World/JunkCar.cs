@@ -39,27 +39,34 @@ public class JunkCar : MonoBehaviour, IDamageable
         hpFillImage.gameObject.SetActive(false);
     }
 
-    public void TakeDamage()
+    public void TakeDamage(float delay)
     {
         transform.DORewind();
-        transform.DOShakeScale(0.2f, 0.2f);
-
-        //Шатаем часть машины и отключаем ее
-        var carpart = carParts[_partsIndex++];
-        carpart.transform
-            .DOPunchScale(CarPartChangedSize(carpart.transform), 0.3f)
+        transform.DOShakeScale(0.2f, 0.2f)
+            .SetDelay(delay)
             .OnComplete(() => 
-            { 
-                carpart.gameObject.SetActive(false); 
+            {
+
+             //Шатаем часть машины и отключаем ее
+             var carpart = carParts[_partsIndex++];
+             carpart.transform
+                .DOPunchScale(CarPartChangedSize(carpart.transform), 0.3f)
+                .OnComplete(() =>
+                {
+                    carpart.gameObject.SetActive(false);
+                });
+
+             hpFillImage.gameObject.SetActive(true);
+             _currentHealth -= damagePerHit;
+             hpFillImage.fillAmount = _currentHealth / maxHealth;
+             _junkCarManager.ExplodeTile(this);
+
+             if (_currentHealth <= 0)
+          
+                DestroyCar();
             });
 
-        hpFillImage.gameObject.SetActive(true);
-        _currentHealth -= damagePerHit;
-        hpFillImage.fillAmount = _currentHealth / maxHealth;
-        _junkCarManager.ExplodeTile(this);
-
-        if (_currentHealth <= 0)
-            DestroyCar();
+     
     }
 
     private void DestroyCar()

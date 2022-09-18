@@ -35,11 +35,16 @@ public class Tile : MonoBehaviour
         body.isKinematic = false;
     }
 
+    public void SetColliderActive(bool value)
+    {
+        coll.enabled = value;
+        body.isKinematic = !value;
+    }
 
   //  private void OnTriggerEnter(Collider other)
   //  {
   //      if (other.gameObject.CompareTag("PlayerBlocker"))
-  //          this.gameObject.SetActive(false);
+  //          this.gameObject.SetColliderActive(false);
   //  }
   //
 }
