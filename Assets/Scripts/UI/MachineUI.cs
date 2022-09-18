@@ -2,7 +2,7 @@
 
 public class MachineUI : MonoBehaviour
 {
-    [SerializeField] private MachineTool _machine;
+    [SerializeField] private BaseMachineTool _machine;
     [SerializeField] private RequiermentContent _content;
 
     private void OnEnable()

@@ -6,7 +6,7 @@ using System.Linq;
 
 public enum MachineLevelType
 {
-    None,
+    PreBuild,
     Level_1
 }
 
@@ -35,13 +35,13 @@ public class ToolMachineData : ScriptableObject
 public class MachineLevel
 {
     [SerializeField] private MachineLevelType _level;
-    [HideIf("_level", MachineLevelType.None), Tooltip("Time in sec")]
+    [HideIf("_level", MachineLevelType.PreBuild), Tooltip("Time in sec")]
     [SerializeField] private float _createTime;
-    [HideIf("_level", MachineLevelType.None)]
+    [HideIf("_level", MachineLevelType.PreBuild)]
     [SerializeField] private int _tilePerCreateTime;
-    [HideIf("_level", MachineLevelType.None)]
+    [HideIf("_level", MachineLevelType.PreBuild)]
     [SerializeField] private int _maxTiles;
-    [TableList, HideIf("_level", MachineLevelType.None)]
+    [TableList, HideIf("_level", MachineLevelType.PreBuild)]
     [SerializeField] private List<ProductRequierment> _requierments = new List<ProductRequierment>();
 
     public MachineLevelType Level => _level;
