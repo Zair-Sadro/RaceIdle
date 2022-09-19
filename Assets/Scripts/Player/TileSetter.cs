@@ -68,17 +68,18 @@ public class TileSetter : MonoBehaviour
         OnTilesCountChanged?.Invoke(_colectedTiles.Count);
     }
 
-    public void RemoveTiles(Action towerTileIncrease)
+    public void RemoveTiles(Action towerTileIncrease,Vector3 tilesPlace)
     {
         if (!_isGivingTiles)
-            StartCoroutine(RemovingTile(towerTileIncrease));
+            StartCoroutine(RemovingTile(towerTileIncrease, tilesPlace));
     }
 
-    private IEnumerator RemovingTile(Action towerTileIncrease)
+    private IEnumerator RemovingTile(Action towerTileIncrease, Vector3 tilesPlace)
     {
         _isGivingTiles = true;
         for (int i = _colectedTiles.Count - 1; i >= 0; i--)
         {
+            _colectedTiles[i].ThrowTo(tilesPlace, timeToRemoveTile);
             yield return new WaitForSeconds(timeToRemoveTile);
 
             _givenTiles.Add(_colectedTiles[i]);
@@ -153,6 +154,10 @@ public class TileSetter : MonoBehaviour
 
     }
 
+
+
+    // оепеохяюрэ дкъ норхлхгюжхх : осярэ TILE асдер тхйяхпнбюрэ TRIGGERENTER PLAYER             //
+    // х вепег хмфеймсрши TILESETTER бяе декюер аег щрнцн TRYGETCOMPONENT                        //
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out Tile tile) && _colectedTiles.Count < maxTiles)
@@ -166,28 +171,19 @@ public class TileSetter : MonoBehaviour
         }
         
     }
+    //                                                                                           //
+    //                                                                                           //
+
+
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.TryGetComponent(out BaseMachineTool t))
-        {
-            _currentBench = t;
-          //  OnBenchZoneEnter?.Invoke(t);
-            _isInBenchZone = true;
-        }
+       
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.TryGetComponent(out BaseMachineTool t))
-        {
-            _isInBenchZone = false;
-            OnBenchZoneExit?.Invoke();
-            StopRemovingTiles();
-        }
-
-        if (_currentBench != null)
-            _currentBench = null;
+       
     }
    
 }

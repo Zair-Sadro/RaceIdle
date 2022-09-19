@@ -71,7 +71,8 @@ public class BaseMachineTool : MonoBehaviour
 
     private void PlaceTiles()
     {
-        _tileSetter.RemoveTiles(() => Debug.Log("Giving tiles"));
+        _tileSetter.RemoveTiles(() => Debug.Log("Giving tiles"),
+                                 _currentActiveMachine.PlacedTilesPoint.position);
 
         for (int i = 0; i < _tileSetter.GivenTiles.Count; i++)
             _currentTilesInMachine.Add(_tileSetter.GivenTiles[i]);

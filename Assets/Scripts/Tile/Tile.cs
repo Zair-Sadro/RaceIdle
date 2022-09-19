@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using DG.Tweening;
 
 public enum TileType
 {
@@ -40,7 +41,10 @@ public class Tile : MonoBehaviour
         coll.enabled = value;
         body.isKinematic = !value;
     }
-
+    public void ThrowTo(Vector3 place,float duration)
+    {
+        transform.DOJump(place, transform.position.y + 5f, 1, duration);
+    }
   //  private void OnTriggerEnter(Collider other)
   //  {
   //      if (other.gameObject.CompareTag("PlayerBlocker"))

@@ -20,7 +20,7 @@ public class SimpleTimer
 
     public void StopTimer()
     {
-        _monobeh?.StopAllCoroutines();
+        _monobeh?.StopCoroutine(nameof(Timer));
         _isTimerOn = false;
     }
 
