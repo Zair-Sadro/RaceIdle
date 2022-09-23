@@ -7,6 +7,9 @@ public class TileCollector : MonoBehaviour
 {
     [SerializeField] private int maxTileCount;
     [SerializeField] private int currentTilesCount;
+
+    protected Action OnCountChange;
+
     public virtual void Collect() { }
     public virtual void Remove() { }
 }

@@ -34,6 +34,14 @@ public class BaseMachineTool : MonoBehaviour
     {
         CreateMachine(MachineLevelType.PreBuild);
     }
+    private void OnEnable()
+    {
+        OnBuildZoneExit += _tileSetter.StopRemovingTiles;
+    }
+    private void OnDisable()
+    {
+        OnBuildZoneExit -= _tileSetter.StopRemovingTiles;
+    }
 
     private void InitMachines()
     {
@@ -49,8 +57,11 @@ public class BaseMachineTool : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.TryGetComponent(out TileSetter player))
+        if (other.CompareTag("Player"))
+        {
             OnBuildZoneExit?.Invoke();
+        }
+           
     }
 
     private void OnTriggerStay(Collider other)
@@ -71,13 +82,16 @@ public class BaseMachineTool : MonoBehaviour
 
     private void PlaceTiles()
     {
-        _tileSetter.RemoveTiles(() => Debug.Log("Giving tiles"),
-                                 _currentActiveMachine.PlacedTilesPoint.position);
+        var req = _currentRequierments[0].Type;
+        var tilesFound=_tileSetter.Tiles.Where(x => x.Type == req);
+       // _tileSetter.RemoveTiles(() => Debug.Log("Giving tiles"),
+       //                          _currentActiveMachine.PlacedTilesPoint.position);
 
         for (int i = 0; i < _tileSetter.GivenTiles.Count; i++)
             _currentTilesInMachine.Add(_tileSetter.GivenTiles[i]);
 
         _tileSetter.GivenTiles.Clear();
+       
     }
 
     private void CreateMachine(MachineLevelType level)

@@ -13,6 +13,8 @@ public class MachineToolEntity : MonoBehaviour
     private BaseMachineTool _baseMachine;
     private SimpleTimer _timer;
 
+    private bool isWorking=false;
+
     #region Properties
 
     public MachineLevelType Level => _level;
@@ -49,7 +51,8 @@ public class MachineToolEntity : MonoBehaviour
 
     private void CreateProduct()
     {
-       
+        if (isWorking) return;
+
     }
 
     private void OnDisable()
