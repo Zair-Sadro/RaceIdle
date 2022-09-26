@@ -6,32 +6,30 @@ using UnityEngine;
 public class Bridge : TileCollector,IProduce
 {
     public int tilesNeeded { get; set; }
- 
-    public int halfBridgeCount;
+
+    public int fullBridgeCount;
     public TileType reqType;
     public int productMaxCount { get; set; }
     public Transform tilePos;
 
-    public GameObject colliderForCollect;
-    public GameObject halfBridge;
+    public GameObject[] collidersAfterBuild,collidersBeforeBuild;
     public GameObject fullBridge;
 
-    private int fullBridgeCount;
-    private void Start()
-    {
-        fullBridgeCount = halfBridgeCount * 2;
-    }
     [Zenject.Inject] private TileSetter _playerTilesBag;
 
-
-    private void OnEnable()
+    private void Start()
     {
-        
+        if (fullBridge.activeInHierarchy) 
+            AfterBuildAction();
+        else
+            for (int i = 0; i < collidersBeforeBuild.Length; i++)
+            {
+                collidersBeforeBuild[i].SetActive(true);
+            }
     }
-   
     public override void Collect()
     {
-        _playerTilesBag.RemoveTiles( reqType, tilePos.position, TilePlus);
+        _playerTilesBag.RemoveTiles(reqType, tilePos.position, TilePlus);
        
     }
     private void StopCollect()
@@ -47,26 +45,30 @@ public class Bridge : TileCollector,IProduce
     private void TilePlus()
     {
         ++currentTilesCount;
+        OnCountChange?.Invoke(fullBridgeCount);
         BuildBridge();
+
     }
     private void BuildBridge()
     {
-        if (fullBridge.activeInHierarchy) return;
 
-        if (currentTilesCount >= halfBridgeCount && !halfBridge.activeInHierarchy)
-        {
-            BuildAndEffect(halfBridge);
-            return;
-        }
 
         if(currentTilesCount >= fullBridgeCount)
         {
             BuildAndEffect(fullBridge);
+            AfterBuildAction();
         }
     }
     private void BuildAndEffect(GameObject b)
     {
         b.SetActive(true);
+    }
+    private void AfterBuildAction()
+    {
+        for (int i = 0; i < collidersAfterBuild.Length; i++)
+        {
+            collidersAfterBuild[i].SetActive(false);
+        }
     }
 
     private void OnTriggerEnter(Collider other)

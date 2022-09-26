@@ -8,7 +8,22 @@ public class TileCollector : MonoBehaviour
     [SerializeField] protected int maxTileCount;
     [SerializeField] protected int currentTilesCount;
 
-    protected Action OnCountChange;
+    [SerializeField] protected TMPro.TMP_Text counter;
+
+    protected Action<int> OnCountChange;
+
+    private void OnEnable()
+    {
+        OnCountChange += TextCountVisual;
+    }
+    private void OnDisable()
+    {
+        OnCountChange -= TextCountVisual;
+    }
+    public virtual void TextCountVisual(int maxValue)
+    {
+        counter.text = $"{currentTilesCount}/{maxValue}";
+    }
 
     public virtual void Collect() { }
     public virtual void Remove() { }
