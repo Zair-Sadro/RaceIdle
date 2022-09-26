@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class TileCollector : MonoBehaviour
 {
-    [SerializeField] private int maxTileCount;
-    [SerializeField] private int currentTilesCount;
+    [SerializeField] protected int maxTileCount;
+    [SerializeField] protected int currentTilesCount;
 
     protected Action OnCountChange;
 

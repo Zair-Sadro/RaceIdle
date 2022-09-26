@@ -68,13 +68,13 @@ public class TileSetter : MonoBehaviour
         OnTilesCountChanged?.Invoke(_colectedTiles.Count);
     }
 
-    public void RemoveTiles(TileType type,Vector3 tilesPlace)
+    public void RemoveTiles(TileType type,Vector3 tilesPlace,Action interatorCall)
     {
         if (!_isGivingTiles)
-            StartCoroutine(RemovingTile(type, tilesPlace));
+            StartCoroutine(RemovingTile(type, tilesPlace, interatorCall));
     }
 
-    private IEnumerator RemovingTile(TileType type, Vector3 tilesPlace)
+    private IEnumerator RemovingTile(TileType type, Vector3 tilesPlace,Action interatorCall)
     {
 
         _isGivingTiles = true;
@@ -86,12 +86,12 @@ public class TileSetter : MonoBehaviour
         {
             tiles[i].ThrowTo(tilesPlace, timeToRemoveTile);
             yield return new WaitForSeconds(timeToRemoveTile);
-
+            interatorCall.Invoke();
             _givenTiles.Add(tiles[i]);
 
             ClearTiles(i, type);
 
-
+            if (_isGivingTiles == false) yield break;
         }
         _isGivingTiles = false;
     }
@@ -102,8 +102,9 @@ public class TileSetter : MonoBehaviour
         _colectedTiles[index].OnGround();
         _colectedTiles[index].transform.SetParent(tilesSpawnerParent);
 
-                 _colectedTiles.Remove(_colectedTiles[index]);
         GetTileListByType(type).Remove(_colectedTiles[index]);
+        _colectedTiles.Remove(_colectedTiles[index]);
+
 
         OnTilesCountChanged?.Invoke(_colectedTiles.Count);
     }
@@ -122,8 +123,8 @@ public class TileSetter : MonoBehaviour
     public void StopRemovingTiles()
     {
         _isGivingTiles = false;
-        StopAllCoroutines();
-        SortTiles();
+        //StopAllCoroutines();
+       // SortTiles();
     }
 
     private void SortTiles()

@@ -6,18 +6,33 @@ using UnityEngine;
 public class Bridge : TileCollector,IProduce
 {
     public int tilesNeeded { get; set; }
+ 
     public int halfBridgeCount;
     public TileType reqType;
     public int productMaxCount { get; set; }
     public Transform tilePos;
 
+    public GameObject colliderForCollect;
+    public GameObject halfBridge;
+    public GameObject fullBridge;
+
+    private int fullBridgeCount;
+    private void Start()
+    {
+        fullBridgeCount = halfBridgeCount * 2;
+    }
     [Zenject.Inject] private TileSetter _playerTilesBag;
 
 
-
+    private void OnEnable()
+    {
+        
+    }
+   
     public override void Collect()
     {
-        _playerTilesBag.RemoveTiles( reqType, tilePos.position);
+        _playerTilesBag.RemoveTiles( reqType, tilePos.position, TilePlus);
+       
     }
     private void StopCollect()
     {
@@ -29,8 +44,30 @@ public class Bridge : TileCollector,IProduce
         base.Remove();
     }
 
+    private void TilePlus()
+    {
+        ++currentTilesCount;
+        BuildBridge();
+    }
+    private void BuildBridge()
+    {
+        if (fullBridge.activeInHierarchy) return;
 
+        if (currentTilesCount >= halfBridgeCount && !halfBridge.activeInHierarchy)
+        {
+            BuildAndEffect(halfBridge);
+            return;
+        }
 
+        if(currentTilesCount >= fullBridgeCount)
+        {
+            BuildAndEffect(fullBridge);
+        }
+    }
+    private void BuildAndEffect(GameObject b)
+    {
+        b.SetActive(true);
+    }
 
     private void OnTriggerEnter(Collider other)
     {

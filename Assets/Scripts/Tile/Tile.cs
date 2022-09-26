@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using DG.Tweening;
+using Sirenix.OdinInspector;
 
 public enum TileType
 {
@@ -15,6 +16,13 @@ public class Tile : MonoBehaviour
     [SerializeField] private TileType type;
     [SerializeField] private Collider coll;
     [SerializeField] private Rigidbody body;
+
+    [Space(20)]
+    [Header("Tile Move Options")]
+
+    [SerializeField] private bool _Rotate;
+    [SerializeField,HideIf("_Rotate",false)] private Vector3 _rotationIn;
+    [SerializeField] private Ease _ease;
 
     public TileType Type => type;
 
@@ -43,7 +51,9 @@ public class Tile : MonoBehaviour
     }
     public void ThrowTo(Vector3 place,float duration)
     {
-        transform.DOJump(place, transform.position.y + 5f, 1, duration);
+
+        transform.DOJump(place, transform.position.y + 5f, 1, duration).SetEase(_ease);
+        if (_Rotate) transform.DORotate(_rotationIn, duration).SetEase(Ease.InOutExpo);
     }
   //  private void OnTriggerEnter(Collider other)
   //  {
