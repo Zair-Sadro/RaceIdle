@@ -7,6 +7,7 @@ public class TileCollector : MonoBehaviour
 {
     [SerializeField] protected int maxTileCount;
     [SerializeField] protected int currentTilesCount;
+    [SerializeField] protected Animator counterAnimator;
 
     [SerializeField] protected TMPro.TMP_Text counter;
 
@@ -23,6 +24,7 @@ public class TileCollector : MonoBehaviour
     public virtual void TextCountVisual(int maxValue)
     {
         counter.text = $"{currentTilesCount}/{maxValue}";
+        counterAnimator.SetTrigger("Plus");
     }
 
     public virtual void Collect() { }
