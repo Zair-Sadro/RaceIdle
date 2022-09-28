@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 
@@ -42,6 +43,9 @@ public class Tile : MonoBehaviour
         _isTaken = false;
         coll.enabled = true;
         body.isKinematic = false;
+
+        if(this.gameObject.activeInHierarchy) 
+            StartCoroutine(TimerTillDisappear());
     }
 
     public void SetColliderActive(bool value)
@@ -54,6 +58,13 @@ public class Tile : MonoBehaviour
 
         transform.DOJump(place, transform.position.y + 5f, 1, duration).SetEase(_ease);
         if (_Rotate) transform.DORotate(_rotationIn, duration).SetEase(Ease.InOutExpo);
+    }
+
+    IEnumerator TimerTillDisappear()
+    {
+        yield return new WaitForSeconds(StaticValues.tileDisapTimer);
+        if(!_isTaken) gameObject.SetActive(false);
+
     }
   //  private void OnTriggerEnter(Collider other)
   //  {
