@@ -38,7 +38,10 @@ public class PlayerController : MonoBehaviour
         CheckSkin();
     }
 
-    
+    private void Update()
+    {
+        
+    }
     private void FixedUpdate()
     {
         Move();
@@ -58,13 +61,13 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        body.velocity = new Vector3(joystick.Horizontal * speed, body.velocity.y, joystick.Vertical * speed);
+      
 
         if (joystick.Horizontal != 0 || joystick.Vertical != 0)
         {
             if(body.velocity != Vector3.zero)
             {
-                transform.rotation = Quaternion.LookRotation(body.velocity);
+                transform.rotation = Quaternion.LookRotation(body.velocity.normalized);
                 CurrentAnimator(_skinAnimatorID).SetBool("Run", true);
                 // dustParticle.gameObject.SetColliderActive(true);
             }
@@ -74,6 +77,7 @@ public class PlayerController : MonoBehaviour
             CurrentAnimator(_skinAnimatorID).SetBool("Run", false);
            // dustParticle.gameObject.SetColliderActive(false);
         }
+        body.velocity = new Vector3(joystick.Horizontal * speed, body.velocity.y, joystick.Vertical * speed);
     }
     private void TakeHummer(bool value)
     {
