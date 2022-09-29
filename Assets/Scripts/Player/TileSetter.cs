@@ -6,8 +6,20 @@ using DG.Tweening;
 using UnityEngine.Events;
 using Zenject;
 
-public class TileSetter : MonoBehaviour
+[Serializable]
+public class TileSetterData
 {
+
+    public List<Tile> _colectedTiles;
+    public List<Tile> _junkTiles;
+    public List<Tile> _ironTiles;
+
+}
+
+public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
+{
+    [SerializeField] private TileSetterData _data;
+
     [SerializeField] private Transform tilesSpawnerParent;
     
     [Header("Add to Unit Settings")]
@@ -108,17 +120,6 @@ public class TileSetter : MonoBehaviour
 
         OnTilesCountChanged?.Invoke(_colectedTiles.Count);
     }
-    private void ClearTiles(int index)
-    {
-        _colectedTiles[index].gameObject.SetActive(false);
-        _colectedTiles[index].OnGround();
-        _colectedTiles[index].transform.SetParent(tilesSpawnerParent);
-
-        _colectedTiles.Remove(_colectedTiles[index]);
-        GetTileListByType(_colectedTiles[index].Type).Remove(_colectedTiles[index]);
-
-        OnTilesCountChanged?.Invoke(_colectedTiles.Count);
-    }
 
     public void StopRemovingTiles()
     {
@@ -126,38 +127,6 @@ public class TileSetter : MonoBehaviour
         //StopAllCoroutines();
        // SortTiles();
     }
-
-    private void SortTiles()
-    {
-        if (_colectedTiles.Count <= 0)
-            return;
-
-        List<Tile> sortTiles = new List<Tile>();
-
-        for (int i = _colectedTiles.Count - 1; i >= 0; i--)
-        {
-            sortTiles.Add(_colectedTiles[i]);
-          
-        }
-        _colectedTiles.Clear();
-        for (int i = 0; i < sortTiles.Count; i++)
-        {
-            sortTiles[i].gameObject.SetActive(true);
-            AddTile(sortTiles[i]);
-        }
-    }
-
-    public void RemoveTilesAtCount(int count)
-    {
-        if (_colectedTiles.Count <= 0 || count > _colectedTiles.Count)
-            return;
-
-        for (int i = count - 1; i >= 0; i--)
-            ClearTiles(i);
-
-        SortTiles();
-    }
-
 
     private void SetTilesColliderStatus(bool value)
     {
@@ -214,14 +183,16 @@ public class TileSetter : MonoBehaviour
         return null;
     }
 
-    private void OnTriggerStay(Collider other)
+    public TileSetterData GetData()
     {
-       
+        return _data;
     }
 
-    private void OnTriggerExit(Collider other)
+    public void Initialize(TileSetterData data)
     {
-       
+        _colectedTiles = data._colectedTiles;
+        _ironTiles = data._ironTiles;
+        _junkTiles = data._junkTiles;
     }
-   
 }
+

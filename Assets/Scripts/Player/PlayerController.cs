@@ -67,7 +67,12 @@ public class PlayerController : MonoBehaviour
         {
             if(body.velocity != Vector3.zero)
             {
-                transform.rotation = Quaternion.LookRotation(body.velocity.normalized);
+                var vel = Quaternion.LookRotation(body.velocity.normalized);
+                var q = new Quaternion(0,vel.y,0,vel.w);
+
+                transform.rotation = q;
+
+                Debug.Log(Quaternion.LookRotation(body.velocity.normalized).ToString());
                 CurrentAnimator(_skinAnimatorID).SetBool("Run", true);
                 // dustParticle.gameObject.SetColliderActive(true);
             }
