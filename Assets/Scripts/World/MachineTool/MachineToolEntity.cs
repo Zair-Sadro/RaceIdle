@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using System.Linq;
+using System.Collections.Generic;
 
 public class MachineToolEntity : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class MachineToolEntity : MonoBehaviour
     [Header("Product Settings")]
     [SerializeField] private Transform _placedTilesPoint;
     [SerializeField] private Transform _createdTilesPoint;
+
+
 
     private MachineLevel _currentLevel;
     private BaseMachineTool _baseMachine;

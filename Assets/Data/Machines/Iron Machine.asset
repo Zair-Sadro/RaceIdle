@@ -22,3 +22,10 @@ MonoBehaviour:
     _requierments:
     - _type: 0
       _amount: 10
+  - _level: 1
+    _createTime: 60
+    _tilePerCreateTime: 0
+    _maxTiles: 4
+    _requierments:
+    - _type: 1
+      _amount: 0

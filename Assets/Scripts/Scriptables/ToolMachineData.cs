@@ -7,7 +7,6 @@ using System.Linq;
 public enum MachineLevelType
 {
     PreBuild,
-    Stepbystep,
     Level_1
 }
 
@@ -46,8 +45,6 @@ public class MachineLevel
     [SerializeField] private List<ProductRequierment> _requierments = new List<ProductRequierment>();
 
 
-    [ShowIf("_level", MachineLevelType.Stepbystep)]
-    [SerializeField] private int stepInt;
 
     public MachineLevelType Level => _level;
     public float CreateTime => _createTime;

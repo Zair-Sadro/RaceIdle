@@ -3,19 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bridge : TileCollector,IProduce
+public class Bridge : TileCollector
 {
-    public int tilesNeeded { get; set; }
 
     public int fullBridgeCount;
     public TileType reqType;
-    public int productMaxCount { get; set; }
+
     public Transform tilePos;
 
     public GameObject[] collidersAfterBuild,collidersBeforeBuild;
     public GameObject fullBridge;
 
     [Zenject.Inject] private TileSetter _playerTilesBag;
+    [SerializeField] private PlayerDetector _playerDetector;
+
 
     private void Start()
     {
@@ -27,6 +28,26 @@ public class Bridge : TileCollector,IProduce
                 collidersBeforeBuild[i].SetActive(true);
             }
     }
+
+    private void AfterBuildAction()
+    {
+        for (int i = 0; i < collidersAfterBuild.Length; i++)
+        {
+            collidersAfterBuild[i].SetActive(false);
+        }
+    }
+
+    private void OnEnable()
+    {
+        _playerDetector.OnPlayerEnter += Collect;
+        _playerDetector.OnPlayerExit += StopCollect;
+    }
+    private void OnDisable()
+    {
+        _playerDetector.OnPlayerEnter -= Collect;
+        _playerDetector.OnPlayerExit -= StopCollect;
+    }
+
     public override void Collect()
     {
         _playerTilesBag.RemoveTiles(reqType, tilePos.position, TilePlus);
@@ -37,12 +58,7 @@ public class Bridge : TileCollector,IProduce
         _playerTilesBag.StopRemovingTiles();
     }
 
-    public override void Remove()
-    {
-        base.Remove();
-    }
-
-    private void TilePlus()
+    private void TilePlus(Tile t)
     {
         ++currentTilesCount;
         OnCountChange?.Invoke(fullBridgeCount);
@@ -51,8 +67,6 @@ public class Bridge : TileCollector,IProduce
     }
     private void BuildBridge()
     {
-
-
         if(currentTilesCount >= fullBridgeCount)
         {
             BuildAndEffect(fullBridge);
@@ -63,45 +77,10 @@ public class Bridge : TileCollector,IProduce
     {
         b.SetActive(true);
     }
-    private void AfterBuildAction()
+
+    public override void Remove()
     {
-        for (int i = 0; i < collidersAfterBuild.Length; i++)
-        {
-            collidersAfterBuild[i].SetActive(false);
-        }
+        base.Remove();
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (IsPlayer(other.gameObject))
-        {
-            Collect();
-        }
-    }
-    private void OnTriggerStay(Collider other)
-    {
-       
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        if (IsPlayer(other.gameObject))
-        {
-            StopCollect();
-        }
-    }
-
-    
-
-
-    public void Produce(Action action)
-    {
-        action.Invoke();
-    }
-
-    bool IsPlayer(GameObject ob)
-    {
-        if (ob.CompareTag("Player"))
-            return true;
-        return false;
-    }
 }

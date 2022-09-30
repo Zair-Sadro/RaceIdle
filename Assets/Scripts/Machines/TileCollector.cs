@@ -5,13 +5,16 @@ using UnityEngine;
 
 public class TileCollector : MonoBehaviour
 {
-    [SerializeField] protected int maxTileCount;
-    [SerializeField] protected int currentTilesCount;
+
     [SerializeField] protected Animator counterAnimator;
 
     [SerializeField] protected TMPro.TMP_Text counter;
 
     protected Action<int> OnCountChange;
+
+
+    [SerializeField] protected virtual int maxTileCount { get; private set; }
+    [SerializeField] protected virtual int currentTilesCount { get; set; }
 
     private void OnEnable()
     {
@@ -32,8 +35,6 @@ public class TileCollector : MonoBehaviour
 }
 public interface IProduce
 {
-    [Tooltip("Tilles needed for 1 product")]
-    public int tilesNeeded { get; set; }
-    public int productMaxCount { get; set; }
-    public void Produce(Action action);
+
+    public void Produce();
 }

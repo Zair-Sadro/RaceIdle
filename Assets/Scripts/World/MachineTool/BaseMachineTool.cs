@@ -25,10 +25,14 @@ public class BaseMachineTool : MonoBehaviour
 
     [Inject] private TileSetter _tileSetter;
 
+    
+    
     private void Awake()
     {
         InitMachines();
+        
     }
+    
 
     private void Start()
     {

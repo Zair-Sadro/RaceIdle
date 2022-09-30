@@ -80,13 +80,13 @@ public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
         OnTilesCountChanged?.Invoke(_colectedTiles.Count);
     }
 
-    public void RemoveTiles(TileType type,Vector3 tilesPlace,Action interatorCall)
+    public void RemoveTiles(TileType type,Vector3 tilesPlace,Action<Tile> interatorCall)
     {
         if (!_isGivingTiles)
             StartCoroutine(RemovingTile(type, tilesPlace, interatorCall));
     }
 
-    private IEnumerator RemovingTile(TileType type, Vector3 tilesPlace,Action interatorCall)
+    private IEnumerator RemovingTile(TileType type, Vector3 tilesPlace,Action<Tile> interatorCall)
     {
 
         _isGivingTiles = true;
@@ -98,7 +98,7 @@ public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
         {
             tiles[i].ThrowTo(tilesPlace, timeToRemoveTile);
             yield return new WaitForSeconds(timeToRemoveTile);
-            interatorCall.Invoke();
+            interatorCall.Invoke(tiles[i]);
             _givenTiles.Add(tiles[i]);
 
             ClearTiles(i, type);
