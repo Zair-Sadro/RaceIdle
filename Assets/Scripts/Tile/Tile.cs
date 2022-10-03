@@ -25,6 +25,8 @@ public class Tile : MonoBehaviour
     [SerializeField,HideIf("_Rotate",false)] private Vector3 _rotationIn;
     [SerializeField] private Ease _ease;
 
+    [Zenject.Inject] private TileSetter _tileSetter;
+
     public TileType Type => type;
 
     private bool _isTaken = false;
@@ -66,10 +68,16 @@ public class Tile : MonoBehaviour
         if(!_isTaken) gameObject.SetActive(false);
 
     }
-  //  private void OnTriggerEnter(Collider other)
-  //  {
-  //      if (other.gameObject.CompareTag("PlayerBlocker"))
-  //          this.gameObject.SetColliderActive(false);
-  //  }
-  //
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (PlayerDetector.IsPlayer(other.gameObject))
+        {
+            _tileSetter.AddTile(this);
+            Debug.Log($"{this.name} player collision detect");
+        }
+    }
+
+
+
 }

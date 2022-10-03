@@ -35,20 +35,16 @@ public class ToolMachineData : ScriptableObject
 public class MachineLevel
 {
     [SerializeField] private MachineLevelType _level;
-    [HideIf("_level", MachineLevelType.PreBuild), Tooltip("Time in sec")]
     [SerializeField] private float _createTime;
-    [HideIf("_level", MachineLevelType.PreBuild)]
-    [SerializeField] private int _tilePerCreateTime;
-    [HideIf("_level", MachineLevelType.PreBuild)]
+    [SerializeField] private float _delayMachineTakeTile;
     [SerializeField] private int _maxTiles;
-    [TableList, HideIf("_level", MachineLevelType.PreBuild)]
     [SerializeField] private List<ProductRequierment> _requierments = new List<ProductRequierment>();
 
 
 
     public MachineLevelType Level => _level;
     public float CreateTime => _createTime;
-    public int TilePerCreateTime => _tilePerCreateTime;
+    public float DelayMachineTakeTile=> _delayMachineTakeTile;
     public int MaxTiles => _maxTiles;
     public List<ProductRequierment> Requierments => _requierments;
 

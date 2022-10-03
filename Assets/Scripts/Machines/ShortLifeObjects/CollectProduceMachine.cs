@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ProductRequierment = MachineLevel.ProductRequierment;
 
 public class CollectProduceMachine : TileCollector, IProduce
 {
@@ -8,15 +10,20 @@ public class CollectProduceMachine : TileCollector, IProduce
     [SerializeField] private MachineLevel machineFields;
 
     [Zenject.Inject] private TileSetter _playerTilesBag;
-    [SerializeField] private  Transform tilePos;
+
+    [SerializeField] private Transform tileStorage;
+    [SerializeField] private Transform productStorage;
+    [SerializeField] private Transform tileStartPos;
+    [SerializeField] private Transform tileFinishPos;
 
     [SerializeField] private PlayerDetector _playerDetector;
 
     private SimpleTimer _timer;
     protected override int maxTileCount => machineFields.MaxTiles;
 
-    private int typesReq;
-    private Dictionary<TileType, List<Tile>> tileListByType;
+    private byte typesReq;
+    private Dictionary<TileType, Stack<Tile>> tileListByType=new Dictionary<TileType, Stack<Tile>>();
+
 
     private void Start()
     {
@@ -27,10 +34,11 @@ public class CollectProduceMachine : TileCollector, IProduce
 
     protected virtual void Init()
     {
-        typesReq = machineFields.Requierments.Count;
+        typesReq = (byte)machineFields.Requierments.Count;
+
         for (int i = 0; i < typesReq; i++)
         {
-            tileListByType.Add(machineFields.Requierments[i].Type, new List<Tile>());
+            tileListByType.Add(machineFields.Requierments[i].Type, new Stack<Tile>());
         }
         
     }
@@ -45,13 +53,17 @@ public class CollectProduceMachine : TileCollector, IProduce
         for (int i = 0; i < typesReq; i++)
         {
             var req = machineFields.Requierments[i].Type;
-            _playerTilesBag.RemoveTiles(req, tilePos.position, (t) => tileListByType[req].Add(t));
+            _playerTilesBag.RemoveTiles(req, tileStorage.position,RecieveTile);
         }
     }
    
     public virtual void StopCollect()
     {
-
+        _playerTilesBag.StopRemovingTiles();
+    }
+    private void RecieveTile(Tile tile) 
+    {
+        tileListByType[tile.Type].Push(tile);
     }
     private void UpdateCreationClock(float value)
     {
@@ -63,7 +75,66 @@ public class CollectProduceMachine : TileCollector, IProduce
     }
     public void Produce()
     {
+        if (EnoughForProduce())
+        {
+            StartCoroutine(ProduceCoroutine());
+
+        }
         
+    }
+    private bool EnoughForProduce()
+    {
+        bool enough = false;
+      
+        for (int i = 0; i < typesReq; i++)
+        {
+            if (OneOfRequredTypeIsEnough(i)) enough = true;
+            else enough = false;
+
+        }
+        return enough;
+
+        bool OneOfRequredTypeIsEnough(int i)
+        {
+            var type = machineFields.Requierments[i].Type;
+            var requiredAmount = machineFields.Requierments[i].Amount;
+
+            if (tileListByType[type].Count > requiredAmount) 
+                return true;
+
+            return false;
+        }
+
+    }
+    private IEnumerator ProduceCoroutine()
+    {
+        yield return GainTiles();
+        yield return new WaitForSeconds(machineFields.CreateTime);
+        yield return TileManufacture();
+
+    }
+    private IEnumerator GainTiles()
+    {
+        for (int i = 0; i < typesReq; i++)
+        {
+            var type = machineFields.Requierments[i].Type;
+            var amount = machineFields.Requierments[i].Amount;
+            var delay = machineFields.DelayMachineTakeTile;
+
+            for (int j = 0; j < amount; j++)
+            {
+                tileListByType[type].Pop();
+                yield return new WaitForSeconds(delay);
+            }
+
+
+        }
+       
+    }
+    private IEnumerator TileManufacture()
+    {
+        //yield return 
+        yield return null;
     }
     private void OnEnable()
     {

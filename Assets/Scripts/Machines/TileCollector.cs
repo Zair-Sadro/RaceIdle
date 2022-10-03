@@ -18,6 +18,7 @@ public class TileCollector : MonoBehaviour
 
     private void OnEnable()
     {
+        if (counter == null) return;
         OnCountChange += TextCountVisual;
     }
     private void OnDisable()

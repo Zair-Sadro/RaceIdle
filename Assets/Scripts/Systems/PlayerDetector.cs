@@ -28,10 +28,11 @@ public class PlayerDetector : MonoBehaviour
     }
 
 
-    bool IsPlayer(GameObject ob)
+    public static bool IsPlayer(GameObject ob)
     {
         if (ob.CompareTag("Player"))
             return true;
+
         return false;
     }
 }

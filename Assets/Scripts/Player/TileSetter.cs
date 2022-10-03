@@ -66,8 +66,16 @@ public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
     }
 
 
-    private void AddTile(Tile tile)
+    public void AddTile(Tile tile)
     {
+        if (MaxTilesCapacity())
+        {
+            OnTilesMaxCapacity.Invoke(false); // Отлючаем коллайдеры всех активных тайлов
+            return;
+        }
+           
+
+
         tile.OnBack();       
         tile.transform.SetParent(setupPoint);
 
@@ -144,25 +152,6 @@ public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
         return maxCapacity;
 
     }
-
-
-
-    // ПЕРЕПИСАТЬ ДЛЯ ОПТИМИЗАЦИИ : ПУСТЬ TILE БУДЕТ ФИКСИРОВАТЬ TRIGGERENTER PLAYER             //
-    // И ЧЕРЕЗ ИНЖЕКНУТЫЙ TILESETTER ВСЕ ДЕЛАЕТ БЕЗ ЭТОГО TRYGETCOMPONENT                        //
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.TryGetComponent(out Tile tile) && _colectedTiles.Count < maxTiles)
-        {
-            AddTile(tile);
-
-            if (MaxTilesCapacity())
-                OnTilesMaxCapacity.Invoke(false); // Отлючаем коллайдеры всех активных тайлов
-         
-        }
-        
-    }
-    //                                                                                           //
-    //                                                                                           //
 
     private List<Tile> GetTileListByType(TileType type)
     {
