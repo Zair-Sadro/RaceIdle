@@ -17,12 +17,12 @@ MonoBehaviour:
     showComponentIcons: 1
     showAllComponents: 0
     twoToneBackground: 1
-    showLayers: 1
+    showLayers: 0
     editableLayers: 1
     applyChildLayers: 1
   styleData:
-    displayLayers: 1
-    displayIcons: 1
+    displayLayers: 0
+    displayIcons: 0
     styles:
     - prefix: =
       name: Header (Centered)
@@ -1035,6 +1035,12 @@ MonoBehaviour:
       shown: 0
     - name: _NaughtyComponent
       shown: 0
+    - name: ExampleScript
+      shown: 0
+    - name: ExampleScript2
+      shown: 0
+    - name: ExampleScriptWithIcon
+      shown: 0
     - name: PlaymodeTestsController
       shown: 0
     - name: PlayerQuitHandler
@@ -1324,12 +1330,6 @@ MonoBehaviour:
     - name: Foo
       shown: 0
     - name: Gorp
-      shown: 0
-    - name: ExampleScript
-      shown: 0
-    - name: ExampleScript2
-      shown: 0
-    - name: ExampleScriptWithIcon
       shown: 0
     - name: EmittedMonoBehaviour
       shown: 0

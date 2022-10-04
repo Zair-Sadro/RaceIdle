@@ -23,7 +23,7 @@ public class CollectProduceMachine : TileCollector, IProduce
 
     private byte typesReq;
     private Dictionary<TileType, Stack<Tile>> tileListByType=new Dictionary<TileType, Stack<Tile>>();
-
+    private bool isProducing;
 
     private void Start()
     {
@@ -31,7 +31,6 @@ public class CollectProduceMachine : TileCollector, IProduce
        
     }
     
-
     protected virtual void Init()
     {
         typesReq = (byte)machineFields.Requierments.Count;
@@ -40,6 +39,8 @@ public class CollectProduceMachine : TileCollector, IProduce
         {
             tileListByType.Add(machineFields.Requierments[i].Type, new Stack<Tile>());
         }
+
+        Produce();
         
     }
     protected virtual void IniTimer()
@@ -55,6 +56,7 @@ public class CollectProduceMachine : TileCollector, IProduce
             var req = machineFields.Requierments[i].Type;
             _playerTilesBag.RemoveTiles(req, tileStorage.position,RecieveTile);
         }
+        Produce();
     }
    
     public virtual void StopCollect()
@@ -64,6 +66,8 @@ public class CollectProduceMachine : TileCollector, IProduce
     private void RecieveTile(Tile tile) 
     {
         tileListByType[tile.Type].Push(tile);
+        tile.OnStorage(tileStorage);
+
     }
     private void UpdateCreationClock(float value)
     {
@@ -75,11 +79,13 @@ public class CollectProduceMachine : TileCollector, IProduce
     }
     public void Produce()
     {
+
         if (EnoughForProduce())
         {
             StartCoroutine(ProduceCoroutine());
 
         }
+      
         
     }
     private bool EnoughForProduce()
@@ -96,10 +102,17 @@ public class CollectProduceMachine : TileCollector, IProduce
 
         bool OneOfRequredTypeIsEnough(int i)
         {
+           
             var type = machineFields.Requierments[i].Type;
-            var requiredAmount = machineFields.Requierments[i].Amount;
+            _ = new Stack<Tile>();
+            Stack<Tile> tileStack;
 
-            if (tileListByType[type].Count > requiredAmount) 
+            if (!tileListByType.TryGetValue(type, out tileStack))  //Check if stack exist
+                return false;
+
+            var requiredAmount = machineFields.Requierments[i].Amount;
+         
+            if (tileStack.Count > requiredAmount)  
                 return true;
 
             return false;
@@ -108,10 +121,13 @@ public class CollectProduceMachine : TileCollector, IProduce
     }
     private IEnumerator ProduceCoroutine()
     {
+        isProducing = true;
         yield return GainTiles();
         yield return new WaitForSeconds(machineFields.CreateTime);
         yield return TileManufacture();
+        isProducing = false;
 
+        Produce();
     }
     private IEnumerator GainTiles()
     {
@@ -133,6 +149,7 @@ public class CollectProduceMachine : TileCollector, IProduce
     }
     private IEnumerator TileManufacture()
     {
+        
         //yield return 
         yield return null;
     }

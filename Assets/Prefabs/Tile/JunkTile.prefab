@@ -131,6 +131,10 @@ MonoBehaviour:
   type: 0
   coll: {fileID: 6160483350495140590}
   body: {fileID: 7017803816588789839}
+  _Rotate: 0
+  _rotationIn: {x: 0, y: 0, z: 0}
+  _ease: 0
+  _tileRenderer: {fileID: 5503512736366506225}
 --- !u!114 &-6744815361181810347
 MonoBehaviour:
   m_ObjectHideFlags: 0

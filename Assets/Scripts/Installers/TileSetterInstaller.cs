@@ -11,5 +11,8 @@ public class TileSetterInstaller : MonoInstaller
 
         Container.Bind<TileSetter>().FromInstance(_tileSetter).AsSingle();
         Container.QueueForInject(_tileSetter);
+
     }
 }
+
+

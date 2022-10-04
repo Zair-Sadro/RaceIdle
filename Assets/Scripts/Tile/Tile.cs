@@ -2,6 +2,7 @@
 using System.Collections;
 using DG.Tweening;
 using Sirenix.OdinInspector;
+using System;
 
 public enum TileType
 {
@@ -25,21 +26,39 @@ public class Tile : MonoBehaviour
     [SerializeField,HideIf("_Rotate",false)] private Vector3 _rotationIn;
     [SerializeField] private Ease _ease;
 
-    [Zenject.Inject] private TileSetter _tileSetter;
+    private TileSetter _tileSetter;
 
-    public TileType Type => type;
+    public TileType Type
+    {
+        get => type;
+        set 
+        { 
+            type = value;
+        }
+        
+    }
+
 
     private bool _isTaken = false;
 
     public bool IsTaken => _isTaken;
 
-    public void OnBack()
+    [SerializeField] private MeshRenderer _tileRenderer;
+    public void OnTake()
     {
         _isTaken = true;
         coll.enabled = false;
         body.isKinematic = true;
     }
-
+    public void OnStorage(Transform t)
+    {
+        gameObject.SetActive(true);
+        transform.SetParent(t);
+        transform.rotation = new Quaternion(0, 0, 0, 0);
+        _isTaken = true;
+        coll.enabled = false;
+        body.isKinematic = true;
+    }
     public void OnGround()
     {
         _isTaken = false;
@@ -48,6 +67,11 @@ public class Tile : MonoBehaviour
 
         if(this.gameObject.activeInHierarchy) 
             StartCoroutine(TimerTillDisappear());
+    }
+
+    internal void InjectTileSetter(TileSetter tileSetter)
+    {
+        _tileSetter = tileSetter;
     }
 
     public void SetColliderActive(bool value)
@@ -60,6 +84,11 @@ public class Tile : MonoBehaviour
 
         transform.DOJump(place, transform.position.y + 5f, 1, duration).SetEase(_ease);
         if (_Rotate) transform.DORotate(_rotationIn, duration).SetEase(Ease.InOutExpo);
+    }
+
+    public void SetMaterial(Material mat)
+    {
+       _tileRenderer.material = mat;
     }
 
     IEnumerator TimerTillDisappear()

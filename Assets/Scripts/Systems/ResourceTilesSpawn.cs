@@ -6,18 +6,20 @@ using Zenject;
 //CanBeInjected//
 public class ResourceTilesSpawn : MonoBehaviour
 {
-    [SerializeField] private Tile _tilePrefub;
+    [SerializeField] private Tile _tilePrefab;
     [SerializeField] private int maxTilesAmount;
+    [SerializeField] private Transform _tilesParent;
 
-    [SerializeField] private Transform _resorceTilesParent;
+    [SerializeField] private Material _junkMat, _plastMat, _ironMat, _rubberMat;
+
 
     [Inject] private TileSetter _tileSetter;
-
     private ObjectPooler<Tile> _tilesPool;
+
 
     private void OnEnable()
     {
-        _tilesPool = new ObjectPooler<Tile>(_tilePrefub, _resorceTilesParent);
+        _tilesPool = new ObjectPooler<Tile>(_tilePrefab, _tilesParent);
         _tilesPool.CreatePool(maxTilesAmount);
     }
 
@@ -31,20 +33,48 @@ public class ResourceTilesSpawn : MonoBehaviour
 
         return newList;
     }
-    public Tile GetTile()
+    public Tile GetTile(TileType type)
     {
-        var tile = _tilesPool.GetFreeObject();
+            var tile = _tilesPool.GetFreeObject();
+            SetType(type);
+            tile.InjectTileSetter(_tileSetter);
 
-        if (_tileSetter.MaxTilesCapacity())
+            if (_tileSetter.MaxTilesCapacity())
+            {
+                tile.SetColliderActive(false);
+            }
+            else
+            {
+                tile.SetColliderActive(true);
+            }
+
+            return tile;
+
+        void SetType(TileType t)
         {
-            tile.SetColliderActive(false);
-        }
-        else
-        {
-            tile.SetColliderActive(true);
+            tile.Type = t;
+            switch (t)
+            {
+                case TileType.Junk:
+                    tile.SetMaterial(_junkMat);
+                    break;
+
+                case TileType.Iron:
+                    tile.SetMaterial(_ironMat);
+                    break;
+
+                case TileType.Rubber:
+                    tile.SetMaterial(_rubberMat);
+                    break;
+
+                case TileType.Plastic:
+                    tile.SetMaterial(_plastMat);
+                    break;
+
+            }
         }
 
-        return tile;
+    
     }
     public List<Tile> GetAllActiveTiles()
     {

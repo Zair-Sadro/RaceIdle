@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
+[RequireComponent(typeof(BoxCollider))]
 public class PlayerDetector : MonoBehaviour
 {
     public Action OnPlayerEnter, OnPlayerExit, OnPlayerStay;

@@ -41,16 +41,21 @@ public class Bridge : TileCollector
     {
         _playerDetector.OnPlayerEnter += Collect;
         _playerDetector.OnPlayerExit += StopCollect;
+
+        if (counter == null) return;
+        OnCountChange += TextCountVisual;
+
     }
     private void OnDisable()
     {
         _playerDetector.OnPlayerEnter -= Collect;
         _playerDetector.OnPlayerExit -= StopCollect;
+        OnCountChange -= TextCountVisual;
     }
 
     public override void Collect()
     {
-        _playerTilesBag.RemoveTiles(reqType, tilePos.position, TilePlus);
+         _playerTilesBag.RemoveTiles(reqType, tilePos.position, TilePlus,true);
        
     }
     private void StopCollect()
@@ -69,6 +74,7 @@ public class Bridge : TileCollector
     {
         if(currentTilesCount >= fullBridgeCount)
         {
+            StopCollect();
             BuildAndEffect(fullBridge);
             AfterBuildAction();
         }
