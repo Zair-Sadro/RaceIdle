@@ -103,7 +103,7 @@ public class Tile : MonoBehaviour
         if (PlayerDetector.IsPlayer(other.gameObject))
         {
             _tileSetter.AddTile(this);
-            Debug.Log($"{this.name} player collision detect");
+            
         }
     }
 

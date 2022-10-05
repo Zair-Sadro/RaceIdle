@@ -76,6 +76,11 @@ public class ResourceTilesSpawn : MonoBehaviour
 
     
     }
+    public void ToPool(Tile t)
+    {
+        t.transform.parent = _tilesParent;
+        t.gameObject.SetActive(false);
+    }
     public List<Tile> GetAllActiveTiles()
     {
        return _tilesPool.GetAllActiveObjects();

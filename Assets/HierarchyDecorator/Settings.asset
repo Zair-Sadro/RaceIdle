@@ -653,6 +653,8 @@ MonoBehaviour:
       shown: 0
     - name: ToggleChangeTextColor
       shown: 0
+    - name: TaskManager
+      shown: 0
     - name: GridLayoutGroup3D
       shown: 0
     - name: LayoutElement3D

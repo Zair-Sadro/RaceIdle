@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using DG.Tweening;
-using UnityEngine.Events;
 using Zenject;
 
 [Serializable]
@@ -92,13 +90,24 @@ public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
             interatorCall.Invoke(tiles[i]);
             yield return new WaitForSeconds(timeToRemoveTile);
 
-            if(needClear)
+            if (needClear)
                 ClearTiles(i, type);
+            else
+                RemoveFromList(i, type);
 
             if (_isGivingTiles == false)
                 yield break;
         }
         _isGivingTiles = false;
+    }
+
+    private void RemoveFromList(int index, TileType type)
+    {
+        GetTileListByType(type).Remove(_colectedTiles[index]);
+        _colectedTiles.Remove(_colectedTiles[index]);
+
+
+        OnTilesCountChanged?.Invoke(_colectedTiles.Count);
     }
 
     private void ClearTiles(int index,TileType type)
@@ -117,8 +126,7 @@ public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
     public void StopRemovingTiles()
     {
         _isGivingTiles = false;
-        //StopAllCoroutines();
-       // SortTiles();
+
     }
 
     private void SetTilesColliderStatus(bool value)

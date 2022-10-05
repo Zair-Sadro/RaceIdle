@@ -35,6 +35,7 @@ public class ToolMachineData : ScriptableObject
 public class MachineLevel
 {
     [SerializeField] private MachineLevelType _level;
+    [SerializeField] private TileType productType;
     [SerializeField] private float _createTime;
     [SerializeField] private float _delayMachineTakeTile;
     [SerializeField] private int _maxTiles;
@@ -48,6 +49,7 @@ public class MachineLevel
     public int MaxTiles => _maxTiles;
     public List<ProductRequierment> Requierments => _requierments;
 
+    public TileType ProductType => productType;
 
     [System.Serializable]
 
