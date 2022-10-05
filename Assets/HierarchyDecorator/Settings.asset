@@ -13,26 +13,26 @@ MonoBehaviour:
   m_Name: Settings
   m_EditorClassIdentifier: 
   globalData:
-    showActiveToggles: 0
+    showActiveToggles: 1
     showComponentIcons: 1
-    showAllComponents: 0
+    showAllComponents: 1
     twoToneBackground: 1
-    showLayers: 0
+    showLayers: 1
     editableLayers: 1
     applyChildLayers: 1
   styleData:
-    displayLayers: 0
-    displayIcons: 0
+    displayLayers: 1
+    displayIcons: 1
     styles:
     - prefix: =
       name: Header (Centered)
-      font: {fileID: 12800000, guid: 8d1d45edb7c8ddb43b1147d1019f4711, type: 3}
-      fontSize: 15
+      font: {fileID: 0}
+      fontSize: 11
       fontAlignment: 4
-      fontStyle: 0
+      fontStyle: 1
       modes:
-      - fontColour: {r: 1, g: 1, b: 1, a: 1}
-        backgroundColour: {r: 0.48718402, g: 0.6415094, b: 0.61348164, a: 1}
+      - fontColour: {r: 0.1764706, g: 0.1764706, b: 0.1764706, a: 1}
+        backgroundColour: {r: 0.6666667, g: 0.6666667, b: 0.6666667, a: 1}
       - fontColour: {r: 1, g: 1, b: 1, a: 1}
         backgroundColour: {r: 0.1764706, g: 0.1764706, b: 0.1764706, a: 1}
       style:
@@ -89,9 +89,9 @@ MonoBehaviour:
           m_Right: 0
           m_Top: 0
           m_Bottom: 0
-        m_Font: {fileID: 12800000, guid: 8d1d45edb7c8ddb43b1147d1019f4711, type: 3}
-        m_FontSize: 15
-        m_FontStyle: 0
+        m_Font: {fileID: 0}
+        m_FontSize: 11
+        m_FontStyle: 1
         m_Alignment: 4
         m_WordWrap: 0
         m_RichText: 1
@@ -104,10 +104,10 @@ MonoBehaviour:
         m_StretchHeight: 0
     - prefix: '-'
       name: Subheader
-      font: {fileID: 12800000, guid: f1e4de78fb27d8b4c8921a06e4357d3b, type: 3}
-      fontSize: 13
+      font: {fileID: 0}
+      fontSize: 10
       fontAlignment: 3
-      fontStyle: 0
+      fontStyle: 1
       modes:
       - fontColour: {r: 0.245283, g: 0.245283, b: 0.245283, a: 1}
         backgroundColour: {r: 0.7960785, g: 0.7960785, b: 0.7960785, a: 1}
@@ -118,7 +118,7 @@ MonoBehaviour:
         m_Normal:
           m_Background: {fileID: 0}
           m_ScaledBackgrounds: []
-          m_TextColor: {r: 0.245283, g: 0.245283, b: 0.245283, a: 1}
+          m_TextColor: {r: 0.8584906, g: 0.8584906, b: 0.8584906, a: 1}
         m_Hover:
           m_Background: {fileID: 0}
           m_ScaledBackgrounds: []
@@ -167,9 +167,9 @@ MonoBehaviour:
           m_Right: 0
           m_Top: 0
           m_Bottom: 0
-        m_Font: {fileID: 12800000, guid: f1e4de78fb27d8b4c8921a06e4357d3b, type: 3}
-        m_FontSize: 13
-        m_FontStyle: 0
+        m_Font: {fileID: 0}
+        m_FontSize: 10
+        m_FontStyle: 1
         m_Alignment: 3
         m_WordWrap: 0
         m_RichText: 1
@@ -182,13 +182,13 @@ MonoBehaviour:
         m_StretchHeight: 0
     - prefix: +
       name: Mini Header (Centered)
-      font: {fileID: 12800000, guid: 8a406076b7de34849be1f35585875a66, type: 3}
+      font: {fileID: 0}
       fontSize: 10
       fontAlignment: 4
       fontStyle: 1
       modes:
       - fontColour: {r: 1, g: 1, b: 1, a: 1}
-        backgroundColour: {r: 0.17399432, g: 0.34551957, b: 0.4339623, a: 1}
+        backgroundColour: {r: 0.38568, g: 0.6335747, b: 0.764151, a: 1}
       - fontColour: {r: 1, g: 1, b: 1, a: 1}
         backgroundColour: {r: 0.2671325, g: 0.4473481, b: 0.6509434, a: 1}
       style:
@@ -245,85 +245,7 @@ MonoBehaviour:
           m_Right: 0
           m_Top: 0
           m_Bottom: 0
-        m_Font: {fileID: 12800000, guid: 8a406076b7de34849be1f35585875a66, type: 3}
-        m_FontSize: 10
-        m_FontStyle: 1
-        m_Alignment: 4
-        m_WordWrap: 0
-        m_RichText: 1
-        m_TextClipping: 0
-        m_ImagePosition: 0
-        m_ContentOffset: {x: 0, y: 0}
-        m_FixedWidth: 0
-        m_FixedHeight: 0
-        m_StretchWidth: 1
-        m_StretchHeight: 0
-    - prefix: ^
-      name: Mini Header (Centered)
-      font: {fileID: 12800000, guid: 8a406076b7de34849be1f35585875a66, type: 3}
-      fontSize: 10
-      fontAlignment: 4
-      fontStyle: 1
-      modes:
-      - fontColour: {r: 0.23540407, g: 0.4339623, b: 0.40411463, a: 1}
-        backgroundColour: {r: 0.7264151, g: 0.7264151, b: 0.7264151, a: 1}
-      - fontColour: {r: 1, g: 1, b: 1, a: 1}
-        backgroundColour: {r: 0.2671325, g: 0.4473481, b: 0.6509434, a: 1}
-      style:
-        m_Name: 
-        m_Normal:
-          m_Background: {fileID: 0}
-          m_ScaledBackgrounds: []
-          m_TextColor: {r: 0.23540407, g: 0.4339623, b: 0.40411463, a: 1}
-        m_Hover:
-          m_Background: {fileID: 0}
-          m_ScaledBackgrounds: []
-          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-        m_Active:
-          m_Background: {fileID: 0}
-          m_ScaledBackgrounds: []
-          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-        m_Focused:
-          m_Background: {fileID: 0}
-          m_ScaledBackgrounds: []
-          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-        m_OnNormal:
-          m_Background: {fileID: 0}
-          m_ScaledBackgrounds: []
-          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-        m_OnHover:
-          m_Background: {fileID: 0}
-          m_ScaledBackgrounds: []
-          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-        m_OnActive:
-          m_Background: {fileID: 0}
-          m_ScaledBackgrounds: []
-          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-        m_OnFocused:
-          m_Background: {fileID: 0}
-          m_ScaledBackgrounds: []
-          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-        m_Border:
-          m_Left: 0
-          m_Right: 0
-          m_Top: 0
-          m_Bottom: 0
-        m_Margin:
-          m_Left: 0
-          m_Right: 0
-          m_Top: 0
-          m_Bottom: 0
-        m_Padding:
-          m_Left: 0
-          m_Right: 0
-          m_Top: 0
-          m_Bottom: 0
-        m_Overflow:
-          m_Left: 0
-          m_Right: 0
-          m_Top: 0
-          m_Bottom: 0
-        m_Font: {fileID: 12800000, guid: 8a406076b7de34849be1f35585875a66, type: 3}
+        m_Font: {fileID: 0}
         m_FontSize: 10
         m_FontStyle: 1
         m_Alignment: 4
@@ -346,21 +268,21 @@ MonoBehaviour:
     - name: OffMeshLink
       shown: 0
     - name: Animator
-      shown: 1
+      shown: 0
     - name: Animation
-      shown: 1
+      shown: 0
     - name: AimConstraint
-      shown: 1
+      shown: 0
     - name: PositionConstraint
-      shown: 1
+      shown: 0
     - name: RotationConstraint
-      shown: 1
+      shown: 0
     - name: ScaleConstraint
-      shown: 1
+      shown: 0
     - name: LookAtConstraint
-      shown: 1
+      shown: 0
     - name: ParentConstraint
-      shown: 1
+      shown: 0
     - name: AudioSource
       shown: 0
     - name: AudioLowPassFilter
@@ -590,6 +512,8 @@ MonoBehaviour:
     - name: FloatingJoystick
       shown: 0
     - name: VariableJoystick
+      shown: 0
+    - name: ProductStorage
       shown: 0
     - name: RaceIdleGame
       shown: 0
@@ -971,78 +895,6 @@ MonoBehaviour:
       shown: 0
     - name: UniversalAdditionalLightData
       shown: 0
-    - name: AnimatorParamTest
-      shown: 0
-    - name: BoxGroupTest
-      shown: 0
-    - name: ButtonTest
-      shown: 0
-    - name: CurveRangeTest
-      shown: 0
-    - name: DisableIfTest
-      shown: 0
-    - name: DropdownTest
-      shown: 0
-    - name: EnableIfTest
-      shown: 0
-    - name: EnumFlagsTest
-      shown: 0
-    - name: ExpandableTest
-      shown: 0
-    - name: FoldoutTest
-      shown: 0
-    - name: HideIfTest
-      shown: 0
-    - name: HorizontalLineTest
-      shown: 0
-    - name: InfoBoxTest
-      shown: 0
-    - name: InputAxisTest
-      shown: 0
-    - name: LabelTest
-      shown: 0
-    - name: LayerTest
-      shown: 0
-    - name: MinMaxSliderTest
-      shown: 0
-    - name: MinMaxValueTest
-      shown: 0
-    - name: OnValueChangedTest
-      shown: 0
-    - name: ProgressBarTest
-      shown: 0
-    - name: ReadOnlyTest
-      shown: 0
-    - name: ReorderableListTest
-      shown: 0
-    - name: RequiredTest
-      shown: 0
-    - name: ResizableTextAreaTest
-      shown: 0
-    - name: SceneTest
-      shown: 0
-    - name: ShowAssetPreviewTest
-      shown: 0
-    - name: ShowIfTest
-      shown: 0
-    - name: ShowNativePropertyTest
-      shown: 0
-    - name: ShowNonSerializedFieldTest
-      shown: 0
-    - name: SortingLayerTest
-      shown: 0
-    - name: TagTest
-      shown: 0
-    - name: ValidateInputTest
-      shown: 0
-    - name: _NaughtyComponent
-      shown: 0
-    - name: ExampleScript
-      shown: 0
-    - name: ExampleScript2
-      shown: 0
-    - name: ExampleScriptWithIcon
-      shown: 0
     - name: PlaymodeTestsController
       shown: 0
     - name: PlayerQuitHandler
@@ -1332,6 +1184,78 @@ MonoBehaviour:
     - name: Foo
       shown: 0
     - name: Gorp
+      shown: 0
+    - name: AnimatorParamTest
+      shown: 0
+    - name: BoxGroupTest
+      shown: 0
+    - name: ButtonTest
+      shown: 0
+    - name: CurveRangeTest
+      shown: 0
+    - name: DisableIfTest
+      shown: 0
+    - name: DropdownTest
+      shown: 0
+    - name: EnableIfTest
+      shown: 0
+    - name: EnumFlagsTest
+      shown: 0
+    - name: ExpandableTest
+      shown: 0
+    - name: FoldoutTest
+      shown: 0
+    - name: HideIfTest
+      shown: 0
+    - name: HorizontalLineTest
+      shown: 0
+    - name: InfoBoxTest
+      shown: 0
+    - name: InputAxisTest
+      shown: 0
+    - name: LabelTest
+      shown: 0
+    - name: LayerTest
+      shown: 0
+    - name: MinMaxSliderTest
+      shown: 0
+    - name: MinMaxValueTest
+      shown: 0
+    - name: OnValueChangedTest
+      shown: 0
+    - name: ProgressBarTest
+      shown: 0
+    - name: ReadOnlyTest
+      shown: 0
+    - name: ReorderableListTest
+      shown: 0
+    - name: RequiredTest
+      shown: 0
+    - name: ResizableTextAreaTest
+      shown: 0
+    - name: SceneTest
+      shown: 0
+    - name: ShowAssetPreviewTest
+      shown: 0
+    - name: ShowIfTest
+      shown: 0
+    - name: ShowNativePropertyTest
+      shown: 0
+    - name: ShowNonSerializedFieldTest
+      shown: 0
+    - name: SortingLayerTest
+      shown: 0
+    - name: TagTest
+      shown: 0
+    - name: ValidateInputTest
+      shown: 0
+    - name: _NaughtyComponent
+      shown: 0
+    - name: ExampleScript
+      shown: 0
+    - name: ExampleScript2
+      shown: 0
+    - name: ExampleScriptWithIcon
       shown: 0
     - name: EmittedMonoBehaviour
       shown: 0
