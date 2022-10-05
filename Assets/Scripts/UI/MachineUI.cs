@@ -1,34 +1,40 @@
-﻿using UnityEngine;
-
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+using TMPro;
 public class MachineUI : MonoBehaviour
 {
-    [SerializeField] private BaseMachineTool _machine;
-    [SerializeField] private RequiermentContent _content;
+    [SerializeField] private TileMachine _machine;
+    [SerializeField] private List<TileDisplayer> _tileDisplayers;
 
-    private void OnEnable()
-    {
-        _machine.OnBuildZoneEnter += OnBuildZoneEnter;
-        _machine.OnBuildZoneExit += OnBuildZoneExit;
-    }
 
-    private void OnDisable()
-    {
-        _machine.OnBuildZoneEnter -= OnBuildZoneEnter;
-        _machine.OnBuildZoneExit -= OnBuildZoneExit;
-    }
 
     private void Start()
     {
-        _content?.Init(_machine);
+        Init();
+    }
+    private void Init()
+    {
+      
+        
     }
 
-    private void OnBuildZoneExit()
+    public void ChangeCount()
     {
-        _content.gameObject.SetActive(false);
-    }
 
-    private void OnBuildZoneEnter()
+    }
+}
+
+[Serializable]
+public sealed class TileDisplayer
+{
+    public int currentCount;
+    public TileType type;
+
+    public TileDisplayer (ProductRequierment product)
     {
-        _content.gameObject.SetActive(true);
+        type = product.Type;
+        currentCount = 0;
+
     }
 }

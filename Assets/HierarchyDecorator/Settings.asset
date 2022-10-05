@@ -14,25 +14,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   globalData:
     showActiveToggles: 0
-    showComponentIcons: 1
-    showAllComponents: 0
+    showComponentIcons: 0
+    showAllComponents: 1
     twoToneBackground: 1
     showLayers: 0
     editableLayers: 1
     applyChildLayers: 1
   styleData:
-    displayLayers: 0
-    displayIcons: 0
+    displayLayers: 1
+    displayIcons: 1
     styles:
     - prefix: =
       name: Header (Centered)
-      font: {fileID: 12800000, guid: 8d1d45edb7c8ddb43b1147d1019f4711, type: 3}
+      font: {fileID: 12800000, guid: 1c46d7c29c394ca4686ed5107ea64a6b, type: 3}
       fontSize: 15
       fontAlignment: 4
       fontStyle: 0
       modes:
       - fontColour: {r: 1, g: 1, b: 1, a: 1}
-        backgroundColour: {r: 0.48718402, g: 0.6415094, b: 0.61348164, a: 1}
+        backgroundColour: {r: 0.05286579, g: 0.41509432, b: 0.36513165, a: 1}
       - fontColour: {r: 1, g: 1, b: 1, a: 1}
         backgroundColour: {r: 0.1764706, g: 0.1764706, b: 0.1764706, a: 1}
       style:
@@ -89,7 +89,7 @@ MonoBehaviour:
           m_Right: 0
           m_Top: 0
           m_Bottom: 0
-        m_Font: {fileID: 12800000, guid: 8d1d45edb7c8ddb43b1147d1019f4711, type: 3}
+        m_Font: {fileID: 12800000, guid: 1c46d7c29c394ca4686ed5107ea64a6b, type: 3}
         m_FontSize: 15
         m_FontStyle: 0
         m_Alignment: 4
@@ -104,10 +104,10 @@ MonoBehaviour:
         m_StretchHeight: 0
     - prefix: '-'
       name: Subheader
-      font: {fileID: 12800000, guid: f1e4de78fb27d8b4c8921a06e4357d3b, type: 3}
-      fontSize: 13
+      font: {fileID: 0}
+      fontSize: 10
       fontAlignment: 3
-      fontStyle: 0
+      fontStyle: 1
       modes:
       - fontColour: {r: 0.245283, g: 0.245283, b: 0.245283, a: 1}
         backgroundColour: {r: 0.7960785, g: 0.7960785, b: 0.7960785, a: 1}
@@ -167,9 +167,9 @@ MonoBehaviour:
           m_Right: 0
           m_Top: 0
           m_Bottom: 0
-        m_Font: {fileID: 12800000, guid: f1e4de78fb27d8b4c8921a06e4357d3b, type: 3}
-        m_FontSize: 13
-        m_FontStyle: 0
+        m_Font: {fileID: 0}
+        m_FontSize: 10
+        m_FontStyle: 1
         m_Alignment: 3
         m_WordWrap: 0
         m_RichText: 1
@@ -182,13 +182,13 @@ MonoBehaviour:
         m_StretchHeight: 0
     - prefix: +
       name: Mini Header (Centered)
-      font: {fileID: 12800000, guid: 8a406076b7de34849be1f35585875a66, type: 3}
+      font: {fileID: 12800000, guid: 542a313c75b1e20449299fe5a1a374f2, type: 3}
       fontSize: 10
       fontAlignment: 4
-      fontStyle: 1
+      fontStyle: 0
       modes:
       - fontColour: {r: 1, g: 1, b: 1, a: 1}
-        backgroundColour: {r: 0.17399432, g: 0.34551957, b: 0.4339623, a: 1}
+        backgroundColour: {r: 0.12971698, g: 0.38647637, b: 0.5188679, a: 1}
       - fontColour: {r: 1, g: 1, b: 1, a: 1}
         backgroundColour: {r: 0.2671325, g: 0.4473481, b: 0.6509434, a: 1}
       style:
@@ -245,87 +245,9 @@ MonoBehaviour:
           m_Right: 0
           m_Top: 0
           m_Bottom: 0
-        m_Font: {fileID: 12800000, guid: 8a406076b7de34849be1f35585875a66, type: 3}
+        m_Font: {fileID: 12800000, guid: 542a313c75b1e20449299fe5a1a374f2, type: 3}
         m_FontSize: 10
-        m_FontStyle: 1
-        m_Alignment: 4
-        m_WordWrap: 0
-        m_RichText: 1
-        m_TextClipping: 0
-        m_ImagePosition: 0
-        m_ContentOffset: {x: 0, y: 0}
-        m_FixedWidth: 0
-        m_FixedHeight: 0
-        m_StretchWidth: 1
-        m_StretchHeight: 0
-    - prefix: ^
-      name: Mini Header (Centered)
-      font: {fileID: 12800000, guid: 8a406076b7de34849be1f35585875a66, type: 3}
-      fontSize: 10
-      fontAlignment: 4
-      fontStyle: 1
-      modes:
-      - fontColour: {r: 0.23540407, g: 0.4339623, b: 0.40411463, a: 1}
-        backgroundColour: {r: 0.7264151, g: 0.7264151, b: 0.7264151, a: 1}
-      - fontColour: {r: 1, g: 1, b: 1, a: 1}
-        backgroundColour: {r: 0.2671325, g: 0.4473481, b: 0.6509434, a: 1}
-      style:
-        m_Name: 
-        m_Normal:
-          m_Background: {fileID: 0}
-          m_ScaledBackgrounds: []
-          m_TextColor: {r: 0.23540407, g: 0.4339623, b: 0.40411463, a: 1}
-        m_Hover:
-          m_Background: {fileID: 0}
-          m_ScaledBackgrounds: []
-          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-        m_Active:
-          m_Background: {fileID: 0}
-          m_ScaledBackgrounds: []
-          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-        m_Focused:
-          m_Background: {fileID: 0}
-          m_ScaledBackgrounds: []
-          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-        m_OnNormal:
-          m_Background: {fileID: 0}
-          m_ScaledBackgrounds: []
-          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-        m_OnHover:
-          m_Background: {fileID: 0}
-          m_ScaledBackgrounds: []
-          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-        m_OnActive:
-          m_Background: {fileID: 0}
-          m_ScaledBackgrounds: []
-          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-        m_OnFocused:
-          m_Background: {fileID: 0}
-          m_ScaledBackgrounds: []
-          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-        m_Border:
-          m_Left: 0
-          m_Right: 0
-          m_Top: 0
-          m_Bottom: 0
-        m_Margin:
-          m_Left: 0
-          m_Right: 0
-          m_Top: 0
-          m_Bottom: 0
-        m_Padding:
-          m_Left: 0
-          m_Right: 0
-          m_Top: 0
-          m_Bottom: 0
-        m_Overflow:
-          m_Left: 0
-          m_Right: 0
-          m_Top: 0
-          m_Bottom: 0
-        m_Font: {fileID: 12800000, guid: 8a406076b7de34849be1f35585875a66, type: 3}
-        m_FontSize: 10
-        m_FontStyle: 1
+        m_FontStyle: 0
         m_Alignment: 4
         m_WordWrap: 0
         m_RichText: 1
@@ -346,21 +268,21 @@ MonoBehaviour:
     - name: OffMeshLink
       shown: 0
     - name: Animator
-      shown: 1
+      shown: 0
     - name: Animation
-      shown: 1
+      shown: 0
     - name: AimConstraint
-      shown: 1
+      shown: 0
     - name: PositionConstraint
-      shown: 1
+      shown: 0
     - name: RotationConstraint
-      shown: 1
+      shown: 0
     - name: ScaleConstraint
-      shown: 1
+      shown: 0
     - name: LookAtConstraint
-      shown: 1
+      shown: 0
     - name: ParentConstraint
-      shown: 1
+      shown: 0
     - name: AudioSource
       shown: 0
     - name: AudioLowPassFilter
@@ -591,6 +513,8 @@ MonoBehaviour:
       shown: 0
     - name: VariableJoystick
       shown: 0
+    - name: ProductStorage
+      shown: 0
     - name: RaceIdleGame
       shown: 0
     - name: MainInstaller
@@ -601,11 +525,11 @@ MonoBehaviour:
       shown: 0
     - name: TileSpawnInstaller
       shown: 0
-    - name: Bridge
-      shown: 0
-    - name: CollectProduceMachine
+    - name: BuilderFromTiles
       shown: 0
     - name: TileCollector
+      shown: 0
+    - name: TileMachine
       shown: 0
     - name: PlayerController
       shown: 0
@@ -627,19 +551,9 @@ MonoBehaviour:
       shown: 0
     - name: MachineUI
       shown: 0
-    - name: RequiermentContent
-      shown: 0
-    - name: RequiermentTile
-      shown: 0
     - name: JunkCar
       shown: 0
     - name: JunkCarManager
-      shown: 0
-    - name: MachineTool
-      shown: 0
-    - name: BaseMachineTool
-      shown: 0
-    - name: MachineToolEntity
       shown: 0
     - name: CircleSlider
       shown: 0
