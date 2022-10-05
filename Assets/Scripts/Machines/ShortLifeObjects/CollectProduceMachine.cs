@@ -19,7 +19,7 @@ public class CollectProduceMachine : TileCollector
 
     [Zenject.Inject] private TileSetter _playerTilesBag;
     [Zenject.Inject] private ResourceTilesSpawn _tilesSpawner;
-    [SerializeField] private PlayerDetector _playerDetector;
+    [SerializeField] private PlayerDetector _detectorForRes;
 
 
     private Dictionary<TileType, Stack<Tile>> tileListByType = new Dictionary<TileType, Stack<Tile>>();
@@ -34,6 +34,13 @@ public class CollectProduceMachine : TileCollector
     #region "StatesTaskMachine"
 
     MachineState currentState;
+
+    private bool producing;
+    private bool gaining;
+    private bool checking;
+
+    private int minForCheck;
+
     public Task wait { get; private set; }
     public Task produce { get; private set; }
     public Task gainTiles { get; private set; }
@@ -46,17 +53,19 @@ public class CollectProduceMachine : TileCollector
         switch (state)
         {
             case MachineState.WAIT_FOR_ENOUGH:
+                if (wait != null)
+                if (wait.Running ) return;
                 wait = new Task(WaitForEnough());
                 break;
 
             case MachineState.PRODUCE:
-
+                if (producing) return;
                 produce = new Task(TileManufacture());
 
                 break;
 
             case MachineState.GAIN:
-
+                if (gaining) return;
                 gainTiles = new Task(GainTiles());
 
                 break;
@@ -78,6 +87,7 @@ public class CollectProduceMachine : TileCollector
     // case MachineState.GAIN:
     private IEnumerator GainTiles()
     {
+        gaining = true;
         var delay = machineFields.DelayMachineTakeTile;
 
         for (int i = 0; i < typesReq; i++)
@@ -96,13 +106,17 @@ public class CollectProduceMachine : TileCollector
             }
 
         }
+       
         SetState(MachineState.PRODUCE);
+        gaining = false;
         yield break;
     }
 
     // case MachineState.PRODUCE:
     private IEnumerator TileManufacture() 
     {
+        producing = true;
+
         yield return new WaitForSeconds(machineFields.CreateTime);
 
         var tile = _tilesSpawner.GetTile(typeProduced);
@@ -117,6 +131,7 @@ public class CollectProduceMachine : TileCollector
         tile.transform.parent = productStorage;
         SetState(MachineState.WAIT_FOR_ENOUGH);
 
+        producing = false;
         yield break;
     }
 
@@ -124,10 +139,6 @@ public class CollectProduceMachine : TileCollector
 
     #region Init&SaveLoad
 
-    private void Awake()
-    {
-
-    }
     private void Start()
     {
         Init();
@@ -143,7 +154,9 @@ public class CollectProduceMachine : TileCollector
         for (int i = 0; i < typesReq; i++)
         {
             tileListByType.Add(machineFields.Requierments[i].Type, new Stack<Tile>());
+            minForCheck += machineFields.Requierments[i].Amount;
         }
+
         
     }
     protected virtual void IniTimer()
@@ -155,13 +168,17 @@ public class CollectProduceMachine : TileCollector
 
     private void OnEnable()
     {
-        _playerDetector.OnPlayerEnter += Collect;
-        _playerDetector.OnPlayerExit += StopCollect;
+        _detectorForRes.OnPlayerEnter += Collect;
+        _detectorForRes.OnPlayerExit += StopCollect;
+
+
     }
     private void OnDisable()
     {
-        _playerDetector.OnPlayerEnter -= Collect;
-        _playerDetector.OnPlayerExit -= StopCollect;
+        _detectorForRes.OnPlayerEnter -= Collect;
+        _detectorForRes.OnPlayerExit -= StopCollect;
+
+
         OnCollect += (() => SetState(MachineState.WAIT_FOR_ENOUGH));
     }
     #endregion
@@ -201,12 +218,13 @@ public class CollectProduceMachine : TileCollector
 
     public override void Collect()
     {
+
         for (int i = 0; i < typesReq; i++)
         {
             var req = machineFields.Requierments[i].Type;
             _playerTilesBag.RemoveTiles(req, tileStorage.position, RecieveTile);
         }
-        OnCollect?.Invoke();
+
     }
 
     public virtual void StopCollect()
@@ -217,6 +235,11 @@ public class CollectProduceMachine : TileCollector
     {
         tileListByType[tile.Type].Push(tile);
         tile.OnStorage(tileStorage);
+
+        if (tileStorage.transform.childCount >= minForCheck 
+            && currentState == MachineState.WAIT_FOR_ENOUGH) 
+
+            OnCollect?.Invoke();
 
     }
     public override void Remove()
