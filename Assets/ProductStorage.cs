@@ -8,16 +8,22 @@ public class ProductStorage : MonoBehaviour
     [Zenject.Inject] private TileSetter _tileSetter;
 
 
-
     public void TileToStack(Tile t)
     {
         _tilesInStorage.Push(t);
         t.transform.parent = transform;
     }
-
+    
     private void OnTriggerEnter(Collider other)
     {
         if (PlayerDetector.IsPlayer(other.gameObject) && _tilesInStorage.Count>=1)
+        {
+            ThrowTilesToPlayer();
+        }
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if (PlayerDetector.IsPlayer(other.gameObject) && _tilesInStorage.Count >= 1)
         {
             ThrowTilesToPlayer();
         }
@@ -39,6 +45,7 @@ public class ProductStorage : MonoBehaviour
     }
     private IEnumerator ThrowingTileCor()
     {
+
         _tileSetter.AddTile(_tilesInStorage.Pop());
         yield return new WaitForSeconds(StaticValues.tileThrowDelay);
     }

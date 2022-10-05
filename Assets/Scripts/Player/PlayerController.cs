@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
         {
             if(body.velocity != Vector3.zero)
             {
-                var vel = Quaternion.LookRotation(body.velocity.normalized);
+                var vel = Quaternion.LookRotation(body.velocity);
                 var q = new Quaternion(0,vel.y,0,vel.w);
 
                 transform.rotation = q;
