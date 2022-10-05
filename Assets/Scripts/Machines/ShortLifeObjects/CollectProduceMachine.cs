@@ -208,7 +208,7 @@ public class CollectProduceMachine : TileCollector
         for (int i = 0; i < typesReq; i++)
         {
             if (OneOfRequredTypeIsEnough(i)) enough = true;
-            else enough = false;
+            else { return false; }
 
         }
         return enough;
