@@ -1070,24 +1070,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _raceIdleGame: {fileID: 581427651}
---- !u!1 &604647148 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 604647148, guid: 2b21398dc92a318409b9270340353750,
-    type: 3}
-  m_PrefabInstance: {fileID: 8905867244839605373}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &604647152
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 604647148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c586d1d487eef54e862b3c58e4e2893, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &624977679
 GameObject:
   m_ObjectHideFlags: 0
@@ -2900,6 +2882,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1904614516 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5132754451486783646, guid: 2b21398dc92a318409b9270340353750,
+    type: 3}
+  m_PrefabInstance: {fileID: 8905867244839605373}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c586d1d487eef54e862b3c58e4e2893, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1995182955 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6462894163524165962, guid: 34dd0d2d54ebe894ea570f471c26093d,
@@ -3770,6 +3764,36 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2104335699}
     m_Modifications:
+    - target: {fileID: 3910681362004963631, guid: 2b21398dc92a318409b9270340353750,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 5.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 3910681362004963631, guid: 2b21398dc92a318409b9270340353750,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 3910681362004963631, guid: 2b21398dc92a318409b9270340353750,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 6.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3910681362004963631, guid: 2b21398dc92a318409b9270340353750,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3910681362004963631, guid: 2b21398dc92a318409b9270340353750,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5837650922240027898, guid: 2b21398dc92a318409b9270340353750,
+        type: 3}
+      propertyPath: productStorage
+      value: 
+      objectReference: {fileID: 1904614516}
     - target: {fileID: 8905867243112414973, guid: 2b21398dc92a318409b9270340353750,
         type: 3}
       propertyPath: m_Camera

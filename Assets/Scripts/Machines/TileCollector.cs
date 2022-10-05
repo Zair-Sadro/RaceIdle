@@ -34,8 +34,4 @@ public class TileCollector : MonoBehaviour
     public virtual void Collect() { }
     public virtual void Remove() { }
 }
-public interface IProduce
-{
 
-    public void Produce();
-}

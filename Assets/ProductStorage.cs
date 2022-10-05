@@ -4,15 +4,43 @@ using UnityEngine;
 
 public class ProductStorage : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private Stack<Tile> _tilesInStorage = new Stack<Tile>();
+    [Zenject.Inject] private TileSetter _tileSetter;
+
+
+
+    public void TileToStack(Tile t)
     {
-        
+        _tilesInStorage.Push(t);
+        t.transform.parent = transform;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (PlayerDetector.IsPlayer(other.gameObject) && _tilesInStorage.Count>=1)
+        {
+            ThrowTilesToPlayer();
+        }
     }
+    private void OnTriggerExit(Collider other)
+    {
+        if (PlayerDetector.IsPlayer(other.gameObject))
+        {
+            StopThrow();
+        }
+    }
+     private void ThrowTilesToPlayer()
+     {
+        StartCoroutine(ThrowingTileCor());
+     }
+    private void StopThrow()
+    {
+        StopAllCoroutines();
+    }
+    private IEnumerator ThrowingTileCor()
+    {
+        _tileSetter.AddTile(_tilesInStorage.Pop());
+        yield return new WaitForSeconds(StaticValues.tileThrowDelay);
+    }
+
 }

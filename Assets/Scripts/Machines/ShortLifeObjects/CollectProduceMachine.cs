@@ -1,10 +1,9 @@
-﻿using System;
+﻿using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityTaskManager;
-using DG.Tweening;
-using ProductRequierment = MachineLevel.ProductRequierment;
 
 public class CollectProduceMachine : TileCollector
 {
@@ -13,7 +12,7 @@ public class CollectProduceMachine : TileCollector
     [Space(5)]
     [Header("Points & Storages")]
     [SerializeField] private Transform tileStorage;
-    [SerializeField] private Transform productStorage;
+    [SerializeField] private ProductStorage productStorage;
     [SerializeField] private Transform tileStartPos;
     [SerializeField] private Transform tileFinishPos;
 
@@ -21,15 +20,12 @@ public class CollectProduceMachine : TileCollector
     [Zenject.Inject] private ResourceTilesSpawn _tilesSpawner;
     [SerializeField] private PlayerDetector _detectorForRes;
 
-
     private Dictionary<TileType, Stack<Tile>> tileListByType = new Dictionary<TileType, Stack<Tile>>();
     protected override int maxTileCount => machineFields.MaxTiles;
 
-
-    private byte typesReq;
-    private SimpleTimer _timer;
-
     private Action OnCollect;
+    private int minCountForCheck;
+    private byte typesReq;
 
     #region "StatesTaskMachine"
 
@@ -37,9 +33,7 @@ public class CollectProduceMachine : TileCollector
 
     private bool producing;
     private bool gaining;
-    private bool checking;
 
-    private int minForCheck;
 
     public Task wait { get; private set; }
     public Task produce { get; private set; }
@@ -128,7 +122,7 @@ public class CollectProduceMachine : TileCollector
                                    .WaitForCompletion();
 
         //PuffEffect();
-        tile.transform.parent = productStorage;
+        productStorage.TileToStack(tile);
         SetState(MachineState.WAIT_FOR_ENOUGH);
 
         producing = false;
@@ -154,18 +148,11 @@ public class CollectProduceMachine : TileCollector
         for (int i = 0; i < typesReq; i++)
         {
             tileListByType.Add(machineFields.Requierments[i].Type, new Stack<Tile>());
-            minForCheck += machineFields.Requierments[i].Amount;
+            minCountForCheck += machineFields.Requierments[i].Amount;
         }
 
         
     }
-    protected virtual void IniTimer()
-    {
-        _timer = new SimpleTimer(this);
-        _timer.OnTimerEnd += Remove;
-        _timer.OnTimeChange += UpdateCreationClock;
-    }
-
     private void OnEnable()
     {
         _detectorForRes.OnPlayerEnter += Collect;
@@ -183,37 +170,6 @@ public class CollectProduceMachine : TileCollector
     }
     #endregion
 
-    private bool EnoughForProduce()
-    {
-        bool enough = false;
-      
-        for (int i = 0; i < typesReq; i++)
-        {
-            if (OneOfRequredTypeIsEnough(i)) enough = true;
-            else enough = false;
-
-        }
-        return enough;
-
-        bool OneOfRequredTypeIsEnough(int i)
-        {           
-            var type = machineFields.Requierments[i].Type;
-            _ = new Stack<Tile>();
-            Stack<Tile> tileStack;
-
-            if (!tileListByType.TryGetValue(type, out tileStack))  //Check if stack exist
-                return false;
-
-            var requiredAmount = machineFields.Requierments[i].Amount;
-         
-            if (tileStack.Count >= requiredAmount)  
-                return true;
-
-            return false;
-        }
-
-    }
-
     #region Collect Stuff
 
     public override void Collect()
@@ -230,25 +186,51 @@ public class CollectProduceMachine : TileCollector
     public virtual void StopCollect()
     {
         _playerTilesBag.StopRemovingTiles();
+        
     }
     private void RecieveTile(Tile tile)
     {
         tileListByType[tile.Type].Push(tile);
         tile.OnStorage(tileStorage);
 
-        if (tileStorage.transform.childCount >= minForCheck 
+        if (tileStorage.transform.childCount >= minCountForCheck 
             && currentState == MachineState.WAIT_FOR_ENOUGH) 
 
             OnCollect?.Invoke();
 
     }
-    public override void Remove()
-    {
-
-    }
     #endregion
 
+    private bool EnoughForProduce()
+    {
+        bool enough = false;
 
+        for (int i = 0; i < typesReq; i++)
+        {
+            if (OneOfRequredTypeIsEnough(i)) enough = true;
+            else enough = false;
+
+        }
+        return enough;
+
+        bool OneOfRequredTypeIsEnough(int i)
+        {
+            var type = machineFields.Requierments[i].Type;
+            _ = new Stack<Tile>();
+            Stack<Tile> tileStack;
+
+            if (!tileListByType.TryGetValue(type, out tileStack))  //Check if stack exist
+                return false;
+
+            var requiredAmount = machineFields.Requierments[i].Amount;
+
+            if (tileStack.Count >= requiredAmount)
+                return true;
+
+            return false;
+        }
+
+    }
     private void UpdateCreationClock(float value)
     {
 
