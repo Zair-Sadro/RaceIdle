@@ -27,7 +27,7 @@ public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
 
     [Inject] private ResourceTilesSpawn _resourceTilesSpawn;
 
-    private bool _isGivingTiles;
+    [HideInInspector] public bool _isGivingTiles;
 
 
     [SerializeField]
@@ -65,7 +65,7 @@ public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
         tile.transform.localRotation = Quaternion.Euler(0, 0, 0);
 
         _colectedTiles.Add(tile);
-        GetTileListByType(tile.Type)?.Add(tile);
+        GetTileListByType(tile.Type).Add(tile);
 
         OnTilesCountChanged?.Invoke(_colectedTiles.Count);
     }
@@ -84,16 +84,16 @@ public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
         List<Tile> tiles =  GetTileListByType(type);
         if (tiles == null) yield break;
 
-        for (int i = tiles.Count - 1; i >= 0; i--)
+        for (int i = tiles.Count-1; i >= 0; i--)
         {
             tiles[i].ThrowTo(tilesPlace, timeToRemoveTile);
             interatorCall.Invoke(tiles[i]);
             yield return new WaitForSeconds(timeToRemoveTile);
 
             if (needClear)
-                ClearTiles(i, type);
+                ClearTiles(tiles[i], type);
             else
-                RemoveFromList(i, type);
+                RemoveFromList(tiles[i], type);
 
             if (_isGivingTiles == false)
                 yield break;
@@ -101,23 +101,23 @@ public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
         _isGivingTiles = false;
     }
 
-    private void RemoveFromList(int index, TileType type)
+    private void RemoveFromList(Tile tile, TileType type)
     {
-        GetTileListByType(type).Remove(_colectedTiles[index]);
-        _colectedTiles.Remove(_colectedTiles[index]);
+        GetTileListByType(type).Remove(tile);
+        _colectedTiles.Remove(tile);
 
 
         OnTilesCountChanged?.Invoke(_colectedTiles.Count);
     }
 
-    private void ClearTiles(int index,TileType type)
+    private void ClearTiles(Tile tile,TileType type)
     {
-        _colectedTiles[index].gameObject.SetActive(false);
-        _colectedTiles[index].OnGround();
-        _colectedTiles[index].transform.SetParent(tilesSpawnerParent);
+        tile.gameObject.SetActive(false);
+        tile.OnGround();
+        tile.transform.SetParent(tilesSpawnerParent);
 
-        GetTileListByType(type).Remove(_colectedTiles[index]);
-        _colectedTiles.Remove(_colectedTiles[index]);
+        GetTileListByType(type).Remove(tile);
+        _colectedTiles.Remove(tile);
 
 
         OnTilesCountChanged?.Invoke(_colectedTiles.Count);
@@ -125,6 +125,7 @@ public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
 
     public void StopRemovingTiles()
     {
+
         _isGivingTiles = false;
 
     }
