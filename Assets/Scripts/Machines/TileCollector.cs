@@ -45,7 +45,7 @@ public class TileCollector : MonoBehaviour
     }
 
     protected virtual void Collect()
-    {
+    {if (_playerTilesBag._isGivingTiles) return;
         for (int i = 0; i < _requiredTypesCount; i++)
         {
             var req = _requiredTypes[i];

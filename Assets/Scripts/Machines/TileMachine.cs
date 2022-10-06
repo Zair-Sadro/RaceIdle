@@ -83,6 +83,9 @@ public class TileMachine : TileCollector,IUpgradable
         gaining = true;
         var delay = machineFields.DelayMachineTakeTile;
 
+        if (_playerTilesBag._isGivingTiles) yield return new WaitForSeconds(0.7f);
+
+
         for (int i = 0; i < _requiredTypesCount; i++)
         {
             var type   = machineFields.Requierments[i].Type;

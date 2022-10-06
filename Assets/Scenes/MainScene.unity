@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -530,16 +530,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   counterAnimator: {fileID: 624977685}
   counter: {fileID: 1312963024}
-  fullBridgeCount: 8
-  reqType: 0
-  tilePos: {fileID: 1398233858}
+  tileStorage: {fileID: 1398233858}
+  hideAfterCollect: 1
+  productRequierments:
+  - _type: 0
+    _amount: 8
   collidersAfterBuild:
   - {fileID: 1178907069}
   - {fileID: 624977679}
   collidersBeforeBuild:
   - {fileID: 624977679}
   - {fileID: 1178907069}
-  fullBridge: {fileID: 1559798550}
+  building: {fileID: 1559798550}
   _playerDetector: {fileID: 624977686}
 --- !u!1 &335622166 stripped
 GameObject:
@@ -1418,7 +1420,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-955030
+  m_Name: pb_Mesh-128772
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1696,7 +1698,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-957302
+  m_Name: pb_Mesh-131044
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2066,7 +2068,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TestMachine
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2221983712022383996, guid: 2b21398dc92a318409b9270340353750, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2b21398dc92a318409b9270340353750, type: 3}
 --- !u!1 &1272244491
 GameObject:
@@ -3914,6 +3917,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2104335699}
     m_Modifications:
+    - target: {fileID: 3910681362004963631, guid: 2b21398dc92a318409b9270340353750,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 1.32
+      objectReference: {fileID: 0}
     - target: {fileID: 8905867243112414973, guid: 2b21398dc92a318409b9270340353750,
         type: 3}
       propertyPath: m_Camera
@@ -3979,7 +3987,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: IronMachine
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2221983712022383996, guid: 2b21398dc92a318409b9270340353750, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2b21398dc92a318409b9270340353750, type: 3}
 --- !u!4 &8905867244839605375 stripped
 Transform:

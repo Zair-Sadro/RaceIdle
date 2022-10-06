@@ -54,6 +54,7 @@ public class MachineLevel
  
 
 }
+[System.Serializable]
 public class ProductRequierment
 {
     [SerializeField] private TileType _type;

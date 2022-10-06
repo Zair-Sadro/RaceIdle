@@ -16,6 +16,8 @@ public class BuilderFromTiles : TileCollector
 
     private void Start()
     {
+        hideAfterCollect = true;
+
         if (building.activeInHierarchy) 
             AfterBuildAction();
         else
@@ -75,7 +77,7 @@ public class BuilderFromTiles : TileCollector
     {
         base.RecieveTile(T);
         ++currentTilesCount;
-        OnCountChange?.Invoke(_requiredTypesCount);
+        OnCountChange?.Invoke(minCountForCheck);
        if (currentTilesCount >= minCountForCheck)
         Build();
     }
