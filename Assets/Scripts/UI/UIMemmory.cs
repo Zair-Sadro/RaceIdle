@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,22 +6,18 @@ using UnityEngine;
 public class UIMemmory : MonoBehaviour
 {
     [SerializeField] private UIController _lastUI;
-
-    public void ShowUI(UIController uIController)
+    private Action <bool> _lastUIactions;
+    public void ShowUI(UIController uIController, Action<bool> act=null)
     {
-        
+        act?.Invoke(true);
+        _lastUIactions=act;
+        uIController.Hide();
     }
     public void CloseUI()
     {
+        _lastUIactions?.Invoke(false);
         _lastUI?.Hide();
         
     }
-   
-}
-public class UIPanelDefender : UIController
-{
-    //Makes raycasts to any panels safe - no bug , no unnecessery open or close 
-    
-
    
 }

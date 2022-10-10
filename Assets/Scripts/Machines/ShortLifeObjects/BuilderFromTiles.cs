@@ -13,18 +13,15 @@ public class BuilderFromTiles : TileCollector
     [SerializeField] private PlayerDetector _playerDetector;
 
     private int minCountForCheck;
-
-    private void Start()
+    protected Action OnEnoughForBuild;
+    protected virtual void Start()
     {
         hideAfterCollect = true;
 
-        if (building.activeInHierarchy) 
+        if (building.activeInHierarchy)
             AfterBuildAction();
         else
-            for (int i = 0; i < collidersBeforeBuild.Length; i++)
-            {
-                collidersBeforeBuild[i].SetActive(true);
-            }
+            BeforeBuildAction();
 
      
         InitDictionary();
@@ -35,31 +32,45 @@ public class BuilderFromTiles : TileCollector
         }
     }
 
-    private void AfterBuildAction()
+    protected virtual void AfterBuildAction()
     {
+        if (collidersAfterBuild.Length <= 0) return;
+
         for (int i = 0; i < collidersAfterBuild.Length; i++)
         {
             collidersAfterBuild[i].SetActive(false);
         }
     }
+    protected virtual void BeforeBuildAction()
+    {
+        if (collidersBeforeBuild.Length <= 0) return;
 
-    private void OnEnable()
+        for (int i = 0; i < collidersBeforeBuild.Length; i++)
+        {
+            collidersBeforeBuild[i].SetActive(false);
+        }
+    }
+
+    protected virtual void OnEnable()
     {
         _playerDetector.OnPlayerEnter += Collect;
         _playerDetector.OnPlayerExit += StopCollect;
+
+        OnEnoughForBuild += Build;
 
         if (counter == null) return;
         OnCountChange += TextCountVisual;
 
     }
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
         _playerDetector.OnPlayerEnter -= Collect;
         _playerDetector.OnPlayerExit -= StopCollect;
         OnCountChange -= TextCountVisual;
+        OnEnoughForBuild -= Build;
     }
 
-    private void Build()
+    protected virtual void Build()
     {
         if(EnoughForBuild())
         {
@@ -68,7 +79,7 @@ public class BuilderFromTiles : TileCollector
             AfterBuildAction();
         }
     }
-    private void BuildAndEffect(GameObject b)
+    protected virtual void BuildAndEffect(GameObject b)
     {
         b.SetActive(true);
     }
@@ -78,10 +89,10 @@ public class BuilderFromTiles : TileCollector
         base.RecieveTile(T);
         ++currentTilesCount;
         OnCountChange?.Invoke(minCountForCheck);
-       if (currentTilesCount >= minCountForCheck)
-        Build();
+        if (currentTilesCount >= minCountForCheck)
+            OnEnoughForBuild();
     }
-    private bool EnoughForBuild()
+    protected bool EnoughForBuild()
     {
         for (int i = 0; i < _requiredTypesCount; i++)
         {
