@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Settings
   m_EditorClassIdentifier: 
   globalData:
-    showActiveToggles: 0
+    showActiveToggles: 1
     showComponentIcons: 0
     showAllComponents: 1
     twoToneBackground: 1
@@ -26,13 +26,13 @@ MonoBehaviour:
     styles:
     - prefix: =
       name: Header (Centered)
-      font: {fileID: 12800000, guid: 1c46d7c29c394ca4686ed5107ea64a6b, type: 3}
-      fontSize: 15
+      font: {fileID: 12800000, guid: 542a313c75b1e20449299fe5a1a374f2, type: 3}
+      fontSize: 11
       fontAlignment: 4
       fontStyle: 0
       modes:
-      - fontColour: {r: 1, g: 1, b: 1, a: 1}
-        backgroundColour: {r: 0.05286579, g: 0.41509432, b: 0.36513165, a: 1}
+      - fontColour: {r: 0.1764706, g: 0.1764706, b: 0.1764706, a: 1}
+        backgroundColour: {r: 0.6666667, g: 0.6666667, b: 0.6666667, a: 1}
       - fontColour: {r: 1, g: 1, b: 1, a: 1}
         backgroundColour: {r: 0.1764706, g: 0.1764706, b: 0.1764706, a: 1}
       style:
@@ -89,8 +89,8 @@ MonoBehaviour:
           m_Right: 0
           m_Top: 0
           m_Bottom: 0
-        m_Font: {fileID: 12800000, guid: 1c46d7c29c394ca4686ed5107ea64a6b, type: 3}
-        m_FontSize: 15
+        m_Font: {fileID: 12800000, guid: 542a313c75b1e20449299fe5a1a374f2, type: 3}
+        m_FontSize: 11
         m_FontStyle: 0
         m_Alignment: 4
         m_WordWrap: 0
@@ -118,7 +118,7 @@ MonoBehaviour:
         m_Normal:
           m_Background: {fileID: 0}
           m_ScaledBackgrounds: []
-          m_TextColor: {r: 0.245283, g: 0.245283, b: 0.245283, a: 1}
+          m_TextColor: {r: 0.8584906, g: 0.8584906, b: 0.8584906, a: 1}
         m_Hover:
           m_Background: {fileID: 0}
           m_ScaledBackgrounds: []
@@ -182,13 +182,13 @@ MonoBehaviour:
         m_StretchHeight: 0
     - prefix: +
       name: Mini Header (Centered)
-      font: {fileID: 12800000, guid: 542a313c75b1e20449299fe5a1a374f2, type: 3}
+      font: {fileID: 0}
       fontSize: 10
       fontAlignment: 4
-      fontStyle: 0
+      fontStyle: 1
       modes:
       - fontColour: {r: 1, g: 1, b: 1, a: 1}
-        backgroundColour: {r: 0.12971698, g: 0.38647637, b: 0.5188679, a: 1}
+        backgroundColour: {r: 0.38568, g: 0.6335747, b: 0.764151, a: 1}
       - fontColour: {r: 1, g: 1, b: 1, a: 1}
         backgroundColour: {r: 0.2671325, g: 0.4473481, b: 0.6509434, a: 1}
       style:
@@ -245,9 +245,9 @@ MonoBehaviour:
           m_Right: 0
           m_Top: 0
           m_Bottom: 0
-        m_Font: {fileID: 12800000, guid: 542a313c75b1e20449299fe5a1a374f2, type: 3}
+        m_Font: {fileID: 0}
         m_FontSize: 10
-        m_FontStyle: 0
+        m_FontStyle: 1
         m_Alignment: 4
         m_WordWrap: 0
         m_RichText: 1
@@ -499,6 +499,8 @@ MonoBehaviour:
       shown: 0
     - name: WindZone
       shown: 0
+    - name: UIController
+      shown: 0
     - name: JoystickPlayerExample
       shown: 0
     - name: JoystickSetterExample
@@ -527,6 +529,8 @@ MonoBehaviour:
       shown: 0
     - name: BuilderFromTiles
       shown: 0
+    - name: GatesExplosion
+      shown: 0
     - name: TileCollector
       shown: 0
     - name: TileMachine
@@ -549,7 +553,11 @@ MonoBehaviour:
       shown: 0
     - name: Tile
       shown: 0
+    - name: UIPanel
+      shown: 0
     - name: MachineUI
+      shown: 0
+    - name: UIMemmory
       shown: 0
     - name: JunkCar
       shown: 0

@@ -345,7 +345,6 @@ GameObject:
   - component: {fileID: 1758269787945119320}
   - component: {fileID: 2785248731113858147}
   - component: {fileID: 5689071021324207627}
-  - component: {fileID: 2221983712022383996}
   m_Layer: 0
   m_Name: RequiermentPanel
   m_TagString: Untagged
@@ -437,20 +436,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &2221983712022383996
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7208144151015944611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fdde6b618b56d64091ad4bf7641ae2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _requiermentPrefab: {fileID: 8743395313563105054, guid: 0c9f6c5b48ca89e41bde30e96352d82e,
-    type: 3}
 --- !u!1 &8905867243112414721
 GameObject:
   m_ObjectHideFlags: 0
@@ -615,6 +600,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   counterAnimator: {fileID: 0}
   counter: {fileID: 0}
+  tileStorage: {fileID: 686236216}
+  hideAfterCollect: 1
+  productRequierments: []
   machineFields:
     _level: 1
     productType: 1
@@ -624,7 +612,6 @@ MonoBehaviour:
     _requierments:
     - _type: 0
       _amount: 2
-  tileStorage: {fileID: 686236216}
   productStorage: {fileID: 5132754451486783646}
   tileStartPos: {fileID: 637159844}
   tileFinishPos: {fileID: 506407680}

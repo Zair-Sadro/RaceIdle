@@ -10,13 +10,12 @@ public class BuilderFromTiles : TileCollector
     public GameObject[] collidersAfterBuild,collidersBeforeBuild;
     public GameObject building;
 
-    [SerializeField] private PlayerDetector _playerDetector;
+    [SerializeField] protected PlayerDetector _playerDetector;
 
-    private int minCountForCheck;
+    protected int minCountForCheck;
     protected Action OnEnoughForBuild;
-    protected virtual void Start()
+    private void Start()
     {
-        hideAfterCollect = true;
 
         if (building.activeInHierarchy)
             AfterBuildAction();
@@ -51,7 +50,7 @@ public class BuilderFromTiles : TileCollector
         }
     }
 
-    protected virtual void OnEnable()
+    private void OnEnable()
     {
         _playerDetector.OnPlayerEnter += Collect;
         _playerDetector.OnPlayerExit += StopCollect;
@@ -62,14 +61,15 @@ public class BuilderFromTiles : TileCollector
         OnCountChange += TextCountVisual;
 
     }
-    protected virtual void OnDisable()
+    private void OnDisable()
     {
         _playerDetector.OnPlayerEnter -= Collect;
         _playerDetector.OnPlayerExit -= StopCollect;
+
         OnCountChange -= TextCountVisual;
         OnEnoughForBuild -= Build;
     }
-
+   
     protected virtual void Build()
     {
         if(EnoughForBuild())

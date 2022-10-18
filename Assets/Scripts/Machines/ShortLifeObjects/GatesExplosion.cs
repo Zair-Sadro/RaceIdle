@@ -11,34 +11,68 @@ public sealed class GatesExplosion : BuilderFromTiles
     [SerializeField] private ParticleSystem boomVfx;
     [SerializeField] private GameObject Bomb;
 
+    private void Start()
+    {
+        InitDictionary();
+
+        for (int i = 0; i < _requiredTypesCount; i++)
+        {
+            minCountForCheck += productRequierments[i].Amount;
+        }
+    }
+
+
+private void OnEnable()
+    {
+        _playerDetector.OnPlayerEnter += Collect;
+        _playerDetector.OnPlayerExit += StopCollect;
+
+        OnEnoughForBuild += AfterBuildAction;
+
+        if (counter == null) return;
+        OnCountChange += TextCountVisual;
+
+    }
+    private void OnDisable()
+    {
+        _playerDetector.OnPlayerEnter -= Collect;
+        _playerDetector.OnPlayerExit -= StopCollect;
+
+        OnCountChange -= TextCountVisual;
+        OnEnoughForBuild -= AfterBuildAction;
+    }
+
+
+    protected override void AfterBuildAction()
+    {
+        StopCollect();
+        base.AfterBuildAction();
+        StartCoroutine(Explosion());
+    }
     private IEnumerator Explosion()
     {
         Bomb.SetActive(true);
         yield return new WaitForSeconds(0.5f);
 
         boomVfx.Play();
-        Bomb.SetActive(false) ;
+        Bomb.SetActive(false);
 
         foreach (var gate in gates)
         {
             gate.AddExplosionForce(power, explosionPos.position, radius, 1.0F, ForceMode.Impulse);
         }
-        
-        yield return new WaitForSeconds(1f);
 
-        for (int i = 0; i < collidersAfterBuild.Length; i++)
+        yield return new WaitForSeconds(2f);
+
+        for (int i = 0; i < gates.Length; i++)
         {
+            gates[i].isKinematic = true;
             gates[i].DOMoveY(-5, 1f);
+            Destroy(gates[i], 1.5f);
         }
 
 
         yield return new WaitForSeconds(2f);
-        base.AfterBuildAction();
 
     }
-    protected override void AfterBuildAction()
-    {
-        Explosion();
-    }    
-
 }
