@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   globalData:
     showActiveToggles: 1
-    showComponentIcons: 0
+    showComponentIcons: 1
     showAllComponents: 1
     twoToneBackground: 1
-    showLayers: 0
+    showLayers: 1
     editableLayers: 1
     applyChildLayers: 1
   styleData:
@@ -26,10 +26,10 @@ MonoBehaviour:
     styles:
     - prefix: =
       name: Header (Centered)
-      font: {fileID: 12800000, guid: 542a313c75b1e20449299fe5a1a374f2, type: 3}
+      font: {fileID: 0}
       fontSize: 11
       fontAlignment: 4
-      fontStyle: 0
+      fontStyle: 1
       modes:
       - fontColour: {r: 0.1764706, g: 0.1764706, b: 0.1764706, a: 1}
         backgroundColour: {r: 0.6666667, g: 0.6666667, b: 0.6666667, a: 1}
@@ -89,9 +89,9 @@ MonoBehaviour:
           m_Right: 0
           m_Top: 0
           m_Bottom: 0
-        m_Font: {fileID: 12800000, guid: 542a313c75b1e20449299fe5a1a374f2, type: 3}
+        m_Font: {fileID: 0}
         m_FontSize: 11
-        m_FontStyle: 0
+        m_FontStyle: 1
         m_Alignment: 4
         m_WordWrap: 0
         m_RichText: 1
