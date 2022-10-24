@@ -73,7 +73,7 @@ public class UIController : MonoBehaviour {
 	{
 		get 
 		{
-			return _tween.ElapsedPercentage() > 0.99f;
+			return _tween.ElapsedPercentage() > 0.5f;
 		}
 		private set 			 
 		{
