@@ -4544,7 +4544,7 @@ PrefabInstance:
     - target: {fileID: 5371530108335930924, guid: ca92db339be7ac64381336d4a04772a3,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8087761254074757768, guid: ca92db339be7ac64381336d4a04772a3,
         type: 3}
@@ -4554,7 +4554,7 @@ PrefabInstance:
     - target: {fileID: 8599909075699133949, guid: ca92db339be7ac64381336d4a04772a3,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 14.965088
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9170980540638612840, guid: ca92db339be7ac64381336d4a04772a3,
         type: 3}
@@ -4645,13 +4645,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showOnAwake: 1
   onHideAction: 1
-  m_OnShow:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnHide:
-    m_PersistentCalls:
-      m_Calls: []
   _IUpgradeInScene: {fileID: 0}
+  _machine: {fileID: 0}
+  _incomeSlot: {fileID: 0}
 --- !u!95 &7285353918916754686
 Animator:
   serializedVersion: 4

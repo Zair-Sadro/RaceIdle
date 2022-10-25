@@ -34,9 +34,9 @@ public class InputManager: MonoBehaviour //: GenericSingletonClass<InputManager>
             
             _touch = Input.GetTouch(0);
             if (_touch.phase == TouchPhase.Began)
-                startTime = Time.realtimeSinceStartup;
+                startTime = Time.time;
 
-            if (Time.realtimeSinceStartup - startTime <= 0.1 &&
+            if (Time.time - startTime <= 0.6f &&
                 _touch.phase == TouchPhase.Ended)
             {
                 //провряем задели ли UI

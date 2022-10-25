@@ -180,14 +180,20 @@ public class TileMachine : TileCollector,IUpgradable
 
     [SerializeField] private UpgradeLevel _speedUpgrade;
     [SerializeField] private UpgradeLevel _capacityUpgrade;
+    public void UpgradeSpeedCapacity(int level = 0)
+    {
+        if (level == 0)
+        {
 
-    public void UpgradeSpeed(int level)
-    {
-       
+        }
     }
-    public void UpgradeCapacity(int level)
+
+    public void UpgradeIncome(int level = 0)
     {
-       
+        if (level == 0)
+        {
+
+        }
     }
 
     #endregion
@@ -200,11 +206,11 @@ public class TileMachine : TileCollector,IUpgradable
         if (tileStorage.transform.childCount >= minCountForCheck
             && currentState == MachineState.WAIT_FOR_ENOUGH)
 
-            OnCollect?.Invoke();
+            OnCollect?.Invoke(); 
 
     }
 
-    private bool EnoughForProduce()
+    private bool EnoughForProduce() 
     {
         for (int i = 0; i < _requiredTypesCount; i++)
         {
@@ -231,5 +237,7 @@ public class TileMachine : TileCollector,IUpgradable
         }
 
     }
+
+ 
 }
 

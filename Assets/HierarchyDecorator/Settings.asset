@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   globalData:
     showActiveToggles: 1
-    showComponentIcons: 1
+    showComponentIcons: 0
     showAllComponents: 1
     twoToneBackground: 1
-    showLayers: 1
+    showLayers: 0
     editableLayers: 1
     applyChildLayers: 1
   styleData:
@@ -498,6 +498,138 @@ MonoBehaviour:
     - name: VideoPlayer
       shown: 0
     - name: WindZone
+      shown: 0
+    - name: UIController
+      shown: 0
+    - name: CFX_AutoStopLoopedEffect
+      shown: 0
+    - name: CFX_Demo_New
+      shown: 0
+    - name: CFX_Demo_RandomDir
+      shown: 0
+    - name: CFX_Demo_RandomDirectionTranslate
+      shown: 0
+    - name: CFX_Demo_RotateCamera
+      shown: 0
+    - name: CFX_Demo_Translate
+      shown: 0
+    - name: CFX_AutoDestructShuriken
+      shown: 0
+    - name: CFX_AutoRotate
+      shown: 0
+    - name: CFX_LightFlicker
+      shown: 0
+    - name: CFX_LightIntensityFade
+      shown: 0
+    - name: JoystickPlayerExample
+      shown: 0
+    - name: JoystickSetterExample
+      shown: 0
+    - name: Joystick
+      shown: 0
+    - name: DynamicJoystick
+      shown: 0
+    - name: FixedJoystick
+      shown: 0
+    - name: FloatingJoystick
+      shown: 0
+    - name: VariableJoystick
+      shown: 0
+    - name: RaceIdleGame
+      shown: 0
+    - name: InputManagerInstaller
+      shown: 0
+    - name: MainInstaller
+      shown: 0
+    - name: MainPlayerInstaller
+      shown: 0
+    - name: TileSetterInstaller
+      shown: 0
+    - name: TileSpawnInstaller
+      shown: 0
+    - name: UIMemmoryInstaller
+      shown: 0
+    - name: BuilderFromTiles
+      shown: 0
+    - name: GatesExplosion
+      shown: 0
+    - name: TileCollector
+      shown: 0
+    - name: TileMachine
+      shown: 0
+    - name: PlayerController
+      shown: 0
+    - name: PlayerSlash
+      shown: 0
+    - name: TileSetter
+      shown: 0
+    - name: ProductStorage
+      shown: 0
+    - name: InputManager
+      shown: 0
+    - name: PlayerDetector
+      shown: 0
+    - name: ResourceTilesSpawn
+      shown: 0
+    - name: FileIOUtility
+      shown: 0
+    - name: SaveLoadController
+      shown: 0
+    - name: SwipeSystem
+      shown: 0
+    - name: Tile
+      shown: 0
+    - name: UIMemmory
+      shown: 0
+    - name: UIPanel
+      shown: 0
+    - name: MachineUI
+      shown: 0
+    - name: SafeAreaDetection
+      shown: 0
+    - name: UpgradeSlot
+      shown: 0
+    - name: UpgradeUI
+      shown: 0
+    - name: ButtonClickBehaviour
+      shown: 0
+    - name: UI_HoldButton
+      shown: 0
+    - name: UI_Manager
+      shown: 0
+    - name: JunkCar
+      shown: 0
+    - name: JunkCarManager
+      shown: 0
+    - name: OnObjectClickHelper
+      shown: 0
+    - name: TweenTest
+      shown: 0
+    - name: CircleSlider
+      shown: 0
+    - name: JustRotate
+      shown: 0
+    - name: SliderRunTo1
+      shown: 0
+    - name: SliderRunTo1Action
+      shown: 0
+    - name: SliderValuePass
+      shown: 0
+    - name: ToggleChangeTextColor
+      shown: 0
+    - name: TaskManager
+      shown: 0
+    - name: GridLayoutGroup3D
+      shown: 0
+    - name: LayoutElement3D
+      shown: 0
+    - name: LayoutGroup3D
+      shown: 0
+    - name: XAxisLayoutGroup3D
+      shown: 0
+    - name: YAxisLayoutGroup3D
+      shown: 0
+    - name: ZAxisLayoutGroup3D
       shown: 0
     - name: BezierShape
       shown: 0

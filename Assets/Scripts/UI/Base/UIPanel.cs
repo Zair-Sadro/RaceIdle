@@ -9,6 +9,7 @@ public class UIPanel : UIController
     protected virtual void Start()
     {
         _canvasGrp = GetComponent<CanvasGroup>();
+
     }
     protected void Open()
     {

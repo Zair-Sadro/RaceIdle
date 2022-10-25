@@ -57,6 +57,11 @@ public class UpgradeLevel
     public int startValue;
     public float delta;
 }
+[System.Serializable]
+public class MachineData
+{
+    public UpgradeLevel speedLevel, capacityLevel; 
+}
 
 [System.Serializable]
 public enum OperationType

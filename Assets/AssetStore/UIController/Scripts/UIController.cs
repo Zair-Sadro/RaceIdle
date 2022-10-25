@@ -11,8 +11,9 @@ public class UIController : MonoBehaviour {
 		Destroy,
 	}
 
-	public void PanelInit(Tween tween,Tween backTween = null)
+    public void PanelInit(Tween tween,Tween backTween = null)
     {
+
 		_tween = tween;
 		_backwardTween = backTween;
 		_backTweenInitialized = backTween != null;
@@ -22,7 +23,7 @@ public class UIController : MonoBehaviour {
 		if (showOnAwake) Show();
     }
 
-	public bool showOnAwake = true;
+	public bool showOnAwake = false;
 	public OnHideAction onHideAction = OnHideAction.Disable;
 
 	private Tween _tween;

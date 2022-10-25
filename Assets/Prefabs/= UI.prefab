@@ -2423,8 +2423,9 @@ GameObject:
   - component: {fileID: 3465287574231300160}
   - component: {fileID: 5753528748103863319}
   - component: {fileID: 4233740428063901916}
+  - component: {fileID: 8327436569031545261}
   m_Layer: 5
-  m_Name: ^UpgradesCanvas
+  m_Name: '- Upgrades Canvas'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2512,6 +2513,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 119
+--- !u!225 &8327436569031545261
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5371530108335930924}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &6597060627343090327
 GameObject:
   m_ObjectHideFlags: 0
@@ -3191,7 +3204,7 @@ GameObject:
   - component: {fileID: 1101498952227753328}
   - component: {fileID: 3734245867813874994}
   m_Layer: 0
-  m_Name: ^BasicCanvas
+  m_Name: '- Basic Canvas'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4082,7 +4095,7 @@ PrefabInstance:
     - target: {fileID: 6979361940105730760, guid: 2ff20477beda89347a36669922582ae1,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -851
       objectReference: {fileID: 0}
     - target: {fileID: 6979361940105730760, guid: 2ff20477beda89347a36669922582ae1,
         type: 3}
@@ -4106,6 +4119,62 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ff20477beda89347a36669922582ae1, type: 3}
+--- !u!1 &3039228252703363871 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9070723089846642244, guid: 2ff20477beda89347a36669922582ae1,
+    type: 3}
+  m_PrefabInstance: {fileID: 6326483705162970459}
+  m_PrefabAsset: {fileID: 0}
+--- !u!225 &7285353918916754687
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3039228252703363871}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!95 &7285353918916754686
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3039228252703363871}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7285353918916754685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3039228252703363871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a63c4fcdfc6533b44b73bcd7bdda5a53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showOnAwake: 1
+  onHideAction: 1
+  _IUpgradeInScene: {fileID: 0}
+  _machine: {fileID: 0}
+  _incomeSlot: {fileID: 0}
+  _speedCapacitySlot: {fileID: 0}
 --- !u!224 &3969786585744617363 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6979361940105730760, guid: 2ff20477beda89347a36669922582ae1,
@@ -4122,7 +4191,7 @@ PrefabInstance:
     - target: {fileID: 4474679308343801164, guid: 52d2b0a52016aad4a9fe67f96ebc7b9e,
         type: 3}
       propertyPath: m_Name
-      value: ^JoyStickCanvas
+      value: '- JoyStick Canvas'
       objectReference: {fileID: 0}
     - target: {fileID: 6252477398714575248, guid: 52d2b0a52016aad4a9fe67f96ebc7b9e,
         type: 3}
