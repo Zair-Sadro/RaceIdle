@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
+using DG.Tweening;
 
-[RequireComponent(typeof(Animator))]
 public class UIController : MonoBehaviour {
 
 	public enum OnHideAction {
@@ -41,6 +41,16 @@ public class UIController : MonoBehaviour {
 		}
 	}
 
+	public void PanelInit(Tween tween,Tween backTween = null)
+    {
+		_tween = tween;
+		_backwardTween = backTween;
+		_backTweenInitialized = backTween != null;
+
+		_tween.SetAutoKill(false);
+
+    }
+
 	public bool showOnAwake = true;
 	public OnHideAction onHideAction = OnHideAction.Disable;
 
@@ -48,63 +58,53 @@ public class UIController : MonoBehaviour {
 	[SerializeField] private UnityEvent m_OnHide = new UnityEvent();
 	private UnityEvent m_OnShowDisposable = new UnityEvent();
 	private UnityEvent m_OnHideDisposable = new UnityEvent();
-	private Animator m_Animator;
 
-	public bool isShow {
-		get {
-			if (this.animator.runtimeAnimatorController == null) {
-				return this.isShowWhenNoController;
-			}
-			if (!this.animator.isInitialized) {
-				return false;
-			}
-			return this.animator.GetBool("Is Show");
+	private Tween _tween;
+	private Tween _backwardTween;
+	private bool _backTweenInitialized;
+
+	public UnityEvent onShow {
+		get { return this.m_OnShow; }
+	}
+	public UnityEvent onHide {
+		get { return this.m_OnHide; }
+	}
+	public bool isShow 
+	{
+		get 
+		{
+			return _tween.ElapsedPercentage() > 0.5f;
 		}
-		private set {
-			if (this.animator.runtimeAnimatorController == null) {
-				this.isShowWhenNoController = value;
-				if (value) {
-					this.OnShow();
-				}
-				else {
-					this.OnHide();
-				}
+		private set 			 
+		{
+            if (value)
+            {
+				_tween.PlayForward();
 				return;
 			}
-			this.animator.SetBool("Is Show", value);
-			this.animator.SetTrigger("Play");
+
+            if (_backTweenInitialized && !value)
+            {
+				_backwardTween.PlayForward();
+			}
+            else
+            {
+				_tween.PlayBackwards();
+				return;
+            }
 		}
 	}
-	public bool isPlaying {
-		get {
-			if (this.animator.runtimeAnimatorController == null) {
-				return false;
+    public bool isPlaying 
+	{
+		get
+		{   if (_backTweenInitialized)
+			{
+				return _backwardTween.IsPlaying() || _tween.IsPlaying();
 			}
-			if (!this.animator.isInitialized) {
-				return false;
+            else
+            {
+				return _tween.IsPlaying();
 			}
-			AnimatorStateInfo currentState = this.animator.GetCurrentAnimatorStateInfo(0);
-			return (currentState.IsName("Show") || currentState.IsName("Hide"))
-				&& currentState.normalizedTime < 1;
-		}
-	}
-	public Animator animator {
-		get {
-			if (this.m_Animator == null) {
-				this.m_Animator = this.GetComponent<Animator>();
-			}
-			return this.m_Animator;
-		}
-	}
-	private bool canTransitionToSelf {
-		get {
-			if (this.animator.runtimeAnimatorController == null) {
-				return true;
-			}
-			if (!this.animator.isInitialized) {
-				return true;
-			}
-			return this.animator.GetBool("Can Transition To Self");
 		}
 	}
 	private bool isShowWhenNoController;
@@ -112,7 +112,7 @@ public class UIController : MonoBehaviour {
 
 	// Show/Hide must fast by Show(UnityAction)Hide(UnityAction), make SendMessage("Show/Hide") working in Inspector
 	public virtual void Show() {
-		if (!this.canTransitionToSelf && this.isShow) {
+		if (this.isShow) {
 			if (!this.isPlaying) {
 				this.OnShow();
 			}
@@ -126,7 +126,7 @@ public class UIController : MonoBehaviour {
 		this.isShow = true;
 	}
 	public virtual void Hide() {
-		if (!this.canTransitionToSelf && !this.isShow) {
+		if (!this.isShow) {
 			if (!this.isPlaying) {
 				this.OnHide();
 			}
@@ -153,15 +153,8 @@ public class UIController : MonoBehaviour {
 		return new PlayAsync(this, false);
 	}
 
-	protected virtual void OnEnable() {
-		// this.animator.Update(0);
-		if (this.showOnAwake && Time.frameCount != this.lastShowAtFrame) {
-			this.Show();
-		}
-		this.lastShowAtFrame = -1;
-	}
 	protected virtual void OnShow() {
-
+		this.onShow.Invoke();
 		this.m_OnShowDisposable.Invoke();
 		this.m_OnShowDisposable.RemoveAllListeners();
 	}
@@ -171,13 +164,13 @@ public class UIController : MonoBehaviour {
 				break;
 			case OnHideAction.Disable:
 				this.gameObject.SetActive(false);
-				this.animator.Rebind();
+				_tween.Kill();
 				break;
 			case OnHideAction.Destroy:
 				Destroy(this.gameObject);
 				break;
 		}
-
+		this.onHide.Invoke();
 		this.m_OnHideDisposable.Invoke();
 		this.m_OnHideDisposable.RemoveAllListeners();
 	}
