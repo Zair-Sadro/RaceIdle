@@ -7,9 +7,8 @@ public sealed class UpgradeUI : UIPanel
     [SerializeField] private GameObject _IUpgradeInScene;
     
     private bool IsClicked;
-    protected override void OnEnable()
+    private void OnEnable()
     {
-        base.OnEnable();
         GameEventSystem.ObjectTaped += OnCLick;
     }
     private void OnDisable()
