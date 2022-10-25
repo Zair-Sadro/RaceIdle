@@ -4,18 +4,19 @@
 public class UIPanel : UIController
 {
     protected CanvasGroup _canvasGrp;
-    [Zenject.Inject] private UIMemmory _uIMemmory;
+    [Zenject.Inject] protected UIMemmory UIMemmory;
 
     protected void Open()
     {
         
-        _uIMemmory.ShowUI(this, CloseOpenActions);
+        UIMemmory.ShowUI(this, CloseOpenActions);
     }
     protected void Close()
     {
-        _uIMemmory.ShowUI(this, CloseOpenActions);
+        UIMemmory.ShowUI(this, CloseOpenActions);
     }
 
+    // additional action if need
     protected virtual void CloseOpenActions(bool open)
     {
         //Example

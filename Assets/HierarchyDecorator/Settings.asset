@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Settings
   m_EditorClassIdentifier: 
   globalData:
-    showActiveToggles: 1
-    showComponentIcons: 1
+    showActiveToggles: 0
+    showComponentIcons: 0
     showAllComponents: 1
     twoToneBackground: 1
-    showLayers: 1
+    showLayers: 0
     editableLayers: 1
     applyChildLayers: 1
   styleData:
@@ -500,6 +500,26 @@ MonoBehaviour:
     - name: WindZone
       shown: 0
     - name: UIController
+      shown: 0
+    - name: CFX_AutoStopLoopedEffect
+      shown: 0
+    - name: CFX_Demo_New
+      shown: 0
+    - name: CFX_Demo_RandomDir
+      shown: 0
+    - name: CFX_Demo_RandomDirectionTranslate
+      shown: 0
+    - name: CFX_Demo_RotateCamera
+      shown: 0
+    - name: CFX_Demo_Translate
+      shown: 0
+    - name: CFX_AutoDestructShuriken
+      shown: 0
+    - name: CFX_AutoRotate
+      shown: 0
+    - name: CFX_LightFlicker
+      shown: 0
+    - name: CFX_LightIntensityFade
       shown: 0
     - name: JoystickPlayerExample
       shown: 0

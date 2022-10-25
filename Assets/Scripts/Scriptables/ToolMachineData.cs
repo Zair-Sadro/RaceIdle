@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
-using System.Linq;
 
 public enum MachineLevelType
 {
@@ -17,15 +15,6 @@ public class ToolMachineData : ScriptableObject
     [SerializeField] private List<MachineLevel> _levels = new List<MachineLevel>();
 
 
-    public MachineLevel GetMachineLevel(MachineLevelType lvl)
-    {
-        return _levels.Where(m => m.Level == lvl).FirstOrDefault();
-    }
-
-    public MachineLevel GetNextMachineLevel(MachineLevelType currentLvl)
-    {
-        return _levels.Where(m => m.Level == currentLvl + 1).FirstOrDefault();
-    }
 
     public Tile TileProduct => _tileProduct;
     public List<MachineLevel> Levels => _levels;
@@ -34,16 +23,12 @@ public class ToolMachineData : ScriptableObject
 [System.Serializable]
 public class MachineLevel
 {
-    [SerializeField] private MachineLevelType _level;
     [SerializeField] private TileType productType;
     [SerializeField] private float _createTime;
     [SerializeField] private float _delayMachineTakeTile;
     [SerializeField] private int _maxTiles;
     [SerializeField] private List<ProductRequierment> _requierments = new List<ProductRequierment>();
 
-
-
-    public MachineLevelType Level => _level;
     public float CreateTime => _createTime;
     public float DelayMachineTakeTile=> _delayMachineTakeTile;
     public int MaxTiles => _maxTiles;
@@ -62,4 +47,23 @@ public class ProductRequierment
 
     public TileType Type => _type;
     public int Amount => _amount;
+}
+[System.Serializable]
+public class UpgradeLevel
+{
+    public int level;
+    public int maxLevel;
+
+    public int startValue;
+    public float delta;
+}
+
+[System.Serializable]
+public enum OperationType
+{
+    Plus,
+    Devide,
+    Minus,
+    Increase
+
 }

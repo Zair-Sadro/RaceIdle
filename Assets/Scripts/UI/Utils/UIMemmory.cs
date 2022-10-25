@@ -9,9 +9,11 @@ public class UIMemmory : MonoBehaviour
     private Action <bool> _lastUIactions;
     public void ShowUI(UIController uIController, Action<bool> act=null)
     {
-        act?.Invoke(true);
-        _lastUIactions=act;
-        uIController.Hide();
+        CloseUI();
+        act?.Invoke(true); 
+        _lastUIactions = act;
+
+        uIController.Show();
     }
     public void CloseUI()
     {

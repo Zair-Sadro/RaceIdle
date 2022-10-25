@@ -50,12 +50,6 @@ public class UIController : MonoBehaviour {
 	private UnityEvent m_OnHideDisposable = new UnityEvent();
 	private Animator m_Animator;
 
-	public UnityEvent onShow {
-		get { return this.m_OnShow; }
-	}
-	public UnityEvent onHide {
-		get { return this.m_OnHide; }
-	}
 	public bool isShow {
 		get {
 			if (this.animator.runtimeAnimatorController == null) {
@@ -167,7 +161,7 @@ public class UIController : MonoBehaviour {
 		this.lastShowAtFrame = -1;
 	}
 	protected virtual void OnShow() {
-		this.onShow.Invoke();
+
 		this.m_OnShowDisposable.Invoke();
 		this.m_OnShowDisposable.RemoveAllListeners();
 	}
@@ -183,7 +177,7 @@ public class UIController : MonoBehaviour {
 				Destroy(this.gameObject);
 				break;
 		}
-		this.onHide.Invoke();
+
 		this.m_OnHideDisposable.Invoke();
 		this.m_OnHideDisposable.RemoveAllListeners();
 	}

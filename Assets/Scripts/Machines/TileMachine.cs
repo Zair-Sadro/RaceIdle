@@ -178,16 +178,18 @@ public class TileMachine : TileCollector,IUpgradable
     #region Upgrades
 
 
-    
+    [SerializeField] private UpgradeLevel _speedUpgrade;
+    [SerializeField] private UpgradeLevel _capacityUpgrade;
+
     public void UpgradeSpeed(int level)
     {
        
     }
-
     public void UpgradeCapacity(int level)
     {
        
     }
+
     #endregion
 
     protected override void RecieveTile(Tile tile)
