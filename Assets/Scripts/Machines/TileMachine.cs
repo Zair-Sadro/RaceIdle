@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityTaskManager;
-public class TileMachine : TileCollector,IUpgradable
+public class TileMachine : TileCollector, IUpgradable
 {
     [SerializeField] protected MachineLevel machineFields;
 
@@ -42,12 +42,12 @@ public class TileMachine : TileCollector,IUpgradable
     private void SetState(MachineState state)
     {
         currentState = state;
-        
+
         switch (state)
         {
             case MachineState.WAIT_FOR_ENOUGH:
                 if (wait != null)
-                if (wait.Running ) return;
+                    if (wait.Running) return;
                 wait = new Task(WaitForEnough());
                 break;
 
@@ -88,28 +88,28 @@ public class TileMachine : TileCollector,IUpgradable
 
         for (int i = 0; i < _requiredTypesCount; i++)
         {
-            var type   = machineFields.Requierments[i].Type;
+            var type = machineFields.Requierments[i].Type;
             var amount = machineFields.Requierments[i].Amount;
 
 
             for (int j = 0; j < amount; j++)
-            { 
+            {
                 //PuffEffect();
-               _tilesSpawner.ToPool(tileListByType[type].Pop());// переносим родителя Пула  (выкидываем с стака)
-              
+                _tilesSpawner.ToPool(tileListByType[type].Pop());// переносим родителя Пула  (выкидываем с стака)
+
 
                 yield return new WaitForSeconds(delay);
             }
 
         }
-       
+
         SetState(MachineState.PRODUCE);
         gaining = false;
         yield break;
     }
 
     // case MachineState.PRODUCE:
-    private IEnumerator TileManufacture() 
+    private IEnumerator TileManufacture()
     {
         producing = true;
 
@@ -142,7 +142,7 @@ public class TileMachine : TileCollector,IUpgradable
         OnCollect += (() => SetState(MachineState.WAIT_FOR_ENOUGH));
         SetState(MachineState.WAIT_FOR_ENOUGH);
     }
-   
+
     protected virtual void Init()
     {
         productRequierments = machineFields.Requierments;
@@ -153,11 +153,11 @@ public class TileMachine : TileCollector,IUpgradable
         {
             minCountForCheck += productRequierments[i].Amount;
         }
-            
-    }
-       
 
-    
+    }
+
+
+
     private void OnEnable()
     {
         _detectorForRes.OnPlayerEnter += Collect;
@@ -176,10 +176,7 @@ public class TileMachine : TileCollector,IUpgradable
     #endregion
 
     #region Upgrades
-
-
-    [SerializeField] private UpgradeLevel _speedUpgrade;
-    [SerializeField] private UpgradeLevel _capacityUpgrade;
+    UpgradeField Speed, Capacity, Income;
     public void UpgradeSpeedCapacity(int level = 0)
     {
         if (level == 0)
@@ -195,6 +192,13 @@ public class TileMachine : TileCollector,IUpgradable
 
         }
     }
+
+
+    private void UpgradeDataInit()
+    {
+       
+    }
+
 
     #endregion
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using System;
 
 public enum MachineLevelType
 {
@@ -24,10 +25,17 @@ public class ToolMachineData : ScriptableObject
 public class MachineLevel
 {
     [SerializeField] private TileType productType;
+    [SerializeField] private List<ProductRequierment> _requierments = new List<ProductRequierment>();
+
+
+    [Space(2f),Header("Settings")]
+
     [SerializeField] private float _createTime;
     [SerializeField] private float _delayMachineTakeTile;
     [SerializeField] private int _maxTiles;
-    [SerializeField] private List<ProductRequierment> _requierments = new List<ProductRequierment>();
+
+
+  
 
     public float CreateTime => _createTime;
     public float DelayMachineTakeTile=> _delayMachineTakeTile;
@@ -36,8 +44,11 @@ public class MachineLevel
 
     public TileType ProductType => productType;
 
- 
-
+    public float startPrice { get; internal set; }
+    internal float PriceFormula(float arg1, int arg2)
+    {
+        throw new NotImplementedException();
+    }
 }
 [System.Serializable]
 public class ProductRequierment
@@ -49,21 +60,16 @@ public class ProductRequierment
     public int Amount => _amount;
 }
 [System.Serializable]
-public class UpgradeLevel
-{
-    public int level;
-    public int maxLevel;
 
-    public int startValue;
-    public float delta;
-}
-[System.Serializable]
-public class MachineData
-{
-    public UpgradeLevel speedLevel, capacityLevel; 
-}
 
-[System.Serializable]
+public class MachineSettingsData : ScriptableObject
+{
+    public float startIncome;
+    public float deltaIncome;
+    public float startIncomePrice;
+    public float deltaIncomePrice;
+  
+}
 public enum OperationType
 {
     Plus,

@@ -75,5 +75,9 @@ public class UpgradeUI : UIPanel
         return  transform
                .DOMoveY(0, showSpeed)
                .SetEase(Ease.InOutFlash).Pause() ;
-    } 
+    }
+
+  
 }
+
+
