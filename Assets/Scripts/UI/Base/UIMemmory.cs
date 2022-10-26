@@ -7,6 +7,7 @@ public class UIMemmory : MonoBehaviour
     {
         CloseUI();
         uIController.Show();
+        _lastUI = uIController;
     }
     public void CloseUI()
     {

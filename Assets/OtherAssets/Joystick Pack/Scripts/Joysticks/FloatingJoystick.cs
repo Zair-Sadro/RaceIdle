@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 
 public class FloatingJoystick : Joystick
 {
+    bool fingerUp = false;
     protected override void Start()
     {
         base.Start();
@@ -17,14 +18,29 @@ public class FloatingJoystick : Joystick
 
     public override void OnPointerDown(PointerEventData eventData)
     {
-        background.anchoredPosition = ScreenPointToAnchoredPosition(eventData.position);
-        background.gameObject.SetActive(true);
-        base.OnPointerDown(eventData);
+        StopCoroutine(nameof(ClickWithNoJoystick));
+        fingerUp = false;
+        StartCoroutine(ClickWithNoJoystick(eventData));
     }
 
     public override void OnPointerUp(PointerEventData eventData)
     {
+        fingerUp = true;
         background.gameObject.SetActive(false);
         base.OnPointerUp(eventData);
+    }
+    IEnumerator ClickWithNoJoystick(PointerEventData eventData)
+    {
+        yield return new WaitForSeconds(0.15f);
+
+        if (fingerUp) 
+        {
+
+            yield break; 
+        }
+
+        background.anchoredPosition = ScreenPointToAnchoredPosition(eventData.position);
+        background.gameObject.SetActive(true);
+        base.OnPointerDown(eventData);
     }
 }

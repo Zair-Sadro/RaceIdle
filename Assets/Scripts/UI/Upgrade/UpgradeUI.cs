@@ -1,12 +1,19 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UpgradeUI : UIPanel
 {
-    [SerializeField] private OnObjectClickHelper _IUpgradeInScene;
+    [SerializeField] private GameObject _objectInScene;
     [SerializeField] private TileMachine _machine;
     [SerializeField] private UpgradeSlot _incomeSlot;
     [SerializeField] private UpgradeSlot _speedCapacitySlot;
+    
+    [Space(3f),Header("Settings")]
+    [SerializeField] private Button _closeButton;
+
+    [SerializeField,Tooltip("Скорость появления панели")] 
+    private float showSpeed=0.5f;
 
     protected override void Start()
     {
@@ -16,6 +23,8 @@ public class UpgradeUI : UIPanel
 
         _incomeSlot.InitUpgradeSlot(IncomeUpgrade);
         _speedCapacitySlot.InitUpgradeSlot(CapacitySpeedUpgrade);
+
+        _closeButton.onClick.AddListener(() => Close());
     }
 
     protected override void OnHide()
@@ -35,9 +44,9 @@ public class UpgradeUI : UIPanel
     public void OnCLick(GameObject obj)
     {
 
-        if (_IUpgradeInScene.ClickedIndeed())
+        if (_objectInScene==obj)
         {
-            UIMemmory.ShowUI(this);
+            Open();
         }
    
     }
@@ -64,7 +73,7 @@ public class UpgradeUI : UIPanel
     {
 
         return  transform
-               .DOMoveY(0, 1f)
-               .SetEase(Ease.InElastic).Pause() ;
+               .DOMoveY(0, showSpeed)
+               .SetEase(Ease.InOutFlash).Pause() ;
     } 
 }

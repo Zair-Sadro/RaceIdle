@@ -25,7 +25,7 @@ public class InputManager: MonoBehaviour //: GenericSingletonClass<InputManager>
         _camera = Camera.main;
     }
     
-    private void FixedUpdate()
+    private void Update()
     {
         if(onGUI) return;
         
@@ -36,13 +36,14 @@ public class InputManager: MonoBehaviour //: GenericSingletonClass<InputManager>
             if (_touch.phase == TouchPhase.Began)
                 startTime = Time.time;
 
-            if (Time.time - startTime <= 0.6f &&
+            if (Time.time - startTime <=0.2f &&
                 _touch.phase == TouchPhase.Ended)
             {
-                //провряем задели ли UI
-                if (IsPointerOverUIObject()) return;
-                
-                
+
+
+               if (IsPointerOverUIObject()) return;
+
+
                 //иначе проверяем коллайдер и вызываем событие
                 _ray = _camera.ScreenPointToRay(new Vector3(_touch.position.x, _touch.position.y, 0));
                 if (Physics.Raycast(_ray, out _raycastHit, Mathf.Infinity))
@@ -64,7 +65,13 @@ public class InputManager: MonoBehaviour //: GenericSingletonClass<InputManager>
         
         uiRaycastResults = new List<RaycastResult>();
         EventSystem.current.RaycastAll(eventDataCurrentPosition, uiRaycastResults);
-        return uiRaycastResults.Count > 0;
+
+        if (uiRaycastResults.Count == 1)
+        {
+            if (uiRaycastResults[0].gameObject.tag == "Joystick")
+                return false;
+        }
+        return uiRaycastResults.Count > 1;
     }
     
     public void DisableRaycast()
