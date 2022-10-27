@@ -19,8 +19,11 @@ public class FloatingJoystick : Joystick
     public override void OnPointerDown(PointerEventData eventData)
     {
         StopCoroutine(nameof(ClickWithNoJoystick));
+        background.anchoredPosition = ScreenPointToAnchoredPosition(eventData.position);
+        background.gameObject.SetActive(true);
+        base.OnPointerDown(eventData);
         fingerUp = false;
-        StartCoroutine(ClickWithNoJoystick(eventData));
+       // StartCoroutine(ClickWithNoJoystick(eventData));
     }
 
     public override void OnPointerUp(PointerEventData eventData)
@@ -31,7 +34,7 @@ public class FloatingJoystick : Joystick
     }
     IEnumerator ClickWithNoJoystick(PointerEventData eventData)
     {
-        yield return new WaitForSeconds(0.15f);
+      //  yield return new WaitForSeconds(0.08f);
 
         if (fingerUp) 
         {

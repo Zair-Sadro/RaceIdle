@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
                 var vel = Quaternion.LookRotation(body.velocity);
                 var q = new Quaternion(0,vel.y,0,vel.w);
 
-                transform.rotation = q;
+                transform.rotation = Quaternion.LookRotation(new Vector3(joystick.Horizontal * speed, body.velocity.y, joystick.Vertical * speed));
 
 
                 CurrentAnimator(_skinAnimatorID).SetBool("Run", true);
