@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class UpgradeUI : UIPanel
 {
     [SerializeField] private GameObject _objectInScene;
-    [SerializeField] private TileMachine _machine;
+    [SerializeField] private MachineUpgrade _machineUpgrade;
     [SerializeField] private UpgradeSlot _incomeSlot;
     [SerializeField] private UpgradeSlot _speedCapacitySlot;
     
@@ -21,8 +21,8 @@ public class UpgradeUI : UIPanel
         base.Start();
         PanelInit(GetPanelAnimation());
 
-        _incomeSlot.InitUpgradeSlot(IncomeUpgrade);
-        _speedCapacitySlot.InitUpgradeSlot(CapacitySpeedUpgrade);
+       // _incomeSlot.InitUpgradeSlot(IncomeUpgrade);
+     //   _speedCapacitySlot.InitUpgradeSlot(CapacitySpeedUpgrade);
 
         _closeButton.onClick.AddListener(() => Close());
     }
@@ -57,16 +57,19 @@ public class UpgradeUI : UIPanel
         // if enough =>
         // _incomeSlot.ChangeText(,);
         // effects
-        _machine.UpgradeIncome();
+        _machineUpgrade.UpgradeIncome();
         Debug.Log("Income UP");
     }
     protected virtual void CapacitySpeedUpgrade()
     {
         // MoneyCount
         // if enough =>
-        // _speedCapacitySlot.ChangeText(,);
-        // effects
-        _machine.UpgradeSpeedCapacity();
+        _machineUpgrade.UpgradeSpeedCapacity(); 
+        
+        UpgradeValues upgradeValues = _machineUpgrade.Speed.GetValues();
+        _speedCapacitySlot.ChangeText(upgradeValues.value.ToString(), upgradeValues.price.ToString());
+        //effects
+
         Debug.Log("CapacitySpeed UP"); 
     }
     protected virtual Tween GetPanelAnimation()

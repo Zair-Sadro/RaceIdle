@@ -4,44 +4,85 @@
 public class UpgradeField
 {
     private float startField;
+    private int level;
     private float currentField;
-    private Func<float,int,float> formula;
+    private Func<int, float> formula;
 
     private UpgradePrice Price;
 
-    public float CurrentField => currentField != 0 ? currentField  : startField;
-    public (float,float) LevelUp(int level)
+    public float FieldValue => currentField != 0 ? currentField  : startField;
+    public int Level => level;
+
+    public void LevelUp()
     {
-        Price.LevelUp(level);
-        currentField = formula(startField,level);
-        var d = LevelUp(1);
-        return (currentField, Price.LevelUp(level));
+        ++level;
+        Price.NextPrice(level);
+        currentField = formula(level);
+       
     }
-    public UpgradeField(MachineLevel machineData, Func<float, int, float> formula)
+    public UpgradeValues GetValues()
     {
-        this.startField = machineData.CreateTime;
+        UpgradeValues values = new UpgradeValues
+            (Price.NextPrice(level) , currentField);
+
+        return values;
+    }
+   
+    public UpgradeField(MachineNumbersData machineData, Func<int, float> formula)
+    {
+        this.startField = machineData.startNumber;
         this.formula = formula;
-        Price = new UpgradePrice(machineData.startPrice, machineData.PriceFormula);
+        Price = new UpgradePrice(machineData.startNumberPrice, machineData.DeltaNumberPrice);
     }
 }
 [Serializable]
 public class UpgradePrice
 {
     private float startPrice;
+    private float deltaPrice;
     private float currentPrice;
-    private Func<float, int, float> priceFormula;
 
+    private Func<int, float> priceFormula;
     public float CurrentPrice => currentPrice != 0 ? currentPrice : startPrice;
-    public float LevelUp(int level)
+    public float NextPrice(int level)
     {
-        currentPrice = priceFormula(startPrice, level);
+        currentPrice = priceFormula(++level);
         return currentPrice;
     }
 
-    public UpgradePrice(float startPrice, Func<float, int, float> priceFormula)
+    public UpgradePrice(float startPrice, float deltaPrice)
     {
         this.startPrice = startPrice;
+        this.deltaPrice = deltaPrice;
+
+        this.priceFormula = DefaultFormula;
+
+    }
+    public UpgradePrice(float startPrice, float deltaPrice, Func<int, float> priceFormula)
+    {
+        this.startPrice = startPrice;
+        this.deltaPrice = deltaPrice;
         this.priceFormula = priceFormula;
+    }
+
+    private float DefaultFormula(int level)
+    {
+        float result;
+
+        result = currentPrice * level * deltaPrice;
+
+        return result;
+    }
+}
+public class UpgradeValues
+{
+    public float price;
+    public float value;
+
+    public UpgradeValues(float price, float value)
+    {
+        this.price = price;
+        this.value = value;
     }
 }
 

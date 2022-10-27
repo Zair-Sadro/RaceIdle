@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityTaskManager;
-public class TileMachine : TileCollector, IUpgradable
+public class TileMachine : TileCollector
 {
-    [SerializeField] protected MachineLevel machineFields;
+    public MachineFields machineFields;
 
     [Space(5)]
     [Header("Points & Storages")]
@@ -20,6 +20,8 @@ public class TileMachine : TileCollector, IUpgradable
 
 
     protected override int maxTileCount => machineFields.MaxTiles;
+    protected virtual float machineSpeed => machineFields.Speed;
+    public float delayMachineTakeTile;
 
     private Action OnCollect;
     private int minCountForCheck;
@@ -81,7 +83,7 @@ public class TileMachine : TileCollector, IUpgradable
     private IEnumerator GainTiles()
     {
         gaining = true;
-        var delay = machineFields.DelayMachineTakeTile;
+        var delay = delayMachineTakeTile;
 
         if (_playerTilesBag._isGivingTiles) yield return new WaitForSeconds(0.7f);
 
@@ -113,7 +115,7 @@ public class TileMachine : TileCollector, IUpgradable
     {
         producing = true;
 
-        yield return new WaitForSeconds(machineFields.CreateTime);
+        yield return new WaitForSeconds(machineSpeed);
 
         var tile = _tilesSpawner.GetTile(typeProduced);
         tile.OnTake();
@@ -173,33 +175,6 @@ public class TileMachine : TileCollector, IUpgradable
 
         OnCollect += (() => SetState(MachineState.WAIT_FOR_ENOUGH));
     }
-    #endregion
-
-    #region Upgrades
-    UpgradeField Speed, Capacity, Income;
-    public void UpgradeSpeedCapacity(int level = 0)
-    {
-        if (level == 0)
-        {
-
-        }
-    }
-
-    public void UpgradeIncome(int level = 0)
-    {
-        if (level == 0)
-        {
-
-        }
-    }
-
-
-    private void UpgradeDataInit()
-    {
-       
-    }
-
-
     #endregion
 
     protected override void RecieveTile(Tile tile)
