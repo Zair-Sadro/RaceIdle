@@ -12,14 +12,22 @@ public class UpgradeSlot : MonoBehaviour
     [SerializeField] private TMP_Text _priceText;
     [SerializeField] private TMP_Text _upgradeText;
 
+    private float price;
+
     public void InitUpgradeSlot(Action action)
     {
         _button.onClick.AddListener(() => action());
     }
-    public void ChangeText(string price,string upgrade)
+    public void ChangeText(float price,string upgrade)
     {
-        _priceText.text=price;
-        _upgradeText.text=upgrade;
+        this.price = price;
+        _priceText.text = price.ToString();
+        _upgradeText.text = upgrade;
 
+    }
+    public void CanUpgrade(float walletMoney)
+    {
+        if (price <= walletMoney) _button.interactable = true;
+        else _button.interactable = false;
     }
 }

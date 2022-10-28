@@ -8,12 +8,13 @@ public class UpgradeUI : UIPanel
     [SerializeField] private MachineUpgrade _machineUpgrade;
     [SerializeField] private UpgradeSlot _incomeSlot;
     [SerializeField] private UpgradeSlot _speedCapacitySlot;
+    [Zenject.Inject] private WalletSystem _wallet;
     
     [Space(3f),Header("Settings")]
     [SerializeField] private Button _closeButton;
 
     [SerializeField,Tooltip("Скорость появления панели")] 
-    private float showSpeed=0.5f;
+    private float showSpeed = 0.5f;
 
     protected override void Start()
     {
@@ -21,53 +22,64 @@ public class UpgradeUI : UIPanel
         base.Start();
         PanelInit(GetPanelAnimation());
 
-       // _incomeSlot.InitUpgradeSlot(IncomeUpgrade);
-     //   _speedCapacitySlot.InitUpgradeSlot(CapacitySpeedUpgrade);
+        _incomeSlot.InitUpgradeSlot(IncomeUpgrade);
+        _speedCapacitySlot.InitUpgradeSlot(CapacitySpeedUpgrade);
 
         _closeButton.onClick.AddListener(() => Close());
     }
 
-    protected override void OnHide()
-    {
-        base.OnHide();
-    }
 
+    #region Events
     protected virtual void OnEnable()
     {
         GameEventSystem.ObjectTaped += OnCLick;
+        _wallet.OnTotalMoneyChange += CheckPrice;
     }
     protected virtual void OnDisable()
     {
         GameEventSystem.ObjectTaped -= OnCLick;
+        _wallet.OnTotalMoneyChange -= CheckPrice;
     }
-    #region ClickEvent
     public void OnCLick(GameObject obj)
     {
-
-        if (_objectInScene==obj)
-        {
+        if (_objectInScene == obj)
             Open();
-        }
-   
     }
+    public void CheckPrice(float total)
+    {
+        _incomeSlot.CanUpgrade(total);
+        _speedCapacitySlot.CanUpgrade(total);
+    }
+    protected override void OnHide()
+    {
+        base.OnHide();
+    } 
     #endregion
+
     protected virtual void IncomeUpgrade()
     {
-        // MoneyCount
-        // if enough =>
-        // _incomeSlot.ChangeText(,);
-        // effects
+        UpgradeValues upgradeValues = _machineUpgrade.Income.GetValues();
+        float cost = upgradeValues.price;
+
+        if(_wallet.CompareMoney(cost))
         _machineUpgrade.UpgradeIncome();
+
+        upgradeValues = _machineUpgrade.Income.GetValues();
+         _incomeSlot.ChangeText(upgradeValues.value, upgradeValues.price.ToString());
+        // effects
+
         Debug.Log("Income UP");
     }
     protected virtual void CapacitySpeedUpgrade()
     {
-        // MoneyCount
-        // if enough =>
-        _machineUpgrade.UpgradeSpeedCapacity(); 
-        
         UpgradeValues upgradeValues = _machineUpgrade.Speed.GetValues();
-        _speedCapacitySlot.ChangeText(upgradeValues.value.ToString(), upgradeValues.price.ToString());
+        float cost = upgradeValues.price;
+
+        if (_wallet.CompareMoney(cost))
+            _machineUpgrade.UpgradeSpeedCapacity();
+
+        upgradeValues = _machineUpgrade.Speed.GetValues();
+        _speedCapacitySlot.ChangeText(upgradeValues.value, upgradeValues.price.ToString());
         //effects
 
         Debug.Log("CapacitySpeed UP"); 
