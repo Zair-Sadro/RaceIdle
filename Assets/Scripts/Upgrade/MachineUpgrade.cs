@@ -15,6 +15,7 @@ public class MachineUpgrade : MonoBehaviour
         machineFields = GetComponent<TileMachine>().machineFields;
         capacityUpLevels = machineFields.GetCapacityLevels();
 
+
         UpgradeDataInit();
     }
     public void UpgradeSpeedCapacity(int level = 0)

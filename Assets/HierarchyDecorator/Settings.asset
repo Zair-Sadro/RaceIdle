@@ -26,10 +26,10 @@ MonoBehaviour:
     styles:
     - prefix: =
       name: Header (Centered)
-      font: {fileID: 12800000, guid: 8d1d45edb7c8ddb43b1147d1019f4711, type: 3}
-      fontSize: 15
+      font: {fileID: 0}
+      fontSize: 11
       fontAlignment: 4
-      fontStyle: 0
+      fontStyle: 1
       modes:
       - fontColour: {r: 0.1764706, g: 0.1764706, b: 0.1764706, a: 1}
         backgroundColour: {r: 0.6666667, g: 0.6666667, b: 0.6666667, a: 1}
@@ -40,7 +40,7 @@ MonoBehaviour:
         m_Normal:
           m_Background: {fileID: 0}
           m_ScaledBackgrounds: []
-          m_TextColor: {r: 0.1764706, g: 0.1764706, b: 0.1764706, a: 1}
+          m_TextColor: {r: 1, g: 1, b: 1, a: 1}
         m_Hover:
           m_Background: {fileID: 0}
           m_ScaledBackgrounds: []
@@ -89,9 +89,9 @@ MonoBehaviour:
           m_Right: 0
           m_Top: 0
           m_Bottom: 0
-        m_Font: {fileID: 12800000, guid: 8d1d45edb7c8ddb43b1147d1019f4711, type: 3}
-        m_FontSize: 15
-        m_FontStyle: 0
+        m_Font: {fileID: 0}
+        m_FontSize: 11
+        m_FontStyle: 1
         m_Alignment: 4
         m_WordWrap: 0
         m_RichText: 1
@@ -118,7 +118,7 @@ MonoBehaviour:
         m_Normal:
           m_Background: {fileID: 0}
           m_ScaledBackgrounds: []
-          m_TextColor: {r: 0.245283, g: 0.245283, b: 0.245283, a: 1}
+          m_TextColor: {r: 0.8584906, g: 0.8584906, b: 0.8584906, a: 1}
         m_Hover:
           m_Background: {fileID: 0}
           m_ScaledBackgrounds: []
@@ -183,7 +183,7 @@ MonoBehaviour:
     - prefix: +
       name: Mini Header (Centered)
       font: {fileID: 0}
-      fontSize: 12
+      fontSize: 10
       fontAlignment: 4
       fontStyle: 1
       modes:
@@ -246,87 +246,9 @@ MonoBehaviour:
           m_Top: 0
           m_Bottom: 0
         m_Font: {fileID: 0}
-        m_FontSize: 12
+        m_FontSize: 10
         m_FontStyle: 1
         m_Alignment: 4
-        m_WordWrap: 0
-        m_RichText: 1
-        m_TextClipping: 0
-        m_ImagePosition: 0
-        m_ContentOffset: {x: 0, y: 0}
-        m_FixedWidth: 0
-        m_FixedHeight: 0
-        m_StretchWidth: 1
-        m_StretchHeight: 0
-    - prefix: ^
-      name: Mini Header (Centered)
-      font: {fileID: 0}
-      fontSize: 11
-      fontAlignment: 3
-      fontStyle: 1
-      modes:
-      - fontColour: {r: 0, g: 0, b: 0, a: 1}
-        backgroundColour: {r: 0.7843138, g: 0.7843138, b: 0.7843138, a: 1}
-      - fontColour: {r: 1, g: 1, b: 1, a: 1}
-        backgroundColour: {r: 0.2671325, g: 0.4473481, b: 0.6509434, a: 1}
-      style:
-        m_Name: 
-        m_Normal:
-          m_Background: {fileID: 0}
-          m_ScaledBackgrounds: []
-          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-        m_Hover:
-          m_Background: {fileID: 0}
-          m_ScaledBackgrounds: []
-          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-        m_Active:
-          m_Background: {fileID: 0}
-          m_ScaledBackgrounds: []
-          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-        m_Focused:
-          m_Background: {fileID: 0}
-          m_ScaledBackgrounds: []
-          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-        m_OnNormal:
-          m_Background: {fileID: 0}
-          m_ScaledBackgrounds: []
-          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-        m_OnHover:
-          m_Background: {fileID: 0}
-          m_ScaledBackgrounds: []
-          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-        m_OnActive:
-          m_Background: {fileID: 0}
-          m_ScaledBackgrounds: []
-          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-        m_OnFocused:
-          m_Background: {fileID: 0}
-          m_ScaledBackgrounds: []
-          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-        m_Border:
-          m_Left: 0
-          m_Right: 0
-          m_Top: 0
-          m_Bottom: 0
-        m_Margin:
-          m_Left: 0
-          m_Right: 0
-          m_Top: 0
-          m_Bottom: 0
-        m_Padding:
-          m_Left: 0
-          m_Right: 0
-          m_Top: 0
-          m_Bottom: 0
-        m_Overflow:
-          m_Left: 0
-          m_Right: 0
-          m_Top: 0
-          m_Bottom: 0
-        m_Font: {fileID: 0}
-        m_FontSize: 11
-        m_FontStyle: 1
-        m_Alignment: 3
         m_WordWrap: 0
         m_RichText: 1
         m_TextClipping: 0
@@ -627,6 +549,8 @@ MonoBehaviour:
       shown: 0
     - name: UIMemmoryInstaller
       shown: 0
+    - name: WalletInstaller
+      shown: 0
     - name: BuilderFromTiles
       shown: 0
     - name: GatesExplosion
@@ -675,6 +599,12 @@ MonoBehaviour:
       shown: 0
     - name: UI_Manager
       shown: 0
+    - name: MachineUpgrade
+      shown: 0
+    - name: WalletSystem
+      shown: 0
+    - name: ResourceView
+      shown: 0
     - name: JunkCar
       shown: 0
     - name: JunkCarManager
@@ -694,6 +624,8 @@ MonoBehaviour:
     - name: SliderValuePass
       shown: 0
     - name: ToggleChangeTextColor
+      shown: 0
+    - name: WalletView
       shown: 0
     - name: TaskManager
       shown: 0

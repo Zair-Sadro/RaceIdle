@@ -40,6 +40,7 @@ public class UIController : MonoBehaviour {
 		{
             if (value)
             {
+				
 				_tween.PlayForward();
 				return;
 			}

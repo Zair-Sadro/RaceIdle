@@ -16,6 +16,7 @@ public class TileMachine : TileCollector
     [SerializeField] private Transform tileFinishPos;
 
     [Zenject.Inject] private ResourceTilesSpawn _tilesSpawner;
+    [Zenject.Inject] private WalletSystem _walletSystem;
     [SerializeField] private PlayerDetector _detectorForRes;
 
 
@@ -125,6 +126,7 @@ public class TileMachine : TileCollector
                                    .SetEase(Ease.InFlash)
                                    .WaitForCompletion();
 
+        _walletSystem.Income(machineFields.Income);
         //PuffEffect();
         productStorage.TileToStack(tile);
         SetState(MachineState.WAIT_FOR_ENOUGH);

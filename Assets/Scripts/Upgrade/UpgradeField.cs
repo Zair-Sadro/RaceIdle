@@ -17,9 +17,9 @@ public class UpgradeField
 
     public float LevelUp()
     {
-        ++level;
-        Price.NextPrice(level);
-        currentField = formula(currentField,delta);
+        level++;
+        Price.PriceUp(level);
+        currentField = formula(FieldValue, delta);
   
         return currentField;
        
@@ -27,7 +27,7 @@ public class UpgradeField
     public UpgradeValues GetValues()
     {
         UpgradeValues values = new UpgradeValues
-            (Price.NextPrice(level) , currentField);
+            (Price.NextPrice(), FieldValue);
 
         return values;
     }
@@ -36,6 +36,7 @@ public class UpgradeField
     public UpgradeField(MachineNumbersData machineData, Func<float, float, float> formula, Func<float,float,float> priceFormula)
     {
         this.startField = machineData.startNumber;
+        this.delta = machineData.DeltaNumber;
         this.formula = formula;
         Price = new UpgradePrice(machineData.startNumberPrice, machineData.DeltaNumberPrice,priceFormula);
     }
@@ -50,10 +51,14 @@ public class UpgradePrice
     private Func<float,float, float> priceFormula;
     public float CurrentPrice => currentPrice != 0 ? currentPrice : startPrice;
     public float StartPrice => startPrice;
-    public float NextPrice(int level)
+    public float PriceUp(int level)
     {
-        currentPrice = priceFormula(currentPrice, deltaPrice);
+        currentPrice = priceFormula(CurrentPrice, deltaPrice);
         return currentPrice;
+    }
+    public float NextPrice()
+    {
+        return priceFormula(CurrentPrice, deltaPrice);
     }
     public UpgradePrice(float startPrice, float deltaPrice, Func<float,float, float> priceFormula)
     {

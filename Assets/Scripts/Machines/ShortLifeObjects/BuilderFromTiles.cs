@@ -18,7 +18,11 @@ public class BuilderFromTiles : TileCollector
     {
 
         if (building.activeInHierarchy)
+        {
+            StopCollect();
+            BuildAndEffect(building);
             AfterBuildAction();
+        }
         else
             BeforeBuildAction();
 

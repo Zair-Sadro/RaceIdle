@@ -31,6 +31,12 @@ public class WalletSystem : MonoBehaviour
             return true;
 
     }
+    public void Income(float amount)
+    {
+        _totalMoney += amount;
+        OnTotalMoneyChange?.Invoke(_totalMoney);
+
+    }
 }
 
 public class ResourceView : MonoBehaviour

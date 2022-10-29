@@ -23,8 +23,8 @@ public class MachineFields
     [SerializeField] private int[] levelsForCapacityUp;
 
     public int MaxTiles => _maxTiles;
-    public float Speed { get; set; }
-    public float Income { get; set; }
+    public float Speed;
+    public float Income;
     public List<ProductRequierment> Requierments => _requierments;
     public TileType ProductType => productType;
 
