@@ -18,11 +18,11 @@ public class UpgradeSlot : MonoBehaviour
     {
         _button.onClick.AddListener(() => action());
     }
-    public void ChangeText(float price,string upgrade)
+    public void ChangeText(float price,float upgrade)
     {
         this.price = price;
-        _priceText.text = price.ToString();
-        _upgradeText.text = upgrade;
+        _priceText.text = price.ToString("F2");
+        _upgradeText.text = upgrade.ToString("F2");
 
     }
     public void CanUpgrade(float walletMoney)

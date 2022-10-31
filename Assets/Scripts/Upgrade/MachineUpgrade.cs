@@ -9,7 +9,9 @@ public class MachineUpgrade : MonoBehaviour
 
     private int[] capacityUpLevels;
     private int indexer;
-    
+
+    public event System.Action<int> OnIncomeUpgraded;
+
     private void Awake()
     {
         machineFields = GetComponent<TileMachine>().machineFields;
@@ -43,6 +45,7 @@ public class MachineUpgrade : MonoBehaviour
         if (level == 0)
         {
             machineFields.Income = Income.LevelUp();
+            OnIncomeUpgraded.Invoke(Income.Level);
         }
 
     }

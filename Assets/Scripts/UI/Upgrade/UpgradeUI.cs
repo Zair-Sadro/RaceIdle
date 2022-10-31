@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,6 +7,8 @@ public class UpgradeUI : UIPanel
 {
     [SerializeField] private GameObject _objectInScene;
     [SerializeField] private MachineUpgrade _machineUpgrade;
+
+    [SerializeField] private UpgradeBar _upgradeBar;
     [SerializeField] private UpgradeSlot _incomeSlot;
     [SerializeField] private UpgradeSlot _speedCapacitySlot;
     [Zenject.Inject] private WalletSystem _wallet;
@@ -65,11 +68,12 @@ public class UpgradeUI : UIPanel
 
         if (_wallet.TrySpendMoney(cost))          
             _machineUpgrade.UpgradeIncome();
-        
+
+
         
 
         upgradeValues = _machineUpgrade.Income.GetValues();
-         _incomeSlot.ChangeText(upgradeValues.price, upgradeValues.value.ToString());
+         _incomeSlot.ChangeText(upgradeValues.price, upgradeValues.value);
         // effects
 
         Debug.Log("Income UP");
@@ -85,7 +89,7 @@ public class UpgradeUI : UIPanel
             _machineUpgrade.UpgradeSpeedCapacity();
 
         upgradeValues = _machineUpgrade.Speed.GetValues();
-        _speedCapacitySlot.ChangeText(upgradeValues.price, upgradeValues.value.ToString());
+        _speedCapacitySlot.ChangeText(upgradeValues.price, upgradeValues.value);
         //effects
 
         Debug.Log("CapacitySpeed UP"); 
@@ -98,13 +102,13 @@ public class UpgradeUI : UIPanel
                .SetEase(Ease.InOutFlash).Pause() ;
     }
 
-    private void RefreshText( )
+    private void RefreshText()
     {
         UpgradeValues upgradeValues = _machineUpgrade.Speed.GetValues();
-        _speedCapacitySlot.ChangeText(upgradeValues.price, upgradeValues.value.ToString());
+        _speedCapacitySlot.ChangeText(upgradeValues.price, upgradeValues.value);
 
         upgradeValues = _machineUpgrade.Income.GetValues();
-        _incomeSlot.ChangeText(upgradeValues.price, upgradeValues.value.ToString());
+        _incomeSlot.ChangeText(upgradeValues.price, upgradeValues.value);
     }
   
 }
