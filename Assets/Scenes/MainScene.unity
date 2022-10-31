@@ -2104,7 +2104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94c0b5bdca1411344ac012843f230280, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _totalMoney: 100
+  _totalMoney: 220
 --- !u!4 &1021194298 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8905867245053420336, guid: 2b21398dc92a318409b9270340353750,
@@ -4780,6 +4780,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7235645437796759800, guid: ca92db339be7ac64381336d4a04772a3,
+        type: 3}
+      propertyPath: m_text
+      value: 220$
       objectReference: {fileID: 0}
     - target: {fileID: 7285353918916754685, guid: ca92db339be7ac64381336d4a04772a3,
         type: 3}
