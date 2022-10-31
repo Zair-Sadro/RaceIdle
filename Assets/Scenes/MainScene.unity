@@ -2046,6 +2046,27 @@ Transform:
   m_Father: {fileID: 287743289}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &951720177 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 724429751707204400, guid: ca92db339be7ac64381336d4a04772a3,
+    type: 3}
+  m_PrefabInstance: {fileID: 7285353918916754682}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &951720182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 951720177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76b45f01232c27b4e85147a956517caa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isHold: 1
+  isHoldDelay: 0
+  isHoldRealtime: 0
 --- !u!1 &1006860343
 GameObject:
   m_ObjectHideFlags: 0
@@ -2723,6 +2744,27 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 779470939}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1474984345 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2753984245791497245, guid: ca92db339be7ac64381336d4a04772a3,
+    type: 3}
+  m_PrefabInstance: {fileID: 7285353918916754682}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1474984350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1474984345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76b45f01232c27b4e85147a956517caa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isHold: 1
+  isHoldDelay: 0
+  isHoldRealtime: 0
 --- !u!114 &1491273017 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1491273019, guid: ca92db339be7ac64381336d4a04772a3,
@@ -4801,6 +4843,11 @@ PrefabInstance:
       propertyPath: _incomeSlot
       value: 
       objectReference: {fileID: 1516552330}
+    - target: {fileID: 7285353918916754685, guid: ca92db339be7ac64381336d4a04772a3,
+        type: 3}
+      propertyPath: _upgradeBar
+      value: 
+      objectReference: {fileID: 7285353918916754688}
     - target: {fileID: 7285353918916754685, guid: ca92db339be7ac64381336d4a04772a3,
         type: 3}
       propertyPath: showOnAwake

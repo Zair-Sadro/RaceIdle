@@ -16,7 +16,7 @@ public class UpgradeSlot : MonoBehaviour
 
     public void InitUpgradeSlot(Action action)
     {
-        _button.onClick.AddListener(() => action());
+        _button.GetComponent<UI_HoldButton>().myEvent +=action;
     }
     public void ChangeText(float price,float upgrade)
     {

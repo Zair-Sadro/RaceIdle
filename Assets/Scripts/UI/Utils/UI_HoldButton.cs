@@ -14,7 +14,7 @@ public class UI_HoldButton : MonoBehaviour, IPointerUpHandler, IPointerDownHandl
     public bool isHoldRealtime = false;
 
 
-    public UnityEvent myEvent;
+    public event Action myEvent;
 
     private void Awake()
     {
