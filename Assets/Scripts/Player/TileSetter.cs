@@ -4,16 +4,6 @@ using UnityEngine;
 using System;
 using Zenject;
 
-[Serializable]
-public class TileSetterData
-{
-
-    public List<Tile> _colectedTiles;
-    public List<Tile> _junkTiles;
-    public List<Tile> _ironTiles;
-
-}
-
 public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
 {
     [SerializeField] private TileSetterData _data;
@@ -32,9 +22,12 @@ public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
 
     [SerializeField]
     private List<Tile> _colectedTiles = new List<Tile>();
-    private List<Tile> _junkTiles = new List<Tile>();
-    private List<Tile> _ironTiles = new List<Tile>();
+    private TileList _junkTiles = new(TileType.Junk);
+    private TileList _ironTiles = new(TileType.Iron);
+    private TileList _plasticTiles = new(TileType.Plastic);
+    private TileList _rubberTiles = new(TileType.Rubber);
 
+    public  Dictionary<TileType, TileList> tilesListsByType = new(4); //Need recode. Crashes OOP...
 
     private bool maxCapacity;
 
@@ -44,11 +37,18 @@ public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
 
     public List<Tile> Tiles => _colectedTiles;
 
-
+    private void Awake()
+    {
+        tilesListsByType[TileType.Junk] = _junkTiles;
+        tilesListsByType[TileType.Iron] = _ironTiles;
+        tilesListsByType[TileType.Plastic] = _plasticTiles;
+        tilesListsByType[TileType.Rubber] = _rubberTiles;
+    }
 
     private void Start()
     {
         OnTilesMaxCapacity += SetTilesColliderStatus;
+        
     }
 
 
@@ -65,7 +65,7 @@ public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
         tile.transform.localRotation = Quaternion.Euler(0, 0, 0);
 
         _colectedTiles.Add(tile);
-        GetTileListByType(tile.Type).Add(tile);
+        tilesListsByType[tile.Type].AddTile(tile);
 
         OnTilesCountChanged?.Invoke(_colectedTiles.Count);
     }
@@ -76,12 +76,28 @@ public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
             StartCoroutine(RemovingTile(type, tilesPlace, interatorCall, needClear));
     }
 
+    public void StopRemovingTiles()
+    {
+
+        _isGivingTiles = false;
+
+    }
+
+
+    public bool MaxTilesCapacity()
+    {
+        maxCapacity = _colectedTiles.Count == maxTiles;
+        return maxCapacity;
+
+    }
+
+
     private IEnumerator RemovingTile(TileType type, Vector3 tilesPlace,Action<Tile> interatorCall,bool needClear)
     {
 
         _isGivingTiles = true;
 
-        List<Tile> tiles =  GetTileListByType(type);
+        TileList tiles = tilesListsByType[type];
         if (tiles == null) yield break;
 
         for (int i = tiles.Count-1; i >= 0; i--)
@@ -91,9 +107,9 @@ public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
             yield return new WaitForSeconds(timeToRemoveTile);
 
             if (needClear)
-                ClearTiles(tiles[i], type);
+                ClearTiles(tiles[i]);
             else
-                RemoveFromList(tiles[i], type);
+                RemoveFromList(tiles[i]);
 
             if (_isGivingTiles == false)
                 yield break;
@@ -101,33 +117,26 @@ public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
         _isGivingTiles = false;
     }
 
-    private void RemoveFromList(Tile tile, TileType type)
+    private void RemoveFromList(Tile tile )
     {
-        GetTileListByType(type).Remove(tile);
+        tilesListsByType[tile.Type].RemoveTile(tile);
         _colectedTiles.Remove(tile);
 
 
         OnTilesCountChanged?.Invoke(_colectedTiles.Count);
     }
 
-    private void ClearTiles(Tile tile,TileType type)
+    private void ClearTiles(Tile tile)
     {
         tile.gameObject.SetActive(false);
         tile.OnGround();
         tile.transform.SetParent(tilesSpawnerParent);
 
-        GetTileListByType(type).Remove(tile);
+        tilesListsByType[tile.Type].RemoveTile(tile);
         _colectedTiles.Remove(tile);
 
 
         OnTilesCountChanged?.Invoke(_colectedTiles.Count);
-    }
-
-    public void StopRemovingTiles()
-    {
-
-        _isGivingTiles = false;
-
     }
 
     private void SetTilesColliderStatus(bool value)
@@ -140,33 +149,8 @@ public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
         }
     }
 
-    public bool MaxTilesCapacity()
-    {
-        maxCapacity = _colectedTiles.Count == maxTiles;
-        return maxCapacity;
 
-    }
-
-    private List<Tile> GetTileListByType(TileType type)
-    {
-        switch (type)
-        {
-            case TileType.Junk:
-                return _junkTiles;
-
-            case TileType.Iron:
-                return _ironTiles;
-
-            case TileType.Rubber:
-                break;
-            case TileType.Plastic:
-                break;
-
-        }
-        return null;
-    }
-
-    public TileSetterData GetData()
+    public TileSetterData GetData()                                             
     {
         return _data;
     }
@@ -176,6 +160,21 @@ public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
         _colectedTiles = data._colectedTiles;
         _ironTiles = data._ironTiles;
         _junkTiles = data._junkTiles;
+        _rubberTiles = data._rubberTiles;
+        _plasticTiles = data._plasticTiles;
     }
 }
+
+[Serializable]
+public class TileSetterData
+{
+
+    public TileList _colectedTiles;
+    public TileList _junkTiles;
+    public TileList _ironTiles;
+    public TileList _plasticTiles;
+    public TileList _rubberTiles;
+
+}
+
 

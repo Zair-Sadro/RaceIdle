@@ -38,20 +38,3 @@ public class WalletSystem : MonoBehaviour
 
     }
 }
-
-public class ResourceView : MonoBehaviour
-{
-    [Zenject.Inject] private WalletSystem _wallet;
-
-    [SerializeField] private TMPro.TMP_Text tx_money;
-    private void OnEnable()
-    {
-        _wallet.OnTotalMoneyChange += ((total) => tx_money.text = total.ToString());
-    }
-    private void OnDisable()
-    {
-        _wallet.OnTotalMoneyChange -= ((total) => tx_money.text = total.ToString());
-    }
-
-   
-}
