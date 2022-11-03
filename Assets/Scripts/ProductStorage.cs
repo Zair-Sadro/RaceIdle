@@ -6,6 +6,7 @@ public class ProductStorage : MonoBehaviour
 {
     private Stack<Tile> _tilesInStorage = new Stack<Tile>();
     [Zenject.Inject] private TileSetter _tileSetter;
+    public IReadOnlyCollection<Tile> TilesInStorage => _tilesInStorage;
 
 
     public void TileToStack(Tile t)

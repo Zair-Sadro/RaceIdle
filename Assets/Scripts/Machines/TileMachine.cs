@@ -12,13 +12,14 @@ public class TileMachine : TileCollector
     [Space(5)]
     [Header("Points & Storages")]
     [SerializeField] private ProductStorage productStorage;
+    [SerializeField] private ProductStorage resourseStorage;
     [SerializeField] private Transform tileStartPos;
     [SerializeField] private Transform tileFinishPos;
 
     [Zenject.Inject] private ResourceTilesSpawn _tilesSpawner;
     [Zenject.Inject] private WalletSystem _walletSystem;
     [SerializeField] private PlayerDetector _detectorForRes;
-
+    public IReadOnlyDictionary<TileType, Stack<Tile>> TilesListsByType => tileListByType;
 
     protected override int maxTileCount => machineFields.MaxTiles;
     protected virtual float machineSpeed => machineFields.Speed;
@@ -45,6 +46,7 @@ public class TileMachine : TileCollector
     private void SetState(MachineState state)
     {
         currentState = state;
+
 
         switch (state)
         {
@@ -138,15 +140,10 @@ public class TileMachine : TileCollector
     #endregion
 
     #region Init&SaveLoad
-
-    private void Start()
+    private void Awake()
     {
         Init();
-        hideAfterCollect = false;
-        OnCollect += (() => SetState(MachineState.WAIT_FOR_ENOUGH));
-        SetState(MachineState.WAIT_FOR_ENOUGH);
     }
-
     protected virtual void Init()
     {
         productRequierments = machineFields.Requierments;
@@ -161,9 +158,12 @@ public class TileMachine : TileCollector
     }
 
 
-
     private void OnEnable()
     {
+        hideAfterCollect = false;
+        OnCollect += (() => SetState(MachineState.WAIT_FOR_ENOUGH));
+        SetState(MachineState.WAIT_FOR_ENOUGH);
+
         _detectorForRes.OnPlayerEnter += Collect;
         _detectorForRes.OnPlayerExit += StopCollect;
 
@@ -174,8 +174,6 @@ public class TileMachine : TileCollector
         _detectorForRes.OnPlayerEnter -= Collect;
         _detectorForRes.OnPlayerExit -= StopCollect;
 
-
-        OnCollect += (() => SetState(MachineState.WAIT_FOR_ENOUGH));
     }
     #endregion
 

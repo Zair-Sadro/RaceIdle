@@ -7,15 +7,12 @@ public class TileCollector : MonoBehaviour
 {
 
 
-    [SerializeField] protected Animator counterAnimator;
 
-    [SerializeField] protected TMPro.TMP_Text counter;
-
-    protected Action<int> OnCountChange;
+    protected Action<int,int> OnCountChange;
 
     [SerializeField] protected virtual int maxTileCount { get; private set; }
     [SerializeField] protected virtual int currentTilesCount { get; set; }
-
+    [SerializeField] protected CounterView _counterView;
 
 
     [Zenject.Inject] protected TileSetter _playerTilesBag;
@@ -31,18 +28,14 @@ public class TileCollector : MonoBehaviour
 
     private void OnEnable()
     {
-        if (counter == null) return;
-        OnCountChange += TextCountVisual;
+        if (_counterView == null) return;
+        OnCountChange += _counterView.TextCountVisual;
     }
     private void OnDisable()
     {
-        OnCountChange -= TextCountVisual;
+        OnCountChange -= _counterView.TextCountVisual;
     }
-    public virtual void TextCountVisual(int maxValue)
-    {
-        counter.text = $"{currentTilesCount}/{maxValue}";
-        counterAnimator.SetTrigger("Plus");
-    }
+
 
     protected virtual void Collect()
     {if (_playerTilesBag._isGivingTiles) return;
@@ -79,4 +72,7 @@ public class TileCollector : MonoBehaviour
         }
     }
 }
+
+
+
 

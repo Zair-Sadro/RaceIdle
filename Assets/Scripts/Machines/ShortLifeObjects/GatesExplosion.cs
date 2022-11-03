@@ -29,8 +29,8 @@ private void OnEnable()
 
         OnEnoughForBuild += AfterBuildAction;
 
-        if (counter == null) return;
-        OnCountChange += TextCountVisual;
+        if (_counterView == null) return;
+        OnCountChange += _counterView.TextCountVisual;
 
     }
     private void OnDisable()
@@ -38,7 +38,7 @@ private void OnEnable()
         _playerDetector.OnPlayerEnter -= Collect;
         _playerDetector.OnPlayerExit -= StopCollect;
 
-        OnCountChange -= TextCountVisual;
+        OnCountChange -= _counterView.TextCountVisual;
         OnEnoughForBuild -= AfterBuildAction;
     }
 

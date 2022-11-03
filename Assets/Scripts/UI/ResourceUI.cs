@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class ResourceView : MonoBehaviour
+public class ResourceUI : MonoBehaviour
 {
     [Zenject.Inject] private WalletSystem _wallet;
     [Zenject.Inject] private TileSetter _tileSetter;
@@ -26,7 +26,7 @@ public class ResourceView : MonoBehaviour
 
     private void Start()
     {
-        SubscribeOnInit(_tileSetter.tilesListsByType);
+        SubscribeOnInit(_tileSetter.TilesListsByType);
     }
 
 
@@ -45,7 +45,7 @@ public class ResourceView : MonoBehaviour
         tx_money.text = total.ToString(); 
     }
 
-    private void SubscribeOnInit(Dictionary<TileType,TileList> dict)
+    private void SubscribeOnInit(IReadOnlyDictionary<TileType,TileList> dict)
     {
         dict[TileType.Junk].OnTileAdded += ChangeTextTileCount;
         dict[TileType.Iron].OnTileAdded += ChangeTextTileCount;

@@ -61,8 +61,8 @@ public class BuilderFromTiles : TileCollector
 
         OnEnoughForBuild += Build;
 
-        if (counter == null) return;
-        OnCountChange += TextCountVisual;
+        if (_counterView == null) return;
+        OnCountChange += _counterView.TextCountVisual;
 
     }
     private void OnDisable()
@@ -70,7 +70,7 @@ public class BuilderFromTiles : TileCollector
         _playerDetector.OnPlayerEnter -= Collect;
         _playerDetector.OnPlayerExit -= StopCollect;
 
-        OnCountChange -= TextCountVisual;
+        OnCountChange -= _counterView.TextCountVisual;
         OnEnoughForBuild -= Build;
     }
    
@@ -92,7 +92,7 @@ public class BuilderFromTiles : TileCollector
     {
         base.RecieveTile(T);
         ++currentTilesCount;
-        OnCountChange?.Invoke(minCountForCheck);
+        OnCountChange?.Invoke(maxTileCount,minCountForCheck);
         if (currentTilesCount >= minCountForCheck)
             OnEnoughForBuild();
     }

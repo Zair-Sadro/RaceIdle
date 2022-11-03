@@ -27,7 +27,10 @@ public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
     private TileList _plasticTiles = new(TileType.Plastic);
     private TileList _rubberTiles = new(TileType.Rubber);
 
-    public  Dictionary<TileType, TileList> tilesListsByType = new(4); //Need recode. Crashes OOP...
+    private  Dictionary<TileType, TileList> tilesListsByType = new(4); 
+    public IReadOnlyDictionary<TileType, TileList> TilesListsByType => tilesListsByType;
+
+
 
     private bool maxCapacity;
 

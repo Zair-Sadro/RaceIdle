@@ -24,7 +24,7 @@ public class MachineUpgrade : MonoBehaviour
     {
         if (level == 0)
         {
-            machineFields.Speed = Speed.LevelUp();
+            machineFields.UpgradeSpeed(Speed);
             CapacityUpgradeCheck();
         }
 
@@ -44,7 +44,7 @@ public class MachineUpgrade : MonoBehaviour
     {
         if (level == 0)
         {
-            machineFields.Income = Income.LevelUp();
+            machineFields.UpgradeIncome(Income);
             OnIncomeUpgraded.Invoke(Income.Level);
         }
 

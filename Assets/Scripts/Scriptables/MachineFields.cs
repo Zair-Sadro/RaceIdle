@@ -15,21 +15,32 @@ public class MachineFields
     [SerializeField] private  MachineNumbersData _incomeNumbers;
     [SerializeField] private  MachineNumbersData _speedNumbers;
     [SerializeField] private int _maxTiles;
-
-    [SerializeField,Tooltip("Кэф прибавления вместимости")]
-     private int _capacityDelta;
-
-
     [SerializeField] private int[] levelsForCapacityUp;
 
+    [SerializeField,Tooltip("Кэф прибавления вместимости")]
+    private int _capacityDelta;
+
+
+
+    private float _income;
+    private float _speed;
+
+        //FIELDS\\
     public int MaxTiles => _maxTiles;
-    public float Speed;
-    public float Income;
+    public float Speed => _speed;
+    public float Income => _income;
     public List<ProductRequierment> Requierments => _requierments;
     public TileType ProductType => productType;
-
     public int CapacityDelta => _capacityDelta;
-
+ 
+    public void UpgradeSpeed(UpgradeField upgradeField)
+    {
+        _speed = upgradeField.LevelUp();
+    }
+    public void UpgradeIncome(UpgradeField upgradeField)
+    {
+        _income = upgradeField.LevelUp(); ;
+    }
     public MachineNumbersData IncomeData()
     {
         return _incomeNumbers;
