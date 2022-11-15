@@ -7,7 +7,7 @@ public class SellSystem: MonoBehaviour
 
     [Zenject.Inject] private TileSetter _tileSetter;
     [SerializeField] private PlayerDetector _playerDetect;
-
+    [SerializeField] private UIPanel _shopPanel;
 
 
     private void OnEnable()
@@ -18,6 +18,7 @@ public class SellSystem: MonoBehaviour
     private void ShowOffer()
     {
         CalculateOffer();
+        _shopPanel.Show();
 
     }
 
@@ -27,6 +28,7 @@ public class SellSystem: MonoBehaviour
     }
 }
 
+//Создать отдельный класс откуда можно получить данные по машинам , цифрам и тд.
 public class IncomeStatistic :MonoBehaviour
 {
     [SerializeField] private List<TileMachine> machinesList;
