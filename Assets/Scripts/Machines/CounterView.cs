@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+
 public class CounterView : MonoBehaviour
 {
 
@@ -10,8 +11,10 @@ public class CounterView : MonoBehaviour
     {
         counter.text = $"{maxValue}/{maxValue}";
         counterAnimator.SetTrigger("Plus");
-    }
 
+    }
+  
+  
 }
 
 

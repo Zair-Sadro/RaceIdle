@@ -2,15 +2,19 @@
 
 public class MachineUpgrade : MonoBehaviour
 {
-    private MachineFields machineFields;
+    [SerializeField] private Mesh[] upgradeMeshes;
+    [SerializeField] private MeshFilter meshFilter;
 
     [HideInInspector]
     public UpgradeField Speed, Income;
+    private MachineFields machineFields;
 
     private int[] capacityUpLevels;
     private int indexer;
 
     public event System.Action<int> OnIncomeUpgraded;
+
+    
 
     private void Awake()
     {
@@ -32,10 +36,11 @@ public class MachineUpgrade : MonoBehaviour
 
          void CapacityUpgradeCheck()
          {
-            if (capacityUpLevels[indexer] == Speed.Level)
+            if (capacityUpLevels?[indexer] == Speed.Level)
             {
                 machineFields.CapacityUp(machineFields.CapacityDelta);
                 indexer++;
+                UpgradeMesh();
             }
          }
     }
@@ -50,6 +55,10 @@ public class MachineUpgrade : MonoBehaviour
 
     }
 
+    private void UpgradeMesh()
+    {
+        meshFilter.mesh = upgradeMeshes?[indexer-1];
+    }
 
     protected virtual void UpgradeDataInit()
     {

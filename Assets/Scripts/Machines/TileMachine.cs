@@ -26,7 +26,7 @@ public class TileMachine : TileCollector
     public float delayMachineTakeTile;
 
     private Action OnCollect;
-    private int minCountForCheck;
+
 
 
     #region "StatesTaskMachine"
@@ -124,7 +124,8 @@ public class TileMachine : TileCollector
         tile.OnTake();
         tile.transform.position = tileStartPos.position;
 
-        yield return tile.transform.DOMove(tileFinishPos.position, 1f)
+        float speedTile = 2.4f - Mathf.Exp(-machineSpeed*0.1f);
+        yield return tile.transform.DOMove(tileFinishPos.position,speedTile)
                                    .SetEase(Ease.InFlash)
                                    .WaitForCompletion();
 
@@ -177,6 +178,7 @@ public class TileMachine : TileCollector
     }
     #endregion
 
+    private int minCountForCheck;
     protected override void RecieveTile(Tile tile)
     {
         tileListByType[tile.Type].Push(tile);
