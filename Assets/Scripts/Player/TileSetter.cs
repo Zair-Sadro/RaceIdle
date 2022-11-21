@@ -51,7 +51,7 @@ public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
     private void Start()
     {
         OnTilesMaxCapacity += SetTilesColliderStatus;
-        
+        GameEventSystem.TileSold +=((type)=> RemoveTiles(type,Vector3.zero,null,true));
     }
 
 
@@ -106,7 +106,7 @@ public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
         for (int i = tiles.Count-1; i >= 0; i--)
         {
             tiles[i].ThrowTo(tilesPlace, timeToRemoveTile);
-            interatorCall.Invoke(tiles[i]);
+            interatorCall?.Invoke(tiles[i]);
             yield return new WaitForSeconds(timeToRemoveTile);
 
             if (needClear)

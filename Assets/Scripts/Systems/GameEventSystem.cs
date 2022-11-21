@@ -16,4 +16,6 @@ public static class GameEventSystem
     public static Action CloseAllPanels;
 
     public static Action<GameObject> ObjectTaped;
+
+    public static Action<TileType> TileSold;
 }

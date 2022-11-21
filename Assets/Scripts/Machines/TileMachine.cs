@@ -118,14 +118,13 @@ public class TileMachine : TileCollector
     {
         producing = true;
 
-        yield return new WaitForSeconds(machineSpeed);
+        yield return new WaitForSeconds(machineSpeed* 0.35f);
 
         var tile = _tilesSpawner.GetTile(typeProduced);
         tile.OnTake();
         tile.transform.position = tileStartPos.position;
 
-        float speedTile = 2.4f - Mathf.Exp(-machineSpeed*0.1f);
-        yield return tile.transform.DOMove(tileFinishPos.position,speedTile)
+        yield return tile.transform.DOMove(tileFinishPos.position, machineSpeed * 0.65f)
                                    .SetEase(Ease.InFlash)
                                    .WaitForCompletion();
 
