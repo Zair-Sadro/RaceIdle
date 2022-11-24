@@ -52,16 +52,13 @@ public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
     {
         OnTilesMaxCapacity += SetTilesColliderStatus;
         GameEventSystem.TileSold +=((type)=> RemoveTiles(type,Vector3.zero,null,true));
+        GameEventSystem.TileBought += AddTile;
     }
 
 
     public void AddTile(Tile tile)
     {
-        if (MaxTilesCapacity())
-        {
-            OnTilesMaxCapacity.Invoke(false); // Отлючаем коллайдеры всех активных тайлов
-            return;
-        }
+
         tile.OnTake();       
         tile.transform.SetParent(setupPoint);
 
@@ -71,6 +68,29 @@ public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
         tilesListsByType[tile.Type].AddTile(tile);
 
         OnTilesCountChanged?.Invoke(_colectedTiles.Count);
+        if (MaxTilesCapacity())
+        {
+            OnTilesMaxCapacity.Invoke(false); // Отлючаем коллайдеры всех активных тайлов
+        }
+    }
+    public void AddTile(TileType type)
+    {
+
+        var tile =_resourceTilesSpawn.GetTile(type);
+        tile.OnTake();
+        tile.transform.SetParent(setupPoint);
+
+        tile.transform.localRotation = Quaternion.Euler(0, 0, 0);
+
+        _colectedTiles.Add(tile);
+        tilesListsByType[tile.Type].AddTile(tile);
+
+        OnTilesCountChanged?.Invoke(_colectedTiles.Count);
+
+        if (MaxTilesCapacity())
+        {
+            OnTilesMaxCapacity.Invoke(false); // Отлючаем коллайдеры всех активных тайлов
+        }
     }
 
     public void RemoveTiles(TileType type,Vector3 tilesPlace,Action<Tile> interatorCall, bool needClear = false)
