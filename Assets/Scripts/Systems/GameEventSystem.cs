@@ -19,6 +19,7 @@ public static class GameEventSystem
 
     public static Action<TileType> TileSold;
     public static Action<TileType> TileBought;
+    public static Action<int> LevelUp;
 
 
 }
