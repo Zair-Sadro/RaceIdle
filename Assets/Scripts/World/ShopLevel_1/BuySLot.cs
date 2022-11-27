@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BuySLot : MonoBehaviour, IRegisterSlot
+public class BuySlot : MonoBehaviour, IRegisterSlot
 {
 
     [SerializeField] private TMP_Text _priceText;

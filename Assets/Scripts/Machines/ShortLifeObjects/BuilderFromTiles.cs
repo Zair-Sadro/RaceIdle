@@ -33,6 +33,8 @@ public class BuilderFromTiles : TileCollector
         {
             minCountForCheck += productRequierments[i].Amount;
         }
+
+        _counterView.InitText(minCountForCheck);
     }
 
     protected virtual void AfterBuildAction()
@@ -92,7 +94,7 @@ public class BuilderFromTiles : TileCollector
     {
         base.RecieveTile(T);
         ++currentTilesCount;
-        OnCountChange?.Invoke(maxTileCount,minCountForCheck);
+        OnCountChange?.Invoke(currentTilesCount, minCountForCheck);
         if (currentTilesCount >= minCountForCheck)
             OnEnoughForBuild();
     }

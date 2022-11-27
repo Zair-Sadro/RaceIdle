@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using System;
 
-[Serializable]
-public class MachineFields 
+[CreateAssetMenu(menuName = "Machine/MachineFields")]
+public class MachineFields:ScriptableObject
 {
 
     [SerializeField] private TileType productType;

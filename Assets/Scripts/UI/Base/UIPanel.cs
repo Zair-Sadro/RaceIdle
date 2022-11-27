@@ -18,7 +18,7 @@ public class UIPanel : UIController
     }
     protected void Close()
     {
-        UIMemmory.ShowUI(this);
+        UIMemmory.CloseUI();
     }
 
 
