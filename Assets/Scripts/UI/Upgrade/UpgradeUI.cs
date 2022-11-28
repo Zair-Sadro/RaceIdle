@@ -19,10 +19,8 @@ public class UpgradeUI : UIPanel
     [SerializeField,Tooltip("Скорость появления панели")] 
     private float showSpeed = 0.5f;
 
-    protected override void Start()
+    private void Start()
     {
-       
-        base.Start();
         PanelInit(GetPanelAnimation());
 
         _incomeSlot.InitUpgradeSlot(IncomeUpgrade);

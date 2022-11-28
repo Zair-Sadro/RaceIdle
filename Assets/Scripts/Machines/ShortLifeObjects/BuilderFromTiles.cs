@@ -5,12 +5,13 @@ using UnityEngine;
 
 public class BuilderFromTiles : TileCollector
 {
-
-
     public GameObject[] collidersAfterBuild,collidersBeforeBuild;
     public GameObject building;
 
+    public BuildType buildType;
+
     [SerializeField] protected PlayerDetector _playerDetector;
+    [Zenject.Inject] protected BuildSaver _buildSaver;
 
     protected int minCountForCheck;
     protected Action OnEnoughForBuild;
@@ -45,6 +46,7 @@ public class BuilderFromTiles : TileCollector
         {
             collidersAfterBuild[i].SetActive(false);
         }
+        Destroy(this);
     }
     protected virtual void BeforeBuildAction()
     {
@@ -56,7 +58,7 @@ public class BuilderFromTiles : TileCollector
         }
     }
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         _playerDetector.OnPlayerEnter += Collect;
         _playerDetector.OnPlayerExit += StopCollect;
@@ -67,7 +69,7 @@ public class BuilderFromTiles : TileCollector
         OnCountChange += _counterView.TextCountVisual;
 
     }
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
         _playerDetector.OnPlayerEnter -= Collect;
         _playerDetector.OnPlayerExit -= StopCollect;
@@ -83,6 +85,7 @@ public class BuilderFromTiles : TileCollector
             StopCollect();
             BuildAndEffect(building);
             AfterBuildAction();
+            _buildSaver.GetBuildInfo(this);
         }
     }
     protected virtual void BuildAndEffect(GameObject b)

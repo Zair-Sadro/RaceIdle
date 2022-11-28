@@ -1,16 +1,20 @@
 ﻿using UnityEngine;
-using UnityEngine.Events;
 using DG.Tweening;
-using System;
 
+[RequireComponent(typeof(CanvasGroup))]
 public class UIController : MonoBehaviour {
 
+	protected CanvasGroup s_canvasGroup;
 	public enum OnHideAction {
 		None,
 		Disable,
 		Destroy,
 	}
 
+    protected virtual void Awake()
+    {
+        
+    }
     public void PanelInit(Tween tween,Tween backTween = null)
     {
 
@@ -42,16 +46,20 @@ public class UIController : MonoBehaviour {
             {
 				
 				_tween.PlayForward();
-				return;
+				_tween.OnComplete(() =>  s_canvasGroup.interactable = true);
+
+                return;
 			}
 
             if (_backTweenInitialized && !value)
             {
-				_backwardTween.PlayForward();
+                s_canvasGroup.interactable = false;
+                _backwardTween.PlayForward();
 			}
             else
             {
-				_tween.PlayBackwards();
+                s_canvasGroup.interactable = false;
+                _tween.PlayBackwards();
 				return;
             }
 		}
@@ -99,12 +107,13 @@ public class UIController : MonoBehaviour {
 		{
 			case OnHideAction.None:
 				break;
+
 			case OnHideAction.Disable:
 				this.gameObject.SetActive(false);
-				_tween.Kill();
 				break;
+
 			case OnHideAction.Destroy:
-				Destroy(this.gameObject);
+                Destroy(this.gameObject);
 				break;
 		}
 

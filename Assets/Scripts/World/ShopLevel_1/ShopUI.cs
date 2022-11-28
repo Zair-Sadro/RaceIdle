@@ -10,9 +10,9 @@ public class ShopUI : UIPanel
 
     private List<IRegisterSlot> _registerSlots;
   
-    protected override void Start()
+    private void Start()
     {
-        base.Start();
+
         GetIRegister();
         PanelInit(GetPanelAnimation());
     }
@@ -56,7 +56,7 @@ public class ShopUI : UIPanel
     private Tween GetPanelAnimation()
     {
         return transform
-       .DOMoveY(0, _showSpeed)
+       .DOScale(Vector3.one, _showSpeed)
        .SetEase(Ease.InOutFlash).Pause();
     }
     #endregion

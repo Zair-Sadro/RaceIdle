@@ -22,27 +22,6 @@ public sealed class GatesExplosion : BuilderFromTiles
     }
 
 
-private void OnEnable()
-    {
-        _playerDetector.OnPlayerEnter += Collect;
-        _playerDetector.OnPlayerExit += StopCollect;
-
-        OnEnoughForBuild += AfterBuildAction;
-
-        if (_counterView == null) return;
-        OnCountChange += _counterView.TextCountVisual;
-
-    }
-    private void OnDisable()
-    {
-        _playerDetector.OnPlayerEnter -= Collect;
-        _playerDetector.OnPlayerExit -= StopCollect;
-
-        OnCountChange -= _counterView.TextCountVisual;
-        OnEnoughForBuild -= AfterBuildAction;
-    }
-
-
     protected override void AfterBuildAction()
     {
         StopCollect();
