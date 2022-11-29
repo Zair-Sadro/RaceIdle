@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7de3df579d18c64c90aa496d93a9fc6, type: 3}
-  m_Name: PlasticMachine
+  m_Name: JunkFields
   m_EditorClassIdentifier: 
-  productType: 3
+  productType: 0
   _requierments: []
   _incomeNumbers:
-    startNumber: 0
-    deltaNumber: 0
-    startNumberPrice: 0
-    deltaNumberPrice: 0
+    startNumber: 10
+    deltaNumber: 1
+    startNumberPrice: 10
+    deltaNumberPrice: 1
   _speedNumbers:
     startNumber: 0
     deltaNumber: 0

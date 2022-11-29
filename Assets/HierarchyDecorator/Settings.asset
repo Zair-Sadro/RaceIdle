@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   globalData:
     showActiveToggles: 1
-    showComponentIcons: 1
+    showComponentIcons: 0
     showAllComponents: 1
     twoToneBackground: 1
-    showLayers: 1
+    showLayers: 0
     editableLayers: 1
     applyChildLayers: 1
   styleData:
@@ -537,11 +537,15 @@ MonoBehaviour:
       shown: 0
     - name: RaceIdleGame
       shown: 0
+    - name: BuildSaverInstaller
+      shown: 0
     - name: InputManagerInstaller
       shown: 0
     - name: MainInstaller
       shown: 0
     - name: MainPlayerInstaller
+      shown: 0
+    - name: StatsValueInfoInstaller
       shown: 0
     - name: TileSetterInstaller
       shown: 0
@@ -558,6 +562,8 @@ MonoBehaviour:
     - name: RecourceView
       shown: 0
     - name: BuilderFromTiles
+      shown: 0
+    - name: BuildSaver
       shown: 0
     - name: GatesExplosion
       shown: 0

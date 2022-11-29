@@ -59,6 +59,7 @@ public class ShopUI : UIPanel
        .DOScale(Vector3.one, _showSpeed)
        .SetEase(Ease.InOutFlash).Pause();
     }
+  
     #endregion
 }
 

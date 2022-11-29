@@ -1,11 +1,14 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 //Создать отдельный класс откуда можно получить данные по машинам , цифрам и тд.
 public class StatsValuesInformator :MonoBehaviour
 {
     [Zenject.Inject] private BuildSaver _buildSaver;
+    [SerializeField] private MachineFields _junkFields;
     private void Start()
     {
+        machineFieldsByType.Add(TileType.Junk, _junkFields);
         foreach (var item in machinesList)
         {
             machineFieldsByType.Add(item.typeProduced, item.machineFields);
@@ -15,8 +18,8 @@ public class StatsValuesInformator :MonoBehaviour
     #region TileMachines
     [SerializeField] private List<TileMachine> machinesList;
 
-    private SortedDictionary<TileType, MachineFields> machineFieldsByType
-        = new SortedDictionary<TileType, MachineFields>();
+    private SortedList<TileType, MachineFields> machineFieldsByType
+        = new SortedList<TileType, MachineFields>();
     public float GetMachineIncome(TileType tileType)
     {
         return machineFieldsByType[tileType].Income;

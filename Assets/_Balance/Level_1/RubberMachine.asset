@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7de3df579d18c64c90aa496d93a9fc6, type: 3}
   m_Name: RubberMachine
   m_EditorClassIdentifier: 
-  productType: 0
+  productType: 2
   _requierments: []
   _incomeNumbers:
     startNumber: 0
