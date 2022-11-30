@@ -1,27 +1,38 @@
 ﻿using DG.Tweening;
+using Sirenix.OdinInspector;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShopUI : UIPanel
+[Serializable]
+public class ShopUI<T> : UIPanel where T : IRegisterSlot
 {
+
     [SerializeField] private ShopSystem _sellSystem;
     [SerializeField] private List<GameObject> _slots;
+    [SerializeField] private Component slotType;
 
 
-    private List<IRegisterSlot> _registerSlots;
-  
-    private void Start()
+    private List<T> _registerSlots;
+    protected override void Awake()
     {
-
+        base.Awake();
         GetIRegister();
         PanelInit(GetPanelAnimation());
+
     }
+
+
     private void GetIRegister()
     {
-        for (int i = 0; i < _slots.Count; i++)
+        if (_slots[0].TryGetComponent<SellSlot>(out var slot)) 
         {
-            _registerSlots.Add(_slots[i].GetComponent<IRegisterSlot>());
+            for (int i = 0; i < _slots.Count; i++)
+            {
+                _registerSlots[i] = _slots[0].GetComponent<T>();
+            }
         }
+      
     }
 
     public override void Show()
@@ -43,8 +54,9 @@ public class ShopUI : UIPanel
         var dict =_sellSystem.PriceInfo;
         var i = 0;
         foreach (var item in dict)
-        {    i++;
+        {   
             _registerSlots[i].RegisterSlot(item.Value.type, item.Value.price, item.Value.count);
+            i++;
         }
 
        
