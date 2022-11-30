@@ -10,6 +10,9 @@ scopes = {
 	"last_search.2138236A" = ""
 	"OpenInspectorPreview.2138236A" = "0"
 	"currentGroup.2138236A" = "scene"
+	"last_search.F8949528" = "Hyper-Casual Characters Stickman"
+	"OpenInspectorPreview.F8949528" = "0"
+	"currentGroup.F8949528" = "all"
 }
 providers = {
 	adb = {
@@ -56,6 +59,7 @@ providers = {
 objectSelectors = {
 }
 recentSearches = [
+	"Hyper-Casual Characters Stickman"
 ]
 searchItemFavorites = [
 ]
