@@ -1,19 +1,16 @@
 ﻿using DG.Tweening;
-using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class ShopUI<T> : UIPanel where T : IRegisterSlot
+public class ShopUI : UIPanel 
 {
 
     [SerializeField] private ShopSystem _sellSystem;
     [SerializeField] private List<GameObject> _slots;
-    [SerializeField] private Component slotType;
 
-
-    private List<T> _registerSlots;
+    private List<IRegisterSlot> _registerSlots=new List<IRegisterSlot>();
     protected override void Awake()
     {
         base.Awake();
@@ -25,18 +22,12 @@ public class ShopUI<T> : UIPanel where T : IRegisterSlot
 
     private void GetIRegister()
     {
-        if (_slots[0].TryGetComponent<SellSlot>(out var slot)) 
-        {
-<<<<<<< HEAD
-            var ireg = _slots[i].GetComponent(typeof(IRegisterSlot)) as IRegisterSlot;
-            _registerSlots.Add(ireg);
-=======
-            for (int i = 0; i < _slots.Count; i++)
-            {
-                _registerSlots[i] = _slots[0].GetComponent<T>();
-            }
->>>>>>> parent of bbc086d (Revert "generic type need")
-        }
+      
+       for (int i = 0; i < _slots.Count; i++)
+       {
+          var ireg = _slots[i].GetComponent(typeof(IRegisterSlot)) as IRegisterSlot;
+         _registerSlots.Add(ireg);
+       }   
       
     }
 
@@ -72,11 +63,8 @@ public class ShopUI<T> : UIPanel where T : IRegisterSlot
     private float _showSpeed = 0.5f;
     private Tween GetPanelAnimation()
     {
-        return s_canvasGroup.DOFade(1, _showSpeed);
+        return s_canvasGroup.DOFade(1, _showSpeed).Pause();
 
-        return transform
-       .DOScale(Vector3.one, _showSpeed)
-       .SetEase(Ease.InOutFlash).Pause();
     }
   
     #endregion

@@ -23,7 +23,7 @@ public class UIController : MonoBehaviour {
     {
 
 		_tween = tween;
-       // _tween.onComplete += (() => s_canvasGroup.interactable = true);
+        _tween.onComplete += (() => s_canvasGroup.blocksRaycasts = true);
 		//_tween.OnStart(()=>
         _backwardTween = backTween;
 		_backTweenInitialized = backTween != null;
@@ -59,12 +59,12 @@ public class UIController : MonoBehaviour {
 
             if (_backTweenInitialized && !value)
             {
-                s_canvasGroup.interactable = false;
+                s_canvasGroup.blocksRaycasts = false;
                 _backwardTween.PlayForward();
 			}
             else
             {
-                s_canvasGroup.interactable = false;
+                s_canvasGroup.blocksRaycasts = false;
                 _tween.PlayBackwards();
 				return;
             }

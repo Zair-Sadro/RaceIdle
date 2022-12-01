@@ -20,12 +20,15 @@ public class ShopSystem: MonoBehaviour
 
     private Dictionary<TileType, TileEcoInfo> _priceByTypeDict = new();
     public IReadOnlyDictionary<TileType, TileEcoInfo> PriceInfo => _priceByTypeDict;
-
+    private void Awake()
+    {
+        
+    }
     private void CalculateSellPrice()
     {
         var dictionary = _tileSetter.TilesListsByType;
 
-        _priceByTypeDict.Clear();
+        _priceByTypeDict.Clear();////////////////////REFACTOR();////////////////////REFACTOR
 
         foreach (var element in dictionary)
             if (dictionary.TryGetValue(element.Key, out var t))
@@ -40,7 +43,7 @@ public class ShopSystem: MonoBehaviour
 
         float CalculateTilePrice(TileType type)
         {
-            var price = _statsValuesInformator.GetMachineIncome(type) * _sellMulti;
+            var price = _statsValuesInformator.GetMachineIncome(type) * _sellMulti+1f;
             return price;
         }
 
@@ -50,7 +53,7 @@ public class ShopSystem: MonoBehaviour
     {
         var listTypes = _statsValuesInformator.GetMaxGainedType();
 
-
+        _priceByTypeDict.Clear(); ////////////////////REFACTOR();////////////////////REFACTOR
         foreach (var type in listTypes) 
         {
             TileEcoInfo tileEcoInfo = new TileEcoInfo(type, 0, CalculateTilePrice(type));

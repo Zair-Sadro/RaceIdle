@@ -45,6 +45,7 @@ public class SellSlot : MonoBehaviour, IRegisterSlot
     {
         GameEventSystem.TileSold.Invoke(_type);
         --_count;
+        _countTileText.text = _count.ToString();
         _wallet.Income(_price);
 
         if (_count <= 0)

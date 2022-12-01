@@ -6,6 +6,7 @@ public class CounterView : MonoBehaviour
 
     [SerializeField] protected Animator counterAnimator;
     [SerializeField] protected TMPro.TMP_Text counter;
+    [SerializeField] protected Sprite tileType;
 
     public virtual void TextCountVisual(int currentCount,int max)
     {

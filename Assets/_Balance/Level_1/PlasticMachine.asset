@@ -13,17 +13,19 @@ MonoBehaviour:
   m_Name: PlasticMachine
   m_EditorClassIdentifier: 
   productType: 3
-  _requierments: []
+  _requierments:
+  - _type: 2
+    _amount: 2
   _incomeNumbers:
-    startNumber: 0
-    deltaNumber: 0
-    startNumberPrice: 0
-    deltaNumberPrice: 0
+    startNumber: 5
+    deltaNumber: 1
+    startNumberPrice: 5
+    deltaNumberPrice: 1
   _speedNumbers:
     startNumber: 0
     deltaNumber: 0
     startNumberPrice: 0
     deltaNumberPrice: 0
-  _maxTiles: 0
+  _maxTiles: 8
   levelsForCapacityUp: 
-  _capacityDelta: 0
+  _capacityDelta: 1
