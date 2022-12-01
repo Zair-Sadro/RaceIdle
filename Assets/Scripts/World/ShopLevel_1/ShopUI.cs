@@ -1,27 +1,43 @@
 ﻿using DG.Tweening;
+using Sirenix.OdinInspector;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShopUI : UIPanel
+[Serializable]
+public class ShopUI<T> : UIPanel where T : IRegisterSlot
 {
+
     [SerializeField] private ShopSystem _sellSystem;
     [SerializeField] private List<GameObject> _slots;
+    [SerializeField] private Component slotType;
 
 
-    private List<IRegisterSlot> _registerSlots;
-  
-    private void Start()
+    private List<T> _registerSlots;
+    protected override void Awake()
     {
-
+        base.Awake();
         GetIRegister();
         PanelInit(GetPanelAnimation());
+
     }
+
+
     private void GetIRegister()
     {
-        for (int i = 0; i < _slots.Count; i++)
+        if (_slots[0].TryGetComponent<SellSlot>(out var slot)) 
         {
-            _registerSlots.Add(_slots[i].GetComponent<IRegisterSlot>());
+<<<<<<< HEAD
+            var ireg = _slots[i].GetComponent(typeof(IRegisterSlot)) as IRegisterSlot;
+            _registerSlots.Add(ireg);
+=======
+            for (int i = 0; i < _slots.Count; i++)
+            {
+                _registerSlots[i] = _slots[0].GetComponent<T>();
+            }
+>>>>>>> parent of bbc086d (Revert "generic type need")
         }
+      
     }
 
     public override void Show()
@@ -43,8 +59,9 @@ public class ShopUI : UIPanel
         var dict =_sellSystem.PriceInfo;
         var i = 0;
         foreach (var item in dict)
-        {    i++;
+        {   
             _registerSlots[i].RegisterSlot(item.Value.type, item.Value.price, item.Value.count);
+            i++;
         }
 
        
@@ -55,6 +72,8 @@ public class ShopUI : UIPanel
     private float _showSpeed = 0.5f;
     private Tween GetPanelAnimation()
     {
+        return s_canvasGroup.DOFade(1, _showSpeed);
+
         return transform
        .DOScale(Vector3.one, _showSpeed)
        .SetEase(Ease.InOutFlash).Pause();

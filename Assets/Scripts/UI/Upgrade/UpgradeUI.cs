@@ -19,7 +19,7 @@ public class UpgradeUI : UIPanel
     [SerializeField,Tooltip("Скорость появления панели")] 
     private float showSpeed = 0.5f;
 
-    private void Start()
+    protected override void Start()
     {
         PanelInit(GetPanelAnimation());
 

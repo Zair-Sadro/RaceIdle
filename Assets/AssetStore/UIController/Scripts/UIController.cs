@@ -13,13 +13,19 @@ public class UIController : MonoBehaviour {
 
     protected virtual void Awake()
     {
-        
+        s_canvasGroup= GetComponent<CanvasGroup>();
     }
+	protected virtual void Start()
+	{
+
+	}
     public void PanelInit(Tween tween,Tween backTween = null)
     {
 
 		_tween = tween;
-		_backwardTween = backTween;
+       // _tween.onComplete += (() => s_canvasGroup.interactable = true);
+		//_tween.OnStart(()=>
+        _backwardTween = backTween;
 		_backTweenInitialized = backTween != null;
 
 		_tween.SetAutoKill(false);
@@ -46,7 +52,7 @@ public class UIController : MonoBehaviour {
             {
 				
 				_tween.PlayForward();
-				_tween.OnComplete(() =>  s_canvasGroup.interactable = true);
+				
 
                 return;
 			}
