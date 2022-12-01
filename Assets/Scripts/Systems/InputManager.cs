@@ -48,7 +48,7 @@ public class InputManager: MonoBehaviour //: GenericSingletonClass<InputManager>
                 _ray = _camera.ScreenPointToRay(new Vector3(_touch.position.x, _touch.position.y, 0));
                 if (Physics.Raycast(_ray, out _raycastHit, Mathf.Infinity))
                 {
-                    if (_raycastHit.collider&&_raycastHit.transform.tag=="UIOpenable")
+                    if (_raycastHit.collider)
                     {
                         GameEventSystem.ObjectTaped?.Invoke(_raycastHit.collider.gameObject);
                         

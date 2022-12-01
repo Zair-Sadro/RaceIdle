@@ -11,7 +11,6 @@ public class SellSlot : MonoBehaviour, IRegisterSlot
 
      [Zenject.Inject] private WalletSystem _wallet;
 
-
      private TileType _type;
      private float _price;
      private float _count;
