@@ -9,7 +9,8 @@ public enum TileType
     Junk,
     Iron,
     Rubber,
-    Plastic
+    Plastic,
+    Default
 }
 
 [RequireComponent(typeof(Rigidbody))]

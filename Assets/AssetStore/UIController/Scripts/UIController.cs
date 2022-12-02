@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using DG.Tweening;
+using System;
 
 [RequireComponent(typeof(CanvasGroup))]
 public class UIController : MonoBehaviour {
@@ -23,8 +24,8 @@ public class UIController : MonoBehaviour {
     {
 
 		_tween = tween;
-        _tween.onComplete += (() => s_canvasGroup.blocksRaycasts = true);
-		//_tween.OnStart(()=>
+        _tween.onComplete += (() => { s_canvasGroup.blocksRaycasts = true; });
+
         _backwardTween = backTween;
 		_backTweenInitialized = backTween != null;
 
@@ -34,8 +35,9 @@ public class UIController : MonoBehaviour {
     }
 
 	public bool showOnAwake = false;
-	public OnHideAction onHideAction = OnHideAction.Disable;
+	private OnHideAction onHideAction = OnHideAction.Disable;
 
+	public event Action OnPanelShow, OnPanelHide;
 	private Tween _tween;
 	private Tween _backwardTween;
 	private bool _backTweenInitialized;
@@ -96,7 +98,9 @@ public class UIController : MonoBehaviour {
 			this.gameObject.SetActive(true);
 		}
 		this.isShow = true;
-	}
+		OnPanelShow.Invoke();
+
+    }
 	public virtual void Hide() {
 		if (!this.isShow) {
 			if (!this.isPlaying) {
@@ -105,7 +109,8 @@ public class UIController : MonoBehaviour {
 			return;
 		}
 		this.isShow = false;
-	}
+        OnPanelHide.Invoke();
+    }
 	protected virtual void OnShow() {}
 	protected virtual void OnHide() 
 	{
