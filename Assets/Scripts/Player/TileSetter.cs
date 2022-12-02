@@ -14,6 +14,7 @@ public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
     [SerializeField] private int maxTiles;
     [Space]
     [SerializeField,Range(0.1f,1f)] private float timeToRemoveTile;
+    [SerializeField] private float delayToRemoveTile=0.7f;
 
     [Inject] private ResourceTilesSpawn _resourceTilesSpawn;
 
@@ -40,8 +41,11 @@ public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
 
     public List<Tile> Tiles => _colectedTiles;
 
+    private float _timeToRemove;
+
     private void Awake()
     {
+        _timeToRemove = timeToRemoveTile * 0.8f;
         tilesListsByType[TileType.Junk] = _junkTiles;
         tilesListsByType[TileType.Iron] = _ironTiles;
         tilesListsByType[TileType.Plastic] = _plasticTiles;
@@ -123,11 +127,13 @@ public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
         TileList tiles = tilesListsByType[type];
         if (tiles == null) yield break;
 
+        yield return new WaitForSeconds(delayToRemoveTile);
+
         for (int i = tiles.Count-1; i >= 0; i--)
         {
             tiles[i].ThrowTo(tilesPlace, timeToRemoveTile);
             interatorCall?.Invoke(tiles[i]);
-            yield return new WaitForSeconds(timeToRemoveTile);
+            yield return new WaitForSeconds(_timeToRemove);
 
             if (needClear)
                 ClearTiles(tiles[i]);

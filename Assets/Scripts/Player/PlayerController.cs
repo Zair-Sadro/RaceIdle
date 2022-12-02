@@ -67,11 +67,8 @@ public class PlayerController : MonoBehaviour
         {
             if(body.velocity != Vector3.zero)
             {
-                var vel = Quaternion.LookRotation(body.velocity);
-                var q = new Quaternion(0,vel.y,0,vel.w);
 
-                transform.rotation = Quaternion.LookRotation(new Vector3(joystick.Horizontal * speed, body.velocity.y, joystick.Vertical * speed));
-
+                transform.rotation = Quaternion.LookRotation(new Vector3(joystick.Horizontal * speed,0, joystick.Vertical * speed));
 
                 CurrentAnimator(_skinAnimatorID).SetBool("Run", true);
                 // dustParticle.gameObject.SetColliderActive(true);
