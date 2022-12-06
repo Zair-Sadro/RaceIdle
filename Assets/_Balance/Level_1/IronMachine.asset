@@ -17,15 +17,15 @@ MonoBehaviour:
   - _type: 0
     _amount: 2
   _incomeNumbers:
-    startNumber: 5
-    deltaNumber: 1.1
-    startNumberPrice: 5
-    deltaNumberPrice: 1.1
-  _speedNumbers:
     startNumber: 1
-    deltaNumber: 1.1
-    startNumberPrice: 10
-    deltaNumberPrice: 1.1
-  _maxTiles: 4
-  levelsForCapacityUp: 050000000f00000019000000230000002d00000037000000410000004b0000005500000064000000
-  _capacityDelta: 1
+    deltaNumber: 1.03
+    startNumberPrice: 6
+    deltaNumberPrice: 1.07
+  _speedNumbers:
+    startNumber: 3
+    deltaNumber: 1.02
+    startNumberPrice: 40
+    deltaNumberPrice: 1.06
+  _maxTiles: 10
+  levelsForCapacityUp: 0a000000140000001e00000028000000320000003c00000046000000500000005a00000064000000
+  _capacityDelta: 5

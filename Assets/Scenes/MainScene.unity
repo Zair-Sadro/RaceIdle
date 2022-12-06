@@ -607,7 +607,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   showOnAwake: 0
-  onHideAction: 1
   _sellSystem: {fileID: 1221983377}
   _slots:
   - {fileID: 170511941}
@@ -623,7 +622,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 149599058}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -3487,7 +3486,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff7e3cc0a661a1a40ad4c42821f9ed16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _data: {}
+  _data:
+    tileSetterData: {}
 --- !u!114 &581427652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4001,14 +4001,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_RootOrder
-      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2777452025526372389, guid: 2ff20477beda89347a36669922582ae1,
         type: 3}
@@ -5096,7 +5088,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   showOnAwake: 0
-  onHideAction: 0
   _objectInScene: {fileID: 1482903660}
   _machineUpgrade: {fileID: 372104192}
   _upgradeBar: {fileID: 1738026437}
@@ -5141,7 +5132,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   showOnAwake: 0
-  onHideAction: 0
   _objectInScene: {fileID: 1095970504}
   _machineUpgrade: {fileID: 1246395513}
   _upgradeBar: {fileID: 1136030140}
@@ -11342,7 +11332,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   showOnAwake: 0
-  onHideAction: 1
   _sellSystem: {fileID: 1221983377}
   _slots:
   - {fileID: 1922624442}
@@ -12350,7 +12339,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.293573, y: -0.2236023}
+  m_AnchoredPosition: {x: 0.293573, y: -0.22363281}
   m_SizeDelta: {x: 659.3226, y: 127.292}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &2141271050
