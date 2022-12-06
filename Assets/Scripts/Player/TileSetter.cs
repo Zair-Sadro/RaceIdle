@@ -57,6 +57,7 @@ public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
         OnTilesMaxCapacity += SetTilesColliderStatus;
         GameEventSystem.TileSold +=((type)=> RemoveTiles(type,Vector3.zero,null,true));
         GameEventSystem.TileBought += AddTile;
+        GameEventSystem.SoldALl += RemoveAll;
     }
 
 
@@ -176,6 +177,15 @@ public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
             tile.SetColliderActive(value);
 
         }
+    }
+    private void RemoveAll()
+    {
+        for (int i = 0; i < _colectedTiles.Count; i++)
+        {
+            ClearTiles(_colectedTiles[i]);
+
+        }
+        _colectedTiles.Clear();
     }
 
 

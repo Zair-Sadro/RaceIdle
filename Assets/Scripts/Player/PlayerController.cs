@@ -23,8 +23,6 @@ public class PlayerController : MonoBehaviour
     #region Properties
 
     public Animator Animator => CurrentAnimator(_skinAnimatorID);
-    public Vector3 PlayerDirection { get; set; }
-    public Transform Transform => this.transform;
 
     #endregion
 
@@ -38,10 +36,6 @@ public class PlayerController : MonoBehaviour
         CheckSkin();
     }
 
-    private void Update()
-    {
-        
-    }
     private void FixedUpdate()
     {
         Move();
@@ -104,25 +98,9 @@ public class PlayerController : MonoBehaviour
         _skinAnimatorID = PlayerPrefs.GetInt("BodySkin_ID");
     }
 
-
-    public void Stop()
-    {
-        body.velocity = Vector3.zero;
-        CurrentAnimator(_skinAnimatorID).SetBool("Run", false);
-    }
-
-    public void SetSpeed(float speed)
-    {
-        this.speed = speed;
-    }
-
    private Animator CurrentAnimator(int id)
    {
         return skins[id];
    }
 
-    public void DieAnimation()
-    {
-        CurrentAnimator(_skinAnimatorID).SetTrigger("Die");
-    }
 }

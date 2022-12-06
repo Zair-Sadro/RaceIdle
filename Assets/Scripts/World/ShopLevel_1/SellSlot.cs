@@ -9,12 +9,15 @@ public class SellSlot : MonoBehaviour, IRegisterSlot
 
      [SerializeField] private Button _sellOneButt;
 
+
      [Zenject.Inject] private WalletSystem _wallet;
 
 
      private TileType _type;
      private float _price;
      private float _count;
+
+    public float AllPrice => _price * _count;
 
     // same as constructor or Instantiate() slot with needed info 
     public void RegisterSlot(TileType type,float price,int count)

@@ -22,6 +22,11 @@ public class WalletSystem : MonoBehaviour
 
         return true;
     }
+    /// <summary>
+    /// Return TRUE  if money is enough
+    /// </summary>
+    /// <param name="amount"></param>
+    /// <returns></returns>
     public bool CompareMoney(float amount)
     {
         if (amount > _totalMoney)
