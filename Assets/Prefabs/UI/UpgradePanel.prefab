@@ -1421,7 +1421,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   showOnAwake: 1
-  onHideAction: 1
 --- !u!225 &675668304994570422
 CanvasGroup:
   m_ObjectHideFlags: 0
