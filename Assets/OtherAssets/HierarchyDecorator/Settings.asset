@@ -258,6 +258,84 @@ MonoBehaviour:
         m_FixedHeight: 0
         m_StretchWidth: 1
         m_StretchHeight: 0
+    - prefix: ^
+      name: Mini Header (Centered)
+      font: {fileID: 0}
+      fontSize: 10
+      fontAlignment: 4
+      fontStyle: 1
+      modes:
+      - fontColour: {r: 1, g: 1, b: 1, a: 1}
+        backgroundColour: {r: 0.251068, g: 0.471332, b: 0.5849056, a: 1}
+      - fontColour: {r: 1, g: 1, b: 1, a: 1}
+        backgroundColour: {r: 0.2671325, g: 0.4473481, b: 0.6509434, a: 1}
+      style:
+        m_Name: 
+        m_Normal:
+          m_Background: {fileID: 0}
+          m_ScaledBackgrounds: []
+          m_TextColor: {r: 1, g: 1, b: 1, a: 1}
+        m_Hover:
+          m_Background: {fileID: 0}
+          m_ScaledBackgrounds: []
+          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+        m_Active:
+          m_Background: {fileID: 0}
+          m_ScaledBackgrounds: []
+          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+        m_Focused:
+          m_Background: {fileID: 0}
+          m_ScaledBackgrounds: []
+          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+        m_OnNormal:
+          m_Background: {fileID: 0}
+          m_ScaledBackgrounds: []
+          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+        m_OnHover:
+          m_Background: {fileID: 0}
+          m_ScaledBackgrounds: []
+          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+        m_OnActive:
+          m_Background: {fileID: 0}
+          m_ScaledBackgrounds: []
+          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+        m_OnFocused:
+          m_Background: {fileID: 0}
+          m_ScaledBackgrounds: []
+          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+        m_Border:
+          m_Left: 0
+          m_Right: 0
+          m_Top: 0
+          m_Bottom: 0
+        m_Margin:
+          m_Left: 0
+          m_Right: 0
+          m_Top: 0
+          m_Bottom: 0
+        m_Padding:
+          m_Left: 0
+          m_Right: 0
+          m_Top: 0
+          m_Bottom: 0
+        m_Overflow:
+          m_Left: 0
+          m_Right: 0
+          m_Top: 0
+          m_Bottom: 0
+        m_Font: {fileID: 0}
+        m_FontSize: 10
+        m_FontStyle: 1
+        m_Alignment: 4
+        m_WordWrap: 0
+        m_RichText: 1
+        m_TextClipping: 0
+        m_ImagePosition: 0
+        m_ContentOffset: {x: 0, y: 0}
+        m_FixedWidth: 0
+        m_FixedHeight: 0
+        m_StretchWidth: 1
+        m_StretchHeight: 0
   componentData:
     showMissingScriptsWarning: 0
     unityComponents:
@@ -535,7 +613,21 @@ MonoBehaviour:
       shown: 0
     - name: VariableJoystick
       shown: 0
+    - name: CircleSlider
+      shown: 0
+    - name: JustRotate
+      shown: 0
+    - name: SliderRunTo1
+      shown: 0
+    - name: SliderRunTo1Action
+      shown: 0
+    - name: SliderValuePass
+      shown: 0
+    - name: ToggleChangeTextColor
+      shown: 0
     - name: RaceIdleGame
+      shown: 0
+    - name: StatsValuesInformator
       shown: 0
     - name: BuildSaverInstaller
       shown: 0
@@ -555,8 +647,6 @@ MonoBehaviour:
       shown: 0
     - name: WalletInstaller
       shown: 0
-    - name: CounterView
-      shown: 0
     - name: ProductView
       shown: 0
     - name: RecourceView
@@ -567,23 +657,19 @@ MonoBehaviour:
       shown: 0
     - name: GatesExplosion
       shown: 0
-    - name: StatsValuesInformator
-      shown: 0
     - name: TileCollector
       shown: 0
     - name: TileMachine
       shown: 0
     - name: PlayerController
       shown: 0
-    - name: PlayerSlash
+    - name: PlayerDetector
       shown: 0
-    - name: TileSetter
+    - name: PlayerSlash
       shown: 0
     - name: ProductStorage
       shown: 0
     - name: InputManager
-      shown: 0
-    - name: PlayerDetector
       shown: 0
     - name: ResourceTilesSpawn
       shown: 0
@@ -597,6 +683,8 @@ MonoBehaviour:
       shown: 0
     - name: Tile
       shown: 0
+    - name: TileSetter
+      shown: 0
     - name: UIMemmory
       shown: 0
     - name: UIPanel
@@ -606,6 +694,14 @@ MonoBehaviour:
     - name: ResourceUI
       shown: 0
     - name: SafeAreaDetection
+      shown: 0
+    - name: BuySlot
+      shown: 0
+    - name: SellSlot
+      shown: 0
+    - name: ShopUI
+      shown: 0
+    - name: SellAllButton
       shown: 0
     - name: UpgradeBar
       shown: 0
@@ -621,33 +717,21 @@ MonoBehaviour:
       shown: 0
     - name: MachineUpgrade
       shown: 0
+    - name: AutoRepair
+      shown: 0
+    - name: CarRider
+      shown: 0
+    - name: ShopSystem
+      shown: 0
+    - name: CounterView
+      shown: 0
     - name: JunkCar
       shown: 0
     - name: JunkCarManager
       shown: 0
     - name: OnObjectClickHelper
       shown: 0
-    - name: BuySlot
-      shown: 0
-    - name: SellSlot
-      shown: 0
-    - name: ShopSystem
-      shown: 0
-    - name: ShopUI
-      shown: 0
-    - name: TweenTest
-      shown: 0
-    - name: CircleSlider
-      shown: 0
-    - name: JustRotate
-      shown: 0
-    - name: SliderRunTo1
-      shown: 0
-    - name: SliderRunTo1Action
-      shown: 0
-    - name: SliderValuePass
-      shown: 0
-    - name: ToggleChangeTextColor
+    - name: Race
       shown: 0
     - name: TaskManager
       shown: 0
@@ -949,6 +1033,50 @@ MonoBehaviour:
       shown: 0
     - name: TCP2_ShaderUpdateUnityTime
       shown: 0
+    - name: BlankUser
+      shown: 0
+    - name: EdgeColliderGenerator
+      shown: 0
+    - name: LengthCalculator
+      shown: 0
+    - name: MeshGenerator
+      shown: 0
+    - name: Node
+      shown: 0
+    - name: ObjectBender
+      shown: 0
+    - name: ObjectController
+      shown: 0
+    - name: ParticleController
+      shown: 0
+    - name: PathGenerator
+      shown: 0
+    - name: PolygonColliderGenerator
+      shown: 0
+    - name: SplineComputer
+      shown: 0
+    - name: SplineFollower
+      shown: 0
+    - name: SplineMesh
+      shown: 0
+    - name: SplineMorph
+      shown: 0
+    - name: SplinePositioner
+      shown: 0
+    - name: SplineProjector
+      shown: 0
+    - name: SplineRenderer
+      shown: 0
+    - name: SplineTracer
+      shown: 0
+    - name: SplineUser
+      shown: 0
+    - name: SurfaceGenerator
+      shown: 0
+    - name: TubeGenerator
+      shown: 0
+    - name: WaveformGenerator
+      shown: 0
     - name: PixelPerfectCamera
       shown: 0
     - name: CinemachineUniversalPixelPerfect
@@ -1151,6 +1279,10 @@ MonoBehaviour:
       shown: 0
     - name: GameViewEventCatcher
       shown: 0
+    - name: AsyncJobSystem
+      shown: 0
+    - name: Singleton`1
+      shown: 0
     - name: Foo3
       shown: 0
     - name: Foo2
@@ -1328,6 +1460,162 @@ MonoBehaviour:
     - name: Foo
       shown: 0
     - name: Gorp
+      shown: 0
+    - name: AsyncAwakeTrigger
+      shown: 0
+    - name: AsyncDestroyTrigger
+      shown: 0
+    - name: AsyncStartTrigger
+      shown: 0
+    - name: AsyncTriggerBase`1
+      shown: 0
+    - name: AsyncFixedUpdateTrigger
+      shown: 0
+    - name: AsyncLateUpdateTrigger
+      shown: 0
+    - name: AsyncAnimatorIKTrigger
+      shown: 0
+    - name: AsyncAnimatorMoveTrigger
+      shown: 0
+    - name: AsyncApplicationFocusTrigger
+      shown: 0
+    - name: AsyncApplicationPauseTrigger
+      shown: 0
+    - name: AsyncApplicationQuitTrigger
+      shown: 0
+    - name: AsyncAudioFilterReadTrigger
+      shown: 0
+    - name: AsyncBecameInvisibleTrigger
+      shown: 0
+    - name: AsyncBecameVisibleTrigger
+      shown: 0
+    - name: AsyncBeforeTransformParentChangedTrigger
+      shown: 0
+    - name: AsyncOnCanvasGroupChangedTrigger
+      shown: 0
+    - name: AsyncCollisionEnterTrigger
+      shown: 0
+    - name: AsyncCollisionEnter2DTrigger
+      shown: 0
+    - name: AsyncCollisionExitTrigger
+      shown: 0
+    - name: AsyncCollisionExit2DTrigger
+      shown: 0
+    - name: AsyncCollisionStayTrigger
+      shown: 0
+    - name: AsyncCollisionStay2DTrigger
+      shown: 0
+    - name: AsyncControllerColliderHitTrigger
+      shown: 0
+    - name: AsyncDisableTrigger
+      shown: 0
+    - name: AsyncDrawGizmosTrigger
+      shown: 0
+    - name: AsyncDrawGizmosSelectedTrigger
+      shown: 0
+    - name: AsyncEnableTrigger
+      shown: 0
+    - name: AsyncGUITrigger
+      shown: 0
+    - name: AsyncJointBreakTrigger
+      shown: 0
+    - name: AsyncJointBreak2DTrigger
+      shown: 0
+    - name: AsyncMouseDownTrigger
+      shown: 0
+    - name: AsyncMouseDragTrigger
+      shown: 0
+    - name: AsyncMouseEnterTrigger
+      shown: 0
+    - name: AsyncMouseExitTrigger
+      shown: 0
+    - name: AsyncMouseOverTrigger
+      shown: 0
+    - name: AsyncMouseUpTrigger
+      shown: 0
+    - name: AsyncMouseUpAsButtonTrigger
+      shown: 0
+    - name: AsyncParticleCollisionTrigger
+      shown: 0
+    - name: AsyncParticleSystemStoppedTrigger
+      shown: 0
+    - name: AsyncParticleTriggerTrigger
+      shown: 0
+    - name: AsyncParticleUpdateJobScheduledTrigger
+      shown: 0
+    - name: AsyncPostRenderTrigger
+      shown: 0
+    - name: AsyncPreCullTrigger
+      shown: 0
+    - name: AsyncPreRenderTrigger
+      shown: 0
+    - name: AsyncRectTransformDimensionsChangeTrigger
+      shown: 0
+    - name: AsyncRectTransformRemovedTrigger
+      shown: 0
+    - name: AsyncRenderImageTrigger
+      shown: 0
+    - name: AsyncRenderObjectTrigger
+      shown: 0
+    - name: AsyncServerInitializedTrigger
+      shown: 0
+    - name: AsyncTransformChildrenChangedTrigger
+      shown: 0
+    - name: AsyncTransformParentChangedTrigger
+      shown: 0
+    - name: AsyncTriggerEnterTrigger
+      shown: 0
+    - name: AsyncTriggerEnter2DTrigger
+      shown: 0
+    - name: AsyncTriggerExitTrigger
+      shown: 0
+    - name: AsyncTriggerExit2DTrigger
+      shown: 0
+    - name: AsyncTriggerStayTrigger
+      shown: 0
+    - name: AsyncTriggerStay2DTrigger
+      shown: 0
+    - name: AsyncValidateTrigger
+      shown: 0
+    - name: AsyncWillRenderObjectTrigger
+      shown: 0
+    - name: AsyncResetTrigger
+      shown: 0
+    - name: AsyncUpdateTrigger
+      shown: 0
+    - name: AsyncBeginDragTrigger
+      shown: 0
+    - name: AsyncCancelTrigger
+      shown: 0
+    - name: AsyncDeselectTrigger
+      shown: 0
+    - name: AsyncDragTrigger
+      shown: 0
+    - name: AsyncDropTrigger
+      shown: 0
+    - name: AsyncEndDragTrigger
+      shown: 0
+    - name: AsyncInitializePotentialDragTrigger
+      shown: 0
+    - name: AsyncMoveTrigger
+      shown: 0
+    - name: AsyncPointerClickTrigger
+      shown: 0
+    - name: AsyncPointerDownTrigger
+      shown: 0
+    - name: AsyncPointerEnterTrigger
+      shown: 0
+    - name: AsyncPointerExitTrigger
+      shown: 0
+    - name: AsyncPointerUpTrigger
+      shown: 0
+    - name: AsyncScrollTrigger
+      shown: 0
+    - name: AsyncSelectTrigger
+      shown: 0
+    - name: AsyncSubmitTrigger
+      shown: 0
+    - name: AsyncUpdateSelectedTrigger
       shown: 0
     - name: EmittedMonoBehaviour
       shown: 0
