@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AutoRepair : TileCollector
 {
@@ -24,10 +25,10 @@ public class AutoRepair : TileCollector
     private Dictionary<TileType,ProductRequierment> _productRequierments=new();
 
 
-
+    private bool _carRiding;
     protected override void Collect()
     {
-        if (_playerTilesBag._isGivingTiles) return;
+        if (_playerTilesBag._isGivingTiles|| _carRiding) return;
 
 
         for (int i = 0; i < _requiredTypesCount; i++)
@@ -39,24 +40,20 @@ public class AutoRepair : TileCollector
     }
     private IEnumerator Repair() 
     {
+        _carRiding = true;
         _detectorForRes.OnPlayerEnter -= Collect;
         _detectorForRes.OnPlayerExit -= StopCollect;
         _car.SetActive(true);
-        yield return null;
+        yield return new WaitForSeconds(2f);
+        _carRiding = false;
 
     }
     #region Init&SaveLoad
    
     protected virtual void Init()
     {
-        var data = _data.GetRequierments(repairLevel);
-        var lenght = data.RequiermentsList.Count;
-      
-        for (int i = 0; i < lenght; i++)
-        {
-            var colcount = (data.RequiermentsList[i]);
-            _productRequierments.Add(colcount.Type,colcount);
-        }
+
+        GetRequired();
 
     }
 
@@ -92,6 +89,32 @@ public class AutoRepair : TileCollector
 
     }
 
+    private void GetRequired()
+    {
+        var data = _data.GetRequierments(repairLevel);
+        var lenght = data.RequiermentsList.Count;
+
+
+        for (int i = 0; i < lenght; i++)
+        {
+            var colcount = (data.RequiermentsList[i]);
+            _productRequierments.Add(colcount.Type, colcount);
+        }
+    }
+
+
+}
+
+public class CarRider: MonoBehaviour
+{
+    [SerializeField] private RiderData _data;
+    private float _speed;
+    private Animator _animator;
+
+}
+
+public class RiderData :ScriptableObject
+{
 
 }
 

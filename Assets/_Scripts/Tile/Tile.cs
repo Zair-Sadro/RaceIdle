@@ -51,6 +51,11 @@ public class Tile : MonoBehaviour
         coll.enabled = false;
         body.isKinematic = true;
     }
+    public void Jump(Vector3 pos,float power,Action onJumpDone)
+    {
+        transform.DOJump(pos, power, 1, 0.5f).SetEase(Ease.InSine)
+            .OnComplete(()=>onJumpDone.Invoke());
+    }
     public void OnStorage(Transform t)
     {
         gameObject.SetActive(true);

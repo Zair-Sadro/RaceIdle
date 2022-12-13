@@ -98,7 +98,7 @@ public class UIController : MonoBehaviour {
 			this.gameObject.SetActive(true);
 		}
 		this.isShow = true;
-		OnPanelShow.Invoke();
+		OnPanelShow?.Invoke();
 
     }
 	public virtual void Hide() {
@@ -109,7 +109,7 @@ public class UIController : MonoBehaviour {
 			return;
 		}
 		this.isShow = false;
-        OnPanelHide.Invoke();
+        OnPanelHide?.Invoke();
     }
 	protected virtual void OnShow() {}
 	protected virtual void OnHide() 

@@ -13,6 +13,7 @@ public class ProductStorage : MonoBehaviour
     {
         _tilesInStorage.Push(t);
         t.transform.parent = transform;
+        t.transform.rotation = new Quaternion(0, 0, 0, 0);
     }
     
     private void OnTriggerEnter(Collider other)

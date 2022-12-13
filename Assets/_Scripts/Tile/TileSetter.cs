@@ -12,6 +12,7 @@ public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
     [Header("Add to Unit Settings")]
     [SerializeField] private Transform setupPoint;
     [SerializeField] private int maxTiles;
+    [SerializeField] private float powerTileJump=2f;
     [Space]
     [SerializeField,Range(0.1f,1f)] private float timeToRemoveTile;
     [SerializeField] private float delayToRemoveTile=0.7f;
@@ -64,10 +65,13 @@ public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
     public void AddTile(Tile tile)
     {
 
-        tile.OnTake();       
-        tile.transform.SetParent(setupPoint);
+        tile.OnTake();
+        tile.Jump(setupPoint.position, powerTileJump, () =>
+        {
+            tile.transform.SetParent(setupPoint);
+            tile.transform.localRotation = Quaternion.Euler(0, 0, 0);
+        });
 
-        tile.transform.localRotation = Quaternion.Euler(0, 0, 0);
 
         _colectedTiles.Add(tile);
         tilesListsByType[tile.Type].AddTile(tile);
@@ -78,6 +82,10 @@ public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
             OnTilesMaxCapacity.Invoke(false); // Отлючаем коллайдеры всех активных тайлов
         }
     }
+    /// <summary>
+    /// Used only from tile shop after buy
+    /// </summary>
+    /// <param name="type"></param>
     public void AddTile(TileType type)
     {
 
@@ -86,6 +94,7 @@ public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
         tile.transform.SetParent(setupPoint);
 
         tile.transform.localRotation = Quaternion.Euler(0, 0, 0);
+
 
         _colectedTiles.Add(tile);
         tilesListsByType[tile.Type].AddTile(tile);
