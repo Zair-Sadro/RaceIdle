@@ -1,30 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Net.Http.Headers;
 using UnityEngine;
 
 public class BuildSaver: MonoBehaviour,ISaveLoad<BuildingsData>
 {
     [SerializeField] private BuildingsData data;
+    [SerializeField] private List<BuilderFromTiles> _buildings;
 
-    #region Builders in scene
-    [SerializeField] private BuilderFromTiles[] machineTools;
-    [SerializeField] private BuilderFromTiles[] levelBridges;
-    #endregion
+    private Dictionary<byte, BuilderFromTiles> _buildingsById=new();
+    public int TileInvented => data.machineTileCount;
 
-    private int _machineTileCount;
-    public int TileInvented => _machineTileCount;
+    private void Start()
+    {
+        FillIDs();
+    }
     public void GetBuildInfo(BuilderFromTiles builder)
     {
         switch (builder.buildType)
         {
             case BuildType.SimpleBuild:
-                data.simpleBuilders.Add(builder); 
+                data.Buildings.Add(builder.BuildID); 
                 break;
 
             case BuildType.MachineTile:
-                _machineTileCount++;
-                data.machineToolsBuilders.Add(builder);
+                data.machineTileCount++;
+                data.Buildings.Add(builder.BuildID);
                 break;
 
             case BuildType.NextLvlMachineTile:
@@ -41,8 +43,21 @@ public class BuildSaver: MonoBehaviour,ISaveLoad<BuildingsData>
 
     public void Initialize(BuildingsData data)
     {
-       
+        FillIDs();
+        foreach (var id in data.Buildings)
+        {
+            _buildingsById[id].BuildBySaver();
+        }
     }
+    private void FillIDs()
+    {
+     if(_buildingsById.Count==0)   
+        foreach (var building in _buildings)
+        {
+            _buildingsById.Add(building.BuildID, building);
+        }
+    }
+
 }
 public enum BuildType
 {
@@ -53,7 +68,8 @@ public enum BuildType
 [Serializable]
 public class BuildingsData
 {
-   public List<BuilderFromTiles> machineToolsBuilders;
-   public List<BuilderFromTiles> simpleBuilders;
+   public int machineTileCount;
+   public List<byte> Buildings;
+
 
 }

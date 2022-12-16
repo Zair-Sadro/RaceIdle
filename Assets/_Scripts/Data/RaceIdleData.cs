@@ -6,5 +6,6 @@ using UnityEngine;
 public class RaceIdleData 
 {
     public TileSetterData tileSetterData;
+    public BuildSaver buildSaver;
     
 }

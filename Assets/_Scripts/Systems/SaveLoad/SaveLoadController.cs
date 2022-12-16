@@ -27,6 +27,9 @@ public class SaveLoadController : MonoBehaviour
     // save _data when close the app
     private void OnApplicationPause(bool pauseStatus)
     {
+
+        if (!isEnable)
+            return;
         if (pauseStatus)
         {
             FileIOUtility.WriteToJson("save._data", game.GetData());
@@ -38,6 +41,9 @@ public class SaveLoadController : MonoBehaviour
 
     private void OnApplicationQuit()
     {
+
+        if (!isEnable)
+            return;
         FileIOUtility.WriteToJson("save._data", game.GetData());
         Debug.Log("Game _data has saved successfully!");
         //DOTween.KillAll();

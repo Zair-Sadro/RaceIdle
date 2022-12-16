@@ -1,3 +1,4 @@
+using Newtonsoft.Json.Bson;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,16 +6,24 @@ using UnityEngine;
 
 public class BuilderFromTiles : TileCollector
 {
+    [Tooltip("Off")]
     public GameObject[] collidersAfterBuild,collidersBeforeBuild;
+    [Tooltip("On")]
+    public GameObject[] collidersAfterBuildOn, collidersBeforeBuildOn;
     public GameObject building;
 
+    [SerializeField] private byte _buildid;
+
     public BuildType buildType;
+    public byte BuildID => _buildid;
 
     [SerializeField] protected PlayerDetector _playerDetector;
     [Zenject.Inject] protected BuildSaver _buildSaver;
 
     protected int minCountForCheck;
     protected Action OnEnoughForBuild;
+
+
     private void Start()
     {
 
@@ -40,22 +49,37 @@ public class BuilderFromTiles : TileCollector
 
     protected virtual void AfterBuildAction()
     {
-        if (collidersAfterBuild.Length <= 0) return;
-
-        for (int i = 0; i < collidersAfterBuild.Length; i++)
-        {
+        if (collidersAfterBuild.Length > 0)
+         for (int i = 0; i < collidersAfterBuild.Length; i++)
+         {
             collidersAfterBuild[i].SetActive(false);
-        }
+            collidersAfterBuildOn[i].SetActive(true);
+         }
+
+
+        if (collidersAfterBuildOn.Length > 0)
+            for (int i = 0; i < collidersAfterBuild.Length; i++)
+            {
+               
+                collidersAfterBuildOn[i].SetActive(true);
+            }
+
         Destroy(this);
     }
     protected virtual void BeforeBuildAction()
     {
-        if (collidersBeforeBuild.Length <= 0) return;
-
-        for (int i = 0; i < collidersBeforeBuild.Length; i++)
-        {
+        if (collidersBeforeBuild.Length > 0) 
+         for (int i = 0; i < collidersBeforeBuild.Length; i++)
+         {
             collidersBeforeBuild[i].SetActive(false);
-        }
+            collidersBeforeBuildOn[i].SetActive(true);
+         }
+
+        if (collidersBeforeBuildOn.Length > 0)
+            for (int i = 0; i < collidersBeforeBuild.Length; i++)
+            {
+                collidersBeforeBuildOn[i].SetActive(true);
+            }
     }
 
     protected virtual void OnEnable()
@@ -87,6 +111,11 @@ public class BuilderFromTiles : TileCollector
             AfterBuildAction();
             _buildSaver.GetBuildInfo(this);
         }
+    }
+    public virtual void BuildBySaver()
+    {
+        building.SetActive(true);
+        AfterBuildAction();
     }
     protected virtual void BuildAndEffect(GameObject b)
     {

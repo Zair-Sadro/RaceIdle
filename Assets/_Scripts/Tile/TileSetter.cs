@@ -46,7 +46,7 @@ public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
 
     private void Awake()
     {
-        _timeToRemove = timeToRemoveTile * 0.8f;
+        _timeToRemove = timeToRemoveTile * 1.1f;
         tilesListsByType[TileType.Junk] = _junkTiles;
         tilesListsByType[TileType.Iron] = _ironTiles;
         tilesListsByType[TileType.Plastic] = _plasticTiles;
@@ -109,13 +109,12 @@ public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
 
     public void RemoveTiles(TileType type,Vector3 tilesPlace,Action<Tile> interatorCall, bool needClear = false)
     {
-        if (!_isGivingTiles)
+        if (!_isGivingTiles && tilesListsByType[type].Count>0)
             StartCoroutine(RemovingTile(type, tilesPlace, interatorCall, needClear));
     }
 
     public void StopRemovingTiles()
     {
-
         _isGivingTiles = false;
 
     }
@@ -143,17 +142,28 @@ public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
         {
             tiles[i].ThrowTo(tilesPlace, timeToRemoveTile);
             interatorCall?.Invoke(tiles[i]);
-            yield return new WaitForSeconds(_timeToRemove);
+
+            yield return WaitAndClearTile(timeToRemoveTile, needClear, tiles[i]);
+               /* new WaitForSeconds(_timeToRemove);
 
             if (needClear)
                 ClearTiles(tiles[i]);
             else
                 RemoveFromList(tiles[i]);
-
+               */
             if (_isGivingTiles == false)
                 yield break;
         }
         _isGivingTiles = false;
+    }
+    IEnumerator WaitAndClearTile(float delay,bool needclear,Tile tile)
+    {
+        yield return new WaitForSeconds(delay);
+
+        if (needclear)
+            ClearTiles(tile);
+        else
+            RemoveFromList(tile);
     }
 
     private void RemoveFromList(Tile tile )
