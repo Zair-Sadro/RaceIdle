@@ -35,10 +35,11 @@ public class UpgradeField
    
     public UpgradeField(MachineNumbersData machineData, Func<float, float, float> formula, Func<float,float,float> priceFormula)
     {
+        this.currentField = machineData.currentValue;
         this.startField = machineData.startNumber;
         this.delta = machineData.DeltaNumber;
         this.formula = formula;
-        Price = new UpgradePrice(machineData.startNumberPrice, machineData.DeltaNumberPrice,priceFormula);
+        Price = new UpgradePrice(machineData.currentPriceValue,machineData.startNumberPrice, machineData.DeltaNumberPrice,priceFormula);
     }
 }
 [Serializable]
@@ -60,8 +61,9 @@ public class UpgradePrice
     {
         return priceFormula(CurrentPrice, deltaPrice);
     }
-    public UpgradePrice(float startPrice, float deltaPrice, Func<float,float, float> priceFormula)
+    public UpgradePrice(float currentPriceValue, float startPrice, float deltaPrice, Func<float,float, float> priceFormula)
     {
+        currentPrice = currentPriceValue;
         this.startPrice = startPrice;
         this.deltaPrice = deltaPrice;
         this.priceFormula = priceFormula;

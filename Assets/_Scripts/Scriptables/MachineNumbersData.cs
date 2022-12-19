@@ -13,6 +13,9 @@ public class MachineNumbersData
     [Tooltip("Коэффициент к цене")]
     [SerializeField] private float deltaNumberPrice;
 
+    public float currentValue;
+    public float currentPriceValue;
+
     public float DeltaNumber { get => deltaNumber; private set => deltaNumber = value; }
     public float DeltaNumberPrice { get => deltaNumberPrice; private set => deltaNumberPrice = value; }
 }
