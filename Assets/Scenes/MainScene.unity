@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -459,7 +459,10 @@ MonoBehaviour:
   collidersAfterBuild:
   - {fileID: 107261794}
   collidersBeforeBuild: []
+  collidersAfterBuildOn: []
+  collidersBeforeBuildOn: []
   building: {fileID: 1246395512}
+  _buildid: 0
   buildType: 0
   _playerDetector: {fileID: 390908757}
 --- !u!1 &119398320
@@ -594,7 +597,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 149599058}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -1139,7 +1142,10 @@ MonoBehaviour:
   - {fileID: 624977679}
   collidersBeforeBuild:
   - {fileID: 1178907069}
+  collidersAfterBuildOn: []
+  collidersBeforeBuildOn: []
   building: {fileID: 1559798550}
+  _buildid: 0
   buildType: 0
   _playerDetector: {fileID: 624977686}
 --- !u!1001 &300836669
@@ -1504,6 +1510,21 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 5837650922240027898, guid: 2b21398dc92a318409b9270340353750,
         type: 3}
+      propertyPath: tileScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5837650922240027898, guid: 2b21398dc92a318409b9270340353750,
+        type: 3}
+      propertyPath: tileScale.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5837650922240027898, guid: 2b21398dc92a318409b9270340353750,
+        type: 3}
+      propertyPath: tileScale.z
+      value: 1.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 5837650922240027898, guid: 2b21398dc92a318409b9270340353750,
+        type: 3}
       propertyPath: machineFields
       value: 
       objectReference: {fileID: 11400000, guid: bc1cfecbd2e42644c9164da928b1b689,
@@ -1748,6 +1769,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf7b2222ff22e314c90cb4dea91a6e26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _data:
+    speedData:
+      startNumber: 0
+      deltaNumber: 0
+      startNumberPrice: 0
+      deltaNumberPrice: 0
+      currentValue: 0
+      currentPriceValue: 0
+    incomeData:
+      startNumber: 0
+      deltaNumber: 0
+      startNumberPrice: 0
+      deltaNumberPrice: 0
+      currentValue: 0
+      currentPriceValue: 0
+    indexer: 0
   upgradeMeshes:
   - {fileID: 3473260529822489049, guid: 5e0969b1b94dadd41b5e412fd0d7a6a9, type: 3}
   - {fileID: -6845054469609478671, guid: 20081ce92888bc34d80cdfde99da2ef5, type: 3}
@@ -2550,7 +2587,10 @@ MonoBehaviour:
   collidersAfterBuild:
   - {fileID: 474137011}
   collidersBeforeBuild: []
+  collidersAfterBuildOn: []
+  collidersBeforeBuildOn: []
   building: {fileID: 420959766}
+  _buildid: 0
   buildType: 0
   _playerDetector: {fileID: 860333433}
 --- !u!1 &493268933
@@ -2988,6 +3028,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _data:
     tileSetterData: {}
+    buildSaver: {fileID: 0}
 --- !u!114 &581427652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5031,7 +5072,10 @@ MonoBehaviour:
   collidersAfterBuild:
   - {fileID: 936682628}
   collidersBeforeBuild: []
+  collidersAfterBuildOn: []
+  collidersBeforeBuildOn: []
   building: {fileID: 1791968075}
+  _buildid: 0
   buildType: 1
   _playerDetector: {fileID: 1814997327}
 --- !u!1 &944859333 stripped
@@ -5766,6 +5810,21 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 5837650922240027898, guid: 2b21398dc92a318409b9270340353750,
         type: 3}
+      propertyPath: tileScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5837650922240027898, guid: 2b21398dc92a318409b9270340353750,
+        type: 3}
+      propertyPath: tileScale.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5837650922240027898, guid: 2b21398dc92a318409b9270340353750,
+        type: 3}
+      propertyPath: tileScale.z
+      value: 1.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 5837650922240027898, guid: 2b21398dc92a318409b9270340353750,
+        type: 3}
       propertyPath: machineFields
       value: 
       objectReference: {fileID: 11400000, guid: f20ee38c311d65540ad3e07ce1a13172,
@@ -6010,6 +6069,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf7b2222ff22e314c90cb4dea91a6e26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _data:
+    speedData:
+      startNumber: 0
+      deltaNumber: 0
+      startNumberPrice: 0
+      deltaNumberPrice: 0
+      currentValue: 0
+      currentPriceValue: 0
+    incomeData:
+      startNumber: 0
+      deltaNumber: 0
+      startNumberPrice: 0
+      deltaNumberPrice: 0
+      currentValue: 0
+      currentPriceValue: 0
+    indexer: 0
   upgradeMeshes:
   - {fileID: 3473260529822489049, guid: 5e0969b1b94dadd41b5e412fd0d7a6a9, type: 3}
   - {fileID: -6845054469609478671, guid: 20081ce92888bc34d80cdfde99da2ef5, type: 3}
@@ -6277,7 +6352,10 @@ MonoBehaviour:
   - {fileID: 852418539}
   - {fileID: 1653871168}
   collidersBeforeBuild: []
+  collidersAfterBuildOn: []
+  collidersBeforeBuildOn: []
   building: {fileID: 919132147616017186}
+  _buildid: 0
   buildType: 0
   _playerDetector: {fileID: 240420462}
   radius: 20
@@ -7122,10 +7200,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data:
-    machineToolsBuilders: []
-    simpleBuilders: []
-  machineTools: []
-  levelBridges: []
+    machineTileCount: 0
+    Buildings: 
+  _buildings: []
 --- !u!4 &1507240860 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2455626354774127108, guid: e67e6f28219042c46b7cb588e15f629a,
@@ -12741,7 +12818,10 @@ MonoBehaviour:
   collidersAfterBuild:
   - {fileID: 1976769478}
   collidersBeforeBuild: []
+  collidersAfterBuildOn: []
+  collidersBeforeBuildOn: []
   building: {fileID: 1221983376}
+  _buildid: 0
   buildType: 0
   _playerDetector: {fileID: 1499458317}
 --- !u!65 &1993552630
@@ -12952,7 +13032,10 @@ MonoBehaviour:
   collidersAfterBuild:
   - {fileID: 2005134491}
   collidersBeforeBuild: []
+  collidersAfterBuildOn: []
+  collidersBeforeBuildOn: []
   building: {fileID: 372104191}
+  _buildid: 0
   buildType: 1
   _playerDetector: {fileID: 851481800}
 --- !u!4 &2018903441 stripped
@@ -19213,7 +19296,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 506407680, guid: 2b21398dc92a318409b9270340353750, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.294
+      value: 1.238
       objectReference: {fileID: 0}
     - target: {fileID: 637159844, guid: 2b21398dc92a318409b9270340353750, type: 3}
       propertyPath: m_LocalPosition.x
@@ -19338,6 +19421,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8074750411987931458, guid: 51541ddca1d50194ba8293cf4a92e8d5,
         type: 3}
+    - target: {fileID: 5837650922240027898, guid: 2b21398dc92a318409b9270340353750,
+        type: 3}
+      propertyPath: tileScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5837650922240027898, guid: 2b21398dc92a318409b9270340353750,
+        type: 3}
+      propertyPath: tileScale.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5837650922240027898, guid: 2b21398dc92a318409b9270340353750,
+        type: 3}
+      propertyPath: tileScale.z
+      value: 1.23
+      objectReference: {fileID: 0}
     - target: {fileID: 5837650922240027898, guid: 2b21398dc92a318409b9270340353750,
         type: 3}
       propertyPath: machineFields
@@ -19542,7 +19640,7 @@ PrefabInstance:
     - target: {fileID: 8905867245053420337, guid: 2b21398dc92a318409b9270340353750,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2221983712022383996, guid: 2b21398dc92a318409b9270340353750, type: 3}
@@ -19572,6 +19670,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf7b2222ff22e314c90cb4dea91a6e26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _data:
+    speedData:
+      startNumber: 0
+      deltaNumber: 0
+      startNumberPrice: 0
+      deltaNumberPrice: 0
+      currentValue: 0
+      currentPriceValue: 0
+    incomeData:
+      startNumber: 0
+      deltaNumber: 0
+      startNumberPrice: 0
+      deltaNumberPrice: 0
+      currentValue: 0
+      currentPriceValue: 0
+    indexer: 0
   upgradeMeshes:
   - {fileID: 3473260529822489049, guid: d35bec1a0e6fca043852bbfe4f2af856, type: 3}
   - {fileID: -6845054469609478671, guid: 22c8ef5b47762694fb29ca491188ffbe, type: 3}

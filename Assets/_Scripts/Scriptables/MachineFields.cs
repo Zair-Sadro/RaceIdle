@@ -20,25 +20,21 @@ public class MachineFields:ScriptableObject
     private int _capacityDelta;
 
 
-
-    private float _income;
-    private float _speed;
-
         //FIELDS\\
     public int MaxTiles => _maxTiles;
-    public float Speed => _speed;
-    public float Income => _income;
+    public float Speed => _speedNumbers.currentValue;
+    public float Income => _incomeNumbers.currentValue;
     public List<ProductRequierment> Requierments => _requierments;
     public TileType ProductType => productType;
     public int CapacityDelta => _capacityDelta;
  
     public void UpgradeSpeed(UpgradeField upgradeField)
     {
-        _speed = upgradeField.LevelUp();
+        _speedNumbers.currentValue=upgradeField.LevelUp();
     }
     public void UpgradeIncome(UpgradeField upgradeField)
     {
-        _income = upgradeField.LevelUp(); ;
+        _incomeNumbers.currentValue=upgradeField.LevelUp(); ;
     }
     public MachineNumbersData IncomeData()
     {

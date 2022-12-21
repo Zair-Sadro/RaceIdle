@@ -53,7 +53,7 @@ public class BuilderFromTiles : TileCollector
          for (int i = 0; i < collidersAfterBuild.Length; i++)
          {
             collidersAfterBuild[i].SetActive(false);
-            collidersAfterBuildOn[i].SetActive(true);
+
          }
 
 
@@ -72,7 +72,7 @@ public class BuilderFromTiles : TileCollector
          for (int i = 0; i < collidersBeforeBuild.Length; i++)
          {
             collidersBeforeBuild[i].SetActive(false);
-            collidersBeforeBuildOn[i].SetActive(true);
+
          }
 
         if (collidersBeforeBuildOn.Length > 0)

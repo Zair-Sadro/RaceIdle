@@ -3,6 +3,7 @@ using System.Collections;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using System;
+using UnityEngine.Rendering;
 
 public enum TileType
 {
@@ -38,16 +39,14 @@ public class Tile : MonoBehaviour
         }
         
     }
+ 
 
-
-    private bool _isTaken = false;
-
-    public bool IsTaken => _isTaken;
+    public bool IsTaken { get; private set; } = false;
 
     [SerializeField] private MeshRenderer _tileRenderer;
     public void OnTake()
     {
-        _isTaken = true;
+        IsTaken = true;
         coll.enabled = false;
         body.isKinematic = true;
     }
@@ -56,18 +55,25 @@ public class Tile : MonoBehaviour
         transform.DOJump(pos, power, 1, 0.5f).SetEase(Ease.InSine)
             .OnComplete(()=>onJumpDone.Invoke());
     }
+    public IEnumerator AppearFromZero(Vector3 scale,Vector3 pos,float dur)
+    {
+        transform.localScale = Vector3.zero;
+        transform.position=pos;
+
+        yield return transform.DOScale(scale, dur).WaitForCompletion();
+    }
     public void OnStorage(Transform t)
     {
         gameObject.SetActive(true);
         transform.SetParent(t);
         transform.rotation = new Quaternion(0, 0, 0, 0);
-        _isTaken = true;
+        IsTaken = true;
         coll.enabled = false;
         body.isKinematic = true;
     }
     public void OnGround()
     {
-        _isTaken = false;
+        IsTaken = false;
         coll.enabled = true;
         body.isKinematic = false;
 
@@ -100,7 +106,7 @@ public class Tile : MonoBehaviour
     IEnumerator TimerTillDisappear()
     {
         yield return new WaitForSeconds(StaticValues.tileDisapTimer);
-        if(!_isTaken) gameObject.SetActive(false);
+        if(!IsTaken) gameObject.SetActive(false);
 
     }
 

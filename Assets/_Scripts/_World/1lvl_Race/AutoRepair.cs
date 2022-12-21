@@ -43,7 +43,7 @@ public class AutoRepair :MonoBehaviour, IUpgradable
         for (int i = 0; i < _requiredTypes.Count; i++)
         {
             var req = _requiredTypes[i];
-            Debug.Log($"{req.ToString()}collecting");
+            Debug.Log($"{req}collecting");
             _playerTilesBag.RemoveTiles(req, _detectorForRes.transform.position, RecieveTile, true);
             yield return new WaitForSeconds(delayMachineTakeTile);
         }

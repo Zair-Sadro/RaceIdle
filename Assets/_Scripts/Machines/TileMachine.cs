@@ -23,6 +23,7 @@ public class TileMachine : TileCollector
     protected override int maxTileCount => machineFields.MaxTiles;
     protected virtual float machineSpeed => machineFields.Speed;
     public float delayMachineTakeTile;
+    public Vector3 tileScale;
 
     private Action OnCollect;
 
@@ -111,23 +112,26 @@ public class TileMachine : TileCollector
     }
 
     // case MachineState.PRODUCE:
-    private IEnumerator TileManufacture()
+    public Tile tTt;
+    private IEnumerator TileManufacture() 
     {
         producing = true;
-
-        yield return new WaitForSeconds(machineSpeed* 0.35f);
-
         var tile = _tilesSpawner.GetTile(typeProduced);
         tile.OnTake();
-        tile.transform.position = tileStartPos.position;
+        tTt = tile;
+        yield return StartCoroutine (tile.AppearFromZero(tileScale, tileStartPos.position, machineSpeed * 0.35f)); 
 
         yield return tile.transform.DOMove(tileFinishPos.position, machineSpeed * 0.65f)
                                    .SetEase(Ease.InOutFlash)
                                    .WaitForCompletion();
 
-        _walletSystem.Income(machineFields.Income);
+        yield return tile.transform.DOJump(productStorage.transform.position, 2, 1, 0.5f)
+                                   .WaitForCompletion();
+
         //PuffEffect();
         productStorage.TileToStack(tile);
+        _walletSystem.Income(machineFields.Income);
+
         SetState(MachineState.WAIT_FOR_ENOUGH);
 
         producing = false;

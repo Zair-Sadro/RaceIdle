@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.Events;
-
+using System;
 
 public class PlayerController : MonoBehaviour
 {
@@ -103,4 +103,24 @@ public class PlayerController : MonoBehaviour
         return skins[id];
    }
 
+}
+public class PlayerSave : MonoBehaviour, ISaveLoad<PlayerData>
+{
+    [SerializeField] private PlayerData _data;
+    [SerializeField] private PlayerController _player;
+    public PlayerData GetData()
+    {
+        _data.position = new(_player.transform.position);
+        return _data;
+    }
+
+    public void Initialize(PlayerData data)
+    {
+        _player.transform.position = _data.position.UnityVector;
+    }
+}
+[Serializable]
+public class PlayerData
+{
+    public SerializableVector3 position;
 }
