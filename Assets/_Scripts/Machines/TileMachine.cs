@@ -112,13 +112,13 @@ public class TileMachine : TileCollector
     }
 
     // case MachineState.PRODUCE:
-    public Tile tTt;
+
     private IEnumerator TileManufacture() 
     {
         producing = true;
         var tile = _tilesSpawner.GetTile(typeProduced);
         tile.OnTake();
-        tTt = tile;
+
         yield return StartCoroutine (tile.AppearFromZero(tileScale, tileStartPos.position, machineSpeed * 0.35f)); 
 
         yield return tile.transform.DOMove(tileFinishPos.position, machineSpeed * 0.65f)

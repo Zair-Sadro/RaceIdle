@@ -57,6 +57,7 @@ public class JunkCar : MonoBehaviour, IDamageable
                 .OnComplete(() =>
                 {
                     carpart.gameObject.SetActive(false);
+
                 });
 
 
@@ -75,7 +76,7 @@ public class JunkCar : MonoBehaviour, IDamageable
     private void DestroyCar()
     {
         CanBeDamaged = false;
-        transform.DOScale(0, 0.3f).OnComplete(OnCarDestroyed);
+        transform.DOScale(0, 0.4f).OnComplete(OnCarDestroyed);
         
     }
 

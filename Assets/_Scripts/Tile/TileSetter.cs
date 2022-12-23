@@ -66,7 +66,7 @@ public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
     {
 
         tile.OnTake();
-        tile.Jump(setupPoint.position, powerTileJump, () =>
+        tile.JumpTween(setupPoint.position, powerTileJump, () =>
         {
             tile.transform.SetParent(setupPoint);
             tile.transform.localRotation = Quaternion.Euler(0, 0, 0);
@@ -144,13 +144,14 @@ public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
             interatorCall?.Invoke(tiles[i]);
 
             yield return WaitAndClearTile(timeToRemoveTile, needClear, tiles[i]);
-               /* new WaitForSeconds(_timeToRemove);
+            /* new WaitForSeconds(_timeToRemove);
 
-            if (needClear)
-                ClearTiles(tiles[i]);
-            else
-                RemoveFromList(tiles[i]);
-               */
+         if (needClear)
+             ClearTiles(tiles[i]);
+         else
+             RemoveFromList(tiles[i]);
+            */
+      
             if (_isGivingTiles == false)
                 yield break;
         }

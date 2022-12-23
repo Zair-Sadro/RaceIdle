@@ -56,9 +56,9 @@ public class JunkCarManager : MonoBehaviour
         {
             parts[i].gameObject.SetActive(true);
         }
-
-        car.transform.DOScale(1, 0.1f);
         car.gameObject.SetActive(true);
+        car.transform.DOScale(1, car.RespawnNoDamageTime-0.1f);
+
         yield return new WaitForSeconds(car.RespawnNoDamageTime);
         car.OnRespawn();
     }

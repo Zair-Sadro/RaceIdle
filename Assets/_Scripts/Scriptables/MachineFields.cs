@@ -13,7 +13,7 @@ public class MachineFields:ScriptableObject
 
     [SerializeField] private  MachineNumbersData _incomeNumbers;
     [SerializeField] private  MachineNumbersData _speedNumbers;
-    [SerializeField] private int _maxTiles;
+    [SerializeField] private int _maxTiles=4;
     [SerializeField] private int[] levelsForCapacityUp;
 
     [SerializeField,Tooltip("Кэф прибавления вместимости")]
@@ -51,6 +51,10 @@ public class MachineFields:ScriptableObject
     public void CapacityUp(int delta)
     {
         _maxTiles += delta;
+    }
+    public void SetCapacity(int capacity)
+    {
+        _maxTiles = capacity;
     }
     
 }

@@ -3,7 +3,6 @@ using System.Collections;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using System;
-using UnityEngine.Rendering;
 
 public enum TileType
 {
@@ -50,10 +49,19 @@ public class Tile : MonoBehaviour
         coll.enabled = false;
         body.isKinematic = true;
     }
-    public void Jump(Vector3 pos,float power,Action onJumpDone)
+    public void JumpTween(Vector3 pos,float power,Action onJumpDone=null)
     {
         transform.DOJump(pos, power, 1, 0.5f).SetEase(Ease.InSine)
-            .OnComplete(()=>onJumpDone.Invoke());
+            .OnComplete(()=>onJumpDone?.Invoke());
+    }
+    private Vector3 velocity = Vector3.zero;
+    public IEnumerator JumpToPos_Cor(Vector3 pos)
+    {
+        while (Vector3.Distance(transform.position, pos) > 1f)
+        {
+            transform.position = Vector3.SmoothDamp(transform.position, pos,ref velocity, 0.4f);
+            yield return null;
+        }
     }
     public IEnumerator AppearFromZero(Vector3 scale,Vector3 pos,float dur)
     {
@@ -94,7 +102,7 @@ public class Tile : MonoBehaviour
     public void ThrowTo(Vector3 place,float duration)
     {
 
-        transform.DOJump(place, transform.position.y + 5f, 1, duration).SetEase(_ease);
+        transform.DOJump(place, transform.position.y + 5f, 1, duration).SetEase(Ease.InSine);
         if (_Rotate) transform.DORotate(_rotationIn, duration).SetEase(Ease.InOutExpo);
     }
 

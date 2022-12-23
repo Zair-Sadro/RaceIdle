@@ -25,6 +25,7 @@ public class MachineUpgrade : MonoBehaviour,ISaveLoad<MachineUpgradeData>
         if (Speed == null && Income == null)
             UpgradeDataInit();
 
+        machineFields.SetCapacity(capacityUpLevels[indexer]);
     }
 
     public void UpgradeSpeedCapacity(int level = 0)
@@ -82,11 +83,13 @@ public class MachineUpgrade : MonoBehaviour,ISaveLoad<MachineUpgradeData>
         if (data.indexer > 0)
         {
             UpgradeMesh();
+
         }
         _data = data;
 
         Speed = new(data.speedData, SpeedFormula, SpeedPriceFormula);
         Income= new(data.incomeData, IncomeFormula,IncomePriceFormula);
+        
     }
 
     #region Formuly
