@@ -577,6 +577,18 @@ MonoBehaviour:
       shown: 0
     - name: WindZone
       shown: 0
+    - name: Enemy
+      shown: 0
+    - name: Movement
+      shown: 0
+    - name: Billboard
+      shown: 0
+    - name: DynamicText
+      shown: 0
+    - name: DynamicText2D
+      shown: 0
+    - name: DynamicTextManager
+      shown: 0
     - name: UIController
       shown: 0
     - name: CFX_AutoStopLoopedEffect
@@ -612,6 +624,8 @@ MonoBehaviour:
     - name: FloatingJoystick
       shown: 0
     - name: VariableJoystick
+      shown: 0
+    - name: TestVector
       shown: 0
     - name: CircleSlider
       shown: 0
@@ -663,7 +677,11 @@ MonoBehaviour:
       shown: 0
     - name: PlayerController
       shown: 0
+    - name: PlayerSave
+      shown: 0
     - name: PlayerDetector
+      shown: 0
+    - name: SlashDetector
       shown: 0
     - name: PlayerSlash
       shown: 0
@@ -680,6 +698,8 @@ MonoBehaviour:
     - name: SwipeSystem
       shown: 0
     - name: WalletSystem
+      shown: 0
+    - name: TileAdder
       shown: 0
     - name: Tile
       shown: 0
@@ -717,7 +737,11 @@ MonoBehaviour:
       shown: 0
     - name: MachineUpgrade
       shown: 0
+    - name: MathKnowledge
+      shown: 0
     - name: AutoRepair
+      shown: 0
+    - name: MultuCounterView
       shown: 0
     - name: CarRider
       shown: 0

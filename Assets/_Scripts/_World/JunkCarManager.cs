@@ -37,9 +37,13 @@ public class JunkCarManager : MonoBehaviour
     public void ExplodeTile(JunkCar car)
     {
         var tile = tileSpawn.GetTile(TileType.Junk);
-        var pos = new Vector3(car.transform.position.x, car.transform.position.y + 2f, car.transform.position.z);
-        tile.transform.localPosition = pos;
+        int rX = Random.Range(-4, 4);
+        int rZ = Random.Range(-4, 4);
+        tile.transform.position = car.transform.position;
         tile.gameObject.SetActive(true);
+        var pos = new Vector3(car.transform.position.x+rX, car.transform.position.y + 2f, car.transform.position.z + rZ);
+        tile.ThrowTo(pos, 0.5f);
+        
     }
 
     public void DestroyCar(JunkCar car)
@@ -52,10 +56,19 @@ public class JunkCarManager : MonoBehaviour
         yield return new WaitForSeconds(time);
         var parts = car.GetCarParts();
 
+        //Parts
         for (int i = 0; i < parts.Count; i++)
         {
             parts[i].gameObject.SetActive(true);
         }
+
+        //Rotation and RandomPosition
+        car.RandomPosition();
+        var eulr = car.transform.eulerAngles;
+        car.transform.Rotate(eulr.x, eulr.y+Random.Range(0f,180f), eulr.z);
+       
+
+        //SetActive
         car.gameObject.SetActive(true);
         car.transform.DOScale(1, car.RespawnNoDamageTime-0.1f);
 

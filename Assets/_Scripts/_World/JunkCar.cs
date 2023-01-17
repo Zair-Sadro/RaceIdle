@@ -17,10 +17,12 @@ public class JunkCar : MonoBehaviour, IDamageable
     private float _currentHealth;
     private int _partsIndex;
 
+    private Vector3 _startPos;
     public float RespawnNoDamageTime => respawnNoDamageTime;
     public bool CanBeDamaged { get; private set; }
     private void Start()
     {
+        _startPos=transform.position;
         Shuffle(carParts);
     }
     public void Init(JunkCarManager carManager)
@@ -30,6 +32,14 @@ public class JunkCar : MonoBehaviour, IDamageable
         _junkCarManager = carManager;
         CanBeDamaged = true;
         HPBarHide();
+    }
+    [SerializeField] private float _randDeltaX,_randDeltaZ;
+    public void RandomPosition()
+    {
+        transform.position=new Vector3(
+            _startPos.x +Random.Range(-_randDeltaX, _randDeltaX)
+            ,_startPos.y,
+            _startPos.z +Random.Range(-_randDeltaZ, _randDeltaZ));    
     }
 
     public void OnRespawn()
@@ -53,7 +63,7 @@ public class JunkCar : MonoBehaviour, IDamageable
              //Шатаем часть машины и отключаем ее
              var carpart = carParts[_partsIndex++];
              carpart.transform
-                .DOPunchScale(CarPartChangedSize(carpart.transform), 0.3f)
+                .DOPunchScale(CarPartChangedSize(carpart.transform), 0.2f)
                 .OnComplete(() =>
                 {
                     carpart.gameObject.SetActive(false);

@@ -28,6 +28,7 @@ public class Tile : MonoBehaviour
     [SerializeField] private Ease _ease;
 
     private TileSetter _tileSetter;
+    private Tween _tween;
 
     public TileType Type
     {
@@ -51,7 +52,8 @@ public class Tile : MonoBehaviour
     }
     public void JumpTween(Vector3 pos,float power,Action onJumpDone=null)
     {
-        transform.DOJump(pos, power, 1, 0.5f).SetEase(Ease.InSine)
+        _tween?.Kill();
+        _tween = transform.DOJump(pos, power, 1, 0.5f).SetEase(Ease.InSine)
             .OnComplete(()=>onJumpDone?.Invoke());
     }
     private Vector3 velocity = Vector3.zero;
@@ -65,6 +67,7 @@ public class Tile : MonoBehaviour
     }
     public IEnumerator AppearFromZero(Vector3 scale,Vector3 pos,float dur)
     {
+        _tween?.Kill();
         transform.localScale = Vector3.zero;
         transform.position=pos;
 
@@ -101,9 +104,9 @@ public class Tile : MonoBehaviour
     }
     public void ThrowTo(Vector3 place,float duration)
     {
-
-        transform.DOJump(place, transform.position.y + 5f, 1, duration).SetEase(Ease.InSine);
-        if (_Rotate) transform.DORotate(_rotationIn, duration).SetEase(Ease.InOutExpo);
+        _tween?.Kill();
+        _tween =transform.DOJump(place, transform.position.y + 5f, 1, duration).SetEase(Ease.InSine);
+        if (_Rotate) _tween =transform.DORotate(_rotationIn, duration).SetEase(Ease.InOutExpo);
     }
 
     public void SetMaterial(Material mat)
