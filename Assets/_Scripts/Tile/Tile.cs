@@ -53,17 +53,8 @@ public class Tile : MonoBehaviour
     public void JumpTween(Vector3 pos,float power,Action onJumpDone=null)
     {
         _tween?.Kill();
-        _tween = transform.DOJump(pos, power, 1, 0.5f).SetEase(Ease.InSine)
+        _tween = transform.DOJump(pos, power, 1, 0.2f).SetEase(Ease.OutQuad)
             .OnComplete(()=>onJumpDone?.Invoke());
-    }
-    private Vector3 velocity = Vector3.zero;
-    public IEnumerator JumpToPos_Cor(Vector3 pos)
-    {
-        while (Vector3.Distance(transform.position, pos) > 1f)
-        {
-            transform.position = Vector3.SmoothDamp(transform.position, pos,ref velocity, 0.4f);
-            yield return null;
-        }
     }
     public IEnumerator AppearFromZero(Vector3 scale,Vector3 pos,float dur)
     {
@@ -105,8 +96,8 @@ public class Tile : MonoBehaviour
     public void ThrowTo(Vector3 place,float duration)
     {
         _tween?.Kill();
-        _tween =transform.DOJump(place, transform.position.y + 5f, 1, duration).SetEase(Ease.InSine);
-        if (_Rotate) _tween =transform.DORotate(_rotationIn, duration).SetEase(Ease.InOutExpo);
+        _tween =transform.DOJump(place, transform.position.y + 5f, 1, duration).SetEase(Ease.InOutFlash);
+        if (_Rotate) _tween =transform.DORotate(_rotationIn, duration).SetEase(Ease.OutQuad);
     }
 
     public void SetMaterial(Material mat)

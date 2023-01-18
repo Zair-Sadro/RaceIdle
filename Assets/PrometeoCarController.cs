@@ -108,22 +108,6 @@ public class PrometeoCarController : MonoBehaviour
       public AudioSource tireScreechSound; // This variable stores the sound of the tire screech (when the car is drifting).
       float initialCarEngineSoundPitch; // Used to store the initial pitch of the car engine sound.
 
-    //CONTROLS
-
-      [Space(20)]
-      //[Header("CONTROLS")]
-      [Space(10)]
-      //The following variables lets you to set up touch controls for mobile devices.
-      public bool useTouchControls = false;
-      public GameObject throttleButton;
-   
-      public GameObject reverseButton;
-   
-      public GameObject turnRightButton;
-  
-      public GameObject turnLeftButton;
-
-      public GameObject handbrakeButton;
 
 
     //CAR DATA
@@ -146,8 +130,6 @@ public class PrometeoCarController : MonoBehaviour
       float driftingAxis;
       float localVelocityZ;
       float localVelocityX;
-      bool deceleratingCar;
-      bool touchControlsSetup = false;
       /*
       The following variables are used to store information about sideways friction of the wheels (such as
       extremumSlip,extremumValue, asymptoteSlip, asymptoteValue and stiffness). We change this values to
@@ -357,8 +339,7 @@ public class PrometeoCarController : MonoBehaviour
         if (Vector3.Distance(transform.position, targetForAI.position) > 1f)
         {
             CancelInvoke("DecelerateCar");
-            deceleratingCar = false;
-             GoForward();
+            GoForward();
             cube.LookAt(targetForAI);
 
 

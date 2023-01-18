@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4089882425938279032}
+  - component: {fileID: 5817895113798000732}
+  - component: {fileID: 3836711527628405445}
   - component: {fileID: 2005072018761105557}
   - component: {fileID: 2446386226988740981}
   - component: {fileID: 5888783870546779946}
-  - component: {fileID: 3836711527628405445}
-  - component: {fileID: 5817895113798000732}
   - component: {fileID: 3621148476801170997}
   m_Layer: 0
   m_Name: Player
@@ -32,12 +32,54 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8632095298626304286}
   - {fileID: 6128004366876326282}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5817895113798000732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2292793153911396789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9205c3ded39fd847b73866eec31fb7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {}
+  tilesSpawnerParent: {fileID: 6128004366876326282}
+  setupPoint: {fileID: 6128004366876326282}
+  maxTiles: 30
+  powerTileJump: 2
+  timeToRemoveTile: 0.1
+  delayToRemoveTile: 0.7
+  _isGivingTiles: 0
+  _colectedTiles: []
+--- !u!114 &3836711527628405445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2292793153911396789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c27be8ad80e4394094d76ddd8813d85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  body: {fileID: 2446386226988740981}
+  joystick: {fileID: 0}
+  dustParticle: {fileID: 0}
+  _hummerr: {fileID: 0}
+  skins:
+  - {fileID: 971798826783966773}
+  - {fileID: 3389032158782027476}
 --- !u!65 &2005072018761105557
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -81,52 +123,6 @@ CapsuleCollider:
   m_Height: 4
   m_Direction: 1
   m_Center: {x: 0, y: 2, z: 0}
---- !u!114 &3836711527628405445
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2292793153911396789}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c27be8ad80e4394094d76ddd8813d85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  body: {fileID: 2446386226988740981}
-  joystick: {fileID: 0}
-  dustParticle: {fileID: 0}
-  skins:
-  - {fileID: 971798826783966773}
-  - {fileID: 3389032158782027476}
---- !u!114 &5817895113798000732
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2292793153911396789}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9205c3ded39fd847b73866eec31fb7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tilesSpawnerParent: {fileID: 6128004366876326282}
-  setupPoint: {fileID: 6128004366876326282}
-  tilesScale: {x: 0.4, y: 0.3, z: 0}
-  tileSetSpeed: 0
-  zOffset: 0.3
-  yOffset: 1
-  maxTiles: 30
-  tilesRow: 2
-  timeToRemoveTile: 0
-  OnTilePickUp:
-    m_PersistentCalls:
-      m_Calls: []
-  OnTileRemove:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &3621148476801170997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,10 +135,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbcba09b87028d44090aa0d665d039a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doubleTapTime: 0
   activeHammerCollTime: 0.5
-  controller: {fileID: 3836711527628405445}
-  hammerColl: {fileID: 0}
+  delayBeforeDamage: 0
 --- !u!1 &6425204493022092808
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,6 +163,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8867727489151537438}
   - {fileID: 8298552668129879133}
@@ -201,29 +196,11 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.228, y: 2.12, z: -0.425}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4089882425938279032}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &3389032158782027476
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8674408986007584487}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 6d58c019bce5ce348bb666547bf576d6, type: 3}
-  m_Controller: {fileID: 9100000, guid: 0a3de79532e36b34e8bbbe5b9867eb79, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8872011761076770245
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,13 +228,14 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8632095298626304286}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &971798826783966773
 Animator:
-  serializedVersion: 3
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -270,6 +248,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -358,15 +337,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d58c019bce5ce348bb666547bf576d6, type: 3}
---- !u!1 &8674408986007584487 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6d58c019bce5ce348bb666547bf576d6,
-    type: 3}
-  m_PrefabInstance: {fileID: 8403955302797214646}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8298552668129879133 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6d58c019bce5ce348bb666547bf576d6,
     type: 3}
   m_PrefabInstance: {fileID: 8403955302797214646}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8674408986007584487 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6d58c019bce5ce348bb666547bf576d6,
+    type: 3}
+  m_PrefabInstance: {fileID: 8403955302797214646}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &3389032158782027476
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8674408986007584487}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 6d58c019bce5ce348bb666547bf576d6, type: 3}
+  m_Controller: {fileID: 9100000, guid: 0a3de79532e36b34e8bbbe5b9867eb79, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
