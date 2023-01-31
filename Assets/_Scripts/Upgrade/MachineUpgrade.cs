@@ -22,7 +22,7 @@ public class MachineUpgrade : MonoBehaviour,ISaveLoad<MachineUpgradeData>
         capacityUpLevels = machineFields.GetCapacityLevels();
 
 
-        if (Speed == null && Income == null)
+      //  if (Speed == null && Income == null)
             UpgradeDataInit();
 
         machineFields.SetCapacity(capacityUpLevels[indexer]);

@@ -49,36 +49,50 @@ public class JunkCar : MonoBehaviour, IDamageable
         _partsIndex = 0;
         HPBarHide();
     }
-
-    public void TakeDamage(float delay)
+    private void OnTriggerEnter(Collider other)
     {
-        transform.DORewind();
+        if (other.tag == "weapon")
+            TakeDamage(0);
+    }
+
+
+
+    public void TakeDamage(float t)
+    {
+
+
+        StartCoroutine(TakeDmg(t));
+
+     
+    }
+    IEnumerator TakeDmg(float t)
+    {
+        CanBeDamaged = false;
+        carParts[4].transform.DORewind();
         HPBarShow();
 
-        transform.DOShakeScale(0.2f, 0.2f)
-            .SetDelay(delay)
-            .OnComplete(() => 
-            {
-
-             //Шатаем часть машины и отключаем ее
-             var carpart = carParts[_partsIndex++];
-             carpart.transform
-                .DOPunchScale(CarPartChangedSize(carpart.transform), 0.2f)
-                .OnComplete(() =>
-                {
-                    carpart.gameObject.SetActive(false);
-
-                });
+        carParts[4].transform.DOShakeScale(0.2f, 1f);
 
 
-             _currentHealth -= damagePerHit;
-             hpFillImage.fillAmount = _currentHealth / maxHealth;
-             _junkCarManager.ExplodeTile(this);
+        //Шатаем часть машины и отключаем ее
+        var carpart = carParts[_partsIndex++];
+      yield return carpart.transform
+           .DOPunchScale(CarPartChangedSize(carpart.transform), 0.2f)
+           .OnComplete(() =>
+           {
+               carpart.gameObject.SetActive(false);
 
-             if (_currentHealth <= 0)
-          
-                DestroyCar();
-            });
+           }).WaitForCompletion();
+
+     
+
+        _currentHealth -= damagePerHit;
+        hpFillImage.fillAmount = _currentHealth / maxHealth;
+        _junkCarManager.ExplodeTile(this);
+        CanBeDamaged = true;
+
+        if (_currentHealth <= 0)
+            DestroyCar();
 
      
     }

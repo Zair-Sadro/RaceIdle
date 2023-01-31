@@ -19,10 +19,11 @@ public class PlayerController : MonoBehaviour
 
 
     private int _skinAnimatorID;
-
+    private float _curSpeed;
     #region Properties
 
     public Animator Animator => CurrentAnimator(_skinAnimatorID);
+    public float CurrentSpeed=>_curSpeed;
 
     #endregion
 
@@ -55,24 +56,22 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-      
 
+       
         if (joystick.Horizontal != 0 || joystick.Vertical != 0)
         {
-            if(body.velocity != Vector3.zero)
+
+            if (body.velocity != Vector3.zero)
             {
 
                 transform.rotation = Quaternion.LookRotation(new Vector3(joystick.Horizontal * speed,0, joystick.Vertical * speed));
 
-                CurrentAnimator(_skinAnimatorID).SetBool("Run", true);
+               
+                Debug.Log(_curSpeed);
                 // dustParticle.gameObject.SetColliderActive(true);
             }
         }
-        else
-        {
-            CurrentAnimator(_skinAnimatorID).SetBool("Run", false);
-           // dustParticle.gameObject.SetColliderActive(false);
-        }
+         _curSpeed =MathF.Round( body.velocity.magnitude,2);
         body.velocity = new Vector3(joystick.Horizontal * speed, body.velocity.y, joystick.Vertical * speed);
     }
     private void TakeHummer(bool value)
