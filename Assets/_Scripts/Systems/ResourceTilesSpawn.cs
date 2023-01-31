@@ -21,6 +21,7 @@ public class ResourceTilesSpawn : MonoBehaviour
     {
         _tilesPool = new ObjectPooler<Tile>(_tilePrefab, _tilesParent);
         _tilesPool.CreatePool(maxTilesAmount);
+        _tileSetter.OnTilesMaxCapacity += SetTilesColliderStatus;
     }
 
     public virtual List<Tile> GetRandomTiles(int min, int max)
@@ -81,8 +82,13 @@ public class ResourceTilesSpawn : MonoBehaviour
         t.transform.parent = _tilesParent;
         t.gameObject.SetActive(false);
     }
-    public List<Tile> GetAllActiveTiles()
+    public void SetTilesColliderStatus(bool value)
     {
-       return _tilesPool.GetAllActiveObjects();
+        var tiles = _tilesPool.GetAllActiveObjects();
+        foreach (var tile in tiles)
+        {
+            tile.SetColliderActive(value);
+
+        }
     }
 }

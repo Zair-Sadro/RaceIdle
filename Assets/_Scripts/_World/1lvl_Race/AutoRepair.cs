@@ -1,10 +1,11 @@
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
-using UnityEngine.UI;
+
 
 public class AutoRepair :MonoBehaviour, IUpgradable
 {
@@ -26,7 +27,7 @@ public class AutoRepair :MonoBehaviour, IUpgradable
 
     private bool _carRiding;
 
-    
+    CancellationTokenSource cancelCollect = new CancellationTokenSource();
 
     [Zenject.Inject] private WalletSystem _walletSystem;
     [Zenject.Inject] private TileSetter _playerTilesBag;
@@ -34,25 +35,27 @@ public class AutoRepair :MonoBehaviour, IUpgradable
     {
         if (_playerTilesBag._isGivingTiles|| _carRiding) return;
 
-        StartCoroutine(CollectCor());
+        CollectCor(cancelCollect);
 
     }
-    private IEnumerator CollectCor()
+    private async UniTask CollectCor(CancellationTokenSource cancellationToken)
     {
-
-        for (int i = 0; i < _requiredTypes.Count; i++)
+        var reqtype = new List<TileType>(_requiredTypes);
+        for (int i = 0; i < reqtype.Count; i++)
         {
-            var req = _requiredTypes[i];
-            Debug.Log($"{req}collecting");
-            _playerTilesBag.RemoveTiles(req, _detectorForRes.transform.position, RecieveTile, true);
-            yield return new WaitForSeconds(delayMachineTakeTile);
+            var req = reqtype[i];
+            var countneed = _productRequierments[req].Amount - _tileCountByType[req];
+
+            print($"await{req}");
+            await _playerTilesBag.RemoveTiles(req, countneed, _detectorForRes.transform.position, RecieveTile, cancellationToken, true);
+            
         }
     }
     private IEnumerator Repair() 
     {
         _carRiding = true;
-        CancelInvoke(nameof(Collect));
-        StopCoroutine(CollectCor());
+        //StopCoroutine(CollectCor());
+      //  cancelCollect.Cancel();
 
         _detectorForRes.OnPlayerEnter -= Collect;
         _detectorForRes.OnPlayerExit -= StopCollect;
@@ -92,8 +95,6 @@ public class AutoRepair :MonoBehaviour, IUpgradable
 
         if (_tileCountByType[type] >= _productRequierments[type].Amount)
         {
-            StopCollect();
-
             _requiredTypes.Remove(type);
 
             if (_requiredTypes.Count < 1) 
@@ -137,60 +138,6 @@ public class AutoRepair :MonoBehaviour, IUpgradable
     public void UpgradeIncome(int level)
     {
        
-    }
-}
-
-public class MultuCounterView : MonoBehaviour
-{
-    [SerializeField] private CounterView _goldView;
-    [SerializeField] private CounterView _junkView;
-    [SerializeField] private CounterView _ironView;
-    [SerializeField] private CounterView _plasticView;
-    [SerializeField] private CounterView _rubberView;
-
-    public void InfoToUI(TileType type,int count)
-    {
-        switch (type)
-        {
-            case TileType.Junk:
-                _junkView.TextCountVisual(count);
-                break;
-            case TileType.Iron:
-                _ironView.TextCountVisual(count);
-                break;
-            case TileType.Rubber:
-                _rubberView.TextCountVisual(count);
-                break;
-            case TileType.Plastic:
-                _plasticView.TextCountVisual(count);
-                break;
-        }
-    }
-    public void InitUI(TileType type,int max)
-    {
-        switch (type)
-        {
-            case TileType.Junk:
-                _junkView.InitText(max);
-                break;
-            case TileType.Iron:
-                _ironView.InitText(max);
-                break;
-            case TileType.Rubber:
-                _rubberView.InitText(max);
-                break;
-            case TileType.Plastic:
-                _plasticView.InitText(max);
-                break;
-        }
-    }
-    public void InitGoldUI(int max)
-    {
-        _goldView.InitText(max);
-    }
-    public void InfoGoldUI(int gold)
-    {
-        _goldView.TextCountVisual(gold);
     }
 }
 
