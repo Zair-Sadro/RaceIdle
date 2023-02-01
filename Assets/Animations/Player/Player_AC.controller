@@ -249,7 +249,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8c52d2bd78b4144386e29e2898985ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
 --- !u!1102 &6168469674266680772
 AnimatorState:
   serializedVersion: 6
@@ -287,7 +286,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 6168469674266680772}
-    m_Position: {x: 290, y: 100, z: 0}
+    m_Position: {x: 310, y: 110, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: -2935535599209440243}
