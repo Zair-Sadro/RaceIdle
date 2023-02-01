@@ -5,7 +5,7 @@ using UnityEngine;
 public class SMPlayerMovement : StateMachineBehaviour
 {
 
-    public PlayerController _player;
+    [Zenject.Inject] private PlayerController _player;
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
