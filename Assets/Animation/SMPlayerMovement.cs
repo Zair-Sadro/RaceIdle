@@ -5,7 +5,7 @@ using UnityEngine;
 public class SMPlayerMovement : StateMachineBehaviour
 {
 
-    [SerializeField] private PlayerController _player;
+    public PlayerController _player;
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
