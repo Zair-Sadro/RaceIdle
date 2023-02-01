@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 907411825a0ccda4aacf780e2b0dac5f, type: 3}
-  m_Name: New Auto Repair Data
+  m_Name: test
   m_EditorClassIdentifier: 
   levels:
   - requierments:
@@ -19,4 +19,6 @@ MonoBehaviour:
     - _type: 1
       _amount: 2
     - _type: 2
+      _amount: 2
+    - _type: 3
       _amount: 2

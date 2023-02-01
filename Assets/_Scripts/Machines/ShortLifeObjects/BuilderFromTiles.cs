@@ -13,6 +13,7 @@ public class BuilderFromTiles : TileCollector
     public GameObject building;
 
     [SerializeField] private byte _buildid;
+    [SerializeField] protected bool forceToBuild = true;
 
     public BuildType buildType;
     public byte BuildID => _buildid;
@@ -24,10 +25,11 @@ public class BuilderFromTiles : TileCollector
     protected Action OnEnoughForBuild;
 
 
+
     private void Start()
     {
 
-        if (building.activeInHierarchy)
+        if (building.activeInHierarchy && forceToBuild)
         {
             StopCollect();
             BuildAndEffect(building);
@@ -58,13 +60,13 @@ public class BuilderFromTiles : TileCollector
 
 
         if (collidersAfterBuildOn.Length > 0)
-            for (int i = 0; i < collidersAfterBuild.Length; i++)
+            for (int i = 0; i < collidersAfterBuildOn.Length; i++)
             {
                
                 collidersAfterBuildOn[i].SetActive(true);
             }
 
-        Destroy(this);
+        Destroy(this,0.3f);
     }
     protected virtual void BeforeBuildAction()
     {
@@ -76,7 +78,7 @@ public class BuilderFromTiles : TileCollector
          }
 
         if (collidersBeforeBuildOn.Length > 0)
-            for (int i = 0; i < collidersBeforeBuild.Length; i++)
+            for (int i = 0; i < collidersBeforeBuildOn.Length; i++)
             {
                 collidersBeforeBuildOn[i].SetActive(true);
             }
@@ -108,8 +110,9 @@ public class BuilderFromTiles : TileCollector
         {
             StopCollect();
             BuildAndEffect(building);
-            AfterBuildAction();
+           
             _buildSaver.GetBuildInfo(this);
+            AfterBuildAction();
         }
     }
     public virtual void BuildBySaver()

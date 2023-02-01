@@ -10,6 +10,7 @@ public class SMPlayerMovement : StateMachineBehaviour
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.SetFloat("Speed", _player.CurrentSpeed);
+        
     }
    
 }
