@@ -237,8 +237,9 @@ public class PrometeoCarController : MonoBehaviour
 
       // We determine the speed of the car.
       carSpeed = (2 * Mathf.PI * frontLeftCollider.radius * frontLeftCollider.rpm * 60) / 1000;
-      // Save the local velocity of the car in the x axis. Used to know if the car is drifting.
-      localVelocityX = transform.InverseTransformDirection(carRigidbody.velocity).x;
+
+        // Save the local velocity of the car in the x axis. Used to know if the car is drifting.
+        localVelocityX = transform.InverseTransformDirection(carRigidbody.velocity).x;
       // Save the local velocity of the car in the z axis. Used to know if the car is going forward or backwards.
       localVelocityZ = transform.InverseTransformDirection(carRigidbody.velocity).z;
 
@@ -339,6 +340,8 @@ public class PrometeoCarController : MonoBehaviour
         if (Vector3.Distance(transform.position, targetForAI.position) > 1f)
         {
             CancelInvoke("DecelerateCar");
+
+
             GoForward();
             cube.LookAt(targetForAI);
 
@@ -422,7 +425,7 @@ frontRightCollider.steerAngle = Mathf.Lerp(frontRightCollider.steerAngle, steeri
             steeringAxis = -1f;
         }
         var steeringAngle = Math.Clamp(angle,-45,45);
-        Debug.Log(angle);
+
         
         frontLeftCollider.steerAngle = Mathf.Lerp(frontLeftCollider.steerAngle, steeringAngle, steeringSpeed);
         frontRightCollider.steerAngle = Mathf.Lerp(frontRightCollider.steerAngle, steeringAngle, steeringSpeed);
@@ -517,6 +520,7 @@ if(localVelocityZ < -1f){
     //Apply positive torque in all wheels to go forward if maxSpeed has not been reached.
     frontLeftCollider.brakeTorque = 0;
     frontLeftCollider.motorTorque = (accelerationMultiplier * 50f) * throttleAxis;
+                print((accelerationMultiplier * 50f) * throttleAxis);
     frontRightCollider.brakeTorque = 0;
     frontRightCollider.motorTorque = (accelerationMultiplier * 50f) * throttleAxis;
     rearLeftCollider.brakeTorque = 0;

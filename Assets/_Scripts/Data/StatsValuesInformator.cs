@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Progress;
+
 //Создать отдельный класс откуда можно получить данные по машинам , цифрам и тд.
 public class StatsValuesInformator :MonoBehaviour
 {

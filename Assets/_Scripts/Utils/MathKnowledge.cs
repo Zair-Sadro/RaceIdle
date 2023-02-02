@@ -1,8 +1,4 @@
-using Cysharp.Threading.Tasks.Triggers;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using System.Security.Policy;
+
 using UnityEngine;
 
 public class MathKnowledge : MonoBehaviour
