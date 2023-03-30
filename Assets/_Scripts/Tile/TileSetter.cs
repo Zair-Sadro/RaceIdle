@@ -1,22 +1,23 @@
+using Cysharp.Threading.Tasks;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
-using System;
 using Zenject;
-using Cysharp.Threading.Tasks;
 
-public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
+public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
 {
     [SerializeField] private TileSetterData _data;
     [SerializeField] private Transform tilesSpawnerParent;
-    
+
     [Header("Add to Unit Settings")]
     [SerializeField] private Transform setupPoint;
     [SerializeField] private int maxTiles;
-    [SerializeField] private float powerTileJump=2f;
+    [SerializeField] private float powerTileJump = 2f;
     [Space]
-    [SerializeField,Range(0.1f,1f)] private float timeToRemoveTile;
-    [SerializeField] private float delayToRemoveTile=0.7f;
+    [SerializeField, Range(0.1f, 1f)] private float timeToRemoveTile;
+    [SerializeField] private float delayToRemoveTile = 0.7f;
 
     [Inject] private ResourceTilesSpawn _resourceTilesSpawn;
 
@@ -30,33 +31,32 @@ public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
     private TileList _plasticTiles = new(TileType.Plastic);
     private TileList _rubberTiles = new(TileType.Rubber);
 
-    private  Dictionary<TileType, TileList> tilesListsByType = new(4); 
+    private Dictionary<TileType, TileList> tilesListsByType = new(4);
     public IReadOnlyDictionary<TileType, TileList> TilesListsByType => tilesListsByType;
 
 
 
-    private bool maxCapacity;
+    private bool _maxCapacity;
+    public bool MaxCapacity => _maxCapacity;
 
     public event Action<int> OnTilesCountChanged;
     public event Action<bool> OnTilesMaxCapacity;
 
-
     public List<Tile> Tiles => _colectedTiles;
 
-    private float _timeToRemove;
 
     private void Awake()
     {
-        _timeToRemove = timeToRemoveTile * 1.1f;
         tilesListsByType[TileType.Junk] = _junkTiles;
         tilesListsByType[TileType.Iron] = _ironTiles;
         tilesListsByType[TileType.Plastic] = _plasticTiles;
         tilesListsByType[TileType.Rubber] = _rubberTiles;
+
     }
 
     private void Start()
     {
-        GameEventSystem.TileSold +=((type)=> RemoveTiles(type,Vector3.zero,null,true));
+        GameEventSystem.TileSold += ((type) => RemoveTiles(type, Vector3.zero, null, true));
         GameEventSystem.TileBought += AddTile;
         GameEventSystem.SoldALl += RemoveAll;
     }
@@ -64,12 +64,14 @@ public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
     #region AddTile
     public void AddTile(Tile tile)
     {
+        if (_maxCapacity)
+            return;
 
         tile.OnTake();
         tile.JumpTween(setupPoint.position, powerTileJump, () =>
         {
             tile.transform.SetParent(setupPoint);
-            tile.transform.localRotation = Quaternion.Euler(0, 0, 0);
+            tile.transform.localRotation = Quaternion.identity;
         });
 
 
@@ -79,7 +81,7 @@ public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
         OnTilesCountChanged?.Invoke(_colectedTiles.Count);
         if (MaxTilesCapacity())
         {
-            OnTilesMaxCapacity.Invoke(false); // Отлючаем коллайдеры всех активных тайлов
+            OnTilesMaxCapacity.Invoke(false); 
         }
     }
     /// <summary>
@@ -88,12 +90,11 @@ public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
     /// <param name="type"></param>
     public void AddTile(TileType type)
     {
-
         var tile = _resourceTilesSpawn.GetTile(type);
         tile.OnTake();
         tile.transform.SetParent(setupPoint);
 
-        tile.transform.localRotation = Quaternion.Euler(0, 0, 0);
+        tile.transform.localRotation = Quaternion.identity;
 
 
         _colectedTiles.Add(tile);
@@ -117,9 +118,9 @@ public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
     /// <param name="count"></param>
     /// <param name="tilesPlace"></param>
     /// <param name="interatorCall"></param>
-    /// <param name="needClear"></param>
-    public UniTask RemoveTiles(TileType type,int count, Vector3 tilesPlace, Action<Tile> interatorCall, System.Threading.CancellationTokenSource cancellationToke, bool needClear = false)
-    {
+    /// <param name="needClear"></param> 
+     public UniTask RemoveTiles(TileType type, int count, Vector3 tilesPlace, Action<Tile> interatorCall,                                                                    CancellationTokenSource cancellationToke, bool needClear = false)
+     {
 
         if (!_isGivingTiles && tilesListsByType[type].Count > 0)
         {
@@ -128,31 +129,31 @@ public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
         }
         else
         {
-            return UniTask.DelayFrame(100, PlayerLoopTiming.Update,cancellationToke.Token);
+            return UniTask.DelayFrame(100, PlayerLoopTiming.Update, cancellationToke.Token);
         }
 
-        int CalculateAvailableCount(int countneed,int countnow)
+        int CalculateAvailableCount(int countneed, int countnow)
         {
             if (countnow < countneed) return countnow;
             else return countneed;
         }
-           
+
     }
-    private IEnumerator RemovingTile(TileType type, int count,Vector3 tilesPlace, Action<Tile> interatorCall, bool needClear)
+    private IEnumerator RemovingTile(TileType type, int count, Vector3 tilesPlace, Action<Tile> interatorCall, bool needClear)
     {
         _isGivingTiles = true;
 
         TileList tiles = tilesListsByType[type];
 
         yield return new WaitForSeconds(delayToRemoveTile);
-        
-        for (int i = count-1; i >= 0; i--)
+
+        for (int i = count - 1; i >= 0; i--)
         {
             print($"removed{type}:{i}");
             tiles[i].ThrowTo(tilesPlace, timeToRemoveTile);
             interatorCall?.Invoke(tiles[i]);
 
-            yield return WaitAndClearTile(timeToRemoveTile, needClear, tiles[i]);
+            yield return WaitAndClearTile(needClear, tiles[i]);
 
             if (_isGivingTiles == false)
                 yield break;
@@ -167,14 +168,14 @@ public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
     /// <param name="tilesPlace"></param>
     /// <param name="interatorCall"></param>
     /// <param name="needClear"></param>
-    public void RemoveTiles(TileType type,Vector3 tilesPlace,Action<Tile> interatorCall, bool needClear = false)
+    public void RemoveTiles(TileType type, Vector3 tilesPlace, Action<Tile> interatorCall, bool needClear = false)
     {
-        if (!_isGivingTiles && tilesListsByType[type].Count>0)
+        if (!_isGivingTiles && tilesListsByType[type].Count > 0)
             StartCoroutine(RemovingTile(type, tilesPlace, interatorCall, needClear));
     }
-    private IEnumerator RemovingTile(TileType type, Vector3 tilesPlace,Action<Tile> interatorCall,bool needClear)
+    private IEnumerator RemovingTile(TileType type, Vector3 tilesPlace, Action<Tile> interatorCall, bool needClear)
     {
-        
+
 
         _isGivingTiles = true;
 
@@ -182,13 +183,13 @@ public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
 
         yield return new WaitForSeconds(delayToRemoveTile);
 
-        for (int i = tiles.Count-1; i >= 0; i--)
+        for (int i = tiles.Count - 1; i >= 0; i--)
         {
             tiles[i].ThrowTo(tilesPlace, timeToRemoveTile);
             interatorCall?.Invoke(tiles[i]);
 
-            yield return WaitAndClearTile(timeToRemoveTile, needClear, tiles[i]);
-      
+            yield return WaitAndClearTile( needClear, tiles[i]);
+
             if (_isGivingTiles == false)
                 yield break;
         }
@@ -204,18 +205,17 @@ public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
         _colectedTiles.Clear();
     }
     #endregion
-
-    IEnumerator WaitAndClearTile(float delay,bool needclear,Tile tile)
+    IEnumerator WaitAndClearTile(bool needclear, Tile tile)
     {
-        yield return new WaitForSeconds(delay);
-
+      
         if (needclear)
             ClearTiles(tile);
         else
             RemoveFromList(tile);
+        yield return new WaitForSeconds(0.1f);  
     }
 
-    private void RemoveFromList(Tile tile )
+    private void RemoveFromList(Tile tile)
     {
         tilesListsByType[tile.Type].RemoveTile(tile);
         _colectedTiles.Remove(tile);
@@ -245,16 +245,14 @@ public class TileSetter : MonoBehaviour,ISaveLoad<TileSetterData>
 
     public bool MaxTilesCapacity()
     {
-        maxCapacity = _colectedTiles.Count == maxTiles;
-        return maxCapacity;
+        _maxCapacity = _colectedTiles.Count == maxTiles;
+        return _maxCapacity;
 
     }
 
 
-    
 
-
-    public TileSetterData GetData()                                             
+    public TileSetterData GetData()
     {
         return _data;
     }

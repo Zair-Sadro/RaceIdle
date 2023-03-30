@@ -25,14 +25,14 @@ public class JunkCarManager : MonoBehaviour
 
     public void ExplodeTiles(JunkCar car)
     {
-        var tileList = tileSpawn.GetRandomTiles(3, 5);
-        var pos = new Vector3(car.transform.position.x, car.transform.position.y + 1f, car.transform.position.z);
+        //var tileList = tileSpawn.GetRandomTiles(3, 5);
+        //var pos = new Vector3(car.transform.position.x, car.transform.position.y + 1f, car.transform.position.z);
 
-        for (int i = 0; i < tileList.Count; i++)
-        {
-            tileList[i].transform.localPosition = pos;
-            tileList[i].gameObject.SetActive(true);
-        }
+        //for (int i = 0; i < tileList.Count; i++)
+        //{
+        //    tileList[i].transform.localPosition = pos;
+        //    tileList[i].gameObject.SetActive(true);
+        //}
     }
     public void ExplodeTile(JunkCar car)
     {

@@ -40,7 +40,7 @@ MonoBehaviour:
         m_Normal:
           m_Background: {fileID: 0}
           m_ScaledBackgrounds: []
-          m_TextColor: {r: 0.1764706, g: 0.1764706, b: 0.1764706, a: 1}
+          m_TextColor: {r: 1, g: 1, b: 1, a: 1}
         m_Hover:
           m_Background: {fileID: 0}
           m_ScaledBackgrounds: []
@@ -118,7 +118,7 @@ MonoBehaviour:
         m_Normal:
           m_Background: {fileID: 0}
           m_ScaledBackgrounds: []
-          m_TextColor: {r: 0.245283, g: 0.245283, b: 0.245283, a: 1}
+          m_TextColor: {r: 0.8584906, g: 0.8584906, b: 0.8584906, a: 1}
         m_Hover:
           m_Background: {fileID: 0}
           m_ScaledBackgrounds: []
@@ -577,203 +577,175 @@ MonoBehaviour:
       shown: 0
     - name: WindZone
       shown: 0
-    - name: Enemy
+    - name: AlphaButtonClickMask
       shown: 0
-    - name: Movement
+    - name: EventSystemChecker
       shown: 0
-    - name: Billboard
+    - name: ForcedReset
       shown: 0
-    - name: DynamicText
+    - name: ActivateTrigger
       shown: 0
-    - name: DynamicText2D
+    - name: AutoMobileShaderSwitch
       shown: 0
-    - name: DynamicTextManager
+    - name: AutoMoveAndRotate
       shown: 0
-    - name: UIController
+    - name: DragRigidbody
       shown: 0
-    - name: ColliderAnimEvent
+    - name: DynamicShadowSettings
       shown: 0
-    - name: CFX_AutoStopLoopedEffect
+    - name: FollowTarget
       shown: 0
-    - name: CFX_Demo_New
+    - name: FPSCounter
       shown: 0
-    - name: CFX_Demo_RandomDir
+    - name: ObjectResetter
       shown: 0
-    - name: CFX_Demo_RandomDirectionTranslate
+    - name: ParticleSystemDestroyer
       shown: 0
-    - name: CFX_Demo_RotateCamera
+    - name: PlatformSpecificContent
       shown: 0
-    - name: CFX_Demo_Translate
+    - name: SimpleActivatorMenu
       shown: 0
-    - name: CFX_AutoDestructShuriken
+    - name: SimpleMouseRotator
       shown: 0
-    - name: CFX_AutoRotate
+    - name: SmoothFollow
       shown: 0
-    - name: CFX_LightFlicker
+    - name: TimedObjectActivator
       shown: 0
-    - name: CFX_LightIntensityFade
+    - name: TimedObjectDestructor
       shown: 0
-    - name: JoystickPlayerExample
+    - name: WaypointCircuit
       shown: 0
-    - name: JoystickSetterExample
+    - name: WaypointProgressTracker
+      shown: 0
+    - name: AfterburnerPhysicsForce
+      shown: 0
+    - name: ExplosionFireAndDebris
+      shown: 0
+    - name: ExplosionPhysicsForce
+      shown: 0
+    - name: Explosive
+      shown: 0
+    - name: ExtinguishableParticleSystem
+      shown: 0
+    - name: FireLight
+      shown: 0
+    - name: Hose
+      shown: 0
+    - name: ParticleSystemMultiplier
+      shown: 0
+    - name: SmokeParticles
+      shown: 0
+    - name: WaterHoseParticles
+      shown: 0
+    - name: WaterBasic
+      shown: 0
+    - name: Displace
+      shown: 0
+    - name: GerstnerDisplace
+      shown: 0
+    - name: PlanarReflection
+      shown: 0
+    - name: SpecularLighting
+      shown: 0
+    - name: Water
+      shown: 0
+    - name: WaterBase
+      shown: 0
+    - name: WaterTile
+      shown: 0
+    - name: AxisTouchButton
+      shown: 0
+    - name: ButtonHandler
+      shown: 0
+    - name: InputAxisScrollbar
       shown: 0
     - name: Joystick
       shown: 0
-    - name: DynamicJoystick
+    - name: MobileControlRig
       shown: 0
-    - name: FixedJoystick
+    - name: TiltInput
       shown: 0
-    - name: FloatingJoystick
+    - name: TouchPad
       shown: 0
-    - name: VariableJoystick
+    - name: BrakeLight
       shown: 0
-    - name: PrometeoCarController
+    - name: CarAIControl
       shown: 0
-    - name: TestVector
+    - name: CarAudio
       shown: 0
-    - name: CircleSlider
+    - name: CarController
       shown: 0
-    - name: JustRotate
+    - name: CarSelfRighting
       shown: 0
-    - name: SliderRunTo1
+    - name: CarUserControl
       shown: 0
-    - name: SliderRunTo1Action
+    - name: Mudguard
       shown: 0
-    - name: SliderValuePass
+    - name: SkidTrail
       shown: 0
-    - name: ToggleChangeTextColor
+    - name: Suspension
       shown: 0
-    - name: RaceIdleGame
+    - name: WheelEffects
       shown: 0
-    - name: StatsValuesInformator
+    - name: AeroplaneAiControl
       shown: 0
-    - name: BuildSaverInstaller
+    - name: AeroplaneAudio
       shown: 0
-    - name: InputManagerInstaller
+    - name: AeroplaneController
       shown: 0
-    - name: MainInstaller
+    - name: AeroplaneControlSurfaceAnimator
       shown: 0
-    - name: MainPlayerInstaller
+    - name: AeroplanePropellerAnimator
       shown: 0
-    - name: StatsValueInfoInstaller
+    - name: AeroplaneUserControl2Axis
       shown: 0
-    - name: TileSetterInstaller
+    - name: AeroplaneUserControl4Axis
       shown: 0
-    - name: TileSpawnInstaller
+    - name: JetParticleEffect
       shown: 0
-    - name: UIMemmoryInstaller
+    - name: LandingGear
       shown: 0
-    - name: WalletInstaller
+    - name: Ball
       shown: 0
-    - name: ProductView
+    - name: BallUserControl
       shown: 0
-    - name: RecourceView
+    - name: AICharacterControl
       shown: 0
-    - name: BuilderFromTiles
+    - name: ThirdPersonCharacter
       shown: 0
-    - name: BuildSaver
+    - name: ThirdPersonUserControl
       shown: 0
-    - name: GatesExplosion
+    - name: FirstPersonController
       shown: 0
-    - name: TileCollector
+    - name: HeadBob
       shown: 0
-    - name: TileMachine
+    - name: RigidbodyFirstPersonController
       shown: 0
-    - name: PlayerController
+    - name: AbstractTargetFollower
       shown: 0
-    - name: PlayerSave
+    - name: AutoCam
       shown: 0
-    - name: PlayerDetector
+    - name: FreeLookCam
       shown: 0
-    - name: SlashDetector
+    - name: HandHeldCam
       shown: 0
-    - name: PlayerSlash
+    - name: LookatTarget
       shown: 0
-    - name: ProductStorage
+    - name: PivotBasedCameraRig
       shown: 0
-    - name: InputManager
+    - name: ProtectCameraFromWallClip
       shown: 0
-    - name: ResourceTilesSpawn
+    - name: TargetFieldOfView
       shown: 0
-    - name: FileIOUtility
+    - name: Camera2DFollow
       shown: 0
-    - name: SaveLoadController
+    - name: CameraFollow
       shown: 0
-    - name: SwipeSystem
+    - name: Platformer2DUserControl
       shown: 0
-    - name: WalletSystem
+    - name: PlatformerCharacter2D
       shown: 0
-    - name: TileAdder
-      shown: 0
-    - name: Tile
-      shown: 0
-    - name: TileSetter
-      shown: 0
-    - name: UIMemmory
-      shown: 0
-    - name: UIPanel
-      shown: 0
-    - name: MachineUI
-      shown: 0
-    - name: ResourceUI
-      shown: 0
-    - name: SafeAreaDetection
-      shown: 0
-    - name: BuySlot
-      shown: 0
-    - name: SellSlot
-      shown: 0
-    - name: ShopUI
-      shown: 0
-    - name: SellAllButton
-      shown: 0
-    - name: UpgradeBar
-      shown: 0
-    - name: UpgradeSlot
-      shown: 0
-    - name: UpgradeUI
-      shown: 0
-    - name: ButtonClickBehaviour
-      shown: 0
-    - name: UI_HoldButton
-      shown: 0
-    - name: UI_Manager
-      shown: 0
-    - name: MachineUpgrade
-      shown: 0
-    - name: MathKnowledge
-      shown: 0
-    - name: AutoRepair
-      shown: 0
-    - name: CarRider
-      shown: 0
-    - name: MultuCounterView
-      shown: 0
-    - name: ShopSystem
-      shown: 0
-    - name: CounterView
-      shown: 0
-    - name: JunkCar
-      shown: 0
-    - name: JunkCarManager
-      shown: 0
-    - name: OnObjectClickHelper
-      shown: 0
-    - name: Race
-      shown: 0
-    - name: TaskManager
-      shown: 0
-    - name: GridLayoutGroup3D
-      shown: 0
-    - name: LayoutElement3D
-      shown: 0
-    - name: LayoutGroup3D
-      shown: 0
-    - name: XAxisLayoutGroup3D
-      shown: 0
-    - name: YAxisLayoutGroup3D
-      shown: 0
-    - name: ZAxisLayoutGroup3D
+    - name: Restarter
       shown: 0
     - name: BezierShape
       shown: 0
@@ -1649,14 +1621,14 @@ MonoBehaviour:
       shown: 0
     - name: EmittedMonoBehaviour`1
       shown: 0
+    - name: DOTweenComponent
+      shown: 0
     - name: SerializedBehaviour
       shown: 0
     - name: SerializedComponent
       shown: 0
     - name: SerializedMonoBehaviour
       shown: 0
-    - name: DOTweenComponent
-      shown: 0
     customComponents: []
-    unityVersion: 2021.3.6f1
+    unityVersion: 2021.3.21f1
     isDirty: 0

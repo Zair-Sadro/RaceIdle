@@ -82,10 +82,13 @@ public class Tile : MonoBehaviour
         if(this.gameObject.activeInHierarchy) 
             StartCoroutine(TimerTillDisappear());
     }
-
+    private bool _setterInjected;
     internal void InjectTileSetter(TileSetter tileSetter)
     {
+        if (_setterInjected) return;
+
         _tileSetter = tileSetter;
+        _setterInjected = true;
     }
 
     public void SetColliderActive(bool value)

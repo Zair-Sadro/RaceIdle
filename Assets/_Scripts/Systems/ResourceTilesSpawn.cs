@@ -1,94 +1,90 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-//CanBeInjected//
 public class ResourceTilesSpawn : MonoBehaviour
 {
-    [SerializeField] private Tile _tilePrefab;
+    [SerializeField] private Tile _junkPrefab;
+    [SerializeField] private Tile _ironPrefab;
+    [SerializeField] private Tile _plastPrefab;
+    [SerializeField] private Tile _rubberPrefab;
+
     [SerializeField] private int maxTilesAmount;
     [SerializeField] private Transform _tilesParent;
 
-    [SerializeField] private Material _junkMat, _plastMat, _ironMat, _rubberMat;
 
+    private ObjectPooler<Tile> _junkPool;
+    private ObjectPooler<Tile> _ironPool;
+    private ObjectPooler<Tile> _plastPool;
+    private ObjectPooler<Tile> _rubberPool;
+
+    private List<ObjectPooler<Tile>> _poolList = new();
 
     [Inject] private TileSetter _tileSetter;
-    private ObjectPooler<Tile> _tilesPool;
-
 
     private void OnEnable()
     {
-        _tilesPool = new ObjectPooler<Tile>(_tilePrefab, _tilesParent);
-        _tilesPool.CreatePool(maxTilesAmount);
-        _tileSetter.OnTilesMaxCapacity += SetTilesColliderStatus;
-    }
+        _junkPool = CreatePool( _junkPrefab);
+        _ironPool = CreatePool(_ironPrefab);
+        _plastPool = CreatePool(_plastPrefab);
+        _rubberPool = CreatePool(_rubberPrefab);
+        
 
-    public virtual List<Tile> GetRandomTiles(int min, int max)
-    {
-        List<Tile> newList = new List<Tile>();
-        int randomAmount = Random.Range(min, max);
 
-        for (int i = 0; i < randomAmount; i++)
-            newList.Add(_tilesPool.GetFreeObject());
-
-        return newList;
-    }
-    public Tile GetTile(TileType type)
-    {
-            var tile = _tilesPool.GetFreeObject();
-            SetType(type);
-            tile.InjectTileSetter(_tileSetter);
-
-            if (_tileSetter.MaxTilesCapacity())
-            {
-                tile.SetColliderActive(false);
-            }
-            else
-            {
-                tile.SetColliderActive(true);
-            }
-
-            return tile;
-
-        void SetType(TileType t)
+        ObjectPooler<Tile> CreatePool(Tile pref)
         {
-            tile.Type = t;
-            switch (t)
-            {
-                case TileType.Junk:
-                    tile.SetMaterial(_junkMat);
-                    break;
+            var pool = new ObjectPooler<Tile>(pref, _tilesParent);
+            pool.CreatePool(maxTilesAmount);
+            _poolList.Add(pool);
 
-                case TileType.Iron:
-                    tile.SetMaterial(_ironMat);
-                    break;
-
-                case TileType.Rubber:
-                    tile.SetMaterial(_rubberMat);
-                    break;
-
-                case TileType.Plastic:
-                    tile.SetMaterial(_plastMat);
-                    break;
-
-            }
+            return pool;
         }
 
-    
+    }
+
+
+    public Tile GetTile(TileType type)
+    {
+        var tile = PoolByType(type).GetFreeObject();
+        tile.InjectTileSetter(_tileSetter);
+
+        return tile;
+
     }
     public void ToPool(Tile t)
     {
         t.transform.parent = _tilesParent;
         t.gameObject.SetActive(false);
     }
-    public void SetTilesColliderStatus(bool value)
+
+    private ObjectPooler<Tile> PoolByType(TileType type)
     {
-        var tiles = _tilesPool.GetAllActiveObjects();
-        foreach (var tile in tiles)
+        switch (type)
         {
-            tile.SetColliderActive(value);
+            case TileType.Junk:
+                return _junkPool;
+
+            case TileType.Iron:
+                return _ironPool;
+
+            case TileType.Rubber:
+                return _rubberPool;
+
+            case TileType.Plastic:
+                return _plastPool;
 
         }
+        return null;
     }
+
+    //public virtual List<Tile> GetRandomTiles(int min, int max)
+    //{
+    //    List<Tile> newList = new List<Tile>();
+    //    int randomAmount = Random.Range(min, max);
+
+    //    for (int i = 0; i < randomAmount; i++)
+    //        newList.Add(_tilesPool.GetFreeObject());
+
+    //    return newList;
+    //}
 }
