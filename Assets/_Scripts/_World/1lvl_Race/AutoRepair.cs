@@ -6,7 +6,7 @@ using System.Threading;
 using UnityEngine;
 
 
-public class AutoRepair :MonoBehaviour, IUpgradable
+public class AutoRepair : MonoBehaviour, IUpgradable
 {
     [SerializeField] private AutoRepairData _data;
 
@@ -20,9 +20,9 @@ public class AutoRepair :MonoBehaviour, IUpgradable
 
     [SerializeField] private GameObject _car;
 
-    private List<TileType> _requiredTypes=new();
-    private Dictionary<TileType,ProductRequierment> _productRequierments=new();
-    private Dictionary<TileType,int> _tileCountByType=new();
+    private List<TileType> _requiredTypes = new();
+    private Dictionary<TileType, ProductRequierment> _productRequierments = new();
+    private Dictionary<TileType, int> _tileCountByType = new();
 
     private bool _carRiding;
 
@@ -32,7 +32,7 @@ public class AutoRepair :MonoBehaviour, IUpgradable
     [Zenject.Inject] private TileSetter _playerTilesBag;
     private void Collect()
     {
-        if (_playerTilesBag._isGivingTiles|| _carRiding) return;
+        if (_playerTilesBag._isGivingTiles || _carRiding) return;
 
         CollectCor(cancelCollect);
 
@@ -46,15 +46,16 @@ public class AutoRepair :MonoBehaviour, IUpgradable
             var countneed = _productRequierments[req].Amount - _tileCountByType[req];
 
             print($"await{req}");
-            await _playerTilesBag.RemoveTiles(req, countneed, _detectorForRes.transform.position, RecieveTile, cancellationToken, true);
-            
+            await _playerTilesBag.RemoveTiles
+                (req, countneed, _detectorForRes.transform.position, RecieveTile, cancellationToken, true);
+
         }
     }
-    private IEnumerator Repair() 
+    private IEnumerator Repair()
     {
         _carRiding = true;
         //StopCoroutine(CollectCor());
-      //  cancelCollect.Cancel();
+        //  cancelCollect.Cancel();
 
         _detectorForRes.OnPlayerEnter -= Collect;
         _detectorForRes.OnPlayerExit -= StopCollect;
@@ -64,7 +65,7 @@ public class AutoRepair :MonoBehaviour, IUpgradable
 
         GetRequired();
         _carRiding = false;
-        
+
 
     }
     #region Init&SaveLoad
@@ -96,10 +97,10 @@ public class AutoRepair :MonoBehaviour, IUpgradable
         {
             _requiredTypes.Remove(type);
 
-            if (_requiredTypes.Count < 1) 
+            if (_requiredTypes.Count < 1)
                 StartCoroutine(Repair());
         }
-        
+
 
     }
 
@@ -118,9 +119,9 @@ public class AutoRepair :MonoBehaviour, IUpgradable
             var colcount = (data.RequiermentsList[i]);
             _productRequierments.Add(colcount.Type, colcount);
             _requiredTypes.Add(colcount.Type);
-            _tileCountByType.Add(colcount.Type,0);
+            _tileCountByType.Add(colcount.Type, 0);
 
-            _counterUI.InitUI(colcount.Type,colcount.Amount);
+            _counterUI.InitUI(colcount.Type, colcount.Amount);
         }
     }
 
@@ -131,16 +132,16 @@ public class AutoRepair :MonoBehaviour, IUpgradable
 
     public void UpgradeSpeedCapacity(int level)
     {
-      
+
     }
 
     public void UpgradeIncome(int level)
     {
-       
+
     }
 }
 
-public class CarRider: MonoBehaviour
+public class CarRider : MonoBehaviour
 {
     [SerializeField] private RiderData _data;
     private float _speed;
@@ -148,7 +149,7 @@ public class CarRider: MonoBehaviour
 
 }
 
-public class RiderData :ScriptableObject
+public class RiderData : ScriptableObject
 {
 
 }

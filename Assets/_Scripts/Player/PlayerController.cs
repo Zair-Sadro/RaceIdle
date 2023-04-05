@@ -65,9 +65,6 @@ public class PlayerController : MonoBehaviour
             {
 
                 transform.rotation = Quaternion.LookRotation(new Vector3(joystick.Horizontal * speed,0, joystick.Vertical * speed));
-
-               
-                Debug.Log(_curSpeed);
                 // dustParticle.gameObject.SetColliderActive(true);
             }
         }
