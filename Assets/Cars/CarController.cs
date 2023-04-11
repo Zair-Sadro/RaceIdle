@@ -65,7 +65,7 @@ public class CarController : MonoBehaviour
         void WheelRotate()
         {
             var degree = Quaternion.Euler(0, 58 * steeringInput, 0);
-            Debug.Log(45f * steeringInput);
+
             _frontRightsWheel.localRotation = degree;
             _frontLeftWheel.localRotation = degree;
         }

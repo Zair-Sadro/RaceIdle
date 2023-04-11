@@ -1,10 +1,8 @@
-
 using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
-
 
 public class AutoRepair : MonoBehaviour, IUpgradable
 {
@@ -18,7 +16,7 @@ public class AutoRepair : MonoBehaviour, IUpgradable
     [SerializeField] private float delayMachineTakeTile;
     [SerializeField] private int repairLevel;
 
-    [SerializeField] private GameObject _car;
+    [SerializeField] private CarSpawner _carSpawner;
 
     private List<TileType> _requiredTypes = new();
     private Dictionary<TileType, ProductRequierment> _productRequierments = new();
@@ -54,14 +52,13 @@ public class AutoRepair : MonoBehaviour, IUpgradable
     private IEnumerator Repair()
     {
         _carRiding = true;
-        //StopCoroutine(CollectCor());
-        //  cancelCollect.Cancel();
 
-        _detectorForRes.OnPlayerEnter -= Collect;
-        _detectorForRes.OnPlayerExit -= StopCollect;
+        cancelCollect.Cancel();
 
-        _car.SetActive(true);
-        yield return new WaitForSeconds(2f);
+        SubscribeForDetect(false);
+
+        _carSpawner.Spawn(0);
+         yield return new WaitForSeconds(2f);
 
         GetRequired();
         _carRiding = false;
@@ -74,15 +71,13 @@ public class AutoRepair : MonoBehaviour, IUpgradable
     {
         GetRequired();
 
-        _detectorForRes.OnPlayerEnter += Collect;
-        _detectorForRes.OnPlayerExit += StopCollect;
+        SubscribeForDetect(true);
 
 
     }
     private void OnDisable()
     {
-        _detectorForRes.OnPlayerEnter -= Collect;
-        _detectorForRes.OnPlayerExit -= StopCollect;
+        SubscribeForDetect(false);
 
     }
     #endregion
@@ -123,6 +118,7 @@ public class AutoRepair : MonoBehaviour, IUpgradable
 
             _counterUI.InitUI(colcount.Type, colcount.Amount);
         }
+
     }
 
     private void StopCollect()
@@ -139,18 +135,21 @@ public class AutoRepair : MonoBehaviour, IUpgradable
     {
 
     }
+
+    private void SubscribeForDetect(bool value)
+    {
+        if (value)
+        {
+            _detectorForRes.OnPlayerEnter += Collect;
+            _detectorForRes.OnPlayerExit += StopCollect;
+        }
+        else
+        {
+            _detectorForRes.OnPlayerEnter -= Collect;
+            _detectorForRes.OnPlayerExit -= StopCollect;
+        }
+
+    }
 }
 
-public class CarRider : MonoBehaviour
-{
-    [SerializeField] private RiderData _data;
-    private float _speed;
-    private Animator _animator;
-
-}
-
-public class RiderData : ScriptableObject
-{
-
-}
 

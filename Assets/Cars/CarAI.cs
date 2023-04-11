@@ -1,32 +1,64 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 
-public class CarAI :MonoBehaviour 
+public class CarAI : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> _points = new();
-    [SerializeField] private float _pointRange=20f;
+
+    [SerializeField] private float _pointRange = 20f;
 
     private CarController _carControll;
 
+    private List<Transform> _trackPoints = new();       
+    private List<Transform> _toTrackPoint = new();
+
+    private List<Transform> _currentList;
     private int _currentPoint;
-    private int _pointLenght;
 
     private float _gasPower;
 
+
     private void Start()
     {
-      _pointLenght = _points.Count;
-      _carControll= GetComponent<CarController>();
+        _carControll = GetComponent<CarController>();
     }
     private void FixedUpdate()
     {
-        _carControll.GetInput(CalcuateAngle(), 1f);
+        _carControll.GetInput(CalcuateAngle(), _gasPower);
         PointControll();
     }
+
+    public void SetPointsList(List<Transform> trackpoints, List<Transform> toTrackPoints)
+    {
+        _trackPoints = trackpoints;
+        _toTrackPoint = toTrackPoints;
+    }
+    public void RideFromRepair()
+    {
+        StartCoroutine(RidingFromRep());
+    }
+    IEnumerator RidingFromRep()
+    {
+        var rang = _pointRange;
+        _pointRange = 7f;
+        _currentList = _toTrackPoint;
+        _gasPower = 0.85f;
+
+        while (_currentPoint <= _currentList.Count-2 )
+        {
+            yield return null;
+        }
+
+        _currentPoint = 0;
+        _currentList = _trackPoints;
+        _pointRange = rang;
+        _gasPower = 1f;
+    }
+
     private float CalcuateAngle()
     {
-        Vector3 point = _points[_currentPoint].transform.position;
+        Vector3 point = _currentList[_currentPoint].position;
         Vector3 target = point - transform.position;
         target.Normalize();
 
@@ -40,30 +72,32 @@ public class CarAI :MonoBehaviour
         return steeramount;
 
     }
-    void CalcuateBreak(float angle)
+    private void CalcuateBreak(float angle)
     {
-        if (math.abs(angle) > 0.7f)
+        if (math.abs(angle) > 0.6f)
             _carControll.breakforce = 1;
         else
             _carControll.breakforce = -1;
-            
+
 
     }
     private void PointControll()
     {
-        if (Vector3.Distance(transform.position, _points[_currentPoint].transform.position) < _pointRange) 
+
+        if (Vector3.Distance(transform.position, _currentList[_currentPoint].position) < _pointRange)
         {
             NextPoint();
         }
     }
-    void NextPoint()
+    private void NextPoint()
     {
-        if (_currentPoint == _pointLenght - 1) 
+        if (_currentPoint == _currentList.Count - 1)
             _currentPoint = 0;
-        else 
+        else
             _currentPoint++;
 
     }
+
 }
 
 
