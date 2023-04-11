@@ -15,15 +15,19 @@ MonoBehaviour:
   version: 2
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Gray1
   m_Shader: {fileID: 4800000, guid: 7ffc1bc2bbb1ef64f84b552b2d2f0619, type: 3}
-  m_ShaderKeywords: TCP2_MOBILE TCP2_REFLECTIONS_FRESNEL TCP2_RIM_LIGHTING_LIGHTMASK
-    TCP2_UV_NORMALS_FULL
+  m_ValidKeywords:
+  - TCP2_MOBILE
+  - TCP2_REFLECTIONS_FRESNEL
+  - TCP2_RIM_LIGHTING_LIGHTMASK
+  m_InvalidKeywords:
+  - TCP2_UV_NORMALS_FULL
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -81,6 +85,7 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
     - _AlphaClip: 0
     - _Blend: 0
@@ -117,8 +122,8 @@ Material:
     - _RampBandsSmoothing: 0.1
     - _RampOffset: 0
     - _RampScale: 1
-    - _RampSmoothing: 0.4
-    - _RampThreshold: 0.55
+    - _RampSmoothing: 1
+    - _RampThreshold: 0.936
     - _RampType: 0
     - _ReceiveShadows: 1
     - _ReceiveShadowsOff: 1
@@ -166,3 +171,4 @@ Material:
     - _SColor: {r: 0.2830189, g: 0.2830189, b: 0.2830189, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _SpecularColor: {r: 0.75, g: 0.75, b: 0.75, a: 1}
+  m_BuildTextureStacks: []

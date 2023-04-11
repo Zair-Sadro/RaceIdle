@@ -1,5 +1,4 @@
-﻿using Cysharp.Threading.Tasks;
-using Unity.Mathematics;
+﻿using Unity.Mathematics;
 using UnityEngine;
 
 public class CarController : MonoBehaviour
@@ -9,13 +8,14 @@ public class CarController : MonoBehaviour
     [SerializeField] private float _turnSpeed;
 
     [SerializeField] private float _driftFactor;
+    [SerializeField] private TrailRenderer _leftSkid, _rightSkid;
 
     private float _rotationAngle;
 
     private float steeringInput;
     private float accelInput;
 
-
+    public float breakforce;
     private Rigidbody _rb;
     private void Awake()
     {
@@ -39,13 +39,15 @@ public class CarController : MonoBehaviour
         if (forwardV > _maxSpeed)
             return;
 
-        Vector3 force = transform.forward * _accelerationFactor * Time.fixedDeltaTime * accelInput;
+        Vector3 force = transform.forward * (_accelerationFactor * Time.fixedDeltaTime * accelInput);
+        Vector3 breakF = transform.forward * breakforce * -0.6f;
         _rb.AddForce(force, ForceMode.Force);
+        _rb.AddForce(breakF, ForceMode.Force);
     }
 
     private void ApplySteering()
     {
-        if (_rb.velocity.sqrMagnitude < 0.1f) 
+        if (_rb.velocity.sqrMagnitude < 0.1f)
         {
             _rotationAngle += 0;
         }
@@ -57,34 +59,46 @@ public class CarController : MonoBehaviour
         _rb.MoveRotation(Quaternion.Euler(0, _rotationAngle, 0));
 
     }
-
+    public float latVellValye;
     private void Drift()
     {
-        if (steeringInput != 0) 
+        if (steeringInput == 0)
             return;
-       
+
+        // Calculate the lateral velocity of the car
+        float lateralVelocity = GetLateralVel();
+        Debug.Log(lateralVelocity);
+        // Check if the car is skidding
+        if (Mathf.Abs(lateralVelocity) > latVellValye)
+        {
+            Skid(true);
+            // Apply a sideways force to the car to continue the drift
+            Vector3 driftForce = -transform.right * lateralVelocity * _driftFactor * Time.fixedDeltaTime;
+            _rb.AddForce(driftForce, ForceMode.Force);
+        }
+        else
+        {
+            Skid(false);
+        }
+
+        void Skid(bool value)
+        {
+            _leftSkid.emitting = value;
+            _rightSkid.emitting = value;
+        }
+
     }
 
     private void DicreaseSideVelocity()
     {
-       var forwardV = transform.forward * Vector3.Dot(_rb.velocity, transform.forward);
-       var rightV = transform.right * Vector3.Dot(_rb.velocity, transform.right);
-       _rb.velocity = forwardV + (rightV * _driftFactor);
+        var forwardV = transform.forward * Vector3.Dot(_rb.velocity, transform.forward);
+        var rightV = transform.right * Vector3.Dot(_rb.velocity, transform.right);
+        _rb.velocity = forwardV + (rightV * _driftFactor);
     }
 
     private float GetLateralVel()
     {
-        return Vector3.Dot(transform.right,_rb.velocity);
-    }
-
-    public bool IsTireSkr(out float lateralVelocity)
-    {
-       
-        lateralVelocity = GetLateralVel();
-        if (math.abs(GetLateralVel()) > 4f)
-            return true;
-
-        return false;
+        return Vector3.Dot(transform.right, _rb.velocity);
     }
 
     public void GetInput(float steerValue, float accelValue)
