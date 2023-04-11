@@ -8557,6 +8557,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1788232176}
     m_Modifications:
+    - target: {fileID: 1674479071, guid: ff18e78123c5b014c8cc58d715f78d1e, type: 3}
+      propertyPath: _carSpawner
+      value: 
+      objectReference: {fileID: 1187454119}
     - target: {fileID: 356829156170090841, guid: ff18e78123c5b014c8cc58d715f78d1e,
         type: 3}
       propertyPath: m_Size.x
