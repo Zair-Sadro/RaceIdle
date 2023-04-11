@@ -7,8 +7,11 @@ public class CarController : MonoBehaviour
     [SerializeField] private float _accelerationFactor;
     [SerializeField] private float _turnSpeed;
 
+    [Header("Drift")]
     [SerializeField] private float _driftFactor;
+    [SerializeField] private ParticleSystem _smoke1, _smoke2;
     [SerializeField] private TrailRenderer _leftSkid, _rightSkid;
+    [SerializeField] private Transform _frontLeftWheel, _frontRightsWheel;
 
     private float _rotationAngle;
 
@@ -57,7 +60,15 @@ public class CarController : MonoBehaviour
         }
 
         _rb.MoveRotation(Quaternion.Euler(0, _rotationAngle, 0));
+        WheelRotate();
 
+        void WheelRotate()
+        {
+            var degree = Quaternion.Euler(0, 58 * steeringInput, 0);
+            Debug.Log(45f * steeringInput);
+            _frontRightsWheel.localRotation = degree;
+            _frontLeftWheel.localRotation = degree;
+        }
     }
     public float latVellValye;
     private void Drift()
@@ -67,7 +78,7 @@ public class CarController : MonoBehaviour
 
         // Calculate the lateral velocity of the car
         float lateralVelocity = GetLateralVel();
-        Debug.Log(lateralVelocity);
+
         // Check if the car is skidding
         if (Mathf.Abs(lateralVelocity) > latVellValye)
         {
@@ -85,6 +96,13 @@ public class CarController : MonoBehaviour
         {
             _leftSkid.emitting = value;
             _rightSkid.emitting = value;
+
+            if (value)
+            {
+                _smoke1.Emit(1);
+                _smoke2.Emit(1);
+            }
+          
         }
 
     }

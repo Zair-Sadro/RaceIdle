@@ -22,7 +22,7 @@ public class CarAI :MonoBehaviour
     private void FixedUpdate()
     {
         _carControll.GetInput(CalcuateAngle(), 1f);
-        LapControll();
+        PointControll();
     }
     private float CalcuateAngle()
     {
@@ -36,7 +36,6 @@ public class CarAI :MonoBehaviour
         steeramount = Mathf.Clamp(steeramount, -1.0f, 1.0f);
 
         CalcuateBreak(steeramount);
-        Debug.Log(_gasPower);
 
         return steeramount;
 
@@ -50,7 +49,7 @@ public class CarAI :MonoBehaviour
             
 
     }
-    private void LapControll()
+    private void PointControll()
     {
         if (Vector3.Distance(transform.position, _points[_currentPoint].transform.position) < _pointRange) 
         {
@@ -63,7 +62,7 @@ public class CarAI :MonoBehaviour
             _currentPoint = 0;
         else 
             _currentPoint++;
-        Debug.Log($"Point{_currentPoint}");
+
     }
 }
 
