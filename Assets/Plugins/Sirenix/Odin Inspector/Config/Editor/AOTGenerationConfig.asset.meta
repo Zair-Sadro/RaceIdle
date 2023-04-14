@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream:Assets/Plugins/Sirenix/Odin Inspector/Config/Editor/AOTGenerationConfig.asset.meta
 guid: 16332f8ad808f1f47bc32e5aa819b83c
+=======
+guid: ea4109ff16dac9b41aecee70d36a1ea8
+>>>>>>> Stashed changes:Assets/HierarchyDecorator/Settings.asset.meta
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 11400000
