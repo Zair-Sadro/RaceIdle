@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 2005072018761105557}
   - component: {fileID: 2446386226988740981}
   - component: {fileID: 5888783870546779946}
-  - component: {fileID: 3621148476801170997}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -123,20 +122,6 @@ CapsuleCollider:
   m_Height: 4
   m_Direction: 1
   m_Center: {x: 0, y: 2, z: 0}
---- !u!114 &3621148476801170997
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2292793153911396789}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbcba09b87028d44090aa0d665d039a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  activeHammerCollTime: 0.5
-  delayBeforeDamage: 0
 --- !u!1 &6425204493022092808
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,7 +220,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &971798826783966773
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -252,7 +237,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &8403955302797214646
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -351,7 +337,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &3389032158782027476
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -368,4 +354,5 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

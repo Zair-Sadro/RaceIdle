@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 using Zenject;
 
@@ -15,25 +13,30 @@ public class PlayerSlash : MonoBehaviour
     private void Slash(JunkCar car)
     {
         if (_canSlash)
-            StartCoroutine(SlashRoutine(activeHammerCollTime));         
+            StartCoroutine(SlashRoutine(activeHammerCollTime));
     }
 
     private IEnumerator SlashRoutine(float time)
     {
         _canSlash = false;
-        controller.Animator.SetTrigger("Slash");
+      
 
-
-       yield return new WaitForSeconds(time);
+        yield return new WaitForSeconds(time);
         _canSlash = true;
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out JunkCar junkcar))
         {
-            if(junkcar.CanBeDamaged)
-                Slash(junkcar);
+            controller.Animator.SetBool("Slash", true);
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.TryGetComponent(out JunkCar junkcar))
+        {
+            controller.Animator.SetBool("Slash", false);
         }
     }
 
