@@ -91,21 +91,12 @@ public class Tile : MonoBehaviour
         _setterInjected = true;
     }
 
-    public void SetColliderActive(bool value)
-    {
-        coll.enabled = value;
-        body.isKinematic = !value;
-    }
     public void ThrowTo(Vector3 place,float duration)
     {
-        _tween?.Kill();
-        _tween =transform.DOJump(place, transform.position.y + 5f, 1, duration).SetEase(Ease.InOutFlash);
-        if (_Rotate) _tween =transform.DORotate(_rotationIn, duration).SetEase(Ease.OutQuad);
-    }
-
-    public void SetMaterial(Material mat)
-    {
-       _tileRenderer.material = mat;
+       // _tween?.Kill();
+       // _tween = 
+            transform.DOJump(place, transform.position.y + 5f, 1, duration).SetEase(Ease.InOutFlash);
+      //  if (_Rotate) _tween =transform.DORotate(_rotationIn, duration).SetEase(Ease.OutQuad);
     }
 
     IEnumerator TimerTillDisappear()
@@ -124,6 +115,13 @@ public class Tile : MonoBehaviour
         }
     }
 
-
-
+    internal void Dissapear(float timer)
+    {
+        StartCoroutine(DissapearCor(timer));
+    }
+    IEnumerator DissapearCor(float timer)
+    {
+        yield return new WaitForSeconds(timer); 
+        gameObject.SetActive(false);
+    }
 }

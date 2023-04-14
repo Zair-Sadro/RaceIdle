@@ -188,7 +188,7 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
             tiles[i].ThrowTo(tilesPlace, timeToRemoveTile);
             interatorCall?.Invoke(tiles[i]);
 
-            yield return WaitAndClearTile( needClear, tiles[i]);
+            yield return WaitAndClearTile(needClear, tiles[i]);
 
             if (_isGivingTiles == false)
                 yield break;
@@ -209,7 +209,9 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
     {
       
         if (needclear)
-            ClearTiles(tile);
+        {
+            ClearTiles(tile, timeToRemoveTile);
+        }           
         else
             RemoveFromList(tile);
         yield return new WaitForSeconds(0.1f);  
@@ -224,9 +226,9 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
         OnTilesCountChanged?.Invoke(_colectedTiles.Count);
     }
 
-    private void ClearTiles(Tile tile)
+    private void ClearTiles(Tile tile,float timer = 0)
     {
-        tile.gameObject.SetActive(false);
+        tile.Dissapear(timer);
         tile.OnGround();
         tile.transform.SetParent(tilesSpawnerParent);
 

@@ -25,8 +25,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4337193029489168027}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 1.34, y: -0.072, z: 1}
-  m_LocalScale: {x: 0.27159286, y: 0.27159286, z: 0.27159286}
+  m_LocalPosition: {x: 1.27, y: -0.07, z: 1.01}
+  m_LocalScale: {x: 0.6311275, y: 0.6311275, z: 0.6311275}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4854790988748260744}
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 5.12, y: 5.12}
+  m_Size: {x: 2.56, y: 2.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -222,7 +222,7 @@ BoxCollider:
   m_Center: {x: -1.25, y: 0.12, z: -0.68}
 --- !u!95 &4854790988748260749
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -239,7 +239,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &4854790988748260750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,6 +268,7 @@ MonoBehaviour:
   counterAnimator: {fileID: 4854790988748260749}
   counter: {fileID: 4854790989368908616}
   tileType: {fileID: 0}
+  _sp: {fileID: 0}
 --- !u!1 &4854790989368908630
 GameObject:
   m_ObjectHideFlags: 0
