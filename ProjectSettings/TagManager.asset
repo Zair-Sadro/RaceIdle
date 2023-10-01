@@ -7,6 +7,8 @@ TagManager:
   - hummerzone
   - UIOpenable
   - weapon
+  - TopMerge
+  - BottomMerge
   layers:
   - Default
   - TransparentFX

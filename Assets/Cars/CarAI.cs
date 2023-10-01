@@ -1,24 +1,41 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using Zenject;
 
 public class CarAI : MonoBehaviour
 {
 
     [SerializeField] private float _pointRange = 20f;
+    [SerializeField] private Collider _collider;
+
+    [SerializeField] private MergeDetect _topDetector,_botDetector;
 
     private CarController _carControll;
 
-    private List<Transform> _trackPoints = new();       
+    private List<Transform> _trackPoints = new();
     private List<Transform> _toTrackPoint = new();
 
     private List<Transform> _currentList;
     private int _currentPoint;
+    public int CurrentPoint => _currentPoint;
 
     private float _gasPower;
 
+    #region Lap Controll
+    private LapControll _lapControll;
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "LapFinish")
+        {
 
+        }
+    }
+    #endregion
+
+    public Collider Collider => _collider;
     private void Start()
     {
         _carControll = GetComponent<CarController>();
@@ -38,6 +55,12 @@ public class CarAI : MonoBehaviour
     {
         StartCoroutine(RidingFromRep());
     }
+    public void RideAfterMerge(int pointNumber)
+    {
+        _currentPoint = pointNumber;
+        _currentList = _trackPoints;
+        _gasPower = 1f;
+    }
     IEnumerator RidingFromRep()
     {
         var rang = _pointRange;
@@ -45,7 +68,7 @@ public class CarAI : MonoBehaviour
         _currentList = _toTrackPoint;
         _gasPower = 0.85f;
 
-        while (_currentPoint <= _currentList.Count-2 )
+        while (_currentPoint <= _currentList.Count - 2)
         {
             yield return null;
         }
@@ -98,6 +121,12 @@ public class CarAI : MonoBehaviour
 
     }
 
+    internal void SetMergeMaster(MergeMaster mm)
+    {
+        _topDetector.SetMergeMaster(mm);
+        _botDetector.SetMergeMaster(mm);
+    }
 }
+
 
 

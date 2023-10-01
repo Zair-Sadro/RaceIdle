@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using UnityEngine;
 
 public class DragAndDrop : MonoBehaviour
@@ -5,9 +6,9 @@ public class DragAndDrop : MonoBehaviour
     [Zenject.Inject] private RaceTrackManager _raceTrackManager;
     
     [Header("Components")]
-    [SerializeField] private GameObject nextEvolutionCar;
     [SerializeField] private Camera _camera;
-    [SerializeField] private Rigidbody _rigidbody;
+    [SerializeField] private Collider _mergeCollider;
+   
 
     [Header("Drag data")]
     [SerializeField] private bool mouseButtonReleased = true;
@@ -15,12 +16,12 @@ public class DragAndDrop : MonoBehaviour
     [SerializeField] private Vector3 startDragPosition;
     [SerializeField] private Quaternion startDragRotation;
 
+    private Rigidbody _rigidbody;
     private void Awake()
     {
-        //initialization
-        if (!nextEvolutionCar) nextEvolutionCar = gameObject;
+
         if (!_camera) _camera = Camera.main;
-        if (!_rigidbody) _rigidbody = GetComponent<Rigidbody>();
+        _rigidbody = GetComponent<Rigidbody>();
     }
 
     private Vector3 GetMousePosition()
@@ -32,6 +33,7 @@ public class DragAndDrop : MonoBehaviour
     {
         //start dragging
         mouseButtonReleased = false;
+        _mergeCollider.enabled = true;
         _raceTrackManager.startDragEvent?.Invoke();
 
         //initialize positions
@@ -49,8 +51,20 @@ public class DragAndDrop : MonoBehaviour
     {
         //end dragging
         mouseButtonReleased = true;
+        _mergeCollider.enabled = false;
         ResetTransform();
         _raceTrackManager.endDragEvent?.Invoke();
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!mouseButtonReleased)
+        {
+            
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        
     }
 
     private void OnTriggerStay(Collider other)
@@ -60,7 +74,7 @@ public class DragAndDrop : MonoBehaviour
 
         if (mouseButtonReleased && thisGameObjectName == collisionGameObjectName)
         {
-            Instantiate(nextEvolutionCar, transform.position, transform.rotation);
+          //  Instantiate(nextEvolutionCar, transform.position, transform.rotation);
             mouseButtonReleased = false;
             Destroy(other.gameObject);
             Destroy(gameObject);
@@ -75,4 +89,17 @@ public class DragAndDrop : MonoBehaviour
         transformObject.position = startDragPosition;
         transformObject.rotation = startDragRotation;
     }
+}
+
+public class MergeDetect : MonoBehaviour
+{
+    protected MergeMaster _mergeMaster;
+    [SerializeField] protected CarData _carData;
+    private string _tag => gameObject.tag;
+    [SerializeField,Tag] protected string reqTag;
+    
+    public CarData CarMergeData => _carData;
+
+    public void SetMergeMaster(MergeMaster mm) => _mergeMaster = mm;
+  
 }

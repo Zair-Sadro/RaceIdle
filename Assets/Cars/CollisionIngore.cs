@@ -14,6 +14,7 @@ public class CollisionIngore : MonoBehaviour
             for (int i = 0; i < _cars.Count; i++)
             {
                 Physics.IgnoreCollision(c, _cars[i], true);
+                
             }
          }       
 

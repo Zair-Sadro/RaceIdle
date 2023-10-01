@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class BuildSaverInstaller :  Zenject.MonoInstaller
+public class BuildSaverInstaller : Zenject.MonoInstaller
 {
     [SerializeField] private BuildSaver _buildsaver;
     public override void InstallBindings()

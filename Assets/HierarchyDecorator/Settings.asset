@@ -513,6 +513,34 @@ MonoBehaviour:
       shown: 0
     - name: UIController
       shown: 0
+    - name: CarAI
+      shown: 0
+    - name: CarController
+      shown: 0
+    - name: CarSpawner
+      shown: 0
+    - name: CollisionIngore
+      shown: 0
+    - name: LapControll
+      shown: 0
+    - name: BottomMergeDetect
+      shown: 0
+    - name: CarData
+      shown: 0
+    - name: DragAndDrop
+      shown: 0
+    - name: MergeDetect
+      shown: 0
+    - name: MergeMaster
+      shown: 0
+    - name: RaceTrackManager
+      shown: 0
+    - name: TopMergeDetect
+      shown: 0
+    - name: TileCollector
+      shown: 0
+    - name: TileMachine
+      shown: 0
     - name: CFX_AutoStopLoopedEffect
       shown: 0
     - name: CFX_Demo_New
@@ -547,10 +575,6 @@ MonoBehaviour:
       shown: 0
     - name: VariableJoystick
       shown: 0
-    - name: PrometeoCarController
-      shown: 0
-    - name: TestVector
-      shown: 0
     - name: CircleSlider
       shown: 0
     - name: JustRotate
@@ -563,11 +587,17 @@ MonoBehaviour:
       shown: 0
     - name: ToggleChangeTextColor
       shown: 0
-    - name: DragAndDrop
+    - name: BuilderFromTiles
+      shown: 0
+    - name: BuildSaver
+      shown: 0
+    - name: ColliderAnimEvent
       shown: 0
     - name: RaceIdleGame
       shown: 0
     - name: StatsValuesInformator
+      shown: 0
+    - name: GatesExplosion
       shown: 0
     - name: BuildSaverInstaller
       shown: 0
@@ -576,6 +606,10 @@ MonoBehaviour:
     - name: MainInstaller
       shown: 0
     - name: MainPlayerInstaller
+      shown: 0
+    - name: PlayerControllerInstaller
+      shown: 0
+    - name: RaceTrackInstaller
       shown: 0
     - name: StatsValueInfoInstaller
       shown: 0
@@ -590,16 +624,6 @@ MonoBehaviour:
     - name: ProductView
       shown: 0
     - name: RecourceView
-      shown: 0
-    - name: BuilderFromTiles
-      shown: 0
-    - name: BuildSaver
-      shown: 0
-    - name: GatesExplosion
-      shown: 0
-    - name: TileCollector
-      shown: 0
-    - name: TileMachine
       shown: 0
     - name: PlayerController
       shown: 0
@@ -624,6 +648,8 @@ MonoBehaviour:
     - name: SwipeSystem
       shown: 0
     - name: WalletSystem
+      shown: 0
+    - name: LevelSelecter
       shown: 0
     - name: TileAdder
       shown: 0
@@ -668,8 +694,6 @@ MonoBehaviour:
     - name: AutoRepair
       shown: 0
     - name: MultuCounterView
-      shown: 0
-    - name: CarRider
       shown: 0
     - name: ShopSystem
       shown: 0
@@ -1471,20 +1495,6 @@ MonoBehaviour:
       shown: 0
     - name: AsyncJointBreak2DTrigger
       shown: 0
-    - name: AsyncMouseDownTrigger
-      shown: 0
-    - name: AsyncMouseDragTrigger
-      shown: 0
-    - name: AsyncMouseEnterTrigger
-      shown: 0
-    - name: AsyncMouseExitTrigger
-      shown: 0
-    - name: AsyncMouseOverTrigger
-      shown: 0
-    - name: AsyncMouseUpTrigger
-      shown: 0
-    - name: AsyncMouseUpAsButtonTrigger
-      shown: 0
     - name: AsyncParticleCollisionTrigger
       shown: 0
     - name: AsyncParticleSystemStoppedTrigger
@@ -1571,14 +1581,14 @@ MonoBehaviour:
       shown: 0
     - name: EmittedMonoBehaviour`1
       shown: 0
+    - name: DOTweenComponent
+      shown: 0
     - name: SerializedBehaviour
       shown: 0
     - name: SerializedComponent
       shown: 0
     - name: SerializedMonoBehaviour
       shown: 0
-    - name: DOTweenComponent
-      shown: 0
     customComponents: []
-    unityVersion: 2021.3.6f1
+    unityVersion: 2021.3.21f1
     isDirty: 0

@@ -24,9 +24,21 @@ public class CarSpawner : MonoBehaviour
         car.SetPointsList(_points, _toTrackPoint);
         car.RideFromRepair();
 
-        _collisionIngore.AddToIgnoreList(car.GetComponent<Collider>()); // GetComponent ='(
+        _collisionIngore.AddToIgnoreList(car.Collider);
 
 
+    }
+    public void Spawn(int level, Vector3 pos, Quaternion rot, MergeMaster mm, int currentCarPoint)
+    {
+        var car =
+      Instantiate(_cars[level], pos, rot, _parent);
+
+        car.SetPointsList(_points, _toTrackPoint);
+        car.SetMergeMaster(mm);
+        car.RideAfterMerge(currentCarPoint);
+
+
+        _collisionIngore.AddToIgnoreList(car.Collider);
     }
 
     [Button]
