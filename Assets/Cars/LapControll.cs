@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
-using Zenject;
 
 public class LapControll : MonoBehaviour
 {
-    [Inject] private WalletSystem _walletSystem;
+    private WalletSystem _walletSystem => InstantcesContainer.Instance.WalletSystem;
     public void Lap(int lvl)
     {
 

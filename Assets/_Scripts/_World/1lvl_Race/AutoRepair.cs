@@ -26,8 +26,8 @@ public class AutoRepair : MonoBehaviour, IUpgradable
 
     CancellationTokenSource cancelCollect = new CancellationTokenSource();
 
-    [Zenject.Inject] private WalletSystem _walletSystem;
-    [Zenject.Inject] private TileSetter _playerTilesBag;
+    private WalletSystem _walletSystem => InstantcesContainer.Instance.WalletSystem;
+    private TileSetter _playerTilesBag => InstantcesContainer.Instance.TileSetter;
     private void Collect()
     {
         if (_playerTilesBag._isGivingTiles || _carRiding) return;

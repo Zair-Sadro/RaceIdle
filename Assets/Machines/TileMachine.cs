@@ -15,8 +15,8 @@ public class TileMachine : TileCollector
     [SerializeField] private Transform tileStartPos;
     [SerializeField] private Transform tileFinishPos;
 
-    [Zenject.Inject] private ResourceTilesSpawn _tilesSpawner;
-    [Zenject.Inject] private WalletSystem _walletSystem;
+    private ResourceTilesSpawn _tilesSpawner => InstantcesContainer.Instance.ResourceTilesSpawn;
+    private WalletSystem _walletSystem => InstantcesContainer.Instance.WalletSystem;
     [SerializeField] private PlayerDetector _detectorForRes;
     public IReadOnlyDictionary<TileType, Stack<Tile>> TilesListsByType => tileListByType;
 

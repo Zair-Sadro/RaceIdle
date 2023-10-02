@@ -4,7 +4,7 @@ using UnityEngine;
 //Создать отдельный класс откуда можно получить данные по машинам , цифрам и тд.
 public class StatsValuesInformator :MonoBehaviour
 {
-    [Zenject.Inject] private BuildSaver _buildSaver;
+    private BuildSaver _buildSaver => InstantcesContainer.Instance.BuildSaver;
     [SerializeField] private MachineFields _junkFields;
     private void Start()
     {

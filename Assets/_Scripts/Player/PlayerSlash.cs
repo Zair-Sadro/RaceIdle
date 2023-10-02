@@ -1,13 +1,12 @@
 ﻿using System.Collections;
 using UnityEngine;
-using Zenject;
 
 public class PlayerSlash : MonoBehaviour
 {
     [SerializeField] private float activeHammerCollTime;
     [SerializeField] private float delayBeforeDamage;
 
-    [Inject] private PlayerController controller;
+   private PlayerController controller=>InstantcesContainer.Instance.PlayerController;
 
     private bool _canSlash = true;
     private void Slash(JunkCar car)
@@ -19,7 +18,7 @@ public class PlayerSlash : MonoBehaviour
     private IEnumerator SlashRoutine(float time)
     {
         _canSlash = false;
-      
+
 
         yield return new WaitForSeconds(time);
         _canSlash = true;

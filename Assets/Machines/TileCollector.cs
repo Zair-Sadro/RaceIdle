@@ -11,7 +11,7 @@ public class TileCollector : MonoBehaviour
     [SerializeField] protected CounterView _counterView;
 
 
-    [Zenject.Inject] protected TileSetter _playerTilesBag;
+    protected TileSetter _playerTilesBag => InstantcesContainer.Instance.TileSetter;
     [SerializeField] protected Transform tileStorage;
     [SerializeField] protected bool hideAfterCollect = true;
 

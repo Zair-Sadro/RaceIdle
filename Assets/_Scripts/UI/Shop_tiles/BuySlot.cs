@@ -9,8 +9,8 @@ public class BuySlot : MonoBehaviour, IRegisterSlot
 
     [SerializeField] private Button _buyOneButt;
 
-    [Zenject.Inject] private WalletSystem _wallet;
-    [Zenject.Inject] private TileSetter _tileSetter;
+    private WalletSystem _wallet => InstantcesContainer.Instance.WalletSystem;
+    private TileSetter _tileSetter => InstantcesContainer.Instance.TileSetter;
 
     private TileType _type;
     private float _price;

@@ -10,7 +10,7 @@ public class SellSlot : MonoBehaviour, IRegisterSlot
      [SerializeField] private Button _sellOneButt;
 
 
-     [Zenject.Inject] private WalletSystem _wallet;
+     private WalletSystem _wallet => InstantcesContainer.Instance.WalletSystem;
 
 
      private TileType _type;

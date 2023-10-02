@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ShopSystem: MonoBehaviour
 {
-    [Zenject.Inject] private TileSetter _tileSetter;
-    [Zenject.Inject] private StatsValuesInformator _statsValuesInformator;
+    private TileSetter _tileSetter => InstantcesContainer.Instance.TileSetter;
+    private StatsValuesInformator _statsValuesInformator => InstantcesContainer.Instance.StatsValuesInformator;
 
     [Header("Panels")]
     [SerializeField] private UIPanel _buyPanel;

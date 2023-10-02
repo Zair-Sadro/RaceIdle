@@ -1,13 +1,12 @@
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BuilderFromTiles : TileCollector
 {
     [Tooltip("Off")]
-    public GameObject[] collidersAfterBuild,collidersBeforeBuild;
+    public GameObject[] collidersAfterBuild, collidersBeforeBuild;
     [Tooltip("On")]
     public GameObject[] collidersAfterBuildOn, collidersBeforeBuildOn;
     public GameObject building;
@@ -19,7 +18,7 @@ public class BuilderFromTiles : TileCollector
     public byte BuildID => _buildid;
 
     [SerializeField] protected PlayerDetector _playerDetector;
-    [Zenject.Inject] protected BuildSaver _buildSaver;
+    protected BuildSaver _buildSaver => InstantcesContainer.Instance.BuildSaver;
 
     protected int minCountForCheck;
     protected Action OnEnoughForBuild;
@@ -38,7 +37,7 @@ public class BuilderFromTiles : TileCollector
         else
             BeforeBuildAction();
 
-     
+
         InitDictionary();
 
         for (int i = 0; i < _requiredTypesCount; i++)
@@ -52,30 +51,30 @@ public class BuilderFromTiles : TileCollector
     protected virtual void AfterBuildAction()
     {
         if (collidersAfterBuild.Length > 0)
-         for (int i = 0; i < collidersAfterBuild.Length; i++)
-         {
-            collidersAfterBuild[i].SetActive(false);
+            for (int i = 0; i < collidersAfterBuild.Length; i++)
+            {
+                collidersAfterBuild[i].SetActive(false);
 
-         }
+            }
 
 
         if (collidersAfterBuildOn.Length > 0)
             for (int i = 0; i < collidersAfterBuildOn.Length; i++)
             {
-               
+
                 collidersAfterBuildOn[i].SetActive(true);
             }
 
-        Destroy(this,0.3f);
+        Destroy(this, 0.3f);
     }
     protected virtual void BeforeBuildAction()
     {
-        if (collidersBeforeBuild.Length > 0) 
-         for (int i = 0; i < collidersBeforeBuild.Length; i++)
-         {
-            collidersBeforeBuild[i].SetActive(false);
+        if (collidersBeforeBuild.Length > 0)
+            for (int i = 0; i < collidersBeforeBuild.Length; i++)
+            {
+                collidersBeforeBuild[i].SetActive(false);
 
-         }
+            }
 
         if (collidersBeforeBuildOn.Length > 0)
             for (int i = 0; i < collidersBeforeBuildOn.Length; i++)
@@ -103,14 +102,14 @@ public class BuilderFromTiles : TileCollector
         OnCountChange -= _counterView.TextCountVisual;
         OnEnoughForBuild -= Build;
     }
-   
+
     protected virtual void Build()
     {
-        if(EnoughForBuild())
+        if (EnoughForBuild())
         {
             StopCollect();
             BuildAndEffect(building);
-           
+
             _buildSaver.GetBuildInfo(this);
             AfterBuildAction();
         }

@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Zenject;
-public class RaceIdleGame : MonoBehaviour,ISaveLoad<RaceIdleData>
+public class RaceIdleGame : MonoBehaviour, ISaveLoad<RaceIdleData>
 {
     #region Injected controllers/managers
 
-    [Inject] private TileSetter _tileSetter;
+     private TileSetter _tileSetter=>InstantcesContainer.Instance.TileSetter;
 
     #endregion
 
@@ -38,7 +35,7 @@ public class RaceIdleGame : MonoBehaviour,ISaveLoad<RaceIdleData>
     }
     #endregion
 
-   
+
 
 
 }

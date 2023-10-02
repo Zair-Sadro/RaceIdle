@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
-using Zenject;
 
 public class CarAI : MonoBehaviour
 {
@@ -11,7 +9,7 @@ public class CarAI : MonoBehaviour
     [SerializeField] private float _pointRange = 20f;
     [SerializeField] private Collider _collider;
 
-    [SerializeField] private MergeDetect _topDetector,_botDetector;
+    [SerializeField] private MergeDetect _topDetector, _botDetector;
 
     private CarController _carControll;
 

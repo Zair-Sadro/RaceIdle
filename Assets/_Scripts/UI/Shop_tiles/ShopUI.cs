@@ -73,7 +73,7 @@ public class ShopUI : UIPanel
 
 public class SellAllButton : MonoBehaviour
 {
-    [Zenject.Inject] private WalletSystem _wallet;
+    private WalletSystem _wallet => InstantcesContainer.Instance.WalletSystem;
 
     [SerializeField] private Button _button;
     [SerializeField] private ShopSystem _shopSystem;

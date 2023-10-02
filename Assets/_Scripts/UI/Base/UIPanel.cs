@@ -3,7 +3,7 @@
 
 public class UIPanel : UIController
 {
-    [Zenject.Inject] protected UIMemmory UIMemmory;
+     protected UIMemmory UIMemmory=>InstantcesContainer.Instance.UIMemmory;
 
     protected void Open()
     {

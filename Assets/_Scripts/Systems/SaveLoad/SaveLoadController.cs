@@ -4,7 +4,7 @@ public class SaveLoadController : MonoBehaviour
 {
     public bool isEnable = true;
 
-    [Zenject.Inject] private RaceIdleGame game;
+    private RaceIdleGame game => InstantcesContainer.Instance.RaceIdleGame;
     //read _data when open the app
     private void OnEnable()
     {

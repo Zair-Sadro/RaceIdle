@@ -4,7 +4,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
-using Zenject;
 
 public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
 {
@@ -19,7 +18,7 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
     [SerializeField, Range(0.1f, 1f)] private float timeToRemoveTile;
     [SerializeField] private float delayToRemoveTile = 0.7f;
 
-    [Inject] private ResourceTilesSpawn _resourceTilesSpawn;
+    private ResourceTilesSpawn _resourceTilesSpawn => InstantcesContainer.Instance.ResourceTilesSpawn;
 
     [HideInInspector] public bool _isGivingTiles;
 
@@ -81,7 +80,7 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
         OnTilesCountChanged?.Invoke(_colectedTiles.Count);
         if (MaxTilesCapacity())
         {
-            OnTilesMaxCapacity.Invoke(false); 
+            OnTilesMaxCapacity.Invoke(false);
         }
     }
     /// <summary>
@@ -119,8 +118,8 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
     /// <param name="tilesPlace"></param>
     /// <param name="interatorCall"></param>
     /// <param name="needClear"></param> 
-     public UniTask RemoveTiles(TileType type, int count, Vector3 tilesPlace, Action<Tile> interatorCall,                                                                    CancellationTokenSource cancellationToke, bool needClear = false)
-     {
+    public UniTask RemoveTiles(TileType type, int count, Vector3 tilesPlace, Action<Tile> interatorCall, CancellationTokenSource cancellationToke, bool needClear = false)
+    {
 
         if (!_isGivingTiles && tilesListsByType[type].Count > 0)
         {
@@ -207,14 +206,14 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
     #endregion
     IEnumerator WaitAndClearTile(bool needclear, Tile tile)
     {
-      
+
         if (needclear)
         {
             ClearTiles(tile, timeToRemoveTile);
-        }           
+        }
         else
             RemoveFromList(tile);
-        yield return new WaitForSeconds(0.1f);  
+        yield return new WaitForSeconds(0.1f);
     }
 
     private void RemoveFromList(Tile tile)
@@ -226,7 +225,7 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
         OnTilesCountChanged?.Invoke(_colectedTiles.Count);
     }
 
-    private void ClearTiles(Tile tile,float timer = 0)
+    private void ClearTiles(Tile tile, float timer = 0)
     {
         tile.Dissapear(timer);
         tile.OnGround();

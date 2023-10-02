@@ -5,7 +5,7 @@ using UnityEngine;
 public class ProductStorage : MonoBehaviour
 {
     private Stack<Tile> _tilesInStorage = new Stack<Tile>();
-    [Zenject.Inject] private TileSetter _tileSetter;
+    private TileSetter _tileSetter => InstantcesContainer.Instance.TileSetter;
     public IReadOnlyCollection<Tile> TilesInStorage => _tilesInStorage;
 
 

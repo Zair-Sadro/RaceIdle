@@ -11,7 +11,7 @@ public class UpgradeUI : UIPanel
     [SerializeField] private UpgradeBar _upgradeBar;
     [SerializeField] private UpgradeSlot _incomeSlot;
     [SerializeField] private UpgradeSlot _speedCapacitySlot;
-    [Zenject.Inject] private WalletSystem _wallet;
+    private WalletSystem _wallet => InstantcesContainer.Instance.WalletSystem;
     
     [Space(3f),Header("Settings")]
     [SerializeField] private Button _closeButton;

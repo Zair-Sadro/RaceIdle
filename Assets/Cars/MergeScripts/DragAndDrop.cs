@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class DragAndDrop : MonoBehaviour
 {
-    [Zenject.Inject] private RaceTrackManager _raceTrackManager;
+    private RaceTrackManager _raceTrackManager => InstantcesContainer.Instance.RaceTrackManager;
     
     [Header("Components")]
     [SerializeField] private Camera _camera;

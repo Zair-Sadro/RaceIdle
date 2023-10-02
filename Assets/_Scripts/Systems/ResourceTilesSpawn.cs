@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using Zenject;
 
 public class ResourceTilesSpawn : MonoBehaviour
 {
@@ -20,15 +19,15 @@ public class ResourceTilesSpawn : MonoBehaviour
 
     private List<ObjectPooler<Tile>> _poolList = new();
 
-    [Inject] private TileSetter _tileSetter;
+    private TileSetter _tileSetter => InstantcesContainer.Instance.TileSetter;
 
     private void OnEnable()
     {
-        _junkPool = CreatePool( _junkPrefab);
+        _junkPool = CreatePool(_junkPrefab);
         _ironPool = CreatePool(_ironPrefab);
         _plastPool = CreatePool(_plastPrefab);
         _rubberPool = CreatePool(_rubberPrefab);
-        
+
 
 
         ObjectPooler<Tile> CreatePool(Tile pref)

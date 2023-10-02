@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class ResourceUI : MonoBehaviour
 {
-    [Zenject.Inject] private WalletSystem _wallet;
-    [Zenject.Inject] private TileSetter _tileSetter;
+    private WalletSystem _wallet => InstantcesContainer.Instance.WalletSystem;
+    private TileSetter _tileSetter => InstantcesContainer.Instance.TileSetter;
 
     [SerializeField] private TMPro.TMP_Text tx_money;
     [SerializeField] private TMPro.TMP_Text 
