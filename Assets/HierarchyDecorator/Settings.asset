@@ -14,15 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   globalData:
     showActiveToggles: 1
-    showComponentIcons: 1
+    showComponentIcons: 0
     showAllComponents: 0
-    twoToneBackground: 1
-    showLayers: 1
-    editableLayers: 1
+    twoToneBackground: 0
+    showLayers: 0
+    editableLayers: 0
     applyChildLayers: 1
   styleData:
-    displayLayers: 1
-    displayIcons: 1
+    displayLayers: 0
+    displayIcons: 0
     styles:
     - prefix: =
       name: Header (Centered)
@@ -599,28 +599,6 @@ MonoBehaviour:
       shown: 0
     - name: GatesExplosion
       shown: 0
-    - name: BuildSaverInstaller
-      shown: 0
-    - name: InputManagerInstaller
-      shown: 0
-    - name: MainInstaller
-      shown: 0
-    - name: MainPlayerInstaller
-      shown: 0
-    - name: PlayerControllerInstaller
-      shown: 0
-    - name: RaceTrackInstaller
-      shown: 0
-    - name: StatsValueInfoInstaller
-      shown: 0
-    - name: TileSetterInstaller
-      shown: 0
-    - name: TileSpawnInstaller
-      shown: 0
-    - name: UIMemmoryInstaller
-      shown: 0
-    - name: WalletInstaller
-      shown: 0
     - name: ProductView
       shown: 0
     - name: RecourceView
@@ -689,7 +667,11 @@ MonoBehaviour:
       shown: 0
     - name: MachineUpgrade
       shown: 0
+    - name: InstantcesContainer
+      shown: 0
     - name: MathKnowledge
+      shown: 0
+    - name: Singleton`1
       shown: 0
     - name: AutoRepair
       shown: 0
@@ -709,6 +691,68 @@ MonoBehaviour:
       shown: 0
     - name: TaskManager
       shown: 0
+    - name: DebuggingModeYG
+      shown: 0
+    - name: ActivityOnAuthorizationYG
+      shown: 0
+    - name: BannerYG
+      shown: 0
+    - name: ForVisualScriptYG
+      shown: 0
+    - name: GetPlayerYG
+      shown: 0
+    - name: GraphicSettingsYG
+      shown: 0
+    - name: ImageLoadYG
+      shown: 0
+    - name: LanguageYG
+      shown: 0
+    - name: LangYGAdditionalText
+      shown: 0
+    - name: LBPlayerDataYG
+      shown: 0
+    - name: LeaderboardYG
+      shown: 0
+    - name: ConsumePurchasesYG
+      shown: 0
+    - name: PaymentsCatalogYG
+      shown: 0
+    - name: PurchaseYG
+      shown: 0
+    - name: PromptYG
+      shown: 0
+    - name: ReviewYG
+      shown: 0
+    - name: ViewingAdsYG
+      shown: 0
+    - name: YandexGame
+      shown: 0
+    - name: LangMethods
+      shown: 0
+    - name: CallingAnEvent
+      shown: 0
+    - name: ConfigYG
+      shown: 0
+    - name: DebugViewing
+      shown: 0
+    - name: GetPlayerData
+      shown: 0
+    - name: LanguageExample
+      shown: 0
+    - name: NewResultLBExample
+      shown: 0
+    - name: OpenAuthorizationDialog
+      shown: 0
+    - name: ReceivingPurchaseExample
+      shown: 0
+    - name: RewardedAd
+      shown: 0
+    - name: SaverTest
+      shown: 0
+    - name: SwitchSceneTest
+      shown: 0
+    - name: YandexMetricaExample
+      shown: 0
     - name: GridLayoutGroup3D
       shown: 0
     - name: LayoutElement3D
@@ -720,6 +764,132 @@ MonoBehaviour:
     - name: YAxisLayoutGroup3D
       shown: 0
     - name: ZAxisLayoutGroup3D
+      shown: 0
+    - name: PixelPerfectCamera
+      shown: 0
+    - name: CinemachineUniversalPixelPerfect
+      shown: 0
+    - name: Light2D
+      shown: 0
+    - name: CompositeShadowCaster2D
+      shown: 0
+    - name: ShadowCaster2D
+      shown: 0
+    - name: ShadowCasterGroup2D
+      shown: 0
+    - name: DecalProjector
+      shown: 0
+    - name: UniversalAdditionalCameraData
+      shown: 0
+    - name: UniversalAdditionalLightData
+      shown: 0
+    - name: AnimatorParamTest
+      shown: 0
+    - name: BoxGroupTest
+      shown: 0
+    - name: ButtonTest
+      shown: 0
+    - name: CurveRangeTest
+      shown: 0
+    - name: DisableIfTest
+      shown: 0
+    - name: DropdownTest
+      shown: 0
+    - name: EnableIfTest
+      shown: 0
+    - name: EnumFlagsTest
+      shown: 0
+    - name: ExpandableTest
+      shown: 0
+    - name: FoldoutTest
+      shown: 0
+    - name: HideIfTest
+      shown: 0
+    - name: HorizontalLineTest
+      shown: 0
+    - name: InfoBoxTest
+      shown: 0
+    - name: InputAxisTest
+      shown: 0
+    - name: LabelTest
+      shown: 0
+    - name: LayerTest
+      shown: 0
+    - name: MinMaxSliderTest
+      shown: 0
+    - name: MinMaxValueTest
+      shown: 0
+    - name: OnValueChangedTest
+      shown: 0
+    - name: ProgressBarTest
+      shown: 0
+    - name: ReadOnlyTest
+      shown: 0
+    - name: ReorderableListTest
+      shown: 0
+    - name: RequiredTest
+      shown: 0
+    - name: ResizableTextAreaTest
+      shown: 0
+    - name: SceneTest
+      shown: 0
+    - name: ShowAssetPreviewTest
+      shown: 0
+    - name: ShowIfTest
+      shown: 0
+    - name: ShowNativePropertyTest
+      shown: 0
+    - name: ShowNonSerializedFieldTest
+      shown: 0
+    - name: SortingLayerTest
+      shown: 0
+    - name: TagTest
+      shown: 0
+    - name: ValidateInputTest
+      shown: 0
+    - name: _NaughtyComponent
+      shown: 0
+    - name: ExampleScript
+      shown: 0
+    - name: ExampleScript2
+      shown: 0
+    - name: ExampleScriptWithIcon
+      shown: 0
+    - name: PlaymodeTestsController
+      shown: 0
+    - name: PlayerQuitHandler
+      shown: 0
+    - name: PlayModeRunnerCallback
+      shown: 0
+    - name: RemoteTestResultSender
+      shown: 0
+    - name: TestResultRendererCallback
+      shown: 0
+    - name: SignalReceiver
+      shown: 0
+    - name: TextContainer
+      shown: 0
+    - name: TextMeshPro
+      shown: 0
+    - name: TextMeshProUGUI
+      shown: 0
+    - name: TMP_Dropdown
+      shown: 0
+    - name: TMP_InputField
+      shown: 0
+    - name: TMP_ScrollbarEventHandler
+      shown: 0
+    - name: TMP_SelectionCaret
+      shown: 0
+    - name: TMP_SpriteAnimator
+      shown: 0
+    - name: TMP_SubMesh
+      shown: 0
+    - name: TMP_SubMeshUI
+      shown: 0
+    - name: TMP_Text
+      shown: 0
+    - name: DropdownItem
       shown: 0
     - name: BezierShape
       shown: 0
@@ -736,6 +906,10 @@ MonoBehaviour:
     - name: TriggerBehaviour
       shown: 0
     - name: ProBuilderShape
+      shown: 0
+    - name: AsyncJobSystem
+      shown: 0
+    - name: Singleton`1
       shown: 0
     - name: Button
       shown: 0
@@ -921,84 +1095,6 @@ MonoBehaviour:
       shown: 0
     - name: CinemachineVolumeSettings
       shown: 0
-    - name: Context
-      shown: 0
-    - name: GameObjectContext
-      shown: 0
-    - name: ProjectContext
-      shown: 0
-    - name: RunnableContext
-      shown: 0
-    - name: SceneContext
-      shown: 0
-    - name: SceneDecoratorContext
-      shown: 0
-    - name: MonoInstaller
-      shown: 0
-    - name: MonoInstaller`1
-      shown: 0
-    - name: MonoInstaller`2
-      shown: 0
-    - name: MonoInstaller`3
-      shown: 0
-    - name: MonoInstaller`4
-      shown: 0
-    - name: MonoInstaller`5
-      shown: 0
-    - name: MonoInstaller`6
-      shown: 0
-    - name: MonoInstallerBase
-      shown: 0
-    - name: ZenjectBinding
-      shown: 0
-    - name: AnimatorIkHandlerManager
-      shown: 0
-    - name: AnimatorMoveHandlerManager
-      shown: 0
-    - name: GuiRenderer
-      shown: 0
-    - name: DefaultGameObjectKernel
-      shown: 0
-    - name: MonoKernel
-      shown: 0
-    - name: ProjectKernel
-      shown: 0
-    - name: SceneKernel
-      shown: 0
-    - name: ZenAutoInjecter
-      shown: 0
-    - name: ZenjectStateMachineBehaviourAutoInjecter
-      shown: 0
-    - name: EnemyFacade
-      shown: 0
-    - name: EnemyView
-      shown: 0
-    - name: GameInstaller
-      shown: 0
-    - name: PlayerInstaller
-      shown: 0
-    - name: Bullet
-      shown: 0
-    - name: ControlsDisplay
-      shown: 0
-    - name: Explosion
-      shown: 0
-    - name: PlayerFacade
-      shown: 0
-    - name: PlayerGui
-      shown: 0
-    - name: Asteroid
-      shown: 0
-    - name: GameInstaller
-      shown: 0
-    - name: GuiHandler
-      shown: 0
-    - name: TilingBackground
-      shown: 0
-    - name: Ship
-      shown: 0
-    - name: Foo
-      shown: 0
     - name: TCP2_CameraDepth
       shown: 0
     - name: TCP2_GetPosOnWater
@@ -1006,176 +1102,6 @@ MonoBehaviour:
     - name: TCP2_PlanarReflection
       shown: 0
     - name: TCP2_ShaderUpdateUnityTime
-      shown: 0
-    - name: BlankUser
-      shown: 0
-    - name: EdgeColliderGenerator
-      shown: 0
-    - name: LengthCalculator
-      shown: 0
-    - name: MeshGenerator
-      shown: 0
-    - name: Node
-      shown: 0
-    - name: ObjectBender
-      shown: 0
-    - name: ObjectController
-      shown: 0
-    - name: ParticleController
-      shown: 0
-    - name: PathGenerator
-      shown: 0
-    - name: PolygonColliderGenerator
-      shown: 0
-    - name: SplineComputer
-      shown: 0
-    - name: SplineFollower
-      shown: 0
-    - name: SplineMesh
-      shown: 0
-    - name: SplineMorph
-      shown: 0
-    - name: SplinePositioner
-      shown: 0
-    - name: SplineProjector
-      shown: 0
-    - name: SplineRenderer
-      shown: 0
-    - name: SplineTracer
-      shown: 0
-    - name: SplineUser
-      shown: 0
-    - name: SurfaceGenerator
-      shown: 0
-    - name: TubeGenerator
-      shown: 0
-    - name: WaveformGenerator
-      shown: 0
-    - name: PixelPerfectCamera
-      shown: 0
-    - name: CinemachineUniversalPixelPerfect
-      shown: 0
-    - name: Light2D
-      shown: 0
-    - name: CompositeShadowCaster2D
-      shown: 0
-    - name: ShadowCaster2D
-      shown: 0
-    - name: ShadowCasterGroup2D
-      shown: 0
-    - name: DecalProjector
-      shown: 0
-    - name: UniversalAdditionalCameraData
-      shown: 0
-    - name: UniversalAdditionalLightData
-      shown: 0
-    - name: AnimatorParamTest
-      shown: 0
-    - name: BoxGroupTest
-      shown: 0
-    - name: ButtonTest
-      shown: 0
-    - name: CurveRangeTest
-      shown: 0
-    - name: DisableIfTest
-      shown: 0
-    - name: DropdownTest
-      shown: 0
-    - name: EnableIfTest
-      shown: 0
-    - name: EnumFlagsTest
-      shown: 0
-    - name: ExpandableTest
-      shown: 0
-    - name: FoldoutTest
-      shown: 0
-    - name: HideIfTest
-      shown: 0
-    - name: HorizontalLineTest
-      shown: 0
-    - name: InfoBoxTest
-      shown: 0
-    - name: InputAxisTest
-      shown: 0
-    - name: LabelTest
-      shown: 0
-    - name: LayerTest
-      shown: 0
-    - name: MinMaxSliderTest
-      shown: 0
-    - name: MinMaxValueTest
-      shown: 0
-    - name: OnValueChangedTest
-      shown: 0
-    - name: ProgressBarTest
-      shown: 0
-    - name: ReadOnlyTest
-      shown: 0
-    - name: ReorderableListTest
-      shown: 0
-    - name: RequiredTest
-      shown: 0
-    - name: ResizableTextAreaTest
-      shown: 0
-    - name: SceneTest
-      shown: 0
-    - name: ShowAssetPreviewTest
-      shown: 0
-    - name: ShowIfTest
-      shown: 0
-    - name: ShowNativePropertyTest
-      shown: 0
-    - name: ShowNonSerializedFieldTest
-      shown: 0
-    - name: SortingLayerTest
-      shown: 0
-    - name: TagTest
-      shown: 0
-    - name: ValidateInputTest
-      shown: 0
-    - name: _NaughtyComponent
-      shown: 0
-    - name: ExampleScript
-      shown: 0
-    - name: ExampleScript2
-      shown: 0
-    - name: ExampleScriptWithIcon
-      shown: 0
-    - name: PlaymodeTestsController
-      shown: 0
-    - name: PlayerQuitHandler
-      shown: 0
-    - name: PlayModeRunnerCallback
-      shown: 0
-    - name: RemoteTestResultSender
-      shown: 0
-    - name: TestResultRendererCallback
-      shown: 0
-    - name: SignalReceiver
-      shown: 0
-    - name: TextContainer
-      shown: 0
-    - name: TextMeshPro
-      shown: 0
-    - name: TextMeshProUGUI
-      shown: 0
-    - name: TMP_Dropdown
-      shown: 0
-    - name: TMP_InputField
-      shown: 0
-    - name: TMP_ScrollbarEventHandler
-      shown: 0
-    - name: TMP_SelectionCaret
-      shown: 0
-    - name: TMP_SpriteAnimator
-      shown: 0
-    - name: TMP_SubMesh
-      shown: 0
-    - name: TMP_SubMeshUI
-      shown: 0
-    - name: TMP_Text
-      shown: 0
-    - name: DropdownItem
       shown: 0
     - name: SceneRenderPipeline
       shown: 0
@@ -1253,187 +1179,49 @@ MonoBehaviour:
       shown: 0
     - name: GameViewEventCatcher
       shown: 0
-    - name: AsyncJobSystem
+    - name: BlankUser
       shown: 0
-    - name: Singleton`1
+    - name: EdgeColliderGenerator
       shown: 0
-    - name: Foo3
+    - name: LengthCalculator
       shown: 0
-    - name: Foo2
+    - name: MeshGenerator
       shown: 0
-    - name: Foo
+    - name: Node
       shown: 0
-    - name: Bar
+    - name: ObjectBender
       shown: 0
-    - name: Foo
+    - name: ObjectController
       shown: 0
-    - name: Bar
+    - name: ParticleController
       shown: 0
-    - name: Root
+    - name: PathGenerator
       shown: 0
-    - name: Child
+    - name: PolygonColliderGenerator
       shown: 0
-    - name: Grandchild
+    - name: SplineComputer
       shown: 0
-    - name: RootWithOptional
+    - name: SplineFollower
       shown: 0
-    - name: Foo
+    - name: SplineMesh
       shown: 0
-    - name: Root
+    - name: SplineMorph
       shown: 0
-    - name: Child
+    - name: SplinePositioner
       shown: 0
-    - name: Grandchild
+    - name: SplineProjector
       shown: 0
-    - name: Grandchild2
+    - name: SplineRenderer
       shown: 0
-    - name: ChildWithOptional
+    - name: SplineTracer
       shown: 0
-    - name: Qux
+    - name: SplineUser
       shown: 0
-    - name: Bar
+    - name: SurfaceGenerator
       shown: 0
-    - name: FooOptional
+    - name: TubeGenerator
       shown: 0
-    - name: FooOptional2
-      shown: 0
-    - name: Foo
-      shown: 0
-    - name: Gorp
-      shown: 0
-    - name: Foo
-      shown: 0
-    - name: Bar
-      shown: 0
-    - name: Runner
-      shown: 0
-    - name: Foo
-      shown: 0
-    - name: Bar
-      shown: 0
-    - name: Gorp
-      shown: 0
-    - name: Qiv
-      shown: 0
-    - name: Bar
-      shown: 0
-    - name: SceneContextEventsTester
-      shown: 0
-    - name: FooMonoBehaviourUnderSceneContext1
-      shown: 0
-    - name: FooMonoBehaviourUnderSceneContext2
-      shown: 0
-    - name: FooMonoBehaviourUnderSceneContext3
-      shown: 0
-    - name: ProjectInstaller
-      shown: 0
-    - name: Scene1Installer
-      shown: 0
-    - name: Scene2Installer
-      shown: 0
-    - name: Scene1Installer
-      shown: 0
-    - name: Scene2Installer
-      shown: 0
-    - name: Scene1Installer
-      shown: 0
-    - name: Scene2Installer
-      shown: 0
-    - name: Scene3Installer
-      shown: 0
-    - name: Bar
-      shown: 0
-    - name: Gorp
-      shown: 0
-    - name: Qux
-      shown: 0
-    - name: BarInstaller
-      shown: 0
-    - name: FooInstaller
-      shown: 0
-    - name: QuxInstaller
-      shown: 0
-    - name: Foo
-      shown: 0
-    - name: FooInstaller
-      shown: 0
-    - name: Foo
-      shown: 0
-    - name: FooInstaller
-      shown: 0
-    - name: Foo
-      shown: 0
-    - name: Foo
-      shown: 0
-    - name: Foo2
-      shown: 0
-    - name: Foo
-      shown: 0
-    - name: Bar
-      shown: 0
-    - name: Foo
-      shown: 0
-    - name: FooInstaller
-      shown: 0
-    - name: Bar
-      shown: 0
-    - name: CircBar
-      shown: 0
-    - name: CircFoo
-      shown: 0
-    - name: Foo
-      shown: 0
-    - name: FooInstaller
-      shown: 0
-    - name: Bar
-      shown: 0
-    - name: Bob
-      shown: 0
-    - name: Foo
-      shown: 0
-    - name: Gorp
-      shown: 0
-    - name: Jim
-      shown: 0
-    - name: Norf
-      shown: 0
-    - name: Norf2
-      shown: 0
-    - name: Qux
-      shown: 0
-    - name: Bar
-      shown: 0
-    - name: Foo
-      shown: 0
-    - name: Bar
-      shown: 0
-    - name: Bob
-      shown: 0
-    - name: Foo
-      shown: 0
-    - name: Gorp
-      shown: 0
-    - name: Jim
-      shown: 0
-    - name: Norf
-      shown: 0
-    - name: Norf2
-      shown: 0
-    - name: Qux
-      shown: 0
-    - name: Bar
-      shown: 0
-    - name: Foo
-      shown: 0
-    - name: Foo
-      shown: 0
-    - name: FooInstaller
-      shown: 0
-    - name: Gorp
-      shown: 0
-    - name: Foo
-      shown: 0
-    - name: Gorp
+    - name: WaveformGenerator
       shown: 0
     - name: AsyncAwakeTrigger
       shown: 0
@@ -1494,6 +1282,20 @@ MonoBehaviour:
     - name: AsyncJointBreakTrigger
       shown: 0
     - name: AsyncJointBreak2DTrigger
+      shown: 0
+    - name: AsyncMouseDownTrigger
+      shown: 0
+    - name: AsyncMouseDragTrigger
+      shown: 0
+    - name: AsyncMouseEnterTrigger
+      shown: 0
+    - name: AsyncMouseExitTrigger
+      shown: 0
+    - name: AsyncMouseOverTrigger
+      shown: 0
+    - name: AsyncMouseUpTrigger
+      shown: 0
+    - name: AsyncMouseUpAsButtonTrigger
       shown: 0
     - name: AsyncParticleCollisionTrigger
       shown: 0

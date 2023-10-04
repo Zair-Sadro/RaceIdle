@@ -4,23 +4,25 @@ using UnityEngine;
 public class DragAndDrop : MonoBehaviour
 {
     private RaceTrackManager _raceTrackManager => InstantcesContainer.Instance.RaceTrackManager;
-    
+
+    public Camera RaceCamera { set => _camera = value; }
+
     [Header("Components")]
     [SerializeField] private Camera _camera;
-    [SerializeField] private Collider _mergeCollider;
-   
 
     [Header("Drag data")]
     [SerializeField] private bool mouseButtonReleased = true;
     [SerializeField] private Vector3 mousePosition;
     [SerializeField] private Vector3 startDragPosition;
     [SerializeField] private Quaternion startDragRotation;
+    [SerializeField] private float _dragHeight = 3.3f;
 
     private Rigidbody _rigidbody;
-    private void Awake()
+    public bool NoDragNow = false;
+
+    private void Start()
     {
 
-        if (!_camera) _camera = Camera.main;
         _rigidbody = GetComponent<Rigidbody>();
     }
 
@@ -31,10 +33,13 @@ public class DragAndDrop : MonoBehaviour
 
     private void OnMouseDown()
     {
+        if(NoDragNow) return;
+
+        
         //start dragging
         mouseButtonReleased = false;
-        _mergeCollider.enabled = true;
-        _raceTrackManager.startDragEvent?.Invoke();
+        _raceTrackManager.StopCars();
+
 
         //initialize positions
         startDragPosition = transform.position;
@@ -44,16 +49,20 @@ public class DragAndDrop : MonoBehaviour
 
     private void OnMouseDrag()
     {
-        transform.position = _camera.ScreenToWorldPoint(Input.mousePosition - mousePosition);
+        if (NoDragNow) return;
+        var pos = _camera.ScreenToWorldPoint(Input.mousePosition - mousePosition);
+        transform.position = new Vector3(pos.x,_dragHeight,pos.z);
     }
 
     private void OnMouseUp()
     {
+        if (NoDragNow) return;
         //end dragging
         mouseButtonReleased = true;
-        _mergeCollider.enabled = false;
+      
         ResetTransform();
-        _raceTrackManager.endDragEvent?.Invoke();
+        _raceTrackManager.StartCars();
+
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -69,16 +78,16 @@ public class DragAndDrop : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        var thisGameObjectName = gameObject.name;
-        var collisionGameObjectName = other.gameObject.name;
+        //var thisGameObjectName = gameObject.name;
+        //var collisionGameObjectName = other.gameObject.name;
 
-        if (mouseButtonReleased && thisGameObjectName == collisionGameObjectName)
-        {
-          //  Instantiate(nextEvolutionCar, transform.position, transform.rotation);
-            mouseButtonReleased = false;
-            Destroy(other.gameObject);
-            Destroy(gameObject);
-        }
+        //if (mouseButtonReleased && thisGameObjectName == collisionGameObjectName)
+        //{
+        //  //  Instantiate(nextEvolutionCar, transform.position, transform.rotation);
+        //    mouseButtonReleased = false;
+        //    Destroy(other.gameObject);
+        //    Destroy(gameObject);
+        //}
     }
 
     private void ResetTransform()
@@ -94,11 +103,12 @@ public class DragAndDrop : MonoBehaviour
 public class MergeDetect : MonoBehaviour
 {
     protected MergeMaster _mergeMaster;
-    [SerializeField] protected CarData _carData;
-    private string _tag => gameObject.tag;
+    [SerializeField] protected CarAI _carAI;
+
+    public CarAI CarAI=>_carAI;
+
+   private string _tag => gameObject.tag;
     [SerializeField,Tag] protected string reqTag;
-    
-    public CarData CarMergeData => _carData;
 
     public void SetMergeMaster(MergeMaster mm) => _mergeMaster = mm;
   

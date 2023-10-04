@@ -1,17 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using UnityEditor;
 using UnityEngine;
 
 public class CarAI : MonoBehaviour
 {
+    [SerializeField] protected CarData _carData;
 
     [SerializeField] private float _pointRange = 20f;
     [SerializeField] private Collider _collider;
 
     [SerializeField] private MergeDetect _topDetector, _botDetector;
+    [SerializeField] private DragAndDrop _dragAndDrop;
+    [SerializeField] private CarController _carControll;
 
-    private CarController _carControll;
 
     private List<Transform> _trackPoints = new();
     private List<Transform> _toTrackPoint = new();
@@ -19,7 +22,7 @@ public class CarAI : MonoBehaviour
     private List<Transform> _currentList;
     private int _currentPoint;
     public int CurrentPoint => _currentPoint;
-
+    public int CarLevel => _carData.valueNumber;
     private float _gasPower;
 
     #region Lap Controll
@@ -34,13 +37,24 @@ public class CarAI : MonoBehaviour
     #endregion
 
     public Collider Collider => _collider;
-    private void Start()
+
+    private bool _drive = true;
+    public void StopDrive()
     {
-        _carControll = GetComponent<CarController>();
+        _drive = false;
+        _carControll.StopRB();
+    }
+    public void StartDrive()
+    {
+        _drive = true;
+        _carControll.StartRB();
     }
     private void FixedUpdate()
     {
-        _carControll.GetInput(CalcuateAngle(), _gasPower);
+        if (!_drive)
+            return;
+
+        _carControll.SetDrive(CalcuateAngle(), _gasPower);
         PointControll();
     }
 
@@ -51,6 +65,7 @@ public class CarAI : MonoBehaviour
     }
     public void RideFromRepair()
     {
+        _dragAndDrop.NoDragNow=true;
         StartCoroutine(RidingFromRep());
     }
     public void RideAfterMerge(int pointNumber)
@@ -75,6 +90,8 @@ public class CarAI : MonoBehaviour
         _currentList = _trackPoints;
         _pointRange = rang;
         _gasPower = 1f;
+        _dragAndDrop.NoDragNow = false;
+
     }
 
     private float CalcuateAngle()
@@ -123,6 +140,10 @@ public class CarAI : MonoBehaviour
     {
         _topDetector.SetMergeMaster(mm);
         _botDetector.SetMergeMaster(mm);
+    }
+    public void SetRaceCamera(Camera cam)
+    {
+        _dragAndDrop.RaceCamera = cam;
     }
 }
 

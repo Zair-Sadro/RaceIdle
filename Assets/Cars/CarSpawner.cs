@@ -5,6 +5,8 @@ using UnityEngine;
 public class CarSpawner : MonoBehaviour
 {
     [SerializeField] private List<CarAI> _cars;
+    private RaceTrackManager _raceTrackManager 
+        => InstantcesContainer.Instance.RaceTrackManager;
 
     [SerializeField] private Transform _parent;
     [SerializeField] private Vector3 _rotation;
@@ -15,29 +17,40 @@ public class CarSpawner : MonoBehaviour
     [SerializeField] private List<Transform> _points = new();
     [SerializeField] private List<Transform> _toTrackPoint = new();
 
+    [Header("ComponentsForCar")]
+    [SerializeField] private MergeMaster _mergeMaster;
+    [SerializeField] private Camera _raceCamera;
+
 
     public void Spawn(int level)
     {
         var car =
         Instantiate(_cars[level], transform.position, Quaternion.Euler(_rotation), _parent);
 
+        car.SetMergeMaster(_mergeMaster);
+        car.SetRaceCamera(_raceCamera);
         car.SetPointsList(_points, _toTrackPoint);
+
         car.RideFromRepair();
+
 
         _collisionIngore.AddToIgnoreList(car.Collider);
 
+        _raceTrackManager.RegisterCar(car);
 
     }
-    public void Spawn(int level, Vector3 pos, Quaternion rot, MergeMaster mm, int currentCarPoint)
+    public void Spawn(int level, Vector3 pos, Quaternion rot, int currentCarPoint)
     {
         var car =
       Instantiate(_cars[level], pos, rot, _parent);
 
         car.SetPointsList(_points, _toTrackPoint);
-        car.SetMergeMaster(mm);
+        car.SetMergeMaster(_mergeMaster);
+        car.SetRaceCamera(_raceCamera);
+
         car.RideAfterMerge(currentCarPoint);
 
-
+        _raceTrackManager.RegisterCar(car);
         _collisionIngore.AddToIgnoreList(car.Collider);
     }
 

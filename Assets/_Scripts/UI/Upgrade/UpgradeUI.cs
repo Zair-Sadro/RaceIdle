@@ -27,21 +27,14 @@ public class UpgradeUI : UIPanel
         _speedCapacitySlot.InitUpgradeSlot(CapacitySpeedUpgrade);
 
         _closeButton.onClick.AddListener(() => Close());
+
+        GameEventSystem.ObjectTaped += OnCLick;
+        _wallet.OnTotalMoneyChange += CheckPrice;
     }
 
 
     #region Events
-    protected virtual void OnEnable()
-    {
-       
-        GameEventSystem.ObjectTaped += OnCLick;
-        _wallet.OnTotalMoneyChange += CheckPrice;
-    }
-    protected virtual void OnDisable()
-    {
-        GameEventSystem.ObjectTaped -= OnCLick;
-        _wallet.OnTotalMoneyChange -= CheckPrice;
-    }
+
     public void OnCLick(GameObject obj)
     {
         if (_objectInScene == obj)

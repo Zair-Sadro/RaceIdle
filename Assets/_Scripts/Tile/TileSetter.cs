@@ -209,6 +209,7 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
 
         if (needclear)
         {
+            if(tile.gameObject.activeSelf)
             ClearTiles(tile, timeToRemoveTile);
         }
         else

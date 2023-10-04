@@ -1,4 +1,4 @@
-﻿using Unity.Mathematics;
+﻿
 using UnityEngine;
 
 public class CarController : MonoBehaviour
@@ -17,17 +17,32 @@ public class CarController : MonoBehaviour
 
     private float steeringInput;
     private float accelInput;
-
+    private bool _stop;
     public float breakforce;
     private Rigidbody _rb;
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
         _rotationAngle = 180;
+        
     }
+    private Vector3 lasVelocity;
+    public void StopRB()
+    {
 
+        lasVelocity = _rb.velocity;
+        _rb.velocity = Vector3.zero;
+        _stop = true;
+    }
+    public void StartRB()
+    {
+        _stop = false;
+        _rb.velocity = lasVelocity;
+    }
     private void FixedUpdate()
     {
+        if (_stop)
+            return;
         ApplyEngineForce();
         DicreaseSideVelocity();
         ApplySteering();
@@ -119,7 +134,7 @@ public class CarController : MonoBehaviour
         return Vector3.Dot(transform.right, _rb.velocity);
     }
 
-    public void GetInput(float steerValue, float accelValue)
+    public void SetDrive(float steerValue, float accelValue)
     {
         steeringInput = steerValue;
         accelInput = accelValue;

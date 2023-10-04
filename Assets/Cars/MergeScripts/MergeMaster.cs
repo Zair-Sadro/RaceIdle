@@ -6,14 +6,22 @@ public class MergeMaster : MonoBehaviour
     private MergeDetect bottomCar, topCar;
     [SerializeField] private CarSpawner _carSpawner;
     private int currentCarPoint;
-    public void SetBottomCar(MergeDetect car, int currentPoint)
+    private RaceTrackManager _raceTrackManager;
+    void Start()
+    {
+        _raceTrackManager = InstantcesContainer.Instance.RaceTrackManager;
+    }
+    public void SetBottomCar(MergeDetect car)
     {
         bottomCar = car;
-        currentCarPoint = currentPoint;
+       
+       
+        StartCoroutine(MergeProcess());
     }
-    public void SetTopCar(MergeDetect car)
+    public void SetTopCar(MergeDetect car, int currentPoint)
     {
         topCar = car;
+        currentCarPoint = currentPoint;
     }
 
     IEnumerator MergeProcess()
@@ -22,20 +30,30 @@ public class MergeMaster : MonoBehaviour
         {
             yield return null;
         }
+
         var top = topCar;
         var bot = bottomCar;
         topCar = null;
         bottomCar = null;
 
-        yield return new WaitForSeconds(1f);
-        StartCoroutine(CreateProcess(top, bot));
-       
+        if (top.CarAI.CarLevel == bot.CarAI.CarLevel)
+            StartCoroutine(CreateProcess(top, bot));
+        else
+            yield break;
+
     }
     IEnumerator CreateProcess(MergeDetect top, MergeDetect bot)
     {
-        Destroy(bot.gameObject,0.1f);
-        _carSpawner.Spawn(1, bot.transform.position, bot.transform.rotation,this,currentCarPoint);
-        yield return null;
+        _raceTrackManager.DeleteCar(bot.CarAI);
+        _raceTrackManager.DeleteCar(top.CarAI);
+        var nextLevel = bot.CarAI.CarLevel + 1;
+        var topTransform = top.CarAI.transform;
+        Destroy(bot.CarAI.gameObject, 0.1f);
+        Destroy(top.CarAI.gameObject, 0.1f);
+       
+        _carSpawner.Spawn(nextLevel,topTransform.position, topTransform.rotation, currentCarPoint);
+        _raceTrackManager.StartCars();
+        yield break;
     }
 
 }

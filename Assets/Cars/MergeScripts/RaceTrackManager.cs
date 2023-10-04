@@ -1,5 +1,5 @@
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class RaceTrackManager : MonoBehaviour
@@ -7,30 +7,51 @@ public class RaceTrackManager : MonoBehaviour
     [Header("Objects")]
     [SerializeField] private GameObject raceTrackCamera;
     [SerializeField] private GameObject joystick;
-    [SerializeField] private GameObject uiCamera;
 
-    [Header("UI")] 
-    [SerializeField] private Toggle toggle;
-    [SerializeField] private Image toggleImage;
+    [SerializeField] private List<CarAI> _carsOnTrack=new();
 
-    [SerializeField] private Sprite topArrow;
-    [SerializeField] private Sprite downArrow;
-
-    [Header("Events")] 
-    public UnityEvent startDragEvent;
-    public UnityEvent endDragEvent;
+    [SerializeField] private Button _toRaceCameraButt;
+    [SerializeField] private Button _toDefaultCamera;
 
     private void Awake()
     {
-        if (toggle) toggle.onValueChanged.AddListener(GoToTheRaceTrack);
+        _toRaceCameraButt?.onClick.AddListener(() => GoToTheRaceTrack(true));
+        _toDefaultCamera?.onClick.AddListener(() => GoToTheRaceTrack(false));
+        _toDefaultCamera.gameObject.SetActive(false);
     }
 
     private void GoToTheRaceTrack(bool isOn)
     {
         raceTrackCamera.SetActive(isOn);
         joystick.SetActive(!isOn);
-        uiCamera.SetActive(!isOn);
+        _toDefaultCamera.gameObject.SetActive(isOn);
 
-        toggleImage.sprite = isOn ? downArrow : topArrow;
+    }
+
+    public void RegisterCar(CarAI car)
+    {
+        _carsOnTrack.Add(car);
+
+    }
+    
+    public void DeleteCar(CarAI car)
+    {
+        _carsOnTrack.Remove(car);
+    }
+
+    public void StopCars() 
+    {
+        foreach (var car in _carsOnTrack)
+        {
+            car.StopDrive();
+        }
+        
+    }
+    public void StartCars() 
+    {
+        foreach (var car in _carsOnTrack)
+        {
+            car.StartDrive();
+        }
     }
 }

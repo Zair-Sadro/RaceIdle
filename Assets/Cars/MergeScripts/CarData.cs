@@ -1,6 +1,8 @@
+using System;
 using UnityEngine;
 
-public class CarData : MonoBehaviour
+[Serializable]
+public class CarData 
 {
     public int valueNumber = 1;
 }

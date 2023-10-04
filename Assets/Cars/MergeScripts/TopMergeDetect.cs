@@ -6,7 +6,7 @@ public class TopMergeDetect : MergeDetect
     {
         if (other.CompareTag(reqTag))
         {
-            _mergeMaster.SetTopCar(this);
+            _mergeMaster.SetTopCar(this, _carAI.CurrentPoint);
         }
     }
 }

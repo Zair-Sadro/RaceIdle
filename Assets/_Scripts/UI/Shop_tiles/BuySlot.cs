@@ -28,19 +28,14 @@ public class BuySlot : MonoBehaviour, IRegisterSlot
     }
 
     #region Events
-    private void OnEnable()
+    void Start()
     {
         _wallet.OnTotalMoneyChange += Reprice;
         _buyOneButt.onClick.AddListener(() => OnBuy());
         _tileSetter.OnTilesMaxCapacity += OnMaxCount;
     }
 
-    private void OnDisable()
-    {
-        _buyOneButt.onClick.RemoveAllListeners();
-        _wallet.OnTotalMoneyChange -= Reprice;
-        _tileSetter.OnTilesMaxCapacity -= OnMaxCount;
-    }
+
 
 
     private void OnBuy()

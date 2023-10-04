@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Machine/MachineFields")]
-public class MachineFields:ScriptableObject
+public class MachineFields : ScriptableObject
 {
 
     [SerializeField] private TileType productType;
@@ -11,30 +11,30 @@ public class MachineFields:ScriptableObject
 
     [Space(2f), Header("Settings")]
 
-    [SerializeField] private  MachineNumbersData _incomeNumbers;
-    [SerializeField] private  MachineNumbersData _speedNumbers;
-    [SerializeField] private int _maxTiles=4;
+    [SerializeField] private MachineNumbersData _incomeNumbers;
+    [SerializeField] private MachineNumbersData _speedNumbers;
+    [SerializeField] private int _maxTiles = 4;
     [SerializeField] private int[] levelsForCapacityUp;
 
-    [SerializeField,Tooltip("Кэф прибавления вместимости")]
+    [SerializeField, Tooltip("Кэф прибавления вместимости")]
     private int _capacityDelta;
 
 
-        //FIELDS\\
+    //FIELDS\\
     public int MaxTiles => _maxTiles;
     public float Speed => _speedNumbers.currentValue;
     public float Income => _incomeNumbers.currentValue;
     public List<ProductRequierment> Requierments => _requierments;
     public TileType ProductType => productType;
     public int CapacityDelta => _capacityDelta;
- 
+
     public void UpgradeSpeed(UpgradeField upgradeField)
     {
-        _speedNumbers.currentValue=upgradeField.LevelUp();
+        _speedNumbers.currentValue = upgradeField.LevelUp();
     }
     public void UpgradeIncome(UpgradeField upgradeField)
     {
-        _incomeNumbers.currentValue=upgradeField.LevelUp(); ;
+        _incomeNumbers.currentValue = upgradeField.LevelUp(); ;
     }
     public MachineNumbersData IncomeData()
     {
@@ -56,6 +56,57 @@ public class MachineFields:ScriptableObject
     {
         _maxTiles = capacity;
     }
-    
+
+}
+
+[CreateAssetMenu(menuName = "Machine/ProducerFields")]
+public class ProducerFields : ScriptableObject
+{
+    [SerializeField] private TileType productType;
+
+    [Space(2f), Header("Settings")]
+
+    [SerializeField] private MachineNumbersData _incomeNumbers;
+    [SerializeField] private MachineNumbersData _speedNumbers;
+    [SerializeField] private int _maxTiles = 4;
+    [SerializeField] private int[] levelsForCapacityUp;
+    [SerializeField, Tooltip("Кэф прибавления вместимости")]
+    private int _capacityDelta;
+
+    //FIELDS\\
+    public int MaxTiles => _maxTiles;
+    public float Speed => _speedNumbers.currentValue;
+    public float Income => _incomeNumbers.currentValue;
+    public TileType ProductType => productType;
+    public int CapacityDelta => _capacityDelta;
+
+    public void UpgradeSpeed(UpgradeField upgradeField)
+    {
+        _speedNumbers.currentValue = upgradeField.LevelUp();
+    }
+    public void UpgradeIncome(UpgradeField upgradeField)
+    {
+        _incomeNumbers.currentValue = upgradeField.LevelUp(); ;
+    }
+    public MachineNumbersData IncomeData()
+    {
+        return _incomeNumbers;
+    }
+    public MachineNumbersData SpeedData()
+    {
+        return _speedNumbers;
+    }
+    public int[] GetCapacityLevels()
+    {
+        return levelsForCapacityUp;
+    }
+    public void CapacityUp(int delta)
+    {
+        _maxTiles += delta;
+    }
+    public void SetCapacity(int capacity)
+    {
+        _maxTiles = capacity;
+    }
 }
 

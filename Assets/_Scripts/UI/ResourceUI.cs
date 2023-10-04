@@ -27,12 +27,13 @@ public class ResourceUI : MonoBehaviour
     private void Start()
     {
         SubscribeOnInit(_tileSetter.TilesListsByType);
+        _wallet.OnTotalMoneyChange += MoneyView;
     }
 
 
     private void OnEnable()
     {
-        _wallet.OnTotalMoneyChange += MoneyView;
+       
 
     }
     private void OnDisable()

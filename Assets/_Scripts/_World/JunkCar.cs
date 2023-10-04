@@ -34,7 +34,10 @@ public class JunkCar : MonoBehaviour, IDamageable
 
 
     }
-
+    void Update()
+    {
+        hpFillImage.transform.LookAt(Camera.main.transform.position);
+    }
     [SerializeField] private float _randDeltaX, _randDeltaZ;
     public void RandomPosition()
     {
@@ -42,6 +45,8 @@ public class JunkCar : MonoBehaviour, IDamageable
             _startPos.x + Random.Range(-_randDeltaX, _randDeltaX)
             , _startPos.y,
             _startPos.z + Random.Range(-_randDeltaZ, _randDeltaZ));
+
+       
     }
 
     public void OnRespawn()

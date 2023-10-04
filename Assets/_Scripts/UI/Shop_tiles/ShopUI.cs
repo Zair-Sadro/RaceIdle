@@ -13,12 +13,12 @@ public class ShopUI : UIPanel
 
 
     private List<IRegisterSlot> _registerSlots = new List<IRegisterSlot>();
-    protected override void Awake()
+
+    protected override void Start()
     {
         base.Awake();
         GetIRegister();
         PanelInit(GetPanelAnimation());
-
     }
 
 
