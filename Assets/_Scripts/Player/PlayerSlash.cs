@@ -30,13 +30,18 @@ public class PlayerSlash : MonoBehaviour
         {
             controller.Animator.SetBool("Slash", true);
         }
+        if (other.tag == "Destroyable")
+            controller.Animator.SetBool("Slash", true);
     }
+    
     private void OnTriggerExit(Collider other)
     {
         if (other.TryGetComponent(out JunkCar junkcar))
         {
             controller.Animator.SetBool("Slash", false);
         }
+        if(other.tag=="Destroyable")
+            controller.Animator.SetBool("Slash", false);
     }
 
 }

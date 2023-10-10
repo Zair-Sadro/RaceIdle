@@ -1,5 +1,4 @@
 using DG.Tweening;
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -12,35 +11,39 @@ public class TileProducerMachine : MonoBehaviour
 
     [SerializeField] private ProducerFields _producerFields;
 
-    [SerializeField] private int maxTileCount { get; set; }
-    [SerializeField] private int currentTilesCount { get; set; }
-
     [SerializeField] private Vector3 _tileScale;
 
-
-    protected TileSetter _playerTilesBag => InstantcesContainer.Instance.TileSetter;
-
     private ResourceTilesSpawn _tilesSpawner => InstantcesContainer.Instance.ResourceTilesSpawn;
-    private WalletSystem _walletSystem => InstantcesContainer.Instance.WalletSystem;
+    private WalletSystem _walletSystem =>
+      InstantcesContainer.Instance.WalletSystem;
 
-
-    private Action<int, int> OnCountChange;
     private bool producing;
 
     public TileType typeProduced => _producerFields.ProductType;
-    public float machineSpeed => _producerFields.Speed;
+    public float MachineSpeed => _producerFields.Speed;
+    public int MaxTileCount => _producerFields.MaxTiles;
+    public int currentTilesCount => productStorage.TilesInStorage.Count;
 
 
+    private void Start()
+    {
+        StartProduce();
+    }
 
-    private IEnumerator TileManufacture()
+    private void StartProduce()
+    {
+        StartCoroutine(TileProduceProcess());
+    }
+
+    private IEnumerator TileProduceProcess()
     {
         producing = true;
         var tile = _tilesSpawner.GetTile(typeProduced);
         tile.OnTake();
 
-        yield return StartCoroutine(tile.AppearFromZero(_tileScale, tileStartPos.position, machineSpeed * 0.35f));
+        yield return StartCoroutine(tile.AppearFromZero(_tileScale, tileStartPos.position, MachineSpeed * 0.35f));
 
-        yield return tile.transform.DOMove(tileFinishPos.position, machineSpeed * 0.65f)
+        yield return tile.transform.DOMove(tileFinishPos.position, MachineSpeed * 0.65f)
                                    .SetEase(Ease.InOutFlash)
                                    .WaitForCompletion();
 
@@ -48,13 +51,22 @@ public class TileProducerMachine : MonoBehaviour
                                    .WaitForCompletion();
 
         //PuffEffect();
-        productStorage.TileToStack(tile);
+        productStorage.TileToStorage(tile);
         _walletSystem.Income(_producerFields.Income);
 
 
         producing = false;
 
-       StartCoroutine(TileManufacture());
+        StartCoroutine(CheckCountAndProduce());
+    }
+    private IEnumerator CheckCountAndProduce()
+    {
+        if (productStorage.IsFreeForNextTiles(MaxTileCount) == false)
+        {
+            yield return null;
+        }
+
+        StartCoroutine(TileProduceProcess());
     }
 
 

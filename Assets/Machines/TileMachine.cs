@@ -129,7 +129,7 @@ public class TileMachine : TileCollector
                                    .WaitForCompletion();
 
         //PuffEffect();
-        productStorage.TileToStack(tile);
+        productStorage.TileToStorage(tile);
         _walletSystem.Income(machineFields.Income);
 
         SetState(MachineState.WAIT_FOR_ENOUGH);

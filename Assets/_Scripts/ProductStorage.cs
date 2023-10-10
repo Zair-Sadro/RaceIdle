@@ -9,11 +9,23 @@ public class ProductStorage : MonoBehaviour
     public IReadOnlyCollection<Tile> TilesInStorage => _tilesInStorage;
 
 
-    public void TileToStack(Tile t)
+    public void TileToStorage(Tile t)
     {
         _tilesInStorage.Push(t);
         t.transform.parent = transform;
         t.transform.rotation = new Quaternion(0, 0, 0, 0);
+    }
+    public bool IsFreeForNextTiles(int maximum) 
+    {
+        if (_tilesInStorage.Count >= maximum)
+        {
+            return false;
+        }
+        else 
+        {
+            return true;
+        }
+
     }
     
     private void OnTriggerEnter(Collider other)
@@ -37,19 +49,19 @@ public class ProductStorage : MonoBehaviour
             StopThrow();
         }
     }
-     private void ThrowTilesToPlayer()
-     {
+
+    private void ThrowTilesToPlayer()
+    {
         StartCoroutine(ThrowingTileCor());
-     }
+    }
     private void StopThrow()
     {
         StopAllCoroutines();
     }
     private IEnumerator ThrowingTileCor()
     {
-
         _tileSetter.AddTile(_tilesInStorage.Pop());
         yield return new WaitForSeconds(StaticValues.tileThrowDelay);
     }
-
+    
 }

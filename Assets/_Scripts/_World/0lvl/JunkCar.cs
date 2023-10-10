@@ -34,7 +34,7 @@ public class JunkCar : MonoBehaviour, IDamageable
 
 
     }
-    void Update()
+    void FixedUpdate()
     {
         hpFillImage.transform.LookAt(Camera.main.transform.position);
     }
@@ -113,7 +113,7 @@ public class JunkCar : MonoBehaviour, IDamageable
     {
         this.gameObject.SetActive(false);
         _junkCarManager.DestroyCar(this);
-        // _junkCarManager.ExplodeTiles(this);
+        // _uniqCarManager.ExplodeTiles(this);
     }
     public List<GameObject> GetCarParts()
     {

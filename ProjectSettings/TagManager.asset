@@ -9,6 +9,7 @@ TagManager:
   - weapon
   - TopMerge
   - BottomMerge
+  - Destroyable
   layers:
   - Default
   - TransparentFX

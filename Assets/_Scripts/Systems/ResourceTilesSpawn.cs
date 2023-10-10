@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using DG.Tweening.Plugins;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ResourceTilesSpawn : MonoBehaviour
@@ -20,7 +22,12 @@ public class ResourceTilesSpawn : MonoBehaviour
     private List<ObjectPooler<Tile>> _poolList = new();
 
     private TileSetter _tileSetter => InstantcesContainer.Instance.TileSetter;
+    private string[] _tileTypesNames;
 
+    void Start()
+    {
+        _tileTypesNames = Enum.GetNames(typeof(TileType));
+    }
     private void OnEnable()
     {
         _junkPool = CreatePool(_junkPrefab);
@@ -35,6 +42,7 @@ public class ResourceTilesSpawn : MonoBehaviour
             var pool = new ObjectPooler<Tile>(pref, _tilesParent);
             pool.CreatePool(maxTilesAmount);
             _poolList.Add(pool);
+            pool.AutoExpand = true;
 
             return pool;
         }
@@ -49,6 +57,20 @@ public class ResourceTilesSpawn : MonoBehaviour
 
         return tile;
 
+    }
+    public Tile GetRandomTile() 
+    {
+        var tile = PoolByType(RandomTileType()).GetFreeObject();
+        tile.InjectTileSetter(_tileSetter);
+
+        return tile;
+    }
+    private TileType RandomTileType() 
+    {
+        var r =  UnityEngine.Random.Range(0, _tileTypesNames.Length);
+        
+        var name = _tileTypesNames[r];
+        return (TileType) Enum.Parse(typeof(TileType), name);
     }
     public void ToPool(Tile t)
     {

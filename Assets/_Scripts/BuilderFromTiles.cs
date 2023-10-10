@@ -31,7 +31,7 @@ public class BuilderFromTiles : TileCollector
         if (building.activeInHierarchy && forceToBuild)
         {
             StopCollect();
-            BuildAndEffect(building);
+            BuildEffects(building);
             AfterBuildAction();
         }
         else
@@ -108,7 +108,7 @@ public class BuilderFromTiles : TileCollector
         if (EnoughForBuild())
         {
             StopCollect();
-            BuildAndEffect(building);
+            BuildEffects(building);
 
             _buildSaver.GetBuildInfo(this);
             AfterBuildAction();
@@ -119,7 +119,7 @@ public class BuilderFromTiles : TileCollector
         building.SetActive(true);
         AfterBuildAction();
     }
-    protected virtual void BuildAndEffect(GameObject b)
+    protected virtual void BuildEffects(GameObject b)
     {
         b.SetActive(true);
     }
