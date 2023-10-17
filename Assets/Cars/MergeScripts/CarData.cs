@@ -4,5 +4,6 @@ using UnityEngine;
 [Serializable]
 public class CarData 
 {
-    public int valueNumber = 1;
+    public int ValueNumber = 1;
+    public float LapReward = 10f;
 }

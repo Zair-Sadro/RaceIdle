@@ -63,24 +63,16 @@ public class Tile : MonoBehaviour
 
         yield return transform.DOScale(scale, dur).WaitForCompletion();
     }
-    public void OnStorage(Transform t)
+    public void OnStorage(Transform parent)
     {
         gameObject.SetActive(true);
-        transform.SetParent(t);
+        transform.SetParent(parent);
         transform.rotation = new Quaternion(0, 0, 0, 0);
         IsTaken = true;
         coll.enabled = false;
         body.isKinematic = true;
     }
-    public void OnGround()
-    {
-        IsTaken = false;
-        coll.enabled = true;
-        body.isKinematic = false;
 
-        if(this.gameObject.activeInHierarchy) 
-            StartCoroutine(TimerTillDisappear());
-    }
     private bool _setterInjected;
     internal void InjectTileSetter(TileSetter tileSetter)
     {
@@ -92,17 +84,7 @@ public class Tile : MonoBehaviour
 
     public void ThrowTo(Vector3 place,float duration)
     {
-       // _tween?.Kill();
-       // _tween = 
-            transform.DOJump(place, transform.position.y + 5f, 1, duration).SetEase(Ease.InOutFlash);
-      //  if (_Rotate) _tween =transform.DORotate(_rotationIn, duration).SetEase(Ease.OutQuad);
-    }
-
-    IEnumerator TimerTillDisappear()
-    {
-        yield return new WaitForSeconds(StaticValues.tileDisapTimer);
-        if(!IsTaken) gameObject.SetActive(false);
-
+       transform.DOJump(place, transform.position.y + 5f, 1, duration).SetEase(Ease.InOutFlash);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -113,10 +95,24 @@ public class Tile : MonoBehaviour
             
         }
     }
+    public void OnGround()
+    {
+        IsTaken = false;
+        coll.enabled = true;
+        body.isKinematic = false;
 
+        if (this.gameObject.activeInHierarchy)
+            StartCoroutine(TimerTillDisappear());
+    }
     internal void Dissapear(float timer)
     {
         StartCoroutine(DissapearCor(timer));
+    }
+    IEnumerator TimerTillDisappear()
+    {
+        yield return new WaitForSeconds(StaticValues.tileDisapTimer);
+        if (!IsTaken) gameObject.SetActive(false);
+
     }
     IEnumerator DissapearCor(float timer)
     {

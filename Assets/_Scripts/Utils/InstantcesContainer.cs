@@ -17,6 +17,7 @@ public class InstantcesContainer :MonoBehaviour
     [SerializeField] private BuildSaver _buildSaver;
     [SerializeField] private StatsValuesInformator _statsValuesInformator;
     [SerializeField] private RaceTrackManager _raceTrackManager;
+    [SerializeField] private LapControll _lapControll;
 
     public RaceIdleGame RaceIdleGame => _raceIdleGame;
     public PlayerController PlayerController => _playerController;
@@ -28,6 +29,7 @@ public class InstantcesContainer :MonoBehaviour
     public BuildSaver BuildSaver => _buildSaver;
     public StatsValuesInformator StatsValuesInformator => _statsValuesInformator;
     public RaceTrackManager RaceTrackManager => _raceTrackManager;
+    public LapControll LapControll => _lapControll;
 
     private void Awake()
     {

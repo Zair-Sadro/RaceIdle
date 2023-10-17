@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44402242, g: 0.49316543, b: 0.5722324, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4291,18 +4291,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1354759246}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &622996336 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8714971615252784238, guid: ee3cab0f48e848143802580ed7351cb4,
-    type: 3}
-  m_PrefabInstance: {fileID: 3348398876203849116}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c586d1d487eef54e862b3c58e4e2893, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &624977679 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4854790988748260759, guid: 36381b875214dbd4e979754b72826cf7,
@@ -4657,6 +4645,7 @@ MonoBehaviour:
   _buildSaver: {fileID: 1502583157}
   _statsValuesInformator: {fileID: 581427652}
   _raceTrackManager: {fileID: 889359401}
+  _lapControll: {fileID: 889359403}
 --- !u!114 &710688856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5610,6 +5599,7 @@ GameObject:
   - component: {fileID: 889359400}
   - component: {fileID: 889359401}
   - component: {fileID: 889359402}
+  - component: {fileID: 889359403}
   m_Layer: 0
   m_Name: '- Level 1 Cars'
   m_TagString: Untagged
@@ -5665,6 +5655,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _carSpawner: {fileID: 1187454119}
+--- !u!114 &889359403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 889359399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31bc1012f14d0284bbd35d6846cee85f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _goldVFX: {fileID: 0}
 --- !u!1 &891364902
 GameObject:
   m_ObjectHideFlags: 0
@@ -6360,12 +6363,6 @@ Transform:
   m_Father: {fileID: 554377775}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &953020664 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6590235882190837194, guid: ee3cab0f48e848143802580ed7351cb4,
-    type: 3}
-  m_PrefabInstance: {fileID: 3348398876203849116}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &953767967
 GameObject:
   m_ObjectHideFlags: 0
@@ -7162,7 +7159,6 @@ MonoBehaviour:
   - {fileID: 2176153929302388969, guid: 2bcd74b641aff3d4986526726cc83048, type: 3}
   _parent: {fileID: 889359400}
   _rotation: {x: 0, y: 180, z: 0}
-  _collisionIngore: {fileID: 1187454118}
   _points:
   - {fileID: 1988029066}
   - {fileID: 1654281064}
@@ -16450,12 +16446,6 @@ Transform:
   m_Father: {fileID: 1788232176}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &2138174477 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2447968505593501010, guid: ee3cab0f48e848143802580ed7351cb4,
-    type: 3}
-  m_PrefabInstance: {fileID: 3348398876203849116}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2141100454
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19636,31 +19626,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8830415079544334874}
     m_Modifications:
-    - target: {fileID: 101784673944539019, guid: ee3cab0f48e848143802580ed7351cb4,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.85
-      objectReference: {fileID: 0}
-    - target: {fileID: 101784673944539019, guid: ee3cab0f48e848143802580ed7351cb4,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 4.64
-      objectReference: {fileID: 0}
-    - target: {fileID: 2447968505593501010, guid: ee3cab0f48e848143802580ed7351cb4,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.793
-      objectReference: {fileID: 0}
-    - target: {fileID: 2447968505593501010, guid: ee3cab0f48e848143802580ed7351cb4,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.251
-      objectReference: {fileID: 0}
-    - target: {fileID: 2447968505593501010, guid: ee3cab0f48e848143802580ed7351cb4,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 3.316
-      objectReference: {fileID: 0}
     - target: {fileID: 5843408192571247460, guid: ee3cab0f48e848143802580ed7351cb4,
         type: 3}
       propertyPath: m_RootOrder
@@ -19720,16 +19685,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: IRONmachineToolAuto
-      objectReference: {fileID: 0}
-    - target: {fileID: 6590235882190837194, guid: ee3cab0f48e848143802580ed7351cb4,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 6590235882190837194, guid: ee3cab0f48e848143802580ed7351cb4,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.31
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee3cab0f48e848143802580ed7351cb4, type: 3}
@@ -24562,12 +24517,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!1 &8370999216307422274 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6511119181799313886, guid: ee3cab0f48e848143802580ed7351cb4,
-    type: 3}
-  m_PrefabInstance: {fileID: 3348398876203849116}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8399649320329695745
 GameObject:
   m_ObjectHideFlags: 0
@@ -25422,23 +25371,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3348398876203849116}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &9178357769183665913
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8370999216307422274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d3f9397af443f54586886556bb9755b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  productStorage: {fileID: 622996336}
-  tileStartPos: {fileID: 953020664}
-  tileFinishPos: {fileID: 2138174477}
-  _producerFields: {fileID: 11400000, guid: 21531e7cd708e874aa6f23bd0873e025, type: 2}
-  _tileScale: {x: 1, y: 1, z: 1}
 --- !u!224 &9210563577125862718
 RectTransform:
   m_ObjectHideFlags: 0

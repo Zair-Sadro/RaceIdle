@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,7 @@ public class ProductStorage : MonoBehaviour
     private TileSetter _tileSetter => InstantcesContainer.Instance.TileSetter;
     public IReadOnlyCollection<Tile> TilesInStorage => _tilesInStorage;
 
-
+    public event Action OnFreeSpaceInStorage;
     public void TileToStorage(Tile t)
     {
         _tilesInStorage.Push(t);
@@ -38,7 +39,7 @@ public class ProductStorage : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         if (PlayerDetector.IsPlayer(other.gameObject) && _tilesInStorage.Count >= 1)
-        {
+        {          
             ThrowTilesToPlayer();
         }
     }
@@ -52,6 +53,7 @@ public class ProductStorage : MonoBehaviour
 
     private void ThrowTilesToPlayer()
     {
+        if(!_tileSetter.MaxCapacity)
         StartCoroutine(ThrowingTileCor());
     }
     private void StopThrow()

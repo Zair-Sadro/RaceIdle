@@ -11,8 +11,6 @@ public class CarSpawner : MonoBehaviour
     [SerializeField] private Transform _parent;
     [SerializeField] private Vector3 _rotation;
 
-    [SerializeField] private CollisionIngore _collisionIngore;
-
     [Header("Points")]
     [SerializeField] private List<Transform> _points = new();
     [SerializeField] private List<Transform> _toTrackPoint = new();
@@ -20,6 +18,7 @@ public class CarSpawner : MonoBehaviour
     [Header("ComponentsForCar")]
     [SerializeField] private MergeMaster _mergeMaster;
     [SerializeField] private Camera _raceCamera;
+
 
 
     public void Spawn(int level)
@@ -33,8 +32,6 @@ public class CarSpawner : MonoBehaviour
 
         car.RideFromRepair();
 
-
-        _collisionIngore.AddToIgnoreList(car.Collider);
 
         _raceTrackManager.RegisterCar(car);
 
@@ -51,7 +48,7 @@ public class CarSpawner : MonoBehaviour
         car.RideAfterMerge(currentCarPoint);
 
         _raceTrackManager.RegisterCar(car);
-        _collisionIngore.AddToIgnoreList(car.Collider);
+
     }
 
     [Button]
@@ -62,9 +59,6 @@ public class CarSpawner : MonoBehaviour
 
         car.SetPointsList(_points, _toTrackPoint);
         car.RideFromRepair();
-
-        _collisionIngore.AddToIgnoreList(car.GetComponent<Collider>()); // GetComponent ='(
-
 
     }
 }

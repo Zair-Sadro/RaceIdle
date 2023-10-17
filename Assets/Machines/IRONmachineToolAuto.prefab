@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2249411952609361371}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 1.95, y: 0.479, z: 4.66}
+  m_LocalPosition: {x: 1.85, y: 0.479, z: 4.64}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -126,7 +126,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3645365886372963442}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.987, y: 1.251, z: 1.338}
+  m_LocalPosition: {x: 1.8, y: 1.251, z: 1.31}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -157,7 +157,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5589201779469028691}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.956, y: 1.238, z: 3.361}
+  m_LocalPosition: {x: 1.793, y: 1.251, z: 3.316}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -173,6 +173,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5843408192571247460}
+  - component: {fileID: 9178357769183665913}
   m_Layer: 0
   m_Name: IRONmachineToolAuto
   m_TagString: Untagged
@@ -187,7 +188,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6511119181799313886}
-  m_LocalRotation: {x: -0.21297018, y: -0.6742727, z: -0.6742727, w: 0.21297018}
+  m_LocalRotation: {x: -0.21297245, y: -0.674272, z: -0.674272, w: 0.21297245}
   m_LocalPosition: {x: 24.283382, y: -8.808226, z: -44.09987}
   m_LocalScale: {x: 25, y: 25, z: 25}
   m_ConstrainProportionsScale: 0
@@ -197,6 +198,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: -144.942}
+--- !u!114 &9178357769183665913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6511119181799313886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d3f9397af443f54586886556bb9755b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  productStorage: {fileID: 8714971615252784238}
+  tileStartPos: {fileID: 6590235882190837194}
+  tileFinishPos: {fileID: 2447968505593501010}
+  _producerFields: {fileID: 11400000, guid: 21531e7cd708e874aa6f23bd0873e025, type: 2}
+  _tileScale: {x: 1, y: 1, z: 1}
 --- !u!1 &6587320181569221175
 GameObject:
   m_ObjectHideFlags: 0

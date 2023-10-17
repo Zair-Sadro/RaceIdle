@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
-using UnityEditor;
 using UnityEngine;
 
 public class CarAI : MonoBehaviour
 {
     [SerializeField] protected CarData _carData;
+    public int CarLevel => _carData.ValueNumber;
 
     [SerializeField] private float _pointRange = 20f;
     [SerializeField] private Collider _collider;
@@ -15,40 +15,24 @@ public class CarAI : MonoBehaviour
     [SerializeField] private DragAndDrop _dragAndDrop;
     [SerializeField] private CarController _carControll;
 
-
-    private List<Transform> _trackPoints = new();
-    private List<Transform> _toTrackPoint = new();
-
-    private List<Transform> _currentList;
-    private int _currentPoint;
-    public int CurrentPoint => _currentPoint;
-    public int CarLevel => _carData.valueNumber;
-    private float _gasPower;
+    private bool _drive = true;
 
     #region Lap Controll
-    private LapControll _lapControll;
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "LapFinish")
         {
-
+            if (!_carControll.Stopped) 
+            {
+                InstantcesContainer.Instance.LapControll.LapFinished(_carData);
+            }
         }
     }
     #endregion
 
-    public Collider Collider => _collider;
+    #region Direction calculation
 
-    private bool _drive = true;
-    public void StopDrive()
-    {
-        _drive = false;
-        _carControll.StopRB();
-    }
-    public void StartDrive()
-    {
-        _drive = true;
-        _carControll.StartRB();
-    }
+    private float _gasPower;
     private void FixedUpdate()
     {
         if (!_drive)
@@ -57,50 +41,13 @@ public class CarAI : MonoBehaviour
         _carControll.SetDrive(CalcuateAngle(), _gasPower);
         PointControll();
     }
-
-    public void SetPointsList(List<Transform> trackpoints, List<Transform> toTrackPoints)
-    {
-        _trackPoints = trackpoints;
-        _toTrackPoint = toTrackPoints;
-    }
-    public void RideFromRepair()
-    {
-        _dragAndDrop.NoDragNow=true;
-        StartCoroutine(RidingFromRep());
-    }
-    public void RideAfterMerge(int pointNumber)
-    {
-        _currentPoint = pointNumber;
-        _currentList = _trackPoints;
-        _gasPower = 1f;
-    }
-    IEnumerator RidingFromRep()
-    {
-        var rang = _pointRange;
-        _pointRange = 7f;
-        _currentList = _toTrackPoint;
-        _gasPower = 0.85f;
-
-        while (_currentPoint <= _currentList.Count - 2)
-        {
-            yield return null;
-        }
-
-        _currentPoint = 0;
-        _currentList = _trackPoints;
-        _pointRange = rang;
-        _gasPower = 1f;
-        _dragAndDrop.NoDragNow = false;
-
-    }
-
     private float CalcuateAngle()
     {
         Vector3 point = _currentList[_currentPoint].position;
         Vector3 target = point - transform.position;
         target.Normalize();
 
-        float angleToTarget = Vector3.SignedAngle(transform.forward, target, transform.up); //??
+        float angleToTarget = Vector3.SignedAngle(transform.forward, target, transform.up);
         float steeramount = angleToTarget / 45f;
 
         steeramount = Mathf.Clamp(steeramount, -1.0f, 1.0f);
@@ -130,13 +77,77 @@ public class CarAI : MonoBehaviour
     private void NextPoint()
     {
         if (_currentPoint == _currentList.Count - 1)
+        {
             _currentPoint = 0;
+        }
         else
+        {
             _currentPoint++;
+        }
+
 
     }
+    #endregion
 
-    internal void SetMergeMaster(MergeMaster mm)
+    #region PointsSet
+
+    private List<Transform> _trackPoints = new();
+    private List<Transform> _toTrackPoint = new();
+
+    private List<Transform> _currentList;
+    private int _currentPoint;
+    public int CurrentPoint => _currentPoint;
+
+    public void SetPointsList(List<Transform> trackpoints, List<Transform> toTrackPoints)
+    {
+        _trackPoints = trackpoints;
+        _toTrackPoint = toTrackPoints;
+    }
+    public void RideFromRepair()
+    {
+        _dragAndDrop.NoDragNow = true;
+        StartCoroutine(RidingFromRep());
+    }
+    private IEnumerator RidingFromRep()
+    {
+        var rang = _pointRange;
+        _pointRange = 7f;
+        _currentList = _toTrackPoint;
+        _gasPower = 0.85f;
+
+        while (_currentPoint <= _currentList.Count - 2)
+        {
+            yield return null;
+        }
+
+        _currentPoint = 0;
+        _currentList = _trackPoints;
+        _pointRange = rang;
+        _gasPower = 1f;
+        _dragAndDrop.NoDragNow = false;
+
+    }
+    public void RideAfterMerge(int pointNumber)
+    {
+        _currentPoint = pointNumber;
+        _currentList = _trackPoints;
+        _gasPower = 1f;
+    }
+
+
+    #endregion
+
+    public void StopDrive()
+    {
+        _drive = false;
+        _carControll.StopRB();
+    }
+    public void StartDrive()
+    {
+        _drive = true;
+        _carControll.StartRB();
+    }
+    public void SetMergeMaster(MergeMaster mm)
     {
         _topDetector.SetMergeMaster(mm);
         _botDetector.SetMergeMaster(mm);
@@ -145,6 +156,7 @@ public class CarAI : MonoBehaviour
     {
         _dragAndDrop.RaceCamera = cam;
     }
+     
 }
 
 

@@ -28,6 +28,7 @@ public class TileProducerMachine : MonoBehaviour
     private void Start()
     {
         StartProduce();
+
     }
 
     private void StartProduce()
@@ -57,7 +58,8 @@ public class TileProducerMachine : MonoBehaviour
 
         producing = false;
 
-        StartCoroutine(CheckCountAndProduce());
+        yield return StartCoroutine(CheckCountAndProduce());
+        
     }
     private IEnumerator CheckCountAndProduce()
     {

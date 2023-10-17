@@ -17,7 +17,7 @@ public class CarController : MonoBehaviour
 
     private float steeringInput;
     private float accelInput;
-    private bool _stop;
+  
     public float breakforce;
     private Rigidbody _rb;
     private void Awake()
@@ -27,6 +27,9 @@ public class CarController : MonoBehaviour
         
     }
     private Vector3 lasVelocity;
+
+    private bool _stop;
+    public bool Stopped => _stop;
     public void StopRB()
     {
 
@@ -85,7 +88,7 @@ public class CarController : MonoBehaviour
             _frontLeftWheel.localRotation = degree;
         }
     }
-    public float latVellValye;
+    private float laterallValye;
     private void Drift()
     {
         if (steeringInput == 0)
@@ -95,7 +98,7 @@ public class CarController : MonoBehaviour
         float lateralVelocity = GetLateralVel();
 
         // Check if the car is skidding
-        if (Mathf.Abs(lateralVelocity) > latVellValye)
+        if (Mathf.Abs(lateralVelocity) > laterallValye)
         {
             Skid(true);
             // Apply a sideways force to the car to continue the drift

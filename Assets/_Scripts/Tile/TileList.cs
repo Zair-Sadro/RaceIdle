@@ -25,7 +25,6 @@ public class TileList : List<Tile>
     }
     public void RemoveTile(Tile t)
     {
-
         this.Remove(t);
         OnTileRemoved?.Invoke(new TileListInfo(this));
     }

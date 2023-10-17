@@ -24,18 +24,16 @@ public class AutoRepair : MonoBehaviour, IUpgradable
 
     private bool _carRiding;
 
-    CancellationTokenSource cancelCollect = new CancellationTokenSource();
-
     private WalletSystem _walletSystem => InstantcesContainer.Instance.WalletSystem;
     private TileSetter _playerTilesBag => InstantcesContainer.Instance.TileSetter;
     private void Collect()
     {
         if (_playerTilesBag._isGivingTiles || _carRiding) return;
 
-        CollectCor(cancelCollect);
+       StartCoroutine(CollectCor());
 
     }
-    private async UniTask CollectCor(CancellationTokenSource cancellationToken)
+    private IEnumerator CollectCor()
     {
         var reqtype = new List<TileType>(_requiredTypes);
         for (int i = 0; i < reqtype.Count; i++)
@@ -44,43 +42,11 @@ public class AutoRepair : MonoBehaviour, IUpgradable
             var countneed = _productRequierments[req].Amount - _tileCountByType[req];
 
             print($"await{req}");
-            await _playerTilesBag.RemoveTiles
-                (req, countneed, _detectorForRes.transform.position, RecieveTile, cancellationToken, true);
+            yield return StartCoroutine( _playerTilesBag.RemoveTilesWthCount
+                (req, countneed, _detectorForRes.transform.position, RecieveTile, true));
 
         }
     }
-    private IEnumerator Repair()
-    {
-        _carRiding = true;
-
-        cancelCollect.Cancel();
-
-        SubscribeForDetect(false);
-
-        _carSpawner.Spawn(0);
-         yield return new WaitForSeconds(2f);
-
-        GetRequired();
-        _carRiding = false;
-
-
-    }
-    #region Init&SaveLoad
-
-    private void OnEnable()
-    {
-        GetRequired();
-
-        SubscribeForDetect(true);
-
-
-    }
-    private void OnDisable()
-    {
-        SubscribeForDetect(false);
-
-    }
-    #endregion
     private void RecieveTile(Tile tile)
     {
         var type = tile.Type;
@@ -98,9 +64,39 @@ public class AutoRepair : MonoBehaviour, IUpgradable
 
 
     }
+    private IEnumerator Repair()
+    {
+        _carRiding = true;
+
+        StopCoroutine(CollectCor());
+        SubscribeForTilesDetect(false);
+        _carSpawner.Spawn(0);
+
+         yield return new WaitForSeconds(2f);
+
+        GetNextTilesRequired();
+        _carRiding = false;
+
+
+    }
+    #region Init&SaveLoad
+
+    private void OnEnable()
+    {
+        GetNextTilesRequired();
+        SubscribeForTilesDetect(true);
+
+    }
+    private void OnDisable()
+    {
+        SubscribeForTilesDetect(false);
+
+    }
+    #endregion
+
 
     [SerializeField] private MultuCounterView _counterUI;
-    private void GetRequired()
+    private void GetNextTilesRequired()
     {
         var data = _data.GetRequierments(repairLevel);
         var lenght = data.RequiermentsList.Count;
@@ -119,8 +115,23 @@ public class AutoRepair : MonoBehaviour, IUpgradable
             _counterUI.InitUI(colcount.Type, colcount.Amount);
         }
 
-    }
+        SubscribeForTilesDetect(true);
 
+    }
+    private void SubscribeForTilesDetect(bool value)
+    {
+        if (value)
+        {
+            _detectorForRes.OnPlayerEnter += Collect;
+            _detectorForRes.OnPlayerExit += StopCollect;
+        }
+        else
+        {
+            _detectorForRes.OnPlayerEnter -= Collect;
+            _detectorForRes.OnPlayerExit -= StopCollect;
+        }
+
+    }
     private void StopCollect()
     {
         _playerTilesBag._isGivingTiles = false;
@@ -133,21 +144,6 @@ public class AutoRepair : MonoBehaviour, IUpgradable
 
     public void UpgradeIncome(int level)
     {
-
-    }
-
-    private void SubscribeForDetect(bool value)
-    {
-        if (value)
-        {
-            _detectorForRes.OnPlayerEnter += Collect;
-            _detectorForRes.OnPlayerExit += StopCollect;
-        }
-        else
-        {
-            _detectorForRes.OnPlayerEnter -= Collect;
-            _detectorForRes.OnPlayerExit -= StopCollect;
-        }
 
     }
 }
