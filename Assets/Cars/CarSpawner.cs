@@ -14,6 +14,7 @@ public class CarSpawner : MonoBehaviour
     [Header("Points")]
     [SerializeField] private List<Transform> _points = new();
     [SerializeField] private List<Transform> _toTrackPoint = new();
+    [SerializeField] private Transform _startPoint;
 
     [Header("ComponentsForCar")]
     [SerializeField] private MergeMaster _mergeMaster;
@@ -24,7 +25,7 @@ public class CarSpawner : MonoBehaviour
     public void Spawn(int level)
     {
         var car =
-        Instantiate(_cars[level], transform.position, Quaternion.Euler(_rotation), _parent);
+        Instantiate(_cars[level], _startPoint.position, Quaternion.Euler(_rotation), _parent);
 
         car.SetMergeMaster(_mergeMaster);
         car.SetRaceCamera(_raceCamera);

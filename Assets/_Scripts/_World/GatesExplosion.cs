@@ -32,7 +32,8 @@ public sealed class GatesExplosion : BuilderFromTiles
     {
         Bomb.SetActive(true);
         yield return new WaitForSeconds(0.5f);
-
+        gates[0].isKinematic = false;
+        gates[1].isKinematic = false;
         boomVfx.Play();
         Bomb.SetActive(false);
 

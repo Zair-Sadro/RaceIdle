@@ -88,7 +88,7 @@ public class CarController : MonoBehaviour
             _frontLeftWheel.localRotation = degree;
         }
     }
-    private float laterallValye;
+
     private void Drift()
     {
         if (steeringInput == 0)
@@ -98,7 +98,7 @@ public class CarController : MonoBehaviour
         float lateralVelocity = GetLateralVel();
 
         // Check if the car is skidding
-        if (Mathf.Abs(lateralVelocity) > laterallValye)
+        if (Mathf.Abs(lateralVelocity) > 0)
         {
             Skid(true);
             // Apply a sideways force to the car to continue the drift

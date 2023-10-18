@@ -182,15 +182,15 @@ MonoBehaviour:
         m_StretchHeight: 0
     - prefix: +
       name: Mini Header (Centered)
-      font: {fileID: 0}
-      fontSize: 10
+      font: {fileID: 12800000, guid: b6305f4571fa72744b9a9e4737f7f301, type: 3}
+      fontSize: 12
       fontAlignment: 4
-      fontStyle: 1
+      fontStyle: 0
       modes:
       - fontColour: {r: 1, g: 1, b: 1, a: 1}
         backgroundColour: {r: 0.38568, g: 0.6335747, b: 0.764151, a: 1}
       - fontColour: {r: 1, g: 1, b: 1, a: 1}
-        backgroundColour: {r: 0.2671325, g: 0.4473481, b: 0.6509434, a: 1}
+        backgroundColour: {r: 0.2743414, g: 0.2971044, b: 0.4245283, a: 1}
       style:
         m_Name: 
         m_Normal:
@@ -245,9 +245,9 @@ MonoBehaviour:
           m_Right: 0
           m_Top: 0
           m_Bottom: 0
-        m_Font: {fileID: 0}
-        m_FontSize: 10
-        m_FontStyle: 1
+        m_Font: {fileID: 12800000, guid: b6305f4571fa72744b9a9e4737f7f301, type: 3}
+        m_FontSize: 12
+        m_FontStyle: 0
         m_Alignment: 4
         m_WordWrap: 0
         m_RichText: 1
@@ -525,21 +525,21 @@ MonoBehaviour:
       shown: 0
     - name: BottomMergeDetect
       shown: 0
-    - name: CarData
-      shown: 0
     - name: DragAndDrop
       shown: 0
     - name: MergeDetect
       shown: 0
     - name: MergeMaster
       shown: 0
-    - name: RaceTrackManager
-      shown: 0
     - name: TopMergeDetect
+      shown: 0
+    - name: RaceTrackManager
       shown: 0
     - name: TileCollector
       shown: 0
     - name: TileMachine
+      shown: 0
+    - name: TileProducerMachine
       shown: 0
     - name: CFX_AutoStopLoopedEffect
       shown: 0
@@ -596,8 +596,6 @@ MonoBehaviour:
     - name: RaceIdleGame
       shown: 0
     - name: StatsValuesInformator
-      shown: 0
-    - name: GatesExplosion
       shown: 0
     - name: ProductView
       shown: 0
@@ -673,6 +671,10 @@ MonoBehaviour:
       shown: 0
     - name: Singleton`1
       shown: 0
+    - name: JunkCar
+      shown: 0
+    - name: JunkCarManager
+      shown: 0
     - name: AutoRepair
       shown: 0
     - name: MultuCounterView
@@ -681,9 +683,11 @@ MonoBehaviour:
       shown: 0
     - name: CounterView
       shown: 0
-    - name: JunkCar
+    - name: GatesExplosion
       shown: 0
-    - name: JunkCarManager
+    - name: UniqCar
+      shown: 0
+    - name: UniqCarsManager
       shown: 0
     - name: OnObjectClickHelper
       shown: 0
