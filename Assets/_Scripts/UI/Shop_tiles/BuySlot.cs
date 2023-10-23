@@ -15,7 +15,7 @@ public class BuySlot : MonoBehaviour, IRegisterSlot
     private TileType _type;
     private float _price;
 
-    // same as constructor or Instantiate() slot with needed info 
+
     public void RegisterSlot(TileType type, float price, int count)
     {
         _type = type;

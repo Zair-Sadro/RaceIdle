@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShopSystem: MonoBehaviour
+public class ShopSystem : MonoBehaviour
 {
     private TileSetter _tileSetter => InstantcesContainer.Instance.TileSetter;
     private StatsValuesInformator _statsValuesInformator => InstantcesContainer.Instance.StatsValuesInformator;
@@ -13,19 +13,19 @@ public class ShopSystem: MonoBehaviour
 
     [Tooltip("MultiplyValue x MachineIncome"),
      Header("Multiply to price")]
-    [SerializeField] private float _sellMulti=0.5f;
-    [SerializeField] private float _buyMulti=0.5f;
+    [SerializeField] private float _sellMulti = 0.5f;
+    [SerializeField] private float _buyMulti = 0.5f;
 
     #region Calculation & field to get calcilation info
 
     private Dictionary<TileType, TileEcoInfo> _priceByTypeDict = new();
     public IReadOnlyDictionary<TileType, TileEcoInfo> PriceInfo => _priceByTypeDict;
-    
+
     private void CalculateSellPrice()
     {
         var dictionary = _tileSetter.TilesListsByType;
 
-        _priceByTypeDict.Clear();////////////////////REFACTOR();////////////////////REFACTOR
+        _priceByTypeDict.Clear();
 
         foreach (var element in dictionary)
             if (dictionary.TryGetValue(element.Key, out var t))
@@ -40,7 +40,7 @@ public class ShopSystem: MonoBehaviour
 
         float CalculateTilePrice(TileType type)
         {
-            var price = _statsValuesInformator.GetMachineIncome(type) * _sellMulti+1f;
+            var price = _statsValuesInformator.GetMachineIncome(type) * _sellMulti + 1f;
             return price;
         }
 
@@ -51,7 +51,7 @@ public class ShopSystem: MonoBehaviour
         var listTypes = _statsValuesInformator.GetMaxGainedType();
 
         _priceByTypeDict.Clear(); ////////////////////REFACTOR();////////////////////REFACTOR
-        foreach (var type in listTypes) 
+        foreach (var type in listTypes)
         {
             TileEcoInfo tileEcoInfo = new TileEcoInfo(type, 0, CalculateTilePrice(type));
             _priceByTypeDict.Add(type, tileEcoInfo);
@@ -109,7 +109,7 @@ public struct TileEcoInfo
         this.count = count;
         this.price = price;
     }
-            
+
 }
 
 

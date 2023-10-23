@@ -52,8 +52,8 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
 
     private void Start()
     {
-        GameEventSystem.TileSold += ((type) => RemoveTiles(type, Vector3.zero, null, true));
-        GameEventSystem.TileBought += AddTile;
+        GameEventSystem.TileSold += (type) => RemoveBySoldTile(type);
+        GameEventSystem.TileBought += (type) => TryAddTile(type);
         GameEventSystem.SoldALl += RemoveAll;
     }
     private void RemoveAll()
@@ -67,10 +67,10 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
     }
 
     #region AddTile
-    public void AddTile(Tile tile)
+    public bool TryAddTile(Tile tile)
     {
         if (_maxCapacity)
-            return;
+            return false;
 
         tile.OnTake();
         tile.JumpTween(setupPoint.position, powerTileJump, () =>
@@ -85,18 +85,19 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
 
         OnTilesCountChanged?.Invoke(_colectedTiles.Count);
         CheckMaxTilesCapacity();
+        return true;
     }
     /// <summary>
     /// Used only from tile shop after buy
     /// </summary>
     /// <param name="type"></param>
-    public void AddTile(TileType type)
+    public bool TryAddTile(TileType type)
     {
         var tile = _resourceTilesSpawn.GetTile(type);
-        if (MaxCapacity) 
+        if (_maxCapacity) 
         {
-            tile.OnGround();
             tile.ThrowTo(this.transform.position,StaticValues.tileThrowDelay);
+            return false;
         }
         else 
         {
@@ -111,11 +112,12 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
 
             OnTilesCountChanged?.Invoke(_colectedTiles.Count);
             CheckMaxTilesCapacity();
+            return true;
         }
 
        
     }
-    public void CheckMaxTilesCapacity()
+    private void CheckMaxTilesCapacity()
     {
         _maxCapacity = _colectedTiles.Count >= maxTiles;
         if(_maxCapacity)
@@ -126,6 +128,7 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
     #endregion
 
     #region RemoveTile
+
     /// <summary>
     /// Remove with count
     /// </summary>
@@ -198,10 +201,8 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
         TileList neededTilesList = tilesListsByType[type];
 
         yield return new WaitForSeconds(delayToRemoveTile);
-
         for (int i = neededTilesList.Count - 1; i >= 0; i--)
         {
-           // neededTilesList[i].
             neededTilesList[i].ThrowTo(tilesPlace, timeToRemoveTile);
             interatorCall?.Invoke(neededTilesList[i]);
 
@@ -211,6 +212,20 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
                 yield break;
         }
         _isGivingTiles = false;
+    }
+
+    private void RemoveBySoldTile(TileType type)
+    {
+        StartCoroutine(RemoveOneTile(type));
+    }
+    private IEnumerator RemoveOneTile(TileType type)
+    {
+        TileList neededTilesList = tilesListsByType[type];
+        var last = neededTilesList.Count - 1;
+      
+        yield return WaitAndClearTile(true, neededTilesList[last]);
+
+
     }
 
     #endregion
@@ -224,6 +239,14 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
         }
         else
             RemoveFromList(tile);
+
+        if (_maxCapacity) 
+        {
+            OnTilesMaxCapacity.Invoke(false);
+            _maxCapacity = false;
+        }
+         
+
         yield return new WaitForSeconds(0.1f);
     }
 

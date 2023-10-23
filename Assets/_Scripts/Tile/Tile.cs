@@ -84,14 +84,19 @@ public class Tile : MonoBehaviour
 
     public void ThrowTo(Vector3 place,float duration)
     {
-       transform.DOJump(place, transform.position.y + 5f, 1, duration).SetEase(Ease.InOutFlash);
+        OnGround();
+        transform.DOJump(place, transform.position.y + 5f, 1, duration).SetEase(Ease.InOutFlash);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (PlayerDetector.IsPlayer(other.gameObject))
         {
-            _tileSetter.AddTile(this);
+
+            if (_tileSetter.TryAddTile(this) == false) 
+            {
+                OnGround();
+            }
             
         }
     }

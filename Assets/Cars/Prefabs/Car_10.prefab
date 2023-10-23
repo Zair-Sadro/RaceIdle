@@ -150,8 +150,8 @@ Transform:
   m_GameObject: {fileID: 2176153929302388971}
   m_LocalRotation: {x: 0, y: 0.99878776, z: -0, w: -0.04922439}
   m_LocalPosition: {x: 1.6352533, y: -7.64, z: 13.293623}
-  m_LocalScale: {x: 0.8500001, y: 0.85, z: 0.85}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2176153929917340878}
   - {fileID: 2176153931173237776}
@@ -175,10 +175,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63900346a023bca478744dec0472eb6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxSpeed: 180
-  _accelerationFactor: 2000000
+  _maxSpeed: 190
+  _accelerationFactor: 2200000
   _turnSpeed: 190
-  _driftFactor: 0.975
+  _driftFactor: 0.964
   _smoke1: {fileID: 3579156298462789518}
   _smoke2: {fileID: 3579156297968580659}
   _leftSkid: {fileID: 2176153929775482671}
@@ -186,7 +186,6 @@ MonoBehaviour:
   _frontLeftWheel: {fileID: 2176153931173237776}
   _frontRightsWheel: {fileID: 2176153930585932650}
   breakforce: 1
-  latVellValye: 4
 --- !u!114 &2176153929302388969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,7 +199,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _carData:
-    valueNumber: 10
+    ValueNumber: 11
+    LapReward: 10
   _pointRange: 14
   _collider: {fileID: 2176153929302388951}
   _topDetector: {fileID: 6774347472942907718}
@@ -215,9 +215,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2176153929302388971}
   serializedVersion: 2
-  m_Mass: 2000
-  m_Drag: 0.3
-  m_AngularDrag: 0
+  m_Mass: 1900
+  m_Drag: 0.4
+  m_AngularDrag: 0.1
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0

@@ -19,7 +19,6 @@ public class SellSlot : MonoBehaviour, IRegisterSlot
 
     public float AllPrice => _price * _count;
 
-    // same as constructor or Instantiate() slot with needed info 
     public void RegisterSlot(TileType type,float price,int count)
     {
         _type = type;

@@ -28,6 +28,7 @@ public class TileProducerMachine : MonoBehaviour
     private void Start()
     {
         StartProduce();
+        productStorage.OnFreeSpaceInStorage += StartProduce;
 
     }
 
@@ -65,7 +66,7 @@ public class TileProducerMachine : MonoBehaviour
     {
         if (productStorage.IsFreeForNextTiles(MaxTileCount) == false)
         {
-            yield return null;
+            yield break;
         }
 
         StartCoroutine(TileProduceProcess());

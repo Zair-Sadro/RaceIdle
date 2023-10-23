@@ -29,4 +29,4 @@ MonoBehaviour:
     currentPriceValue: 1
   _maxTiles: 4
   levelsForCapacityUp: 03000000
-  _capacityDelta: 0
+  _capacityDelta: 1

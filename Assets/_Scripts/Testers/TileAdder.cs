@@ -14,8 +14,8 @@ public class TileAdder : MonoBehaviour
     }
     public void AddTile()
   {
-        _tileSetter.AddTile(type);
-        _tileSetter.AddTile(type);
-        _tileSetter.AddTile(type);
+        _tileSetter.TryAddTile(type);
+        _tileSetter.TryAddTile(type);
+        _tileSetter.TryAddTile(type);
     }
 }

@@ -1,5 +1,4 @@
-﻿using DG.Tweening.Plugins;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -58,19 +57,19 @@ public class ResourceTilesSpawn : MonoBehaviour
         return tile;
 
     }
-    public Tile GetRandomTile() 
+    public Tile GetRandomTile()
     {
         var tile = PoolByType(RandomTileType()).GetFreeObject();
         tile.InjectTileSetter(_tileSetter);
 
         return tile;
     }
-    private TileType RandomTileType() 
+    private TileType RandomTileType()
     {
-        var r =  UnityEngine.Random.Range(0, _tileTypesNames.Length);
-        
+        var r = UnityEngine.Random.Range(0, _tileTypesNames.Length);
+
         var name = _tileTypesNames[r];
-        return (TileType) Enum.Parse(typeof(TileType), name);
+        return (TileType)Enum.Parse(typeof(TileType), name);
     }
     public void ToPool(Tile t)
     {

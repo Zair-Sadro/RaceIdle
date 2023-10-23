@@ -50,11 +50,13 @@ public class ShopUI : UIPanel
     private void RegisterSlots()
     {
         var dict =_sellSystem.PriceInfo;
-        var i = 0;
         foreach (var item in dict)
-        {   
+        {
+            if (item.Value.count == 0)
+                continue;
+            var i = StaticValues.TileGlobalIndex(item.Value.type);
             _registerSlots[i].RegisterSlot(item.Value.type, item.Value.price, item.Value.count);
-            i++;
+            
         }
        
     }

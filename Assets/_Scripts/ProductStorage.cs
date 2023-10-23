@@ -7,15 +7,18 @@ public class ProductStorage : MonoBehaviour
 {
     private Stack<Tile> _tilesInStorage = new Stack<Tile>();
     private TileSetter _tileSetter => InstantcesContainer.Instance.TileSetter;
+
     public IReadOnlyCollection<Tile> TilesInStorage => _tilesInStorage;
 
     public event Action OnFreeSpaceInStorage;
+    
     public void TileToStorage(Tile t)
     {
         _tilesInStorage.Push(t);
         t.transform.parent = transform;
         t.transform.rotation = new Quaternion(0, 0, 0, 0);
     }
+
     public bool IsFreeForNextTiles(int maximum) 
     {
         if (_tilesInStorage.Count >= maximum)
@@ -62,7 +65,7 @@ public class ProductStorage : MonoBehaviour
     }
     private IEnumerator ThrowingTileCor()
     {
-        _tileSetter.AddTile(_tilesInStorage.Pop());
+        _tileSetter.TryAddTile(_tilesInStorage.Pop());
         yield return new WaitForSeconds(StaticValues.tileThrowDelay);
     }
     

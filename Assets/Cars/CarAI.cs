@@ -59,8 +59,8 @@ public class CarAI : MonoBehaviour
     }
     private void CalcuateBreak(float angle)
     {
-        if (math.abs(angle) > 0.6f)
-            _carControll.breakforce = 1;
+        if (math.abs(angle) > 0.3f)
+            _carControll.breakforce = 1.5f;
         else
             _carControll.breakforce = -1;
 
