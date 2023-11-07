@@ -1,15 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public static class StaticValues 
+public static class StaticValues
 {
     [Tooltip("Timer in seconds after tile on ground will dissapear")]
     public static float tileDisapTimer = 10f;
     public static float tileThrowDelay = 0.12f;
     internal static string aes_password = "pass";
 
-    public static int TileGlobalIndex(TileType type) 
+    public static int TileGlobalIndex(TileType type)
     {
         switch (type)
         {
@@ -23,6 +21,18 @@ public static class StaticValues
                 return 3;
         }
         return 0;
-    }
 
+    }
+    public static T GetInterface<T>(this GameObject gameObject) where T : class
+    {
+        var interfaceComponent = gameObject.GetComponent(typeof(T)) as T;
+
+        if (interfaceComponent is T)
+        {
+            return interfaceComponent;
+        }
+
+        Debug.LogWarning($"No interface like {typeof(T)} in {gameObject}");
+        return null;
+    }
 }

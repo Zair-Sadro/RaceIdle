@@ -93,9 +93,13 @@ public class Tile : MonoBehaviour
         if (PlayerDetector.IsPlayer(other.gameObject))
         {
 
-            if (_tileSetter.TryAddTile(this) == false) 
+            if (_tileSetter.TryAddTile(this) == false)
             {
                 OnGround();
+            }
+            else
+            {
+                InstantcesContainer.Instance.AudioService.PlayAudo(AudioName.TILE);
             }
             
         }

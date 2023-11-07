@@ -33,7 +33,8 @@ public class UpgradeField
     }
     
    
-    public UpgradeField(MachineNumbersData machineData, Func<float, float, float> formula, Func<float,float,float> priceFormula)
+    public UpgradeField(MachineNumbersData machineData, 
+        Func<float, float, float> formula, Func<float,float,float> priceFormula)
     {
         this.currentField = machineData.currentValue;
         this.startField = machineData.startNumber;

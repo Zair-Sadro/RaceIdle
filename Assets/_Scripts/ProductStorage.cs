@@ -66,6 +66,7 @@ public class ProductStorage : MonoBehaviour
     private IEnumerator ThrowingTileCor()
     {
         _tileSetter.TryAddTile(_tilesInStorage.Pop());
+        InstantcesContainer.Instance.AudioService.PlayAudo(AudioName.TILE);
         yield return new WaitForSeconds(StaticValues.tileThrowDelay);
     }
     

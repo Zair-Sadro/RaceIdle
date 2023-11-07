@@ -31,8 +31,8 @@ MonoBehaviour:
   flush: 0
   localSaveSync: 1
   saveCloudInterval: 5
-  saveOnQuitGame: 0
-  leaderboardEnable: 1
+  saveOnQuitGame: 1
+  leaderboardEnable: 0
   leaderboardSimulation:
   - technoName: advanced
     entries: 'Test LeaderBoard
@@ -237,35 +237,6 @@ MonoBehaviour:
     it: []
     de: []
     hi: []
-  fontsTMP:
-    defaultFont: []
-    ru: []
-    en: []
-    tr: []
-    az: []
-    be: []
-    he: []
-    hy: []
-    ka: []
-    et: []
-    fr: []
-    kk: []
-    ky: []
-    lt: []
-    lv: []
-    ro: []
-    tg: []
-    tk: []
-    uk: []
-    uz: []
-    es: []
-    pt: []
-    ar: []
-    id: []
-    ja: []
-    it: []
-    de: []
-    hi: []
   fontsSizeCorrect:
     ru: 
     en: 
@@ -319,7 +290,7 @@ MonoBehaviour:
   archivingBuild: 1
   logoImageFormat: 1
   backgroundImageFormat: 3
-  pixelRatioEnable: 0
+  pixelRatioEnable: 1
   pixelRatioValue: 1
   SDKStartDelay: 0
   staticRBTInGame: 0

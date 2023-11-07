@@ -176,9 +176,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxSpeed: 190
-  _accelerationFactor: 2200000
+  _accelerationFactor: 2100000
   _turnSpeed: 190
-  _driftFactor: 0.964
+  _driftFactor: 0.98
   _smoke1: {fileID: 3661359251488897071}
   _smoke2: {fileID: 3661359250772918162}
   _leftSkid: {fileID: 2114216960315785358}

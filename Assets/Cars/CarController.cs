@@ -98,12 +98,12 @@ public class CarController : MonoBehaviour
         float lateralVelocity = GetLateralVel();
 
         // Check if the car is skidding
-        if (Mathf.Abs(lateralVelocity) > 0.1f)
+        if (Mathf.Abs(lateralVelocity) > 2f)
         {
             Skid(true);
             // Apply a sideways force to the car to continue the drift
             Vector3 driftForce = -transform.right * lateralVelocity * _driftFactor * Time.fixedDeltaTime;
-            _rb.AddForce(driftForce, ForceMode.Force);
+            _rb.AddForce(driftForce, ForceMode.VelocityChange);
         }
         else
         {

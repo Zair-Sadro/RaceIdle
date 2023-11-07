@@ -799,7 +799,7 @@ MonoBehaviour:
   _maxSpeed: 190
   _accelerationFactor: 2200000
   _turnSpeed: 190
-  _driftFactor: 0.964
+  _driftFactor: 0.98
   _smoke1: {fileID: 2149598804569831793}
   _smoke2: {fileID: 2149598805283061452}
   _leftSkid: {fileID: 3624306374048104912}

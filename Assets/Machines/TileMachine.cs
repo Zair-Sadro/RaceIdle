@@ -8,6 +8,7 @@ public class TileMachine : TileCollector
 {
     
     public MachineFields machineFields;
+    [SerializeField] private ParticleSystem _puffVFX;
 
     [Space(5)]
     [Header("Points & Storages")]
@@ -23,7 +24,6 @@ public class TileMachine : TileCollector
     protected override int maxTileCount => machineFields.MaxTiles;
     protected virtual float machineSpeed => machineFields.Speed;
     public float delayMachineTakeTile;
-    public Vector3 tileScale;
 
     private Action OnCollect;
 
@@ -97,7 +97,8 @@ public class TileMachine : TileCollector
 
             for (int j = 0; j < amount; j++)
             {
-                //PuffEffect();
+                PuffEffect(tileListByType[type].Peek().transform.position);
+
                 _tilesSpawner.ToPool(tileListByType[type].Pop());// переносим родителя Пула  (выкидываем с стака)
 
 
@@ -119,7 +120,7 @@ public class TileMachine : TileCollector
         var tile = _tilesSpawner.GetTile(typeProduced);
         tile.OnTake();
 
-        yield return StartCoroutine (tile.AppearFromZero(tileScale, tileStartPos.position, machineSpeed * 0.35f)); 
+        yield return StartCoroutine (tile.AppearFromZero(Vector3.one, tileStartPos.position, machineSpeed * 0.35f)); 
 
         yield return tile.transform.DOMove(tileFinishPos.position, machineSpeed * 0.65f)
                                    .SetEase(Ease.InOutFlash)
@@ -128,7 +129,6 @@ public class TileMachine : TileCollector
         yield return tile.transform.DOJump(productStorage.transform.position, 2, 1, 0.5f)
                                    .WaitForCompletion();
 
-        //PuffEffect();
         productStorage.TileToStorage(tile);
         _walletSystem.Income(machineFields.Income);
 
@@ -136,6 +136,12 @@ public class TileMachine : TileCollector
 
         producing = false;
         yield break;
+    }
+
+    private void PuffEffect(Vector3 pos)
+    {
+        _puffVFX.transform.position = pos;
+        _puffVFX.Play();
     }
 
     #endregion

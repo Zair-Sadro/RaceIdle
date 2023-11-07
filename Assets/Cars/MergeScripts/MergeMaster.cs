@@ -5,6 +5,7 @@ public class MergeMaster : MonoBehaviour
 {
     private MergeDetect bottomCar, topCar;
     [SerializeField] private CarSpawner _carSpawner;
+    [SerializeField] private ParticleSystem _mergeVfx;
     private int currentCarPoint;
     private RaceTrackManager _raceTrackManager;
     void Start()
@@ -46,12 +47,19 @@ public class MergeMaster : MonoBehaviour
     {
         _raceTrackManager.DeleteCar(bot.CarAI);
         _raceTrackManager.DeleteCar(top.CarAI);
+
         var nextLevel = bot.CarAI.CarLevel + 1;
         var topTransform = top.CarAI.transform;
+
         Destroy(bot.CarAI.gameObject, 0.1f);
         Destroy(top.CarAI.gameObject, 0.1f);
        
         _carSpawner.Spawn(nextLevel,topTransform.position, topTransform.rotation, currentCarPoint);
+
+        _mergeVfx.transform.position = topTransform.position;
+        _mergeVfx.Play();
+        InstantcesContainer.Instance.AudioService.PlayAudo(AudioName.MERGE);
+
         _raceTrackManager.StartCars();
         yield break;
     }

@@ -6,6 +6,20 @@ using UnityEngine;
 public class RaceIdleData 
 {
     public TileSetterData tileSetterData;
-    public BuildSaver buildSaver;
-    
+    public BuildingsData buildSaver;
+
+    public MachineUpgradeData ironMachine;
+    public MachineUpgradeData rubberMachine;
+    public MachineUpgradeData plasticMachine;
+
+    public MachineUpgradeData ironAutoMachine;
+    public MachineUpgradeData rubberAutoMachine;
+    public MachineUpgradeData plasticAutoMachine;
+
+
+
+
+    public int Money;
+
+
 }

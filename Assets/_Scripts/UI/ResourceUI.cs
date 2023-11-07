@@ -43,7 +43,7 @@ public class ResourceUI : MonoBehaviour
 
     private void MoneyView(float total)
     {
-        tx_money.text = total.ToString(); 
+        tx_money.text = total.ToString("0.#"); 
     }
 
     private void SubscribeOnInit(IReadOnlyDictionary<TileType,TileList> dict)

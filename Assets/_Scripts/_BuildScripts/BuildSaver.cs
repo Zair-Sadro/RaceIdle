@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Net.Http.Headers;
 using UnityEngine;
 
-public class BuildSaver: MonoBehaviour,ISaveLoad<BuildingsData>
+public class BuildSaver : MonoBehaviour, ISaveLoad<BuildingsData>
 {
     [SerializeField] private BuildingsData data;
     [SerializeField] private List<BuilderFromTiles> _buildings;
+    [SerializeField] private ParticleSystem _buildVFX;
 
-    private Dictionary<byte, BuilderFromTiles> _buildingsById=new();
+    private Dictionary<byte, BuilderFromTiles> _buildingsById = new();
     public int TileInvented => data.machineTileCount;
 
     private void Start()
@@ -21,7 +20,7 @@ public class BuildSaver: MonoBehaviour,ISaveLoad<BuildingsData>
         switch (builder.buildType)
         {
             case BuildType.SimpleBuild:
-                data.Buildings.Add(builder.BuildID); 
+                data.Buildings.Add(builder.BuildID);
                 break;
 
             case BuildType.MachineTile:
@@ -49,13 +48,22 @@ public class BuildSaver: MonoBehaviour,ISaveLoad<BuildingsData>
             _buildingsById[id].BuildBySaver();
         }
     }
+    public void BuildEffect(Vector3 globalpos)
+    {
+        _buildVFX.transform.position = globalpos;
+        _buildVFX.Play();
+    }
     private void FillIDs()
     {
-     if(_buildingsById.Count==0)   
-        foreach (var building in _buildings)
-        {
-            _buildingsById.Add(building.BuildID, building);
-        }
+        if (_buildingsById.Count == 0)
+            foreach (var building in _buildings)
+            {
+                _buildingsById.Add(building.BuildID, building);
+            }
+    }
+    private void Test() 
+    {
+
     }
 
 }
@@ -68,8 +76,8 @@ public enum BuildType
 [Serializable]
 public class BuildingsData
 {
-   public int machineTileCount;
-   public List<byte> Buildings;
+    public int machineTileCount;
+    public List<byte> Buildings;
 
 
 }

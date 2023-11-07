@@ -10,6 +10,7 @@ public class TileProducerMachine : MonoBehaviour
     [SerializeField] private Transform tileFinishPos;
 
     [SerializeField] private ProducerFields _producerFields;
+    public ProducerFields ProducerFields => _producerFields;
 
     [SerializeField] private Vector3 _tileScale;
 
@@ -25,8 +26,9 @@ public class TileProducerMachine : MonoBehaviour
     public int currentTilesCount => productStorage.TilesInStorage.Count;
 
 
-    private void Start()
+    IEnumerator Start()
     {
+        yield return new WaitForSeconds(1f);
         StartProduce();
         productStorage.OnFreeSpaceInStorage += StartProduce;
 

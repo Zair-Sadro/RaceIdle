@@ -10,6 +10,7 @@ public class JunkCar : MonoBehaviour, IDamageable
     [SerializeField] private float maxHealth;
     [SerializeField] private float respawnNoDamageTime;
     [SerializeField] private Image hpFillImage;
+    [SerializeField] private ParticleSystem _boomEffect;
 
     [SerializeField] private GameObject[] carParts;
 
@@ -105,6 +106,7 @@ public class JunkCar : MonoBehaviour, IDamageable
     private void DestroyCar()
     {
         if (_destroyed) return;
+        _boomEffect.Play();
         transform.DOScale(0, 0.4f).OnComplete(OnCarDestroyed);
         _destroyed = true;
     }
@@ -113,7 +115,6 @@ public class JunkCar : MonoBehaviour, IDamageable
     {
         this.gameObject.SetActive(false);
         _junkCarManager.DestroyCar(this);
-        // _uniqCarManager.ExplodeTiles(this);
     }
     public List<GameObject> GetCarParts()
     {

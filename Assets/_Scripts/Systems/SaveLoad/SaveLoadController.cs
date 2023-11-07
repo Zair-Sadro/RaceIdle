@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using UnityEngine.Playables;
+using YG;
 
 public class SaveLoadController : MonoBehaviour
 {
@@ -8,42 +10,28 @@ public class SaveLoadController : MonoBehaviour
     //read _data when open the app
     private void OnEnable()
     {
+        YandexGame.GetDataEvent += LoadData;
 
-        if (!isEnable)
-            return;
 
-        var gameData = (RaceIdleData) FileIOUtility.ReadFromJson<RaceIdleData>("save._data");
-        if (gameData != null)
-        {
-            game.Initialize(gameData);
-            Debug.Log("Save _data has loaded successfully!");
-        }
-        else Debug.Log("Save _data has not loaded!");
+       // var gameData = (RaceIdleData) FileIOUtility.ReadFromJson<RaceIdleData>("save._data");
+        //if (gameData != null)
+        //{
+           
+        //    Debug.Log("Save _data has loaded successfully!");
+        //}
+        //else Debug.Log("Save _data has not loaded!");
 
     }
-
-    // save _data when close the app
-    private void OnApplicationPause(bool pauseStatus)
+    private void LoadData()
     {
 
         if (!isEnable)
             return;
-        if (pauseStatus)
-        {
-            FileIOUtility.WriteToJson("save._data", game.GetData());
-            Debug.Log("Game _data has saved successfully!");
-        }
 
-       
+        RaceIdleData raceIdleData = new RaceIdleData();
+        raceIdleData = YandexGame.savesData.GetMainGameData();
+
+        game.Initialize(raceIdleData);
     }
 
-    private void OnApplicationQuit()
-    {
-
-        if (!isEnable)
-            return;
-        FileIOUtility.WriteToJson("save._data", game.GetData());
-        Debug.Log("Game _data has saved successfully!");
-        //DOTween.KillAll();
-    }
 }

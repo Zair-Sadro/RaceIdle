@@ -7,6 +7,7 @@ public class LapControll : MonoBehaviour
     public void LapFinished(CarData cardata)
     {
         _walletSystem.Income(cardata.LapReward);
+        InstantcesContainer.Instance.AudioService.PlayAudo(AudioName.FINISHRACE);
         //_particleSystem.Play();
     }
 }

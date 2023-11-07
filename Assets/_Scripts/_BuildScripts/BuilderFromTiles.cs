@@ -1,5 +1,7 @@
 
+using DG.Tweening;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +13,7 @@ public class BuilderFromTiles : TileCollector
     public GameObject[] collidersAfterBuildOn, collidersBeforeBuildOn;
     public GameObject building;
 
+    [SerializeField] private Transform _buildEffectPosition;
     [SerializeField] private byte _buildid;
     [SerializeField] protected bool forceToBuild = true;
 
@@ -24,29 +27,34 @@ public class BuilderFromTiles : TileCollector
     protected Action OnEnoughForBuild;
 
 
-
+    [SerializeField] private AudioName _audioName= AudioName.BUILD;
     private void Start()
     {
 
-        if (building.activeInHierarchy && forceToBuild)
+        if (forceToBuild)
         {
             StopCollect();
             BuildEffects(building);
             AfterBuildAction();
         }
-        else
-            BeforeBuildAction();
-
-
-        InitDictionary();
-
-        for (int i = 0; i < _requiredTypesCount; i++)
+        else 
         {
-            minCountForCheck += productRequierments[i].Amount;
-        }
+            BeforeBuildAction();
+            building.SetActive(false);
 
-        _counterView.InitText(minCountForCheck);
+            InitDictionary();
+
+            for (int i = 0; i < _requiredTypesCount; i++)
+            {
+                minCountForCheck += productRequierments[i].Amount;
+            }
+
+            _counterView.InitText(minCountForCheck);
+        }
+           
+
     }
+
 
     protected virtual void AfterBuildAction()
     {
@@ -112,6 +120,7 @@ public class BuilderFromTiles : TileCollector
 
             _buildSaver.GetBuildInfo(this);
             AfterBuildAction();
+            InstantcesContainer.Instance.AudioService.PlayAudo(_audioName);
         }
     }
     public virtual void BuildBySaver()
@@ -121,7 +130,21 @@ public class BuilderFromTiles : TileCollector
     }
     protected virtual void BuildEffects(GameObject b)
     {
+        StartCoroutine(BuildCor(b));
+
+    }
+    IEnumerator BuildCor(GameObject b) 
+    {
+        if(_buildEffectPosition)
+        _buildSaver.BuildEffect(_buildEffectPosition.position);
+
+        yield return new WaitForSeconds(0.2f);
+
+        var normalscale = b.transform.localScale;
+        b.transform.localScale = Vector3.zero;
         b.SetActive(true);
+        b.transform.DOScale(normalscale, 0.4f);
+       
     }
 
     protected override void RecieveTile(Tile T)

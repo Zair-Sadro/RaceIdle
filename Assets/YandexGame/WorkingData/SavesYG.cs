@@ -10,25 +10,40 @@ namespace YG
         public string language = "ru";
         public bool promptDone;
 
-        // Тестовые сохранения для демо сцены
-        // Можно удалить этот код, но тогда удалите и демо (папка Example)
-        public int money = 1;                       // Можно задать полям значения по умолчанию
-        public string newPlayerName = "Hello!";
-        public bool[] openLevels = new bool[3];
+        #region Buildings
+        public BuildingsData BuildData;
+        public TileSetterData TileSetterData;
+        #endregion
 
-        // Ваши сохранения
+        #region Machines
+        public MachineUpgradeData ironMachine;
+        public MachineUpgradeData rubberMachine;
+        public MachineUpgradeData plasticMachine;
 
-        // ...
+        public MachineUpgradeData ironAutoMachine;
+        public MachineUpgradeData rubberAutoMachine;
+        public MachineUpgradeData plasticAutoMachine;
+        #endregion
 
-        // Поля (сохранения) можно удалять и создавать новые. При обновлении игры сохранения ломаться не должны
+        public RaceIdleData GetMainGameData() 
+        {
+            RaceIdleData _data = new();
+            _data.tileSetterData = TileSetterData;
+            _data.buildSaver = BuildData;
 
+            _data.ironMachine = ironMachine;
+            _data.plasticMachine = plasticMachine;
+            _data.rubberMachine = rubberMachine;
 
-        // Вы можете выполнить какие то действия при загрузке сохранений
+            _data.ironAutoMachine = ironAutoMachine;
+            _data.plasticAutoMachine = plasticAutoMachine;
+            _data.rubberAutoMachine = rubberAutoMachine;
+
+            return _data;
+        }
+
         public SavesYG()
         {
-            // Допустим, задать значения по умолчанию для отдельных элементов массива
-
-            openLevels[1] = true;
         }
     }
 }

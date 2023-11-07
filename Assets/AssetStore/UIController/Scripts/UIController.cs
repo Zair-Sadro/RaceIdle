@@ -1,132 +1,179 @@
-﻿using UnityEngine;
-using DG.Tweening;
+﻿using DG.Tweening;
 using System;
+using UnityEngine;
 
 [RequireComponent(typeof(CanvasGroup))]
-public class UIController : MonoBehaviour {
+public class UIController : MonoBehaviour
+{
 
-	protected CanvasGroup s_canvasGroup;
-	public enum OnHideAction {
-		None,
-		Disable,
-		Destroy,
-	}
+    protected CanvasGroup s_canvasGroup;
+
 
     protected virtual void Awake()
     {
-        s_canvasGroup= GetComponent<CanvasGroup>();
+        s_canvasGroup = GetComponent<CanvasGroup>();
     }
-	protected virtual void Start()
-	{
-
-	}
-    public void PanelInit(Tween tween,Tween backTween = null)
+    protected virtual void Start()
     {
 
-		_tween = tween;
+    }
+    public void PanelInit(Tween tween, Tween backTween = null)
+    {
+
+        _tween = tween;
         _tween.onComplete += (() => { s_canvasGroup.blocksRaycasts = true; });
 
         _backwardTween = backTween;
-		_backTweenInitialized = backTween != null;
+        _backTweenInitialized = backTween != null;
 
-		_tween.SetAutoKill(false);
+        _tween.SetAutoKill(false);
 
-		if (showOnAwake) Show();
+
+
+
+    }
+    public void PanelInit() 
+    {
+        _noTween = true;
+        if (showOnAwake) Show();
     }
 
-	public bool showOnAwake = false;
-	private OnHideAction onHideAction = OnHideAction.Disable;
+    public bool showOnAwake = false;
+    private OnHideAction onHideAction = OnHideAction.Disable;
 
-	public event Action OnPanelShow, OnPanelHide;
-	private Tween _tween;
-	private Tween _backwardTween;
-	private bool _backTweenInitialized;
+    public event Action OnPanelShow, OnPanelHide;
+    private Tween _tween;
+    private Tween _backwardTween;
+    private bool _backTweenInitialized;
+    private bool _noTween;
 
-	public bool isShow 
-	{
-		get 
-		{
-			return _tween.ElapsedPercentage() > 0.5f;
-		}
-		private set 			 
-		{
-            if (value)
+    public bool isShow
+    {
+        get
+        {
+            if (_noTween) 
             {
-				
-				_tween.PlayForward();
-				
+                return gameObject.activeInHierarchy;
 
-                return;
-			}
-
-            if (_backTweenInitialized && !value)
-            {
-                s_canvasGroup.blocksRaycasts = false;
-                _backwardTween.PlayForward();
-			}
-            else
-            {
-                s_canvasGroup.blocksRaycasts = false;
-                _tween.PlayBackwards();
-				return;
             }
-		}
-	}
-    public bool isPlaying 
-	{
-		get
-		{   if (_backTweenInitialized)
-			{
-				return _backwardTween.IsPlaying() || _tween.IsPlaying();
-			}
-            else
+            else 
             {
-				return _tween.IsPlaying();
-			}
-		}
-	}
+                return _tween.ElapsedPercentage() > 0.5f;
+            }
+           
+        }
+        private set
+        {
+            if (_noTween)
+            {
+                if (value)
+                    gameObject.SetActive(true);
+                else
+                    gameObject.SetActive(false);
+            }
+            else 
+            {
+                if (value)
+                {
 
-	public virtual void Show() {
-		if (this.isShow) {
-			if (!this.isPlaying) {
-				this.OnShow();
-			}
-			return;
-		}
+                    _tween.PlayForward();
 
-		if (!this.gameObject.activeSelf) {
-			this.gameObject.SetActive(true);
-		}
-		this.isShow = true;
-		OnPanelShow?.Invoke();
+
+                    return;
+                }
+
+                if (_backTweenInitialized && !value)
+                {
+                    s_canvasGroup.blocksRaycasts = false;
+                    _backwardTween.PlayForward();
+                }
+                else
+                {
+                    s_canvasGroup.blocksRaycasts = false;
+                    _tween.PlayBackwards();
+                    return;
+                }
+            }
+              
+        }
+    }
+    public bool isPlaying
+    {
+        get
+        {
+            if (_noTween)
+            {
+                return false;
+            }
+            else 
+            {
+                if (_backTweenInitialized)
+                {
+                    return _backwardTween.IsPlaying() || _tween.IsPlaying();
+                }
+                else
+                {
+                    return _tween.IsPlaying();
+                }
+            }
+          
+        }
+    }
+
+    public virtual void Show()
+    {
+        if (this.isShow)
+        {
+            if (!this.isPlaying)
+            {
+                this.OnShow();
+            }
+            return;
+        }
+
+        if (!this.gameObject.activeSelf)
+        {
+            this.gameObject.SetActive(true);
+        }
+        this.isShow = true;
+        OnPanelShow?.Invoke();
 
     }
-	public virtual void Hide() {
-		if (!this.isShow) {
-			if (!this.isPlaying) {
-				this.OnHide();
-			}
-			return;
-		}
-		this.isShow = false;
+    public virtual void Hide()
+    {
+        if (!this.isShow)
+        {
+            if (!this.isPlaying)
+            {
+                this.OnHide();
+            }
+            return;
+        }
+        this.isShow = false;
         OnPanelHide?.Invoke();
     }
-	protected virtual void OnShow() {}
-	protected virtual void OnHide() 
-	{
-		switch (this.onHideAction) 
-		{
-			case OnHideAction.None:
-				break;
+    protected virtual void OnShow() { }
+    protected virtual void OnHide()
+    {
+        switch (this.onHideAction)
+        {
+            case OnHideAction.None:
+                break;
 
-			case OnHideAction.Disable:
-				this.gameObject.SetActive(false);
-				break;
+            case OnHideAction.Disable:
+                this.gameObject.SetActive(false);
+                break;
 
-			case OnHideAction.Destroy:
+            case OnHideAction.Destroy:
                 Destroy(this.gameObject);
-				break;
-		}
+                break;
+        }
 
-	}
+    }
 }
+    public enum OnHideAction
+    {
+        None,
+        Disable,
+        Destroy,
+    }

@@ -53,7 +53,10 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
     private void Start()
     {
         GameEventSystem.TileSold += (type) => RemoveBySoldTile(type);
-        GameEventSystem.TileBought += (type) => TryAddTile(type);
+        GameEventSystem.TileBought += (type) => 
+        { TryAddTile(type); 
+            InstantcesContainer.Instance.AudioService.PlayAudo(AudioName.SHOP); 
+        };
         GameEventSystem.SoldALl += RemoveAll;
     }
     private void RemoveAll()
@@ -112,6 +115,7 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
 
             OnTilesCountChanged?.Invoke(_colectedTiles.Count);
             CheckMaxTilesCapacity();
+            InstantcesContainer.Instance.AudioService.PlayAudo(AudioName.TILE);
             return true;
         }
 
@@ -170,7 +174,7 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
             print($"removed{type}:{i}");
             tiles[i].ThrowTo(tilesPlace, timeToRemoveTile);
             interatorCall?.Invoke(tiles[i]);
-
+            InstantcesContainer.Instance.AudioService.PlayAudo(AudioName.TILE);
             yield return WaitAndClearTile(needClear, tiles[i]);
 
             if (_isGivingTiles == false)
@@ -205,7 +209,7 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
         {
             neededTilesList[i].ThrowTo(tilesPlace, timeToRemoveTile);
             interatorCall?.Invoke(neededTilesList[i]);
-
+            InstantcesContainer.Instance.AudioService.PlayAudo(AudioName.TILE);
             yield return WaitAndClearTile(needClear, neededTilesList[i]);
 
             if (_isGivingTiles == false)
@@ -222,7 +226,7 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
     {
         TileList neededTilesList = tilesListsByType[type];
         var last = neededTilesList.Count - 1;
-      
+        InstantcesContainer.Instance.AudioService.PlayAudo(AudioName.SHOP);
         yield return WaitAndClearTile(true, neededTilesList[last]);
 
 

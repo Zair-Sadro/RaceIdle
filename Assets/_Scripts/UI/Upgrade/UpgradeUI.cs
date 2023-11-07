@@ -1,107 +1,86 @@
-using DG.Tweening;
 using System;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class UpgradeUI : UIPanel
+public class UpgradeUI : MonoBehaviour
 {
     [SerializeField] private GameObject _objectInScene;
-    [SerializeField] private MachineUpgrade _machineUpgrade;
+    [SerializeField] private GameObject _upgradeObject;
+    private IUpgradeMachine _machineUpgrade;
 
     [SerializeField] private UpgradeBar _upgradeBar;
     [SerializeField] private UpgradeSlot _incomeSlot;
     [SerializeField] private UpgradeSlot _speedCapacitySlot;
     private WalletSystem _wallet => InstantcesContainer.Instance.WalletSystem;
-    
-    [Space(3f),Header("Settings")]
-    [SerializeField] private Button _closeButton;
 
-    [SerializeField,Tooltip("Скорость появления панели")] 
-    private float showSpeed = 0.5f;
+    public event Action OnMachineClicked;
 
-    protected override void Start()
+    private void Awake()
     {
-        PanelInit(GetPanelAnimation());
+        _machineUpgrade = _upgradeObject.GetInterface<IUpgradeMachine>();
+    }
+    private void Start()
+    {
 
         _incomeSlot.InitUpgradeSlot(IncomeUpgrade);
         _speedCapacitySlot.InitUpgradeSlot(CapacitySpeedUpgrade);
 
-        _closeButton.onClick.AddListener(() => Close());
-
-        GameEventSystem.ObjectTaped += OnCLick;
-        _wallet.OnTotalMoneyChange += CheckPrice;
+        gameObject.SetActive(false);
     }
 
-
-    #region Events
-
-    public void OnCLick(GameObject obj)
+    public void Open()
     {
-        if (_objectInScene == obj)
-            Open();
+        _wallet.OnTotalMoneyChange += CheckPrice;
+        CheckPrice(_wallet.TotalMoney);
+        gameObject.SetActive(true);
         RefreshText();
+
     }
+    public void Close()
+    {
+        _wallet.OnTotalMoneyChange -= CheckPrice;
+        gameObject.SetActive(false);
+    }
+
     public void CheckPrice(float total)
     {
         _incomeSlot.CanUpgrade(total);
         _speedCapacitySlot.CanUpgrade(total);
     }
-    protected override void OnHide()
-    {
-        base.OnHide();
-    } 
-    #endregion
 
-    protected virtual void IncomeUpgrade()
+    private void IncomeUpgrade()
     {
-        UpgradeValues upgradeValues = _machineUpgrade.Income.GetValues();
+        UpgradeValues upgradeValues = _machineUpgrade.IncomeUpgradesFields.GetValues();
         float cost = upgradeValues.price;
 
-        if (_wallet.TrySpendMoney(cost))          
+        if (_wallet.TrySpendMoney(cost))
             _machineUpgrade.UpgradeIncome();
 
+        upgradeValues = _machineUpgrade.IncomeUpgradesFields.GetValues();
+        _incomeSlot.ChangeText(upgradeValues.price, upgradeValues.value);
 
-        
-
-        upgradeValues = _machineUpgrade.Income.GetValues();
-         _incomeSlot.ChangeText(upgradeValues.price, upgradeValues.value);
-        // effects
-
-        Debug.Log("Income UP");
-
-        
     }
-    protected virtual void CapacitySpeedUpgrade()
+    private void CapacitySpeedUpgrade()
     {
-        UpgradeValues upgradeValues = _machineUpgrade.Speed.GetValues();
+        UpgradeValues upgradeValues = _machineUpgrade.SpeedUpgradeFields.GetValues();
         float cost = upgradeValues.price;
 
         if (_wallet.TrySpendMoney(cost))
             _machineUpgrade.UpgradeSpeedCapacity();
 
-        upgradeValues = _machineUpgrade.Speed.GetValues();
+        upgradeValues = _machineUpgrade.SpeedUpgradeFields.GetValues();
         _speedCapacitySlot.ChangeText(upgradeValues.price, upgradeValues.value);
-        //effects
 
-        Debug.Log("CapacitySpeed UP"); 
     }
-    protected virtual Tween GetPanelAnimation()
-    {
-
-        return  transform
-               .DOMoveY(0, showSpeed)
-               .SetEase(Ease.InOutFlash).Pause() ;
-    }
-
     private void RefreshText()
     {
-        UpgradeValues upgradeValues = _machineUpgrade.Speed.GetValues();
+        UpgradeValues upgradeValues = _machineUpgrade.SpeedUpgradeFields.GetValues();
         _speedCapacitySlot.ChangeText(upgradeValues.price, upgradeValues.value);
 
-        upgradeValues = _machineUpgrade.Income.GetValues();
+        upgradeValues = _machineUpgrade.IncomeUpgradesFields.GetValues();
         _incomeSlot.ChangeText(upgradeValues.price, upgradeValues.value);
     }
-  
+
+
 }
 
 
