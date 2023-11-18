@@ -43,6 +43,9 @@ public class BuildSaver : MonoBehaviour, ISaveLoad<BuildingsData>
     public void Initialize(BuildingsData data)
     {
         FillIDs();
+        if (data == null)
+            return;
+        this.data = data;
         foreach (var id in data.Buildings)
         {
             _buildingsById[id].BuildBySaver();
@@ -60,10 +63,6 @@ public class BuildSaver : MonoBehaviour, ISaveLoad<BuildingsData>
             {
                 _buildingsById.Add(building.BuildID, building);
             }
-    }
-    private void Test() 
-    {
-
     }
 
 }

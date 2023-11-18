@@ -36,6 +36,7 @@ public class CarSpawner : MonoBehaviour
 
         _raceTrackManager.RegisterCar(car);
 
+
     }
     public void Spawn(int level, Vector3 pos, Quaternion rot, int currentCarPoint)
     {
@@ -49,6 +50,26 @@ public class CarSpawner : MonoBehaviour
         car.RideAfterMerge(currentCarPoint);
 
         _raceTrackManager.RegisterCar(car);
+
+    }
+
+    public void Spawn(int level,int currentCarPoint)
+    {
+        var car =
+      Instantiate(_cars[level], _parent);
+
+        car.SetPointsList(_points, _toTrackPoint);
+        car.SetMergeMaster(_mergeMaster);
+        car.SetRaceCamera(_raceCamera);
+
+        car.transform.position = _points[currentCarPoint].position;
+        car.transform.rotation = _points[currentCarPoint].rotation;
+
+
+        car.RideAfterMerge(currentCarPoint);
+
+        _raceTrackManager.RegisterCarByData(car);
+
 
     }
 

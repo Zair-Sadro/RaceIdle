@@ -15,6 +15,7 @@ public class MachineNumbersData
 
     public float currentValue;
     public float currentPriceValue;
+    public int maxLevel;
 
     public float DeltaNumber { get => deltaNumber; private set => deltaNumber = value; }
     public float DeltaNumberPrice { get => deltaNumberPrice; private set => deltaNumberPrice = value; }

@@ -10,6 +10,7 @@ public class MachineUpgrade : MonoBehaviour, ISaveLoad<MachineUpgradeData>, IUpg
 
     private int[] capacityUpLevels;
     private int indexer;
+    private int maxLevelIndex;
 
     private UpgradeField _speedUpgradesFields;
     private UpgradeField _incomeUpgradesFields;
@@ -18,25 +19,23 @@ public class MachineUpgrade : MonoBehaviour, ISaveLoad<MachineUpgradeData>, IUpg
 
     public event Action<int> OnIncomeUpgraded;
 
-    private void Awake()
+    private void Start()
     {
         capacityUpLevels = machineFields.GetCapacityLevels();
+        maxLevelIndex = capacityUpLevels.Length - 1;
         UpgradeDataInit();
         machineFields.SetCapacity(capacityUpLevels[indexer]);
 
     }
     public void UpgradeSpeedCapacity(int level = 0)
     {
-        if (level == 0)
-        {
-            machineFields.UpgradeSpeed(_speedUpgradesFields);
-            CapacityUpgradeCheck();
-        }
 
+        machineFields.UpgradeSpeed(_speedUpgradesFields);
+        CapacityUpgradeCheck();
 
         void CapacityUpgradeCheck()
         {
-            if (capacityUpLevels?[indexer] == _speedUpgradesFields.Level)
+            if (capacityUpLevels[indexer] == _speedUpgradesFields.Level)
             {
                 machineFields.CapacityUp(machineFields.CapacityDelta);
                 indexer++;
@@ -47,11 +46,10 @@ public class MachineUpgrade : MonoBehaviour, ISaveLoad<MachineUpgradeData>, IUpg
 
     public void UpgradeIncome(int level = 0)
     {
-        if (level == 0)
-        {
-            machineFields.UpgradeIncome(_incomeUpgradesFields);
-            OnIncomeUpgraded.Invoke(_incomeUpgradesFields.Level);
-        }
+
+        machineFields.UpgradeIncome(_incomeUpgradesFields);
+        OnIncomeUpgraded.Invoke(_incomeUpgradesFields.Level);
+
 
     }
 
@@ -72,7 +70,7 @@ public class MachineUpgrade : MonoBehaviour, ISaveLoad<MachineUpgradeData>, IUpg
 
     public MachineUpgradeData GetData()
     {
-        MachineUpgradeData data=new();
+        MachineUpgradeData data = new();
 
         data.speedData = machineFields.SpeedData();
         data.incomeData = machineFields.IncomeData();

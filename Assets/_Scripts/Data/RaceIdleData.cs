@@ -16,7 +16,7 @@ public class RaceIdleData
     public MachineUpgradeData rubberAutoMachine;
     public MachineUpgradeData plasticAutoMachine;
 
-
+    public RaceData raceData;
 
 
     public int Money;

@@ -6,6 +6,7 @@ using UnityEngine;
 public class CarAI : MonoBehaviour
 {
     [SerializeField] protected CarData _carData;
+    public CarData CarData => _carData;
     public int CarLevel => _carData.ValueNumber;
 
     [SerializeField] private float _pointRange = 20f;
@@ -84,7 +85,7 @@ public class CarAI : MonoBehaviour
         {
             _currentPoint++;
         }
-
+        _carData.CurrentPoint = _currentPoint;
 
     }
     #endregion
@@ -137,6 +138,7 @@ public class CarAI : MonoBehaviour
 
     #endregion
 
+
     public void StopDrive()
     {
         _drive = false;
@@ -151,6 +153,8 @@ public class CarAI : MonoBehaviour
     {
         _topDetector.SetMergeMaster(mm);
         _botDetector.SetMergeMaster(mm);
+
+        _carControll.EngineSound.Play(AudioName.CAR.ToString(),true);
     }
     public void SetRaceCamera(Camera cam)
     {

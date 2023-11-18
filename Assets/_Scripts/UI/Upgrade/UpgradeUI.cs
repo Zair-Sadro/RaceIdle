@@ -58,6 +58,9 @@ public class UpgradeUI : MonoBehaviour
         upgradeValues = _machineUpgrade.IncomeUpgradesFields.GetValues();
         _incomeSlot.ChangeText(upgradeValues.price, upgradeValues.value);
 
+        if (_machineUpgrade.IncomeUpgradesFields.MaxLevel)
+            _speedCapacitySlot.MaxLevel();
+
     }
     private void CapacitySpeedUpgrade()
     {
@@ -69,7 +72,8 @@ public class UpgradeUI : MonoBehaviour
 
         upgradeValues = _machineUpgrade.SpeedUpgradeFields.GetValues();
         _speedCapacitySlot.ChangeText(upgradeValues.price, upgradeValues.value);
-
+        if (_machineUpgrade.SpeedUpgradeFields.MaxLevel)
+            _speedCapacitySlot.MaxLevel();
     }
     private void RefreshText()
     {

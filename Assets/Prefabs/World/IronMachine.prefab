@@ -680,22 +680,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf7b2222ff22e314c90cb4dea91a6e26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _data:
-    speedData:
-      startNumber: 4
-      deltaNumber: 1.1
-      startNumberPrice: 4
-      deltaNumberPrice: 1.1
-      currentValue: 2
-      currentPriceValue: 2
-    incomeData:
-      startNumber: 4
-      deltaNumber: 1.1
-      startNumberPrice: 4
-      deltaNumberPrice: 1.1
-      currentValue: 2
-      currentPriceValue: 2
-    indexer: 1
   upgradeMeshes:
   - {fileID: 3473260529822489049, guid: d35bec1a0e6fca043852bbfe4f2af856, type: 3}
   - {fileID: -6845054469609478671, guid: 22c8ef5b47762694fb29ca491188ffbe, type: 3}
@@ -707,6 +691,7 @@ MonoBehaviour:
   - {fileID: 2186227260986771866, guid: 491a84b1c73ee814f9bcd3f31c48c576, type: 3}
   - {fileID: 7631392519518179294, guid: 8aff5dd6459eb1245921d6c3ba2e25e8, type: 3}
   meshFilter: {fileID: 0}
+  machineFields: {fileID: 0}
 --- !u!1 &8939031915130202965
 GameObject:
   m_ObjectHideFlags: 0
@@ -805,7 +790,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 518830818618fb24985086be9b366c0a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.886
+      value: -2.114
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 518830818618fb24985086be9b366c0a,
         type: 3}

@@ -5,6 +5,7 @@ public class UpgradeField
 {
     private float startField;
     private int level;
+    private int maxLevel;
     private float currentField;
     private float delta;
     private Func<float,float, float> formula;
@@ -14,6 +15,8 @@ public class UpgradeField
     public float FieldValue => currentField != 0 ? currentField : startField;
     public float StartField => startField;
     public int Level => level;
+
+    public bool MaxLevel => maxLevel==level;
 
     public float LevelUp()
     {
@@ -31,8 +34,8 @@ public class UpgradeField
 
         return values;
     }
-    
-   
+
+
     public UpgradeField(MachineNumbersData machineData, 
         Func<float, float, float> formula, Func<float,float,float> priceFormula)
     {
@@ -40,6 +43,7 @@ public class UpgradeField
         this.startField = machineData.startNumber;
         this.delta = machineData.DeltaNumber;
         this.formula = formula;
+        this.maxLevel = machineData.maxLevel;
         Price = new UpgradePrice(machineData.currentPriceValue,machineData.startNumberPrice, machineData.DeltaNumberPrice,priceFormula);
     }
 }

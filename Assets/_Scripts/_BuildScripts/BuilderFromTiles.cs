@@ -73,7 +73,7 @@ public class BuilderFromTiles : TileCollector
                 collidersAfterBuildOn[i].SetActive(true);
             }
 
-        Destroy(this, 2f);
+       
     }
     protected virtual void BeforeBuildAction()
     {
@@ -121,6 +121,7 @@ public class BuilderFromTiles : TileCollector
             _buildSaver.GetBuildInfo(this);
             AfterBuildAction();
             InstantcesContainer.Instance.AudioService.PlayAudo(_audioName);
+            GameEventSystem.NeedToSaveProgress.Invoke();
         }
     }
     public virtual void BuildBySaver()
@@ -144,7 +145,8 @@ public class BuilderFromTiles : TileCollector
         b.transform.localScale = Vector3.zero;
         b.SetActive(true);
         b.transform.DOScale(normalscale, 0.4f);
-       
+        Destroy(this, 2f);
+
     }
 
     protected override void RecieveTile(Tile T)

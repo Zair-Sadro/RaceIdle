@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7de3df579d18c64c90aa496d93a9fc6, type: 3}
+  m_Name: JunkValues
+  m_EditorClassIdentifier: 
+  productType: 1
+  _requierments:
+  - _type: 0
+    _amount: 2
+  _incomeNumbers:
+    startNumber: 1
+    deltaNumber: 1.03
+    startNumberPrice: 6
+    deltaNumberPrice: 1.07
+    currentValue: 1.03
+    currentPriceValue: 6
+    maxLevel: 100
+  _speedNumbers:
+    startNumber: 3
+    deltaNumber: 1.02
+    startNumberPrice: 40
+    deltaNumberPrice: 1.06
+    currentValue: 2.9411764
+    currentPriceValue: 40
+    maxLevel: 100
+  _maxTiles: 10
+  levelsForCapacityUp: 0a000000140000001e00000028000000320000003c00000046000000500000005a00000064000000
+  _capacityDelta: 5

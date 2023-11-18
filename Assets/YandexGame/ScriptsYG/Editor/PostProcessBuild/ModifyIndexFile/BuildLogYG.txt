@@ -1,2 +1,2 @@
-Build path: C:/Users/Alks/Desktop/Projects/RaceIdleBuild
-Build number: 15
+Build path: D:/Unity/Release/PluginYG/PluginYG
+Build number: 138

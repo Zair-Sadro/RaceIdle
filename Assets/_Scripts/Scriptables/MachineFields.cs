@@ -11,8 +11,8 @@ public class MachineFields : ScriptableObject
 
     [Space(2f), Header("Settings")]
 
-    [SerializeField] private MachineNumbersData _incomeNumbers;
-    [SerializeField] private MachineNumbersData _speedNumbers;
+    [SerializeField] private MachineNumbersData _incomeNumbers=new();
+    [SerializeField] private MachineNumbersData _speedNumbers=new();
     [SerializeField] private int _maxTiles = 4;
     [SerializeField] private int[] levelsForCapacityUp;
 

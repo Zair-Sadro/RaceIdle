@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class AudioService : MonoBehaviour
 {
@@ -10,13 +11,14 @@ public class AudioService : MonoBehaviour
     {
         if(_audioPlayer1.isPlaying) 
         {
-            _audioPlayer2.Play(name.ToString());
+            _audioPlayer2.Play(name.ToString(), true);
         }
         else 
         {
-            _audioPlayer1.Play(name.ToString());
+            _audioPlayer1.Play(name.ToString(),true);
         }
     }
+
 }
 public enum AudioName
 {
@@ -26,5 +28,7 @@ public enum AudioName
     FINISHRACE2,
     NEWZONE,
     SHOP,
+    CAR,
+    SKID,
     TILE
 }

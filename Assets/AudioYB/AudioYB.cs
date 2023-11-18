@@ -48,15 +48,19 @@ public class AudioYB : MonoBehaviour
         }
         
         yield return new WaitForSeconds(0.02f);
-        _source.pitch = Random.Range(0.97f, 1.03f);
+
         Clip clip = AudioStreamCash.Find(name);
         if (clip == null) Debug.LogError($"Не найден клип {name}");
         load = false;
         play = true;
         StartCoroutine(clip.GetFile(LoadAfter));
     }
-    public void Play(string name)
+    public void Play(string name,bool randompitch=false)
     {
+        if (randompitch) 
+        {
+            _source.pitch = Random.Range(0.97f, 1.03f);
+        }
         StartCoroutine(EndFile(name));
     }
     void LoadAfter(AudioClip clip)
@@ -72,6 +76,8 @@ public class AudioYB : MonoBehaviour
     }
     public void Play()
     {
+        SourseTime();
+        ZeroTime();
         if (load) 
         {
             _source.Play();

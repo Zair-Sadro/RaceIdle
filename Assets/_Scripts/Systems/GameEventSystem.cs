@@ -22,5 +22,7 @@ public static class GameEventSystem
     public static Action SoldALl;
     public static Action<int> LevelUp;
 
+    public static Action NeedToSaveProgress;
+
 
 }

@@ -39,7 +39,7 @@ public class AudioStreamCash : MonoBehaviour
         infoList.Clear();
         LoadExt("mp3", AudioType.MPEG);
         LoadExt("wav", AudioType.WAV);
-        LoadExt("ogg", AudioType.OGGVORBIS);
+        LoadExt("ogg", AudioType.UNKNOWN);
     }
     void LoadLIstUnity()
     {

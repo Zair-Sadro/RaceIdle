@@ -30,4 +30,10 @@ public class UpgradeSlot : MonoBehaviour
         if (price <= walletMoney) _button.interactable = true;
         else _button.interactable = false;
     }
+
+    internal void MaxLevel()
+    {
+        _button.interactable = false;
+        _priceText.text = "Maximum";
+    }
 }

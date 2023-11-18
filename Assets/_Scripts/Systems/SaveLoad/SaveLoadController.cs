@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Playables;
 using YG;
 
@@ -11,7 +12,7 @@ public class SaveLoadController : MonoBehaviour
     private void OnEnable()
     {
         YandexGame.GetDataEvent += LoadData;
-
+        GameEventSystem.NeedToSaveProgress += SaveProgress;
 
        // var gameData = (RaceIdleData) FileIOUtility.ReadFromJson<RaceIdleData>("save._data");
         //if (gameData != null)
@@ -22,6 +23,13 @@ public class SaveLoadController : MonoBehaviour
         //else Debug.Log("Save _data has not loaded!");
 
     }
+
+    private void SaveProgress()
+    {
+        YandexGame.savesData.SetMainGameData(game.GetData());
+        YandexGame.SaveProgress();
+    }
+
     private void LoadData()
     {
 
@@ -33,5 +41,8 @@ public class SaveLoadController : MonoBehaviour
 
         game.Initialize(raceIdleData);
     }
-
+    private void OnApplicationQuit()
+    {
+        SaveProgress();
+    }
 }

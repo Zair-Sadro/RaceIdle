@@ -7,6 +7,10 @@ public class CarController : MonoBehaviour
     [SerializeField] private float _accelerationFactor;
     [SerializeField] private float _turnSpeed;
 
+    [SerializeField] private AudioYB _engineSound, _skidSound;
+    public AudioYB EngineSound => _engineSound;
+    public AudioYB SkidSound => _skidSound;
+
     [Header("Drift")]
     [SerializeField] private float _driftFactor;
     [SerializeField] private ParticleSystem _smoke1, _smoke2;
@@ -27,7 +31,11 @@ public class CarController : MonoBehaviour
         
     }
     private Vector3 lasVelocity;
-
+    private void Start()
+    {
+        _skidSound.Play(AudioName.SKID.ToString());
+        _skidSound.Pause();
+    }
     private bool _stop;
     public bool Stopped => _stop;
     public void StopRB()
@@ -36,11 +44,14 @@ public class CarController : MonoBehaviour
         lasVelocity = _rb.velocity;
         _rb.velocity = Vector3.zero;
         _stop = true;
+        _engineSound.Pause();
+        _skidSound.Pause();
     }
     public void StartRB()
     {
         _stop = false;
         _rb.velocity = lasVelocity;
+        _engineSound.Play();
     }
     private void FixedUpdate()
     {
@@ -101,6 +112,7 @@ public class CarController : MonoBehaviour
         if (Mathf.Abs(lateralVelocity) > 2f)
         {
             Skid(true);
+           
             // Apply a sideways force to the car to continue the drift
             Vector3 driftForce = -transform.right * lateralVelocity * _driftFactor * Time.fixedDeltaTime;
             _rb.AddForce(driftForce, ForceMode.VelocityChange);
@@ -117,8 +129,16 @@ public class CarController : MonoBehaviour
 
             if (value)
             {
+                _skidSound.loop = true;
+                if(!_skidSound.isPlaying)
+                _skidSound.Play();
+               
                 _smoke1.Emit(1);
                 _smoke2.Emit(1);
+            }
+            else 
+            {
+                _skidSound.Pause();
             }
           
         }

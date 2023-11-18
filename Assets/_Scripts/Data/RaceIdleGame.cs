@@ -17,6 +17,7 @@ public class RaceIdleGame : MonoBehaviour, ISaveLoad<RaceIdleData>
     [SerializeField] private AutoMachineUpgrade _plasticAutoMachine;
 
     [SerializeField] private AutoMachineUpgrade _rubberAutoMachine;
+    [SerializeField] private RaceTrackManager _raceTrackManager;
 
 
     #endregion
@@ -26,49 +27,81 @@ public class RaceIdleGame : MonoBehaviour, ISaveLoad<RaceIdleData>
     public TileSetterData TileSetterData
     {
         get => _tileSetter.GetData();
-        set => _tileSetter.Initialize(value);
+        set
+        {
+            if (value != null) _tileSetter.Initialize(value);
+        }
     }
     public BuildingsData BuildsData
     {
         get => _buildSaver.GetData();
-        set => _buildSaver.Initialize(value);
+        set => _buildSaver.Initialize(value); 
+    }
+
+    public RaceData RaceTrackData
+    {
+        get => _raceTrackManager.GetData();
+        set
+        {
+            if (value != null) _raceTrackManager.Initialize(value);
+        }
     }
 
     #region Machines
     public MachineUpgradeData IronMachineData
     {
         get => _ironMachine.GetData();
-        set => _ironMachine.Initialize(value);
+        set
+        {
+            if (value != null) _ironMachine.Initialize(value);
+        }
     }
     public MachineUpgradeData PlasticMachineData
     {
         get => _plasticMachine.GetData();
-        set => _plasticMachine.Initialize(value);
+        set
+        {
+            if (value != null) _plasticMachine.Initialize(value);
+        }
+            
     }
     public MachineUpgradeData RubberMachineData
     {
         get => _rubberMachine.GetData();
-        set => _rubberMachine.Initialize(value);
+        set
+        {
+            if (value != null) _rubberMachine.Initialize(value);
+        }
     }
 
+
+    #endregion
+
+    #region AutoMachines
     public MachineUpgradeData IronAutoMachineData
     {
         get => _ironAutoMachine.GetData();
-        set => _ironAutoMachine.Initialize(value);
+        set
+        {
+            if (value != null) _ironAutoMachine.Initialize(value);
+        }
     }
     public MachineUpgradeData PlasticAutoMachineData
     {
         get => _plasticAutoMachine.GetData();
-        set => _plasticAutoMachine.Initialize(value);
+        set
+        {
+            if (value != null) _plasticAutoMachine.Initialize(value);
+        }
     }
     public MachineUpgradeData RubberAutoMachineData
     {
         get => _rubberAutoMachine.GetData();
-        set => _rubberAutoMachine.Initialize(value);
+        set
+        {
+            if (value != null) _rubberAutoMachine.Initialize(value);
+        }
     }
-    #endregion
-
-    #region AutoMachines
     #endregion
 
     #endregion
@@ -80,6 +113,7 @@ public class RaceIdleGame : MonoBehaviour, ISaveLoad<RaceIdleData>
 
         _data.tileSetterData = TileSetterData;
         _data.buildSaver = BuildsData;
+        _data.raceData = RaceTrackData;
 
         _data.ironMachine = IronMachineData;
         _data.plasticMachine = PlasticMachineData;
@@ -106,6 +140,8 @@ public class RaceIdleGame : MonoBehaviour, ISaveLoad<RaceIdleData>
         IronAutoMachineData = data.ironAutoMachine;
         PlasticAutoMachineData = data.plasticAutoMachine;
         RubberAutoMachineData = data.rubberAutoMachine;
+
+        RaceTrackData = data.raceData;
 
 
 

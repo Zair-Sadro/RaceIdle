@@ -281,16 +281,38 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
 
     public TileSetterData GetData()
     {
+        _data._ironTiles =_ironTiles.Count;
+        _data._junkTiles = _junkTiles.Count;
+        _data._rubberTiles = _rubberTiles.Count;
+        _data._plasticTiles = _plasticTiles.Count;
         return _data;
     }
+    private void AddTileByInit(int count,TileType type) 
+    {
+        for (int i = 0; i < count; i++)
+        {
+            var tile = _resourceTilesSpawn.GetTile(type);
 
+            tile.OnTake();
+            tile.transform.SetParent(setupPoint);
+
+            tile.transform.localRotation = Quaternion.identity;
+
+
+            _colectedTiles.Add(tile);
+            tilesListsByType[tile.Type].AddTile(tile);
+        }
+
+
+    }
     public void Initialize(TileSetterData data)
     {
-        _colectedTiles = data._colectedTiles;
-        _ironTiles = data._ironTiles;
-        _junkTiles = data._junkTiles;
-        _rubberTiles = data._rubberTiles;
-        _plasticTiles = data._plasticTiles;
+
+        AddTileByInit(data._junkTiles, TileType.Junk);
+        AddTileByInit(data._ironTiles, TileType.Iron);
+        AddTileByInit(data._rubberTiles, TileType.Rubber);
+        AddTileByInit(data._plasticTiles, TileType.Plastic);
+
     }
 }
 
@@ -298,11 +320,10 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
 public class TileSetterData
 {
 
-    public TileList _colectedTiles;
-    public TileList _junkTiles;
-    public TileList _ironTiles;
-    public TileList _plasticTiles;
-    public TileList _rubberTiles;
+    public int  _junkTiles;
+    public int _ironTiles;
+    public int _plasticTiles;
+    public int _rubberTiles;
 
 }
 
