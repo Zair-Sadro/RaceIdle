@@ -72,7 +72,7 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
     #region AddTile
     public bool TryAddTile(Tile tile)
     {
-        if (_maxCapacity)
+        if (_maxCapacity||_isGivingTiles)
             return false;
 
         tile.OnTake();
@@ -125,7 +125,7 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
     {
         _maxCapacity = _colectedTiles.Count >= maxTiles;
         if(_maxCapacity)
-            OnTilesMaxCapacity.Invoke(false);
+            OnTilesMaxCapacity?.Invoke(false);
 
     }
 
@@ -207,10 +207,11 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
         yield return new WaitForSeconds(delayToRemoveTile);
         for (int i = neededTilesList.Count - 1; i >= 0; i--)
         {
-            neededTilesList[i].ThrowTo(tilesPlace, timeToRemoveTile);
-            interatorCall?.Invoke(neededTilesList[i]);
-            InstantcesContainer.Instance.AudioService.PlayAudo(AudioName.TILE);
-            yield return WaitAndClearTile(needClear, neededTilesList[i]);
+            var tile = neededTilesList[i];
+            tile.ThrowTo(tilesPlace, timeToRemoveTile);
+            interatorCall?.Invoke(tile);
+           // InstantcesContainer.Instance.AudioService.PlayAudo(AudioName.TILE);
+            yield return WaitAndClearTile(needClear, tile);
 
             if (_isGivingTiles == false)
                 yield break;
@@ -227,7 +228,7 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
         TileList neededTilesList = tilesListsByType[type];
         var last = neededTilesList.Count - 1;
         InstantcesContainer.Instance.AudioService.PlayAudo(AudioName.SHOP);
-        yield return WaitAndClearTile(true, neededTilesList[last]);
+        yield return   StartCoroutine (WaitAndClearTile(true, neededTilesList[last]));
 
 
     }
@@ -241,12 +242,12 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
             if(tile.gameObject.activeSelf)
             ClearTiles(tile, timeToRemoveTile);
         }
-        else
             RemoveFromList(tile);
 
+        OnTilesCountChanged?.Invoke(_colectedTiles.Count);
         if (_maxCapacity) 
         {
-            OnTilesMaxCapacity.Invoke(false);
+            OnTilesMaxCapacity?.Invoke(false);
             _maxCapacity = false;
         }
          
@@ -259,19 +260,14 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
         _colectedTiles.Remove(tile);
         tilesListsByType[tile.Type].RemoveTile(tile);
        
-
-        OnTilesCountChanged?.Invoke(_colectedTiles.Count);
     }
 
     private void ClearTiles(Tile tile, float timer = 0)
     {
-        _colectedTiles.Remove(tile);
         tile.Dissapear(timer);
         tile.transform.SetParent(tilesSpawnerParent);
-
-        tilesListsByType[tile.Type].RemoveTile(tile);
       
-        OnTilesCountChanged?.Invoke(_colectedTiles.Count);
+
     }
     public void StopRemovingTiles()
     {

@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
 using System;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
 
-public class UpgradeSlot : MonoBehaviour
+public class UpgradeSlot : MonoBehaviour, ILanguageChange
 {
 
     [SerializeField] private Button _button;
@@ -14,11 +12,15 @@ public class UpgradeSlot : MonoBehaviour
 
     private float price;
 
+    private void Awake()
+    {
+        SubscribeToChange();
+    }
     public void InitUpgradeSlot(Action action)
     {
-        _button.GetComponent<UI_HoldButton>().myEvent +=action;
+        _button.GetComponent<UI_HoldButton>().myEvent += action;
     }
-    public void ChangeText(float price,float upgrade)
+    public void ChangeText(float price, float upgrade)
     {
         this.price = price;
         _priceText.text = price.ToString("0.##");
@@ -34,6 +36,32 @@ public class UpgradeSlot : MonoBehaviour
     internal void MaxLevel()
     {
         _button.interactable = false;
-        _priceText.text = "Maximum";
+        _priceText.text = maximum;
+    }
+
+
+    private string maximum;
+    [SerializeField] private string ru = "максимум";
+    [SerializeField] private string en;
+    public void SubscribeToChange()
+    {
+        GameEventSystem.OnLanguageChange += ChangeLanguage;
+    }
+
+    public void ChangeLanguage(string key)
+    {
+        switch (key)
+        {
+            case "ru":
+                maximum = ru;
+
+                break;
+
+            case "en":
+                maximum = en;
+
+                break;
+        }
+
     }
 }

@@ -84,7 +84,7 @@ public class Tile : MonoBehaviour
 
     public void ThrowTo(Vector3 place,float duration)
     {
-        OnGround();
+       // OnGround();
         transform.DOJump(place, transform.position.y + 5f, 1, duration).SetEase(Ease.InOutFlash);
     }
 

@@ -23,6 +23,6 @@ public static class GameEventSystem
     public static Action<int> LevelUp;
 
     public static Action NeedToSaveProgress;
-
+    public static Action<string> OnLanguageChange;
 
 }

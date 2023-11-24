@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UpgradeBar : MonoBehaviour
+public class UpgradeBar : MonoBehaviour,ILanguageChange
 {
     [SerializeField] private int[] _maxLevel;
 
@@ -20,6 +18,7 @@ public class UpgradeBar : MonoBehaviour
 
     private void Awake()
     {
+        SubscribeToChange();
         _upgradeUI.OnIncomeUpgraded += FillBar;
 
         float startLevel = levelsArrayIndex == 1 ? 0 : _maxLevel[levelsArrayIndex - 1];
@@ -33,7 +32,7 @@ public class UpgradeBar : MonoBehaviour
 
         for (int i = 0; i < _maxLevel.Length; i++)
         {
-            if(currentLevel < _maxLevel[i])
+            if (currentLevel < _maxLevel[i])
             {
                 levelsArrayIndex = i;
                 finishLevel.text = _maxLevel[i].ToString();
@@ -43,7 +42,7 @@ public class UpgradeBar : MonoBehaviour
 
     }
 
-    
+
     private void FillBar(int level)
     {
         _currentLevel = level;
@@ -65,12 +64,37 @@ public class UpgradeBar : MonoBehaviour
             string min = startLevel.ToString();
             string max = _maxLevel[levelsArrayIndex].ToString();
             TextChange(min, max);
-        } 
+        }
     }
 
-    private void TextChange(string min,string max)
+    private void TextChange(string min, string max)
     {
-        finishLevel.text = $"Level{max}";
-        startLevel.text = $"Level{min}";
+        finishLevel.text = level + max.ToString(); 
+        startLevel.text = level + min.ToString();
+    }
+
+    private string level;
+    [SerializeField] private string ru = "левел";
+    [SerializeField] private string en;
+    public void SubscribeToChange()
+    {
+        GameEventSystem.OnLanguageChange += ChangeLanguage;
+    }
+
+    public void ChangeLanguage(string key)
+    {
+        switch (key)
+        {
+            case "ru":
+                level = ru;
+
+                break;
+
+            case "en":
+                level = en;
+
+                break;
+        }
+
     }
 }

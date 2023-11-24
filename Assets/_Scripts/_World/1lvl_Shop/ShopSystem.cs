@@ -14,18 +14,22 @@ public class ShopSystem : MonoBehaviour
     [Tooltip("MultiplyValue x MachineIncome"),
      Header("Multiply to price")]
     [SerializeField] private float _sellMulti = 0.5f;
-    [SerializeField] private float _buyMulti = 0.5f;
+    [SerializeField] private float _buyMulti = 2.5f;
 
     #region Calculation & field to get calcilation info
 
-    private Dictionary<TileType, TileEcoInfo> _priceByTypeDict = new();
+    private Dictionary<TileType, TileEcoInfo> _priceByTypeDict = new() 
+    { 
+     { TileType.Junk, new TileEcoInfo() },
+     { TileType.Iron, new TileEcoInfo() },
+     { TileType.Rubber, new TileEcoInfo() },
+     { TileType.Plastic, new TileEcoInfo() }
+    };
     public IReadOnlyDictionary<TileType, TileEcoInfo> PriceInfo => _priceByTypeDict;
 
     private void CalculateSellPrice()
     {
         var dictionary = _tileSetter.TilesListsByType;
-
-        _priceByTypeDict.Clear();
 
         foreach (var element in dictionary)
             if (dictionary.TryGetValue(element.Key, out var t))
@@ -33,8 +37,12 @@ public class ShopSystem : MonoBehaviour
                 if (t.Count > 0)
                 {
                     TileEcoInfo tileEcoInfo = new TileEcoInfo(t.Type, t.Count, CalculateTilePrice(t.Type));
-                    _priceByTypeDict.Add(t.Type, tileEcoInfo);
+                    _priceByTypeDict[t.Type] = tileEcoInfo;
 
+                }
+                else
+                {
+                    _priceByTypeDict[t.Type] = new TileEcoInfo();
                 }
             }
 
@@ -48,13 +56,12 @@ public class ShopSystem : MonoBehaviour
     }
     private void CalculateBuyPrice()
     {
-        var listTypes = _statsValuesInformator.GetMaxGainedType();
+        var listTypes = _statsValuesInformator.GetMaxGainedType();     
 
-        _priceByTypeDict.Clear(); ////////////////////REFACTOR();////////////////////REFACTOR
         foreach (var type in listTypes)
         {
             TileEcoInfo tileEcoInfo = new TileEcoInfo(type, 0, CalculateTilePrice(type));
-            _priceByTypeDict.Add(type, tileEcoInfo);
+            _priceByTypeDict[type] = tileEcoInfo;
         }
 
         float CalculateTilePrice(TileType type)

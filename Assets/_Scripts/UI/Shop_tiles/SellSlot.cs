@@ -21,6 +21,8 @@ public class SellSlot : MonoBehaviour, IRegisterSlot
 
     public void RegisterSlot(TileType type,float price,int count)
     {
+        if (count == 0)
+            return;
         _type = type;
         _price = price;
         _count = count;

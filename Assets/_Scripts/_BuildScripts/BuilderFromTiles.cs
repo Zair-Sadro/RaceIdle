@@ -126,6 +126,7 @@ public class BuilderFromTiles : TileCollector
     }
     public virtual void BuildBySaver()
     {
+        forceToBuild = true;
         building.SetActive(true);
         AfterBuildAction();
     }

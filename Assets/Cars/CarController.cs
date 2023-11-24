@@ -52,6 +52,7 @@ public class CarController : MonoBehaviour
         _stop = false;
         _rb.velocity = lasVelocity;
         _engineSound.Play();
+        _engineSound.loop = true;
     }
     private void FixedUpdate()
     {

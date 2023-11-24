@@ -12,6 +12,7 @@ public class ShopUI : UIPanel
     [SerializeField] private List<GameObject> _slots;
 
 
+
     private List<IRegisterSlot> _registerSlots = new List<IRegisterSlot>();
 
     protected override void Start()
@@ -27,7 +28,7 @@ public class ShopUI : UIPanel
       
        for (int i = 0; i < _slots.Count; i++)
        {
-          var ireg = _slots[i].GetComponent(typeof(IRegisterSlot)) as IRegisterSlot;
+          var ireg = _slots[i].GetInterface<IRegisterSlot>();
          _registerSlots.Add(ireg);
        }   
       
@@ -50,10 +51,9 @@ public class ShopUI : UIPanel
     private void RegisterSlots()
     {
         var dict =_sellSystem.PriceInfo;
+
         foreach (var item in dict)
         {
-            if (item.Value.count == 0)
-                continue;
             var i = StaticValues.TileGlobalIndex(item.Value.type);
             _registerSlots[i].RegisterSlot(item.Value.type, item.Value.price, item.Value.count);
             

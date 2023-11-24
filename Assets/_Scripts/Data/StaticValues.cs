@@ -23,6 +23,22 @@ public static class StaticValues
         return 0;
 
     }
+    public static TileType TileGlobalIndex(int indx)
+    {
+        switch (indx)
+        {
+            case 0:
+                return TileType.Junk;
+            case 1:
+                return TileType.Iron;
+            case 2:
+                return TileType.Rubber;
+            case 3:
+                return TileType.Plastic;
+        }
+        return 0;
+
+    }
     public static T GetInterface<T>(this GameObject gameObject) where T : class
     {
         var interfaceComponent = gameObject.GetComponent(typeof(T)) as T;

@@ -1,18 +1,18 @@
 {
-    "idSave": 6,
+    "idSave": 25,
     "isFirstSession": false,
     "language": "ru",
     "promptDone": false,
     "buildData": {
-        "machineTileCount": 1,
+        "machineTileCount": 0,
         "Buildings": [
-            4
+            7
         ]
     },
     "tileSetterData": {
-        "_junkTiles": 21,
+        "_junkTiles": 0,
         "_ironTiles": 0,
-        "_plasticTiles": 0,
+        "_plasticTiles": 3,
         "_rubberTiles": 0
     },
     "raceData": {

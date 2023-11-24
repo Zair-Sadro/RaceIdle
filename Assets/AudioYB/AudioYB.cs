@@ -1,5 +1,4 @@
 //2.2
-using Mono.Cecil;
 using System.Collections;
 
 using UnityEngine;
@@ -24,11 +23,11 @@ public class AudioYB : MonoBehaviour
     private void Update()
     {
         if (_source.loop)
-        { 
-            _source.loop = false; 
-            loop = true; 
+        {
+            _source.loop = false;
+            loop = true;
         }
-        Loop(loop);      
+        Loop(loop);
     }
     void PlayAfter()
     {
@@ -42,11 +41,11 @@ public class AudioYB : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         if (_source.time > 0f)
         {
-          
+
             SourseTime();
             ZeroTime();
         }
-        
+
         yield return new WaitForSeconds(0.02f);
 
         Clip clip = AudioStreamCash.Find(name);
@@ -55,9 +54,9 @@ public class AudioYB : MonoBehaviour
         play = true;
         StartCoroutine(clip.GetFile(LoadAfter));
     }
-    public void Play(string name,bool randompitch=false)
+    public void Play(string name, bool randompitch = false)
     {
-        if (randompitch) 
+        if (randompitch)
         {
             _source.pitch = Random.Range(0.97f, 1.03f);
         }
@@ -78,7 +77,7 @@ public class AudioYB : MonoBehaviour
     {
         SourseTime();
         ZeroTime();
-        if (load) 
+        if (load)
         {
             _source.Play();
             playLoop = true;
@@ -104,13 +103,13 @@ public class AudioYB : MonoBehaviour
     }
     private void Loop(bool enable)
     {
-        if (_source.time == 0f && enable && playLoop  && !_pausa && _focus) { ZeroTime(); _source.Play(); }
+        if (_source.time == 0f && enable && playLoop && !_pausa && _focus) { ZeroTime(); _source.Play(); }
     }
     public void Pause()
     {
         _pausa = true;
-        if(_source.time !=0) _pausedTime = _source.time;
-         SourseTime();
+        if (_source.time != 0) _pausedTime = _source.time;
+        SourseTime();
     }
 
     public void UnPause()
@@ -127,7 +126,7 @@ public class AudioYB : MonoBehaviour
             _pausa = false;
             _source.Play();
         }
-       
+
     }
     public void Stop()
     {
@@ -137,7 +136,7 @@ public class AudioYB : MonoBehaviour
 
     private void SourseTime()
     {
-       if(_source.clip != null) _source.time = _source.clip.length - 0.01f;
+        if (_source.clip != null) _source.time = _source.clip.length - 0.01f;
     }
     public bool isPlaying { get => _source.isPlaying; }
     public bool loop { get; set; }
@@ -147,7 +146,7 @@ public class AudioYB : MonoBehaviour
     public bool Enabled { get => _source.enabled; set => _source.enabled = value; }
     public string clip { get => _source.clip.name; set => _source.clip = AudioStreamCash.Find(value).Cash; }
     public int timeSamples { get => _source.timeSamples; set => _source.timeSamples = value; }
-    public bool Focus { get => _focus;}
+    public bool Focus { get => _focus; }
 
     public float ClipLength()
     {

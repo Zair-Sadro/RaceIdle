@@ -26,7 +26,7 @@ public class TileMachine : TileCollector
     public float delayMachineTakeTile;
 
     private Action OnCollect;
-
+    public event Action<TileType> TypeInvented;
 
     #region "StatesTaskMachine"
 
@@ -174,7 +174,7 @@ public class TileMachine : TileCollector
         _detectorForRes.OnPlayerEnter += Collect;
         _detectorForRes.OnPlayerExit += StopCollect;
 
-
+        TypeInvented?.Invoke(machineFields.ProductType);
     }
     private void OnDisable()
     {

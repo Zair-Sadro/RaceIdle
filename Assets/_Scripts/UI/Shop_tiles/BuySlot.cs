@@ -11,6 +11,7 @@ public class BuySlot : MonoBehaviour, IRegisterSlot
 
     private WalletSystem _wallet => InstantcesContainer.Instance.WalletSystem;
     private TileSetter _tileSetter => InstantcesContainer.Instance.TileSetter;
+    private StatsValuesInformator _statsValuesInformator => InstantcesContainer.Instance.StatsValuesInformator;
 
     private TileType _type;
     private float _price;
@@ -18,10 +19,12 @@ public class BuySlot : MonoBehaviour, IRegisterSlot
 
     public void RegisterSlot(TileType type, float price, int count)
     {
+        if (!_statsValuesInformator.GetMaxGainedType().Contains(type)) 
+        
         _type = type;
         _price = price;
 
-        _priceText.text = price.ToString();
+        _priceText.text = price.ToString("0.##");
 
         Reprice(_wallet.TotalMoney);
         gameObject.SetActive(true);
@@ -40,6 +43,7 @@ public class BuySlot : MonoBehaviour, IRegisterSlot
 
     private void OnBuy()
     {
+        if(_wallet.TrySpendMoney(_price))
         GameEventSystem.TileBought.Invoke(_type);
     }
 
