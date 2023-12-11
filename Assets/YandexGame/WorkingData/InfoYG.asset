@@ -38,7 +38,7 @@ MonoBehaviour:
   quitGameParameters:
     objectName: YandexGame
     methodName: _SaveProgress
-  leaderboardEnable: 1
+  leaderboardEnable: 0
   saveScoreAnonymousPlayers: 1
   leaderboardSimulation:
   - technoName: advanced

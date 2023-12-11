@@ -25,4 +25,5 @@ public static class GameEventSystem
     public static Action NeedToSaveProgress;
     public static Action<string> OnLanguageChange;
 
+    public static Action<int> OnCarBought;
 }

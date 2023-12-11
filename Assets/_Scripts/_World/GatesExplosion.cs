@@ -47,12 +47,12 @@ public sealed class GatesExplosion : BuilderFromTiles
         for (int i = 0; i < gates.Length; i++)
         {
             gates[i].isKinematic = true;
-            gates[i].DOMoveY(-5, 1f);
-            Destroy(gates[i], 1.5f);
+            gates[i].DOMoveY(-10, 1f);
+            Destroy(gates[i].gameObject, 1.5f);
         }
 
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(4f);
 
     }
 }

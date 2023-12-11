@@ -12,7 +12,6 @@ public class UpgradeUI : MonoBehaviour
     [SerializeField] private UpgradeSlot _speedCapacitySlot;
     private WalletSystem _wallet => InstantcesContainer.Instance.WalletSystem;
 
-    public event Action OnMachineClicked;
 
     private void Awake()
     {

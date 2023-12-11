@@ -11,7 +11,11 @@ public class WalletSystem : MonoBehaviour
 
     public delegate void onTotalMoneyChange(float total);
     public event onTotalMoneyChange OnTotalMoneyChange;
-
+    private void Start()
+    {
+        _totalMoney = _moneyFromSave;
+        OnTotalMoneyChange?.Invoke(_totalMoney);
+    }
     public bool TrySpendMoney(float amount)
     {
         if (amount > _totalMoney)
@@ -41,5 +45,10 @@ public class WalletSystem : MonoBehaviour
         _totalMoney += amount;
         OnTotalMoneyChange?.Invoke(_totalMoney);
 
+    }
+    private float _moneyFromSave;
+    public void Init(float m)
+    {
+        _moneyFromSave = m;
     }
 }

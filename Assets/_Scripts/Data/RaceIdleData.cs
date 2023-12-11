@@ -19,7 +19,7 @@ public class RaceIdleData
     public RaceData raceData;
 
 
-    public int Money;
+    public float Money;
 
 
 }

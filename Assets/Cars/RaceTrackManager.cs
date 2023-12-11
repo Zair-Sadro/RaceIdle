@@ -86,12 +86,13 @@ public class RaceTrackManager : MonoBehaviour,ISaveLoad<RaceData>
     {
         if (_data.Cars.Count < 1)
             return;
+
         CarData[] cachedData = new CarData[_data.Cars.Count];
+
+        _carSpawner.SpawnByData(_data.Cars);
+
          _data.Cars.CopyTo(cachedData);
-        foreach (var item in cachedData)
-        {
-            _carSpawner.Spawn(item.Level, item.CurrentPoint);
-        }
+
        
     }
 }

@@ -18,8 +18,6 @@ public class TileProducerMachine : MonoBehaviour
     private WalletSystem _walletSystem =>
       InstantcesContainer.Instance.WalletSystem;
 
-    private bool producing;
-
     public TileType typeProduced => _producerFields.ProductType;
     public float MachineSpeed => _producerFields.Speed;
     public int MaxTileCount => _producerFields.MaxTiles;

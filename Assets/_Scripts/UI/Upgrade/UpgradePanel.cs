@@ -27,7 +27,7 @@ public class UpgradePanel : UIPanel
         for (int i = 0; i < _buttons.Count; i++)
         {
             var indx = i;
-            _buttons[i].onClick.AddListener(() => SelectPane(indx));
+            _buttons[i].onClick.AddListener(() => SelectPanel(indx));
         }
         _backButton.onClick.AddListener(Close);
     }
@@ -38,7 +38,7 @@ public class UpgradePanel : UIPanel
     }
 
 
-    public void SelectPane(int upgradeUI)
+    public void SelectPanel(int upgradeUI)
     {
         _panels[_current].Close();
         _panels[upgradeUI].Open();

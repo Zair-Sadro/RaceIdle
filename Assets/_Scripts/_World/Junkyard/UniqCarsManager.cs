@@ -30,7 +30,7 @@ public class UniqCarsManager :MonoBehaviour
         tile.transform.position = car.transform.position;
         tile.gameObject.SetActive(true);
         var pos = new Vector3(car.transform.position.x + rX, car.transform.position.y + 2f, car.transform.position.z + rZ);
-        tile.ThrowTo(pos, 0.5f);
+        tile.ThrowTo(pos, 0.5f,true);
     }
     public void DestroyCar(UniqCar car)
     {

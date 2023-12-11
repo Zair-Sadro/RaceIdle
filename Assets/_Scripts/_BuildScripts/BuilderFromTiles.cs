@@ -27,7 +27,7 @@ public class BuilderFromTiles : TileCollector
     protected Action OnEnoughForBuild;
 
 
-    [SerializeField] private AudioName _audioName= AudioName.BUILD;
+    [SerializeField] private AudioName _audioName = AudioName.BUILD;
     private void Start()
     {
 

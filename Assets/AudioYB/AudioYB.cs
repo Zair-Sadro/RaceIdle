@@ -103,7 +103,7 @@ public class AudioYB : MonoBehaviour
     }
     private void Loop(bool enable)
     {
-        if (_source.time == 0f && enable && playLoop && !_pausa && _focus) { ZeroTime(); _source.Play(); }
+        if (_source.time == 0f && enable && playLoop && _focus) { ZeroTime(); _source.Play(); }
     }
     public void Pause()
     {

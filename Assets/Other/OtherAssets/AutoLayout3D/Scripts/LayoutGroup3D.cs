@@ -62,7 +62,7 @@ namespace AutoLayout3D
         private void Update()
         {
             //if (!Application.isPlaying) //update layout every frame only in edit mode
-            UpdateLayout();
+           // UpdateLayout();
         }
 #elif UNITY_ANDROID || UNITY_IOS
         private void LateUpdate()

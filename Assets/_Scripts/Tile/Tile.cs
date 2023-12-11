@@ -51,6 +51,7 @@ public class Tile : MonoBehaviour
     }
     public void JumpTween(Vector3 pos,float power,Action onJumpDone=null)
     {
+        coll.enabled = false;
         _tween?.Kill();
         _tween = transform.DOJump(pos, power, 1, 0.2f).SetEase(Ease.OutQuad)
             .OnComplete(()=>onJumpDone?.Invoke());
@@ -82,9 +83,11 @@ public class Tile : MonoBehaviour
         _setterInjected = true;
     }
 
-    public void ThrowTo(Vector3 place,float duration)
+    public void ThrowTo(Vector3 place,float duration,bool canCollect = false)
     {
-       // OnGround();
+        if(canCollect)
+            OnGround();
+
         transform.DOJump(place, transform.position.y + 5f, 1, duration).SetEase(Ease.InOutFlash);
     }
 

@@ -16,7 +16,6 @@ public class TileList : List<Tile>
     }
     public int TilesCount => this.Count;
 
-
     public void AddTile(Tile t)
     {
 

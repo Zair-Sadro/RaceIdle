@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
@@ -121,7 +122,7 @@ public class CarAI : MonoBehaviour
             yield return null;
         }
 
-        _currentPoint = 0;
+        _currentPoint = firstTrackPoint;
         _currentList = _trackPoints;
         _pointRange = rang;
         _gasPower = 1f;
@@ -154,13 +155,18 @@ public class CarAI : MonoBehaviour
         _topDetector.SetMergeMaster(mm);
         _botDetector.SetMergeMaster(mm);
 
-        _carControll.EngineSound.Play(AudioName.CAR.ToString(),true);
+        _carControll.EngineSound(true);
     }
     public void SetRaceCamera(Camera cam)
     {
         _dragAndDrop.RaceCamera = cam;
     }
-     
+
+    private int firstTrackPoint;
+    internal void SetFirstTrackPoint(int v)
+    {
+        firstTrackPoint = v;
+    }
 }
 
 

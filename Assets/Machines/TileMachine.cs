@@ -13,6 +13,7 @@ public class TileMachine : TileCollector
     [Space(5)]
     [Header("Points & Storages")]
     [SerializeField] private ProductStorage productStorage;
+    [SerializeField] private AutoLayout3D.GridLayoutGroup3D _layoutGroupResource, _layoutGroupProduct;
     [SerializeField] private Transform tileStartPos;
     [SerializeField] private Transform tileFinishPos;
 
@@ -76,7 +77,7 @@ public class TileMachine : TileCollector
             yield break; // спокойно выходим ибо подписаны на ивент OnCollect
                          // при получении новыйх тайлов сново вызовется wait
         }
-
+       
         SetState(MachineState.GAIN);
     }
 
@@ -130,6 +131,7 @@ public class TileMachine : TileCollector
                                    .WaitForCompletion();
 
         productStorage.TileToStorage(tile);
+        _layoutGroupProduct.UpdateLayout();
         _walletSystem.Income(machineFields.Income);
 
         SetState(MachineState.WAIT_FOR_ENOUGH);
@@ -193,10 +195,13 @@ public class TileMachine : TileCollector
         if (tileStorage.transform.childCount >= minCountForCheck
             && currentState == MachineState.WAIT_FOR_ENOUGH)
 
-            OnCollect?.Invoke(); 
-
+            OnCollect?.Invoke();
+       Invoke(nameof(UpdateLay),0.9f);
     }
-
+    void UpdateLay() 
+    {
+        _layoutGroupResource.UpdateLayout();
+    }
     private bool EnoughForProduce() 
     {
         for (int i = 0; i < _requiredTypesCount; i++)

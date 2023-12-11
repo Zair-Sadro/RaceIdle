@@ -4,6 +4,9 @@ public class RaceIdleGame : MonoBehaviour, ISaveLoad<RaceIdleData>
     #region Injected controllers/managers
 
     private TileSetter _tileSetter => InstantcesContainer.Instance.TileSetter;
+
+    private WalletSystem _walletsystem => InstantcesContainer.Instance.WalletSystem;
+
     private BuildSaver _buildSaver => InstantcesContainer.Instance.BuildSaver;
 
     [SerializeField] private MachineUpgrade _ironMachine;
@@ -123,6 +126,8 @@ public class RaceIdleGame : MonoBehaviour, ISaveLoad<RaceIdleData>
         _data.plasticAutoMachine = PlasticAutoMachineData;
         _data.rubberAutoMachine = RubberAutoMachineData;
 
+        _data.Money =  _walletsystem.TotalMoney;
+
         return _data;
     }
 
@@ -143,7 +148,7 @@ public class RaceIdleGame : MonoBehaviour, ISaveLoad<RaceIdleData>
 
         RaceTrackData = data.raceData;
 
-
+        _walletsystem.Init(_data.Money);
 
     }
     #endregion

@@ -1,14 +1,14 @@
-using Cysharp.Threading.Tasks;
+using AutoLayout3D;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 
 public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
 {
     [SerializeField] private TileSetterData _data;
     [SerializeField] private Transform tilesSpawnerParent;
+    [SerializeField] private GridLayoutGroup3D _layoutGroup;
 
     [Header("Add to Unit Settings")]
     [SerializeField] private Transform setupPoint;
@@ -53,11 +53,20 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
     private void Start()
     {
         GameEventSystem.TileSold += (type) => RemoveBySoldTile(type);
-        GameEventSystem.TileBought += (type) => 
-        { TryAddTile(type); 
-            InstantcesContainer.Instance.AudioService.PlayAudo(AudioName.SHOP); 
+        GameEventSystem.TileBought += (type) =>
+        {
+            TryAddTile(type);
+            InstantcesContainer.Instance.AudioService.PlayAudo(AudioName.SHOP);
         };
         GameEventSystem.SoldALl += RemoveAll;
+        if (_data != null) 
+        {
+            AddTileByInit(_data._junkTiles, TileType.Junk);
+            AddTileByInit(_data._ironTiles, TileType.Iron);
+            AddTileByInit(_data._rubberTiles, TileType.Rubber);
+            AddTileByInit(_data._plasticTiles, TileType.Plastic);
+        }
+
     }
     private void RemoveAll()
     {
@@ -72,14 +81,17 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
     #region AddTile
     public bool TryAddTile(Tile tile)
     {
-        if (_maxCapacity||_isGivingTiles)
+        if (_maxCapacity || _isGivingTiles)
             return false;
+
+        _layoutGroup.UpdateLayout();
 
         tile.OnTake();
         tile.JumpTween(setupPoint.position, powerTileJump, () =>
         {
             tile.transform.SetParent(setupPoint);
             tile.transform.localRotation = Quaternion.identity;
+            _layoutGroup.UpdateLayout();
         });
 
 
@@ -97,13 +109,14 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
     public bool TryAddTile(TileType type)
     {
         var tile = _resourceTilesSpawn.GetTile(type);
-        if (_maxCapacity) 
+        if (_maxCapacity)
         {
-            tile.ThrowTo(this.transform.position,StaticValues.tileThrowDelay);
+            tile.ThrowTo(this.transform.position, StaticValues.tileThrowDelay,true);
             return false;
         }
-        else 
+        else
         {
+           
             tile.OnTake();
             tile.transform.SetParent(setupPoint);
 
@@ -116,15 +129,16 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
             OnTilesCountChanged?.Invoke(_colectedTiles.Count);
             CheckMaxTilesCapacity();
             InstantcesContainer.Instance.AudioService.PlayAudo(AudioName.TILE);
+            _layoutGroup.UpdateLayout();
             return true;
         }
 
-       
+
     }
     private void CheckMaxTilesCapacity()
     {
         _maxCapacity = _colectedTiles.Count >= maxTiles;
-        if(_maxCapacity)
+        if (_maxCapacity)
             OnTilesMaxCapacity?.Invoke(false);
 
     }
@@ -197,7 +211,7 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
             _isGivingTiles = true;
             StartCoroutine(RemovingTile(type, tilesPlace, interatorCall, needClear));
         }
-           
+
     }
     private IEnumerator RemovingTile(TileType type, Vector3 tilesPlace, Action<Tile> interatorCall, bool needClear)
     {
@@ -210,7 +224,7 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
             var tile = neededTilesList[i];
             tile.ThrowTo(tilesPlace, timeToRemoveTile);
             interatorCall?.Invoke(tile);
-           // InstantcesContainer.Instance.AudioService.PlayAudo(AudioName.TILE);
+            // InstantcesContainer.Instance.AudioService.PlayAudo(AudioName.TILE);
             yield return WaitAndClearTile(needClear, tile);
 
             if (_isGivingTiles == false)
@@ -228,7 +242,7 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
         TileList neededTilesList = tilesListsByType[type];
         var last = neededTilesList.Count - 1;
         InstantcesContainer.Instance.AudioService.PlayAudo(AudioName.SHOP);
-        yield return   StartCoroutine (WaitAndClearTile(true, neededTilesList[last]));
+        yield return StartCoroutine(WaitAndClearTile(true, neededTilesList[last]));
 
 
     }
@@ -239,34 +253,35 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
 
         if (needclear)
         {
-            if(tile.gameObject.activeSelf)
-            ClearTiles(tile, timeToRemoveTile);
+            if (tile.gameObject.activeSelf)
+                ClearTiles(tile, timeToRemoveTile);
         }
-            RemoveFromList(tile);
+        RemoveFromList(tile);
 
         OnTilesCountChanged?.Invoke(_colectedTiles.Count);
-        if (_maxCapacity) 
+        if (_maxCapacity)
         {
             OnTilesMaxCapacity?.Invoke(false);
             _maxCapacity = false;
         }
-         
+
 
         yield return new WaitForSeconds(0.1f);
+        _layoutGroup.UpdateLayout();
     }
 
     private void RemoveFromList(Tile tile)
     {
         _colectedTiles.Remove(tile);
         tilesListsByType[tile.Type].RemoveTile(tile);
-       
+
     }
 
     private void ClearTiles(Tile tile, float timer = 0)
     {
         tile.Dissapear(timer);
         tile.transform.SetParent(tilesSpawnerParent);
-      
+
 
     }
     public void StopRemovingTiles()
@@ -277,13 +292,14 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
 
     public TileSetterData GetData()
     {
-        _data._ironTiles =_ironTiles.Count;
+        _data._ironTiles = _ironTiles.Count;
         _data._junkTiles = _junkTiles.Count;
         _data._rubberTiles = _rubberTiles.Count;
         _data._plasticTiles = _plasticTiles.Count;
+
         return _data;
     }
-    private void AddTileByInit(int count,TileType type) 
+    private void AddTileByInit(int count, TileType type)
     {
         for (int i = 0; i < count; i++)
         {
@@ -299,15 +315,12 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
             tilesListsByType[tile.Type].AddTile(tile);
         }
 
-
+        _layoutGroup.UpdateLayout();
     }
     public void Initialize(TileSetterData data)
     {
+        _data = data;
 
-        AddTileByInit(data._junkTiles, TileType.Junk);
-        AddTileByInit(data._ironTiles, TileType.Iron);
-        AddTileByInit(data._rubberTiles, TileType.Rubber);
-        AddTileByInit(data._plasticTiles, TileType.Plastic);
 
     }
 }
@@ -316,7 +329,7 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
 public class TileSetterData
 {
 
-    public int  _junkTiles;
+    public int _junkTiles;
     public int _ironTiles;
     public int _plasticTiles;
     public int _rubberTiles;

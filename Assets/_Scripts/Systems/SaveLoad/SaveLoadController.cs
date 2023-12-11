@@ -5,9 +5,12 @@ using YG;
 
 public class SaveLoadController : MonoBehaviour
 {
-    public bool isEnable = true;
+    private bool _isEnable = true;
 
     private RaceIdleGame game => InstantcesContainer.Instance.RaceIdleGame;
+
+    public bool IsEnable { get => _isEnable; set => _isEnable = value; }
+
     //read _data when open the app
     private void OnEnable()
     {
@@ -28,12 +31,13 @@ public class SaveLoadController : MonoBehaviour
     {
         YandexGame.savesData.SetMainGameData(game.GetData());
         YandexGame.SaveProgress();
+        
     }
 
     private void LoadData()
     {
 
-        if (!isEnable)
+        if (!IsEnable)
             return;
 
         RaceIdleData raceIdleData = new RaceIdleData();

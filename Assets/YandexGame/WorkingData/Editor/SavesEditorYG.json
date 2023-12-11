@@ -1,22 +1,39 @@
 {
-    "idSave": 25,
+    "idSave": 6,
     "isFirstSession": false,
     "language": "ru",
     "promptDone": false,
     "buildData": {
         "machineTileCount": 0,
-        "Buildings": [
-            7
-        ]
+        "Buildings": []
     },
     "tileSetterData": {
-        "_junkTiles": 0,
+        "_junkTiles": 5,
         "_ironTiles": 0,
-        "_plasticTiles": 3,
+        "_plasticTiles": 0,
         "_rubberTiles": 0
     },
     "raceData": {
-        "Cars": []
+        "Cars": [
+            {
+                "ValueNumber": 0,
+                "LapReward": 10.0,
+                "CurrentPoint": 16,
+                "Level": 0
+            },
+            {
+                "ValueNumber": 1,
+                "LapReward": 10.0,
+                "CurrentPoint": 8,
+                "Level": 1
+            },
+            {
+                "ValueNumber": 0,
+                "LapReward": 10.0,
+                "CurrentPoint": 2,
+                "Level": 0
+            }
+        ]
     },
     "ironMachine": {
         "speedData": {

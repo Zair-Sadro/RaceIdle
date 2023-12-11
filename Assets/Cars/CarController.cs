@@ -1,4 +1,5 @@
 ﻿
+using System.Collections;
 using UnityEngine;
 
 public class CarController : MonoBehaviour
@@ -8,8 +9,6 @@ public class CarController : MonoBehaviour
     [SerializeField] private float _turnSpeed;
 
     [SerializeField] private AudioYB _engineSound, _skidSound;
-    public AudioYB EngineSound => _engineSound;
-    public AudioYB SkidSound => _skidSound;
 
     [Header("Drift")]
     [SerializeField] private float _driftFactor;
@@ -24,6 +23,10 @@ public class CarController : MonoBehaviour
   
     public float breakforce;
     private Rigidbody _rb;
+
+    private bool _stop;
+    public bool Stopped => _stop;
+
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
@@ -35,24 +38,33 @@ public class CarController : MonoBehaviour
     {
         _skidSound.Play(AudioName.SKID.ToString());
         _skidSound.Pause();
+        _engineSound.volume = 0.3f;
+        _skidSound.volume = 0.3f;
     }
-    private bool _stop;
-    public bool Stopped => _stop;
+
+    public void SetDrive(float steerValue, float accelValue)
+    {
+        steeringInput = steerValue;
+        accelInput = accelValue;
+    }
+
     public void StopRB()
     {
 
         lasVelocity = _rb.velocity;
         _rb.velocity = Vector3.zero;
         _stop = true;
-        _engineSound.Pause();
+
+        EngineSound(false);
         _skidSound.Pause();
     }
     public void StartRB()
     {
         _stop = false;
         _rb.velocity = lasVelocity;
-        _engineSound.Play();
-        _engineSound.loop = true;
+        EngineSound(true);
+
+
     }
     private void FixedUpdate()
     {
@@ -158,11 +170,27 @@ public class CarController : MonoBehaviour
         return Vector3.Dot(transform.right, _rb.velocity);
     }
 
-    public void SetDrive(float steerValue, float accelValue)
+    public void EngineSound(bool isOn) 
     {
-        steeringInput = steerValue;
-        accelInput = accelValue;
+
+        if (isOn) 
+        {
+            StartCoroutine(EngineSoundCor());
+        }
+        else
+        {
+            StopCoroutine(EngineSoundCor());
+            _engineSound.Stop();
+        }
     }
+    IEnumerator EngineSoundCor() 
+    {
+        _engineSound.Play(AudioName.CAR.ToString());
+        yield return new WaitForSeconds(8f);
+        EngineSound(true);
+
+    }
+
 
 }
 

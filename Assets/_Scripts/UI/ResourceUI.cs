@@ -21,7 +21,7 @@ public class ResourceUI : MonoBehaviour
         textByTileType.Add(TileType.Junk, tx_junk);
         textByTileType.Add(TileType.Plastic, tx_plastic);
         textByTileType.Add(TileType.Rubber, tx_rubber);
-
+       
     }
 
     private void Start()
@@ -30,16 +30,6 @@ public class ResourceUI : MonoBehaviour
         _wallet.OnTotalMoneyChange += MoneyView;
     }
 
-
-    private void OnEnable()
-    {
-       
-
-    }
-    private void OnDisable()
-    {
-        _wallet.OnTotalMoneyChange -= MoneyView;
-    }
 
     private void MoneyView(float total)
     {
