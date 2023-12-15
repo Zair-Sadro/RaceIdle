@@ -1,7 +1,5 @@
-using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 
 public class AutoRepair : MonoBehaviour, IUpgradable
@@ -30,7 +28,7 @@ public class AutoRepair : MonoBehaviour, IUpgradable
     {
         if (_playerTilesBag._isGivingTiles || _carRiding) return;
 
-       StartCoroutine(CollectCor());
+        StartCoroutine(CollectCor());
 
     }
     private IEnumerator CollectCor()
@@ -42,7 +40,7 @@ public class AutoRepair : MonoBehaviour, IUpgradable
             var countneed = _productRequierments[req].Amount - _tileCountByType[req];
 
             print($"await{req}");
-            yield return StartCoroutine( _playerTilesBag.RemoveTilesWthCount
+            yield return StartCoroutine(_playerTilesBag.RemoveTilesWthCount
                 (req, countneed, _detectorForRes.transform.position, RecieveTile, true));
 
         }
@@ -52,7 +50,7 @@ public class AutoRepair : MonoBehaviour, IUpgradable
         var type = tile.Type;
         var _ = ++_tileCountByType[type];
 
-        _counterUI.InfoToUI(type, _);
+        _counterUI.ChangeCount(type, _, _productRequierments[type].Amount);
 
         if (_tileCountByType[type] >= _productRequierments[type].Amount)
         {
@@ -72,7 +70,7 @@ public class AutoRepair : MonoBehaviour, IUpgradable
         SubscribeForTilesDetect(false);
         _carSpawner.Spawn(0);
 
-         yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(2f);
 
         GetNextTilesRequired();
         _carRiding = false;
@@ -95,7 +93,7 @@ public class AutoRepair : MonoBehaviour, IUpgradable
     #endregion
 
 
-    [SerializeField] private MultuCounterView _counterUI;
+    [SerializeField] private CounterView _counterUI;
     private void GetNextTilesRequired()
     {
         var data = _data.GetRequierments(repairLevel);
@@ -112,7 +110,7 @@ public class AutoRepair : MonoBehaviour, IUpgradable
             _requiredTypes.Add(colcount.Type);
             _tileCountByType.Add(colcount.Type, 0);
 
-            _counterUI.InitUI(colcount.Type, colcount.Amount);
+            _counterUI.ChangeCount(colcount.Type,0, colcount.Amount);
         }
 
         SubscribeForTilesDetect(true);

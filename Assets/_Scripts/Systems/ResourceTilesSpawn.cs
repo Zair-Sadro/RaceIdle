@@ -66,7 +66,7 @@ public class ResourceTilesSpawn : MonoBehaviour
     }
     private TileType RandomTileType()
     {
-        var r = UnityEngine.Random.Range(0, _tileTypesNames.Length);
+        var r = UnityEngine.Random.Range(0, _tileTypesNames.Length-1);
 
         var name = _tileTypesNames[r];
         return (TileType)Enum.Parse(typeof(TileType), name);

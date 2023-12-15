@@ -1,16 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using DG.Tweening;
-using Sirenix.OdinInspector;
 using System;
-
-public enum TileType
-{
-    Junk,
-    Iron,
-    Rubber,
-    Plastic
-}
 
 [RequireComponent(typeof(Rigidbody))]
 public class Tile : MonoBehaviour
@@ -23,7 +14,7 @@ public class Tile : MonoBehaviour
     [Header("Tile Move Options")]
 
     [SerializeField] private bool _Rotate;
-    [SerializeField,HideIf("_Rotate",false)] private Vector3 _rotationIn;
+    [SerializeField] private Vector3 _rotationIn;
     [SerializeField] private Ease _ease;
 
     private TileSetter _tileSetter;

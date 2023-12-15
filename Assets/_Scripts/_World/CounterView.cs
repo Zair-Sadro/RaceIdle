@@ -1,41 +1,41 @@
 ﻿using UnityEngine;
 
 
-public class CounterView : MonoBehaviour
+public class CounterView : CounterViewbase
 {
-
-    [SerializeField] protected Animator counterAnimator;
-    [SerializeField] protected TMPro.TMP_Text counter;
-    [SerializeField] protected Sprite tileType;
-    [SerializeField] protected SpriteRenderer _sp;
-    private void Awake()
+    [SerializeField] private CounterViewElement _junk, _iron, _rubber, _plastic, _gold;
+    public override void ChangeCount(TileType type, int currentCount, int max)
     {
-        if(_sp!=null)
-        _sp.sprite = tileType;
+        switch (type)
+        {
+            case TileType.Junk:
+                _junk.ChangeCount(currentCount, max);
+                break;
+
+            case TileType.Iron:
+                _iron.ChangeCount(currentCount, max);
+                break;
+
+            case TileType.Rubber:
+                _rubber.ChangeCount(currentCount, max);
+                break;
+
+            case TileType.Plastic:
+                _plastic.ChangeCount(currentCount, max);
+                break;
+
+            case TileType.Gold:
+                _gold.ChangeCount(currentCount, max);
+                break;
+        }
     }
 
-    public virtual void TextCountVisual(int currentCount,int max)
-    {
-        counter.text = $"{currentCount}/{max}";
-        counterAnimator.SetTrigger("Plus");
-
-    }
-    public virtual void TextCountVisual(int currentCount)
-    {
-        counter.text = $"{currentCount}/{_max}";
-        counterAnimator.SetTrigger("Plus");
-
-    }
-
-    private int _max;
-    public void InitText(int max,int current=0)
-    {
-        _max = max;
-        counter.text = $"{current}/{max}";
-    }
-  
-  
 }
+public abstract class CounterViewbase : MonoBehaviour
+{
+    public abstract void ChangeCount(TileType type, int currentCount, int max);
+}
+
 
 
 

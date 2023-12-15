@@ -46,10 +46,14 @@ public class BuilderFromTiles : TileCollector
 
             for (int i = 0; i < _requiredTypesCount; i++)
             {
-                minCountForCheck += productRequierments[i].Amount;
+                var count = productRequierments[i].Amount;
+                var type = productRequierments[i].Type;
+
+                minCountForCheck += count;
+                _counterView.ChangeCount(type, 0, count);
             }
 
-            _counterView.InitText(minCountForCheck);
+           
         }
            
 
@@ -99,7 +103,7 @@ public class BuilderFromTiles : TileCollector
         OnEnoughForBuild += Build;
 
         if (_counterView == null) return;
-        OnCountChange += _counterView.TextCountVisual;
+        OnCountChange += _counterView.ChangeCount;
 
     }
     protected virtual void OnDisable()
@@ -107,7 +111,7 @@ public class BuilderFromTiles : TileCollector
         _playerDetector.OnPlayerEnter -= Collect;
         _playerDetector.OnPlayerExit -= StopCollect;
 
-        OnCountChange -= _counterView.TextCountVisual;
+        OnCountChange -= _counterView.ChangeCount;
         OnEnoughForBuild -= Build;
     }
 
@@ -154,7 +158,7 @@ public class BuilderFromTiles : TileCollector
     {
         base.RecieveTile(T);
         ++currentTilesCount;
-        OnCountChange?.Invoke(currentTilesCount, minCountForCheck);
+        OnCountChange?.Invoke(T.Type,currentTilesCount, minCountForCheck);
         if (currentTilesCount >= minCountForCheck)
             OnEnoughForBuild();
     }

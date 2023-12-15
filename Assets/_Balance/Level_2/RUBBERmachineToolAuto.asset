@@ -14,19 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   productType: 2
   _incomeNumbers:
-    startNumber: 1
-    deltaNumber: 1
-    startNumberPrice: 1
-    deltaNumberPrice: 1
-    currentValue: 1
-    currentPriceValue: 1
+    startNumber: 5.1
+    deltaNumber: 1.03
+    startNumberPrice: 30.4
+    deltaNumberPrice: 1.07
+    currentValue: 5.1
+    currentPriceValue: 30.4
+    maxLevel: 100
   _speedNumbers:
-    startNumber: 1
-    deltaNumber: 1
-    startNumberPrice: 1
-    deltaNumberPrice: 1
-    currentValue: 1
-    currentPriceValue: 1
-  _maxTiles: 4
-  levelsForCapacityUp: 03000000
-  _capacityDelta: 1
+    startNumber: 6
+    deltaNumber: 1.02
+    startNumberPrice: 203
+    deltaNumberPrice: 1.06
+    currentValue: 6
+    currentPriceValue: 203
+    maxLevel: 100
+  _maxTiles: 25
+  levelsForCapacityUp: 0a000000140000001e00000028000000320000003c00000046000000500000005a00000064000000
+  _capacityDelta: 5

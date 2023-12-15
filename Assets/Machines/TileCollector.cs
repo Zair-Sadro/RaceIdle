@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class TileCollector : MonoBehaviour
 {
-    protected Action<int,int> OnCountChange;
+    protected Action<TileType,int,int> OnCountChange;
 
     [SerializeField] protected virtual int maxTileCount { get; private set; }
     [SerializeField] protected virtual int currentTilesCount { get; set; }
-    [SerializeField] protected CounterView _counterView;
+    [SerializeField] protected CounterViewbase _counterView;
 
 
     protected TileSetter _playerTilesBag => InstantcesContainer.Instance.TileSetter;
@@ -27,11 +27,11 @@ public class TileCollector : MonoBehaviour
     private void OnEnable()
     {
         if (_counterView == null) return;
-        OnCountChange += _counterView.TextCountVisual;
+        OnCountChange += _counterView.ChangeCount;
     }
     private void OnDisable()
     {
-        OnCountChange -= _counterView.TextCountVisual;
+        OnCountChange -= _counterView.ChangeCount;
     }
 
 

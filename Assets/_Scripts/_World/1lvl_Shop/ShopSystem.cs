@@ -48,7 +48,30 @@ public class ShopSystem : MonoBehaviour
 
         float CalculateTilePrice(TileType type)
         {
-            var price = _statsValuesInformator.GetMachineIncome(type) * _sellMulti + 1f;
+            float price=0;
+            switch (type)
+            {
+                case TileType.Junk:
+                    price = 1;
+                    break;
+
+                case TileType.Iron:
+                    price = 2;
+                    break;
+
+                case TileType.Rubber:
+                    price = 3;
+                    break;
+
+                case TileType.Plastic:
+                    price = 4.5f;
+                    break;
+
+                default:
+
+                    break;
+            }
+            //var price = _statsValuesInformator.GetMachineIncome(type) * _sellMulti + 1f;
             return price;
         }
 
@@ -56,6 +79,7 @@ public class ShopSystem : MonoBehaviour
     }
     private void CalculateBuyPrice()
     {
+
         var listTypes = _statsValuesInformator.GetMaxGainedType();     
 
         foreach (var type in listTypes)
@@ -66,7 +90,29 @@ public class ShopSystem : MonoBehaviour
 
         float CalculateTilePrice(TileType type)
         {
-            var price = _statsValuesInformator.GetMachineIncome(type) * _buyMulti;
+            float price = 2;
+            switch (type)
+            {
+                case TileType.Junk:
+                    price = 2;
+                    break;
+
+                case TileType.Iron:
+                    price = 4;
+                    break;
+
+                case TileType.Rubber:
+                    price = 6;
+                    break;
+
+                case TileType.Plastic:
+                    price = 9;
+                    break;
+
+                default:
+                    break;
+            }
+            //var price = _statsValuesInformator.GetMachineIncome(type) * _buyMulti;
             return price;
         }
 
