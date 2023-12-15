@@ -1,14 +1,24 @@
 {
-    "idSave": 6,
+    "idSave": 24,
     "isFirstSession": false,
     "language": "ru",
     "promptDone": false,
     "buildData": {
-        "machineTileCount": 0,
-        "Buildings": []
+        "machineTileCount": 3,
+        "Buildings": [
+            4,
+            5,
+            6,
+            0,
+            11,
+            1,
+            9,
+            8,
+            7
+        ]
     },
     "tileSetterData": {
-        "_junkTiles": 5,
+        "_junkTiles": 0,
         "_ironTiles": 0,
         "_plasticTiles": 0,
         "_rubberTiles": 0
@@ -32,6 +42,36 @@
                 "LapReward": 10.0,
                 "CurrentPoint": 2,
                 "Level": 0
+            },
+            {
+                "ValueNumber": 9,
+                "LapReward": 10.0,
+                "CurrentPoint": 17,
+                "Level": 0
+            },
+            {
+                "ValueNumber": 0,
+                "LapReward": 10.0,
+                "CurrentPoint": 8,
+                "Level": 0
+            },
+            {
+                "ValueNumber": 11,
+                "LapReward": 10.0,
+                "CurrentPoint": 14,
+                "Level": 0
+            },
+            {
+                "ValueNumber": 2,
+                "LapReward": 10.0,
+                "CurrentPoint": 9,
+                "Level": 2
+            },
+            {
+                "ValueNumber": 0,
+                "LapReward": 10.0,
+                "CurrentPoint": 9,
+                "Level": 0
             }
         ]
     },
@@ -41,7 +81,7 @@
             "deltaNumber": 1.0199999809265137,
             "startNumberPrice": 40.0,
             "deltaNumberPrice": 1.059999942779541,
-            "currentValue": 2.941176414489746,
+            "currentValue": 2.8835062980651857,
             "currentPriceValue": 40.0,
             "maxLevel": 100
         },
@@ -50,7 +90,7 @@
             "deltaNumber": 1.0299999713897706,
             "startNumberPrice": 6.0,
             "deltaNumberPrice": 1.0700000524520875,
-            "currentValue": 1.0299999713897706,
+            "currentValue": 2.89827561378479,
             "currentPriceValue": 6.0,
             "maxLevel": 100
         },
@@ -71,7 +111,7 @@
             "deltaNumber": 1.0299999713897706,
             "startNumberPrice": 9.0,
             "deltaNumberPrice": 1.0700000524520875,
-            "currentValue": 0.0,
+            "currentValue": 1.8411800861358643,
             "currentPriceValue": 0.0,
             "maxLevel": 0
         },

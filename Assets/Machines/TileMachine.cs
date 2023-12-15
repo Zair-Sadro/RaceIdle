@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityTaskManager;
 public class TileMachine : TileCollector
 {
-    
+
     public MachineFields machineFields;
     [SerializeField] private ParticleSystem _puffVFX;
 
@@ -51,7 +51,7 @@ public class TileMachine : TileCollector
         {
             case MachineState.WAIT_FOR_ENOUGH:
                 if (wait != null)
-                    if (wait.Running) return;
+                    if (wait.Running|| producing) return;
                 wait = new Task(WaitForEnough());
                 break;
 
@@ -77,7 +77,7 @@ public class TileMachine : TileCollector
             yield break; // спокойно выходим ибо подписаны на ивент OnCollect
                          // при получении новыйх тайлов сново вызовется wait
         }
-       
+
         SetState(MachineState.GAIN);
     }
 
@@ -115,13 +115,13 @@ public class TileMachine : TileCollector
 
     // case MachineState.PRODUCE:
 
-    private IEnumerator TileManufacture() 
+    private IEnumerator TileManufacture()
     {
         producing = true;
         var tile = _tilesSpawner.GetTile(typeProduced);
         tile.OnTake();
 
-        yield return StartCoroutine (tile.AppearFromZero(Vector3.one, tileStartPos.position, machineSpeed * 0.35f)); 
+        yield return StartCoroutine(tile.AppearFromZero(Vector3.one, tileStartPos.position, machineSpeed * 0.35f));
 
         yield return tile.transform.DOMove(tileFinishPos.position, machineSpeed * 0.65f)
                                    .SetEase(Ease.InOutFlash)
@@ -134,9 +134,10 @@ public class TileMachine : TileCollector
         _layoutGroupProduct.UpdateLayout();
         _walletSystem.Income(machineFields.Income);
 
+        producing = false;
         SetState(MachineState.WAIT_FOR_ENOUGH);
 
-        producing = false;
+      
         yield break;
     }
 
@@ -152,6 +153,7 @@ public class TileMachine : TileCollector
     private void Awake()
     {
         Init();
+        productStorage.OnFreeSpaceInStorage += () => SetState(MachineState.WAIT_FOR_ENOUGH);
     }
     protected virtual void Init()
     {
@@ -196,14 +198,17 @@ public class TileMachine : TileCollector
             && currentState == MachineState.WAIT_FOR_ENOUGH)
 
             OnCollect?.Invoke();
-       Invoke(nameof(UpdateLay),0.9f);
+        Invoke(nameof(UpdateLay), 0.9f);
     }
-    void UpdateLay() 
+    void UpdateLay()
     {
         _layoutGroupResource.UpdateLayout();
     }
-    private bool EnoughForProduce() 
+    private bool EnoughForProduce()
     {
+        if (productStorage.IsFreeForNextTiles(maxTileCount) == false)
+            return false;
+
         for (int i = 0; i < _requiredTypesCount; i++)
         {
             if (!OneOfRequredTypeIsEnough(i))
@@ -230,7 +235,7 @@ public class TileMachine : TileCollector
 
     }
 
- 
+
 }
 
 

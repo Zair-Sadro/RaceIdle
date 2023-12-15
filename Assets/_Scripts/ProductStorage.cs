@@ -11,7 +11,6 @@ public class ProductStorage : MonoBehaviour
     public IReadOnlyCollection<Tile> TilesInStorage => _tilesInStorage;
 
     public event Action OnFreeSpaceInStorage;
-    
     public void TileToStorage(Tile t)
     {
         _tilesInStorage.Push(t);
@@ -65,7 +64,11 @@ public class ProductStorage : MonoBehaviour
     }
     private IEnumerator ThrowingTileCor()
     {
-        _tileSetter.TryAddTile(_tilesInStorage.Pop());
+        if (_tileSetter.TryAddTile(_tilesInStorage.Pop())) 
+        {
+            OnFreeSpaceInStorage?.Invoke();
+        }
+        
         InstantcesContainer.Instance.AudioService.PlayAudo(AudioName.TILE);
         yield return new WaitForSeconds(StaticValues.tileThrowDelay);
 

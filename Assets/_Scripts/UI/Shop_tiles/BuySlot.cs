@@ -19,8 +19,8 @@ public class BuySlot : MonoBehaviour, IRegisterSlot
 
     public void RegisterSlot(TileType type, float price, int count)
     {
-        if (!_statsValuesInformator.GetMaxGainedType().Contains(type)) 
-        
+        if (!_statsValuesInformator.GetMaxGainedType().Contains(type))
+            return;
         _type = type;
         _price = price;
 

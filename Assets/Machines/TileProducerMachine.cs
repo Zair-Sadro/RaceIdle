@@ -39,7 +39,6 @@ public class TileProducerMachine : MonoBehaviour
 
     private IEnumerator TileProduceProcess()
     {
-        producing = true;
         var tile = _tilesSpawner.GetTile(typeProduced);
         tile.OnTake();
 
@@ -55,9 +54,6 @@ public class TileProducerMachine : MonoBehaviour
         //PuffEffect();
         productStorage.TileToStorage(tile);
         _walletSystem.Income(_producerFields.Income);
-
-
-        producing = false;
 
         yield return StartCoroutine(CheckCountAndProduce());
         

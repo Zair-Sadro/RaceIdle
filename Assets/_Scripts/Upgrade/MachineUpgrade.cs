@@ -6,7 +6,7 @@ public class MachineUpgrade : MonoBehaviour, ISaveLoad<MachineUpgradeData>, IUpg
     [SerializeField] private Mesh[] upgradeMeshes;
     [SerializeField] private MeshFilter meshFilter;
 
-    [SerializeField] private MachineFields machineFields;
+    [SerializeField] private MachineFields _machineBaseFields;
 
     private int[] capacityUpLevels;
     private int indexer;
@@ -21,23 +21,23 @@ public class MachineUpgrade : MonoBehaviour, ISaveLoad<MachineUpgradeData>, IUpg
 
     private void Start()
     {
-        capacityUpLevels = machineFields.GetCapacityLevels();
+        capacityUpLevels = _machineBaseFields.GetCapacityLevels();
         maxLevelIndex = capacityUpLevels.Length - 1;
         UpgradeDataInit();
-        machineFields.SetCapacity(capacityUpLevels[indexer]);
+        _machineBaseFields.SetCapacity(capacityUpLevels[indexer]);
 
     }
     public void UpgradeSpeedCapacity(int level = 0)
     {
 
-        machineFields.UpgradeSpeed(_speedUpgradesFields);
+        _machineBaseFields.UpgradeSpeed(_speedUpgradesFields);
         CapacityUpgradeCheck();
 
         void CapacityUpgradeCheck()
         {
             if (capacityUpLevels[indexer] == _speedUpgradesFields.Level)
             {
-                machineFields.CapacityUp(machineFields.CapacityDelta);
+                _machineBaseFields.CapacityUp(_machineBaseFields.CapacityDelta);
                 indexer++;
                 UpgradeMesh();
             }
@@ -47,7 +47,7 @@ public class MachineUpgrade : MonoBehaviour, ISaveLoad<MachineUpgradeData>, IUpg
     public void UpgradeIncome(int level = 0)
     {
 
-        machineFields.UpgradeIncome(_incomeUpgradesFields);
+        _machineBaseFields.UpgradeIncome(_incomeUpgradesFields);
         OnIncomeUpgraded.Invoke(_incomeUpgradesFields.Level);
 
 
@@ -63,8 +63,8 @@ public class MachineUpgrade : MonoBehaviour, ISaveLoad<MachineUpgradeData>, IUpg
         if (_speedUpgradesFields != null)
             return;
 
-        _speedUpgradesFields = new UpgradeField(machineFields.SpeedData(), SpeedFormula, SpeedPriceFormula);
-        _incomeUpgradesFields = new UpgradeField(machineFields.IncomeData(), IncomeFormula, IncomePriceFormula);
+        _speedUpgradesFields = new UpgradeField(_machineBaseFields.SpeedData(), SpeedFormula, SpeedPriceFormula);
+        _incomeUpgradesFields = new UpgradeField(_machineBaseFields.IncomeData(), IncomeFormula, IncomePriceFormula);
 
     }
 
@@ -72,8 +72,8 @@ public class MachineUpgrade : MonoBehaviour, ISaveLoad<MachineUpgradeData>, IUpg
     {
         MachineUpgradeData data = new();
 
-        data.speedData = machineFields.SpeedData();
-        data.incomeData = machineFields.IncomeData();
+        data.speedData = _machineBaseFields.SpeedData();
+        data.incomeData = _machineBaseFields.IncomeData();
         data.indexer = indexer;
 
         return data;
