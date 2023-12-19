@@ -17,7 +17,11 @@ public sealed class GatesExplosion : BuilderFromTiles
 
         for (int i = 0; i < _requiredTypesCount; i++)
         {
-            minCountForCheck += productRequierments[i].Amount;
+            var count = productRequierments[i].Amount;
+            var type = productRequierments[i].Type;
+
+            minCountForCheck += count;
+            _counterView.InitCounerValues(type, 0, count);
         }
     }
 
@@ -51,8 +55,6 @@ public sealed class GatesExplosion : BuilderFromTiles
             Destroy(gates[i].gameObject, 1.5f);
         }
 
-
-        yield return new WaitForSeconds(4f);
 
     }
 }

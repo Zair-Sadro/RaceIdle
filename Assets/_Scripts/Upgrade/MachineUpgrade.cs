@@ -128,6 +128,13 @@ public class MachineUpgradeData
     public MachineNumbersData incomeData;
 
     public int indexer;
+
+    public MachineUpgradeData() 
+    {
+        speedData = new();
+        incomeData = new();
+        indexer = 0;
+    }
 }
 public interface IUpgradeMachine
 {

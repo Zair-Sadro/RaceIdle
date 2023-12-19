@@ -11,7 +11,9 @@ public class BuilderFromTiles : TileCollector
     public GameObject[] collidersAfterBuild, collidersBeforeBuild;
     [Tooltip("On")]
     public GameObject[] collidersAfterBuildOn, collidersBeforeBuildOn;
+
     public GameObject building;
+    private IBuildable buildingContract;
 
     [SerializeField] private Transform _buildEffectPosition;
     [SerializeField] private byte _buildid;
@@ -28,6 +30,10 @@ public class BuilderFromTiles : TileCollector
 
 
     [SerializeField] private AudioName _audioName = AudioName.BUILD;
+    private void Awake()
+    {
+        buildingContract = building.GetInterface<IBuildable>();
+    }
     private void Start()
     {
 
@@ -50,7 +56,7 @@ public class BuilderFromTiles : TileCollector
                 var type = productRequierments[i].Type;
 
                 minCountForCheck += count;
-                _counterView.ChangeCount(type, 0, count);
+                _counterView.InitCounerValues(type, 0, count);
             }
 
            
@@ -131,8 +137,11 @@ public class BuilderFromTiles : TileCollector
     public virtual void BuildBySaver()
     {
         forceToBuild = true;
-        building.SetActive(true);
-        AfterBuildAction();
+
+        //building.SetActive(true);
+      //  buildingContract?.Build();
+
+       // AfterBuildAction();
     }
     protected virtual void BuildEffects(GameObject b)
     {
@@ -149,6 +158,7 @@ public class BuilderFromTiles : TileCollector
         var normalscale = b.transform.localScale;
         b.transform.localScale = Vector3.zero;
         b.SetActive(true);
+        buildingContract?.Build();
         b.transform.DOScale(normalscale, 0.4f);
         Destroy(this, 2f);
 
@@ -157,8 +167,10 @@ public class BuilderFromTiles : TileCollector
     protected override void RecieveTile(Tile T)
     {
         base.RecieveTile(T);
+
         ++currentTilesCount;
-        OnCountChange?.Invoke(T.Type,currentTilesCount, minCountForCheck);
+        OnCountChange?.Invoke(T.Type, tileListByType[T.Type].Count);
+
         if (currentTilesCount >= minCountForCheck)
             OnEnoughForBuild();
     }

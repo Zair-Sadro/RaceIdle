@@ -36,6 +36,9 @@ public class AutoRepair : MonoBehaviour, IUpgradable
         var reqtype = new List<TileType>(_requiredTypes);
         for (int i = 0; i < reqtype.Count; i++)
         {
+            if (!_playerTilesBag._isGivingTiles)
+                yield break;
+
             var req = reqtype[i];
             var countneed = _productRequierments[req].Amount - _tileCountByType[req];
 
@@ -50,7 +53,7 @@ public class AutoRepair : MonoBehaviour, IUpgradable
         var type = tile.Type;
         var _ = ++_tileCountByType[type];
 
-        _counterUI.ChangeCount(type, _, _productRequierments[type].Amount);
+        _counterUI.ChangeCount(type, _);
 
         if (_tileCountByType[type] >= _productRequierments[type].Amount)
         {
@@ -110,7 +113,7 @@ public class AutoRepair : MonoBehaviour, IUpgradable
             _requiredTypes.Add(colcount.Type);
             _tileCountByType.Add(colcount.Type, 0);
 
-            _counterUI.ChangeCount(colcount.Type,0, colcount.Amount);
+            _counterUI.InitCounerValues(colcount.Type,0, colcount.Amount);
         }
 
         SubscribeForTilesDetect(true);

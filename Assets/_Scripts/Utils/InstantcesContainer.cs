@@ -9,7 +9,6 @@ public class InstantcesContainer : MonoBehaviour
     [SerializeField] private PlayerController _playerController;
     [SerializeField] private TileSetter _tileSetter;
     [SerializeField] private ResourceTilesSpawn _resourceTilesSpawn;
-    [SerializeField] private InputManager _inputManager;
     [SerializeField] private UIMemmory _UIMemmory;
     [SerializeField] private WalletSystem _walletSystem;
     [SerializeField] private BuildSaver _buildSaver;
@@ -22,7 +21,7 @@ public class InstantcesContainer : MonoBehaviour
     public PlayerController PlayerController => _playerController;
     public TileSetter TileSetter => _tileSetter;
     public ResourceTilesSpawn ResourceTilesSpawn => _resourceTilesSpawn;
-    public InputManager InputManager => _inputManager;
+
     public UIMemmory UIMemmory => _UIMemmory;
     public WalletSystem WalletSystem => _walletSystem;
     public BuildSaver BuildSaver => _buildSaver;
@@ -30,6 +29,7 @@ public class InstantcesContainer : MonoBehaviour
     public RaceTrackManager RaceTrackManager => _raceTrackManager;
     public LapControll LapControll => _lapControll;
     public AudioService AudioService => _audioService;
+
 
 
     private void Awake()

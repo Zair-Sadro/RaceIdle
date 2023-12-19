@@ -20,10 +20,10 @@ public class ShopSystem : MonoBehaviour
 
     private Dictionary<TileType, TileEcoInfo> _priceByTypeDict = new() 
     { 
-     { TileType.Junk, new TileEcoInfo() },
-     { TileType.Iron, new TileEcoInfo() },
-     { TileType.Rubber, new TileEcoInfo() },
-     { TileType.Plastic, new TileEcoInfo() }
+     { TileType.Junk, new TileEcoInfo(TileType.Junk) },
+     { TileType.Iron, new TileEcoInfo(TileType.Iron) },
+     { TileType.Rubber, new TileEcoInfo(TileType.Rubber) },
+     { TileType.Plastic, new TileEcoInfo(TileType.Plastic) }
     };
     public IReadOnlyDictionary<TileType, TileEcoInfo> PriceInfo => _priceByTypeDict;
 
@@ -161,6 +161,12 @@ public struct TileEcoInfo
         this.type = type;
         this.count = count;
         this.price = price;
+    }
+    public TileEcoInfo(TileType type)
+    {
+        this.type = type;
+        this.count = 0;
+        this.price = 0;
     }
 
 }

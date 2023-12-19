@@ -334,6 +334,14 @@ public class TileSetterData
     public int _plasticTiles;
     public int _rubberTiles;
 
+    public TileSetterData() 
+    {
+     _junkTiles=0;
+     _ironTiles = 0;
+     _plasticTiles = 0;
+     _rubberTiles = 0;
+    }
+
 }
 
 

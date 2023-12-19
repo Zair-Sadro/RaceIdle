@@ -11,6 +11,7 @@ public class UpgradePanel : UIPanel
     [SerializeField] private Button _backButton;
 
     private int _current = 0;
+    [SerializeField] private StatsValuesInformator _statsInfromator;
 
     protected override void Awake()
     {
@@ -46,11 +47,20 @@ public class UpgradePanel : UIPanel
     }
     public void SelectPanelByObj(int upgradeUI)
     {
+        CheckBuilds();
         Open(); // Open UpgradePanel - parent of all _panels
 
         _panels[_current].Close();
         _panels[upgradeUI].Open();
         _current = upgradeUI;
+    }
+    private void CheckBuilds()
+    {
+        var list = _statsInfromator.GetBuiltMachines();
+        for (int i = 0; i < list.Count; i++)
+        {
+            _buttons[list[i]].interactable = true;
+        }
     }
 
     [SerializeField, Tooltip("Скорость появления панели")]

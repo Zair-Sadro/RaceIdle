@@ -49,5 +49,13 @@ public class ProducerFields : ScriptableObject
     {
         _maxTiles = capacity;
     }
+    public void ToDefault()
+    {
+        _speedNumbers.currentValue = _speedNumbers.startNumber;
+        _incomeNumbers.currentValue = _incomeNumbers.startNumber;
+
+        _speedNumbers.currentPriceValue = _speedNumbers.startNumberPrice;
+        _incomeNumbers.currentPriceValue = _incomeNumbers.startNumberPrice;
+    }
 }
 

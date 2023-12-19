@@ -99,6 +99,6 @@ public class RaceTrackManager : MonoBehaviour,ISaveLoad<RaceData>
 [Serializable]
 public class RaceData 
 {
-    public List<CarData> Cars;
+    public List<CarData> Cars = new();
 }
 

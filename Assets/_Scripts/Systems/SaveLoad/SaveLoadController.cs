@@ -29,16 +29,23 @@ public class SaveLoadController : MonoBehaviour
 
     private void SaveProgress()
     {
-        YandexGame.savesData.SetMainGameData(game.GetData());
-        YandexGame.SaveProgress();
+        if (!enabled) 
+        {
+            YandexGame.savesData.SetMainGameData(new RaceIdleData());
+            YandexGame.SaveProgress();
+        }
+        else 
+        {
+            YandexGame.savesData.SetMainGameData(game.GetData());
+            YandexGame.SaveProgress();
+        }
+
+
         
     }
 
     private void LoadData()
     {
-
-        if (!IsEnable)
-            return;
 
         RaceIdleData raceIdleData = new RaceIdleData();
         raceIdleData = YandexGame.savesData.GetMainGameData();
@@ -46,7 +53,7 @@ public class SaveLoadController : MonoBehaviour
         game.Initialize(raceIdleData);
     }
     private void OnApplicationQuit()
-    {
+    {   
         SaveProgress();
     }
 }

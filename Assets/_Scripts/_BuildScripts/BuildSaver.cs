@@ -28,8 +28,11 @@ public class BuildSaver : MonoBehaviour, ISaveLoad<BuildingsData>
                 data.Buildings.Add(builder.BuildID);
                 break;
 
-            case BuildType.NextLvlMachineTile:
+            case BuildType.AutoMachine:
+                data.autoMachineTilesCount++;
+                data.Buildings.Add(builder.BuildID);
                 break;
+
             default:
                 break;
         }
@@ -66,17 +69,28 @@ public class BuildSaver : MonoBehaviour, ISaveLoad<BuildingsData>
     }
 
 }
+public interface IBuildable 
+{
+    public void Build();
+}
 public enum BuildType
 {
     SimpleBuild,
     MachineTile,
-    NextLvlMachineTile
+    AutoMachine
 }
 [Serializable]
 public class BuildingsData
 {
     public int machineTileCount;
+    public int autoMachineTilesCount;
     public List<byte> Buildings;
 
+    public BuildingsData() 
+    {
+        machineTileCount = 0;
+        autoMachineTilesCount = 0;
+        Buildings= new List<byte>();
+    }
 
 }

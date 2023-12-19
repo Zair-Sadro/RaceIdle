@@ -1,18 +1,22 @@
 using DG.Tweening;
+using System;
 using System.Collections;
 using UnityEngine;
 
-public class TileProducerMachine : MonoBehaviour
+public class TileProducerMachine : MonoBehaviour, IBuildable
 {
     [Header("Points & Storages")]
     [SerializeField] private ProductStorage productStorage;
     [SerializeField] private Transform tileStartPos;
     [SerializeField] private Transform tileFinishPos;
+    [SerializeField] private AutoLayout3D.GridLayoutGroup3D _layoutGroupProduct;
 
     [SerializeField] private ProducerFields _producerFields;
     public ProducerFields ProducerFields => _producerFields;
 
     [SerializeField] private Vector3 _tileScale;
+
+    public event Action<TileType> TypeInvented;
 
     private ResourceTilesSpawn _tilesSpawner => InstantcesContainer.Instance.ResourceTilesSpawn;
     private WalletSystem _walletSystem =>
@@ -24,14 +28,22 @@ public class TileProducerMachine : MonoBehaviour
     public int currentTilesCount => productStorage.TilesInStorage.Count;
 
 
-    IEnumerator Start()
+    IEnumerator StartProduceCheck()
     {
         yield return new WaitForSeconds(1f);
         StartProduce();
         productStorage.OnFreeSpaceInStorage += StartProduce;
 
     }
-
+    private void OnEnable()
+    {
+        StartCoroutine(StartProduceCheck());
+    }
+    private void OnDisable()
+    {
+        productStorage.OnFreeSpaceInStorage -= StartProduce;
+        StopAllCoroutines();
+    }
     private void StartProduce()
     {
         StartCoroutine(TileProduceProcess());
@@ -53,6 +65,7 @@ public class TileProducerMachine : MonoBehaviour
 
         //PuffEffect();
         productStorage.TileToStorage(tile);
+        _layoutGroupProduct.UpdateLayout();
         _walletSystem.Income(_producerFields.Income);
 
         yield return StartCoroutine(CheckCountAndProduce());
@@ -68,5 +81,8 @@ public class TileProducerMachine : MonoBehaviour
         StartCoroutine(TileProduceProcess());
     }
 
-
+    public void Build()
+    {
+        TypeInvented?.Invoke(_producerFields.ProductType);
+    }
 }

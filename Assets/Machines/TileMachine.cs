@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityTaskManager;
-public class TileMachine : TileCollector
+public class TileMachine : TileCollector,IBuildable
 {
 
     public MachineFields machineFields;
@@ -177,8 +177,6 @@ public class TileMachine : TileCollector
 
         _detectorForRes.OnPlayerEnter += Collect;
         _detectorForRes.OnPlayerExit += StopCollect;
-
-        TypeInvented?.Invoke(machineFields.ProductType);
     }
     private void OnDisable()
     {
@@ -198,10 +196,11 @@ public class TileMachine : TileCollector
             && currentState == MachineState.WAIT_FOR_ENOUGH)
 
             OnCollect?.Invoke();
-        Invoke(nameof(UpdateLay), 0.9f);
+       StartCoroutine(UpdateLay());
     }
-    void UpdateLay()
+    IEnumerator UpdateLay()
     {
+        yield return new WaitForSeconds(0.9f);
         _layoutGroupResource.UpdateLayout();
     }
     private bool EnoughForProduce()
@@ -235,7 +234,10 @@ public class TileMachine : TileCollector
 
     }
 
-
+    public void Build()
+    {
+        TypeInvented?.Invoke(machineFields.ProductType);
+    }
 }
 
 

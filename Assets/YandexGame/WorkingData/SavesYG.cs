@@ -63,6 +63,7 @@ namespace YG
 
         public SavesYG()
         {
+            SetMainGameData(new RaceIdleData());
         }
     }
 }

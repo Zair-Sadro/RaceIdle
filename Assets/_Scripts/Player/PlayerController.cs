@@ -1,8 +1,7 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
-using UnityEngine.Events;
-using System;
+using YG;
 
 public class PlayerController : MonoBehaviour
 {
@@ -20,12 +19,23 @@ public class PlayerController : MonoBehaviour
 
     private int _skinAnimatorID;
     private float _curSpeed;
+
+    private bool isMobile;
     #region Properties
 
-    public Animator Animator => CurrentAnimator(_skinAnimatorID);
-    public float CurrentSpeed=>_curSpeed;
+    public Animator Animator => CurrentAnimator(0);
+    public float CurrentSpeed => _curSpeed;
 
     #endregion
+    private void Awake()
+    {
+       YandexGame.GetDataEvent += CheckPlatform;
+    }
+
+    private void CheckPlatform()
+    {
+        isMobile = YandexGame.EnvironmentData.isMobile;
+    }
 
     private void Start()
     {
@@ -34,43 +44,78 @@ public class PlayerController : MonoBehaviour
 
     private void OnEnable()
     {
-        CheckSkin();
+        //CheckSkin();
     }
-
+    bool movedByKey;
     private void FixedUpdate()
     {
-        Move();
+        if (!isMobile)
+        {
+            movedByKey = MoveByKeys();
+        }
+
+        if (movedByKey)
+            return;
+
+        JoySkickMove();
+
+  
+    }
+    private Vector3 curRot = Vector3.zero;
+    private Vector3 vel  = Vector3.zero;
+    private bool MoveByKeys()
+    {
+        float xMove = Input.GetAxis("Horizontal");
+        float zMove = Input.GetAxis("Vertical");
+
+        if (xMove == 0 && zMove == 0)
+        {
+            vel = Vector3.zero;
+            return false;
+         
+        }
+               
+
+        var rotation = Vector3.SmoothDamp(curRot,new Vector3(xMove,0, zMove),ref vel,0.01f);
+        
+        transform.rotation = Quaternion.LookRotation(rotation);
+        
+        _curSpeed = MathF.Round(body.velocity.magnitude, 2); ;
+        body.velocity = new Vector3(xMove*speed, body.velocity.y,
+            zMove * speed );
+        return true;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void JoySkickMove()
     {
-        if(other.tag == "hummerzone")
-       TakeHummer(true);
-
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        if(other.tag == "hummerzone")
-        TakeHummer(false);
-    }
-
-    private void Move()
-    {
-
-       
         if (joystick.Horizontal != 0 || joystick.Vertical != 0)
         {
 
             if (body.velocity != Vector3.zero)
             {
 
-                transform.rotation = Quaternion.LookRotation(new Vector3(joystick.Horizontal * speed,0, joystick.Vertical * speed));
-                // dustParticle.gameObject.SetColliderActive(true);
+                transform.rotation = Quaternion.LookRotation(new Vector3(joystick.Horizontal , 0, joystick.Vertical ));
+
             }
         }
-         _curSpeed =MathF.Round( body.velocity.magnitude,2);
-        body.velocity = new Vector3(joystick.Horizontal * speed, body.velocity.y, joystick.Vertical * speed);
+        _curSpeed = MathF.Round(body.velocity.magnitude, 2);
+       body.velocity = new Vector3(joystick.Horizontal * speed, body.velocity.y, joystick.Vertical * speed);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "hummerzone")
+            TakeHummer(true);
+
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "hummerzone")
+            TakeHummer(false);
+    }
+
+
+
     private void TakeHummer(bool value)
     {
 
@@ -94,10 +139,10 @@ public class PlayerController : MonoBehaviour
         _skinAnimatorID = PlayerPrefs.GetInt("BodySkin_ID");
     }
 
-   private Animator CurrentAnimator(int id)
-   {
+    private Animator CurrentAnimator(int id)
+    {
         return skins[id];
-   }
+    }
 
 }
 public class PlayerSave : MonoBehaviour, ISaveLoad<PlayerData>

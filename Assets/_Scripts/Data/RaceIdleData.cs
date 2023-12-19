@@ -21,5 +21,24 @@ public class RaceIdleData
 
     public float Money;
 
+    public RaceIdleData() 
+    {
+        Money = 0;
+        tileSetterData = new();
+        buildSaver = new();
+
+        ironMachine = new();
+        rubberMachine = new();
+        plasticMachine = new();
+
+        ironAutoMachine = new();
+        rubberAutoMachine = new();
+        plasticAutoMachine = new();
+
+        raceData = new();
+
+
+
+    }
 
 }

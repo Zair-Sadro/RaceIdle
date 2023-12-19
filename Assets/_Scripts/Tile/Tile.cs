@@ -76,10 +76,13 @@ public class Tile : MonoBehaviour
 
     public void ThrowTo(Vector3 place,float duration,bool canCollect = false)
     {
-        if(canCollect)
-            OnGround();
 
-        transform.DOJump(place, transform.position.y + 5f, 1, duration).SetEase(Ease.InOutFlash);
+        coll.enabled = false;
+        transform.DOJump(place, transform.position.y + 5f, 1, duration).SetEase(Ease.InOutFlash).OnComplete(() => 
+        {
+            if (canCollect)
+                OnGround();
+        });
     }
 
     private void OnTriggerEnter(Collider other)

@@ -56,7 +56,7 @@ public class ShopUI : UIPanel
         {
             var i = StaticValues.TileGlobalIndex(item.Value.type);
             _registerSlots[i].RegisterSlot(item.Value.type, item.Value.price, item.Value.count);
-            
+
         }
        
     }
