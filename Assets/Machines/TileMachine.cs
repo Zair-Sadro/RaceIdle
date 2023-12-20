@@ -148,7 +148,13 @@ public class TileMachine : TileCollector,IBuildable
     }
 
     #endregion
+    protected override void Collect()
+    {
+        if (_playerTilesBag._isGivingTiles) return;
 
+        _stopCollect = false;
+        _playerTilesBag.RemoveTiles(_requiredTypes[0], tileStorage.position, RecieveTile);
+    }
     #region Init&SaveLoad
     private void Awake()
     {

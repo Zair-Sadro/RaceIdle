@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class CarButton : MonoBehaviour
@@ -7,6 +8,7 @@ public class CarButton : MonoBehaviour
 
     [SerializeField] private float _cost;
     [SerializeField] private int _carIndex;
+    [SerializeField] private TMP_Text _costText;
 
     [SerializeField] private WalletSystem _wallet;
 
@@ -14,10 +16,11 @@ public class CarButton : MonoBehaviour
     {
         _butt.onClick.AddListener(BuyCar);
         _wallet.OnTotalMoneyChange += Reprice;
+
     }
     public void Init()
     {
-
+        _costText.text = _cost.ToString();
     }
 
     private void BuyCar()

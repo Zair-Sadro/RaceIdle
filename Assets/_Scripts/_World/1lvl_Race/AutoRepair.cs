@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,14 +16,15 @@ public class AutoRepair : MonoBehaviour, IUpgradable
     [SerializeField] private int repairLevel;
 
     [SerializeField] private CarSpawner _carSpawner;
+    [SerializeField] private GameObject _needToMergeSign;
+
+    [SerializeField] private RaceTrackManager _raceTrackMan;
 
     private List<TileType> _requiredTypes = new();
     private Dictionary<TileType, ProductRequierment> _productRequierments = new();
     private Dictionary<TileType, int> _tileCountByType = new();
 
     private bool _carRiding;
-
-    private WalletSystem _walletSystem => InstantcesContainer.Instance.WalletSystem;
     private TileSetter _playerTilesBag => InstantcesContainer.Instance.TileSetter;
     private void Collect()
     {
@@ -42,7 +44,9 @@ public class AutoRepair : MonoBehaviour, IUpgradable
             var req = reqtype[i];
             var countneed = _productRequierments[req].Amount - _tileCountByType[req];
 
-            print($"await{req}");
+            if (countneed == 0)
+                continue;
+
             yield return StartCoroutine(_playerTilesBag.RemoveTilesWthCount
                 (req, countneed, _detectorForRes.transform.position, RecieveTile, true));
 
@@ -86,12 +90,19 @@ public class AutoRepair : MonoBehaviour, IUpgradable
     {
         GetNextTilesRequired();
         SubscribeForTilesDetect(true);
-
+        _raceTrackMan.NoSpaceOnTrack += CarsCountCheck;
     }
+
+    private void CarsCountCheck(bool noSpace)
+    {
+        _needToMergeSign.SetActive(noSpace);
+           SubscribeForTilesDetect(!noSpace);
+    }
+
     private void OnDisable()
     {
         SubscribeForTilesDetect(false);
-
+        _raceTrackMan.NoSpaceOnTrack -= CarsCountCheck;
     }
     #endregion
 

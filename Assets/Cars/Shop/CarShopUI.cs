@@ -10,12 +10,26 @@ public class CarShopUI : UIPanel
     [SerializeField] private List<CarButton> _carButtons;
     [SerializeField] private GameObject _waitBlockImage;
     [SerializeField] private Button _closeButt;
-    [SerializeField] private float _showSpeed=0.9f;
+    [SerializeField] private float _showSpeed = 0.9f;
+
+    [SerializeField] private RaceTrackManager _racetrackManager;
+    [SerializeField] private GameObject _maxCarsBlock;
     public void OpenPanel()
     {
         Open();
-        _scroll.verticalScrollbar.value = 1;
     
+
+        _scroll.verticalScrollbar.value = 1;
+
+    }
+
+    private void CheckCars(bool nospace)
+    {
+
+
+        _maxCarsBlock.SetActive(nospace);
+
+
     }
 
     protected override void Awake()
@@ -32,7 +46,16 @@ public class CarShopUI : UIPanel
 
         foreach (var button in _carButtons)
             button.Init();
-     
+
+    }
+    private void OnEnable()
+    {
+        _racetrackManager.NoSpaceOnTrack+= CheckCars;
+    }
+
+    private void OnDisable()
+    {
+        _racetrackManager.NoSpaceOnTrack -= CheckCars;
     }
 
     private void WaitForCar()

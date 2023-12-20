@@ -23,7 +23,7 @@ public class TileCollector : MonoBehaviour
     protected Dictionary<TileType, Stack<Tile>> tileListByType = new();
 
     protected byte _requiredTypesCount;
-    private bool _stopCollect;
+    protected bool _stopCollect;
 
     protected virtual void Collect()
     {
@@ -47,12 +47,12 @@ public class TileCollector : MonoBehaviour
             if(countneed==0)
                 continue;
 
-            print($"await{req}");
             yield return StartCoroutine(_playerTilesBag.RemoveTilesWthCount
                 (req, countneed, tileStorage.position, RecieveTile,true));
 
         }
     }
+
     protected virtual void StopCollect()
     {
         _stopCollect = true;

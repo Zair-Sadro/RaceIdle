@@ -19,8 +19,7 @@ public class RaceTrackManager : MonoBehaviour,ISaveLoad<RaceData>
 
     private RaceData _data=new();
 
-    private bool _noPlaceForCars;
-
+    public event Action<bool> NoSpaceOnTrack;
     private void Awake()
     {
         _toRaceCameraButt?.onClick.AddListener(() => GoToTheRaceTrack(true));
@@ -100,7 +99,8 @@ public class RaceTrackManager : MonoBehaviour,ISaveLoad<RaceData>
     }
     private void CheckCount() 
     {
-        _noPlaceForCars = _carsOnTrack.Count >= 20 ? true : false;
+       bool nospace = _carsOnTrack.Count >= 20 ? true : false;
+        NoSpaceOnTrack.Invoke(nospace);
     }
 }
 [Serializable]
