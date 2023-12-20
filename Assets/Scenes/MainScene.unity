@@ -26960,7 +26960,7 @@ MonoBehaviour:
   building: {fileID: 861222378}
   _buildEffectPosition: {fileID: 0}
   _buildid: 9
-  forceToBuild: 0
+  forceToBuild: 1
   buildType: 2
   _playerDetector: {fileID: 920759222}
   _audioName: 1

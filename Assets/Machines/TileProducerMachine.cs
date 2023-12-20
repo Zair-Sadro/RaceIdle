@@ -27,6 +27,7 @@ public class TileProducerMachine : MonoBehaviour, IBuildable
     public int MaxTileCount => _producerFields.MaxTiles;
     public int currentTilesCount => productStorage.TilesInStorage.Count;
 
+    private bool isProducing;
 
     IEnumerator StartProduceCheck()
     {
@@ -46,6 +47,9 @@ public class TileProducerMachine : MonoBehaviour, IBuildable
     }
     private void StartProduce()
     {
+        if (isProducing)
+            return;
+        isProducing = true;
         StartCoroutine(TileProduceProcess());
     }
 
@@ -67,7 +71,7 @@ public class TileProducerMachine : MonoBehaviour, IBuildable
         productStorage.TileToStorage(tile);
         _layoutGroupProduct.UpdateLayout();
         _walletSystem.Income(_producerFields.Income);
-
+        isProducing = false;
         yield return StartCoroutine(CheckCountAndProduce());
         
     }
@@ -78,7 +82,7 @@ public class TileProducerMachine : MonoBehaviour, IBuildable
             yield break;
         }
 
-        StartCoroutine(TileProduceProcess());
+        StartProduce();
     }
 
     public void Build()

@@ -1,5 +1,5 @@
 {
-    "idSave": 18,
+    "idSave": 22,
     "isFirstSession": false,
     "language": "ru",
     "promptDone": false,
@@ -13,10 +13,10 @@
         ]
     },
     "tileSetterData": {
-        "_junkTiles": 1,
-        "_ironTiles": 4,
-        "_plasticTiles": 1,
-        "_rubberTiles": 4
+        "_junkTiles": 0,
+        "_ironTiles": 7,
+        "_plasticTiles": 0,
+        "_rubberTiles": 0
     },
     "raceData": {
         "Cars": [
