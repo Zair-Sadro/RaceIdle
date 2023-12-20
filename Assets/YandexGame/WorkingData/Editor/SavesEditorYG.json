@@ -1,5 +1,5 @@
 {
-    "idSave": 8,
+    "idSave": 5,
     "isFirstSession": false,
     "language": "ru",
     "promptDone": false,
@@ -11,8 +11,8 @@
         ]
     },
     "tileSetterData": {
-        "_junkTiles": 4,
-        "_ironTiles": 3,
+        "_junkTiles": 0,
+        "_ironTiles": 0,
         "_plasticTiles": 0,
         "_rubberTiles": 0
     },
@@ -34,7 +34,7 @@
             "deltaNumber": 1.0299999713897706,
             "startNumberPrice": 6.0,
             "deltaNumberPrice": 1.0700000524520875,
-            "currentValue": 1.0,
+            "currentValue": 4.383900165557861,
             "currentPriceValue": 6.0,
             "maxLevel": 100
         },

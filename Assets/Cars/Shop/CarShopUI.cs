@@ -14,7 +14,7 @@ public class CarShopUI : UIPanel
     public void OpenPanel()
     {
         Open();
-        _scroll.verticalScrollbar.value = 0;
+        _scroll.verticalScrollbar.value = 1;
     
     }
 

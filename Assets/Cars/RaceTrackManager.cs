@@ -19,6 +19,8 @@ public class RaceTrackManager : MonoBehaviour,ISaveLoad<RaceData>
 
     private RaceData _data=new();
 
+    private bool _noPlaceForCars;
+
     private void Awake()
     {
         _toRaceCameraButt?.onClick.AddListener(() => GoToTheRaceTrack(true));
@@ -41,19 +43,20 @@ public class RaceTrackManager : MonoBehaviour,ISaveLoad<RaceData>
     {
         _carsOnTrack.Add(car);
         _data.Cars.Add(car.CarData);
-
+        CheckCount();
     }
     
     public void RegisterCarByData(CarAI car)
     {
         _carsOnTrack.Add(car);
-
+        CheckCount();
     }
 
     public void DeleteCar(CarAI car)
     {
         _carsOnTrack.Remove(car);
         _data.Cars.Remove(car.CarData);
+        CheckCount();
     }
 
     public void StopCars() 
@@ -94,6 +97,10 @@ public class RaceTrackManager : MonoBehaviour,ISaveLoad<RaceData>
          _data.Cars.CopyTo(cachedData);
 
        
+    }
+    private void CheckCount() 
+    {
+        _noPlaceForCars = _carsOnTrack.Count >= 20 ? true : false;
     }
 }
 [Serializable]

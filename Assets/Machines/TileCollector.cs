@@ -44,6 +44,9 @@ public class TileCollector : MonoBehaviour
             var req = reqtype[i];
             var countneed = productRequierments[i].Amount - tileListByType[req].Count;
 
+            if(countneed==0)
+                continue;
+
             print($"await{req}");
             yield return StartCoroutine(_playerTilesBag.RemoveTilesWthCount
                 (req, countneed, tileStorage.position, RecieveTile,true));

@@ -165,7 +165,7 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
         }
         else
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.1f);
         }
 
         int CalculateAvailableCount(int countneed, int countnow)
