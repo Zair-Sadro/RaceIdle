@@ -38,7 +38,7 @@ public class AutoRepair : MonoBehaviour, IUpgradable
         var reqtype = new List<TileType>(_requiredTypes);
         for (int i = 0; i < reqtype.Count; i++)
         {
-            if (!_playerTilesBag._isGivingTiles)
+            if (_playerTilesBag._isGivingTiles)
                 yield break;
 
             var req = reqtype[i];
