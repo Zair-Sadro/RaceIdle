@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class UpgradePanel : UIPanel
 {
     [SerializeField] private List<GameObject> _objectsActivatePanel;
@@ -12,6 +13,7 @@ public class UpgradePanel : UIPanel
 
     private int _current = 0;
     [SerializeField] private StatsValuesInformator _statsInfromator;
+    [SerializeField] private TimerBeforeAdsYG _advShowObj;
 
     protected override void Awake()
     {
@@ -49,6 +51,7 @@ public class UpgradePanel : UIPanel
     {
         CheckBuilds();
         Open(); // Open UpgradePanel - parent of all _panels
+        _advShowObj.TryToShowAdd();
 
         _panels[_current].Close();
         _panels[upgradeUI].Open();

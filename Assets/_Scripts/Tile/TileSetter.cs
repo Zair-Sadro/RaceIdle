@@ -19,12 +19,14 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
     [SerializeField] private float delayToRemoveTile = 0.7f;
 
     private ResourceTilesSpawn _resourceTilesSpawn => InstantcesContainer.Instance.ResourceTilesSpawn;
+    private WalletSystem _wallet=> InstantcesContainer.Instance.WalletSystem;
 
     [HideInInspector] public bool _isGivingTiles;
 
 
     [SerializeField]
     private List<Tile> _colectedTiles = new List<Tile>();
+
     private TileList _junkTiles = new(TileType.Junk);
     private TileList _ironTiles = new(TileType.Iron);
     private TileList _plasticTiles = new(TileType.Plastic);
@@ -36,6 +38,7 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
 
 
     private bool _maxCapacity;
+    public float CurrentGold => _wallet.TotalMoney;
     public bool MaxCapacity => _maxCapacity;
 
     public event Action<int> OnTilesCountChanged;
@@ -166,6 +169,27 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
         else
         {
             yield return new WaitForSeconds(0.1f);
+        }
+
+        int CalculateAvailableCount(int countneed, int countnow)
+        {
+            if (countnow < countneed) return countnow;
+            else return countneed;
+        }
+
+    }
+    public IEnumerator RemoveGoldWthCount(int count, Vector3 tilesPlace, Action<int> interatorCall)
+    {
+
+        if (CurrentGold > 0)
+        {
+            var finalCount = CalculateAvailableCount(count, (int)CurrentGold);
+            _wallet.TrySpendMoney(finalCount);
+            interatorCall.Invoke(finalCount);
+        }
+        else
+        {
+            yield return new WaitForSeconds(0.15f);
         }
 
         int CalculateAvailableCount(int countneed, int countnow)

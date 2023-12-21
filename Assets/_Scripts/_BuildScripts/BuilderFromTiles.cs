@@ -32,7 +32,7 @@ public class BuilderFromTiles : TileCollector
     [SerializeField] private AudioName _audioName = AudioName.BUILD;
     private void Awake()
     {
-        buildingContract = building.GetInterface<IBuildable>();
+
     }
     private void Start()
     {
@@ -55,6 +55,7 @@ public class BuilderFromTiles : TileCollector
                 var count = productRequierments[i].Amount;
                 var type = productRequierments[i].Type;
 
+                if(type!=TileType.Gold)
                 minCountForCheck += count;
                 _counterView.InitCounerValues(type, 0, count);
             }
@@ -174,12 +175,29 @@ public class BuilderFromTiles : TileCollector
         if (currentTilesCount >= minCountForCheck)
             OnEnoughForBuild();
     }
+    protected override void RecieveGold(int goldCount)
+    {
+        base.RecieveGold(goldCount);
+
+        OnCountChange?.Invoke(TileType.Gold, this.goldCount);
+
+        if (currentTilesCount >= minCountForCheck)
+            OnEnoughForBuild();
+    }
+
     protected bool EnoughForBuild()
     {
         for (int i = 0; i < _requiredTypesCount; i++)
         {
+            if (productRequierments[i].Type == TileType.Gold)
+                if (productRequierments[i].Amount > goldCount) 
+                {
+                        return false;
+                }
+
             if (!OneOfRequredTypeIsEnough(i))
                 return false;
+
 
         }
 
@@ -188,9 +206,13 @@ public class BuilderFromTiles : TileCollector
         bool OneOfRequredTypeIsEnough(int i)
         {
             var type = productRequierments[i].Type;
+            Stack<Tile> tileStack=new();
+            if (type != TileType.Gold)
+            {
+                if (!tileListByType.TryGetValue(type, out tileStack))  //Check if stack exist
+                    return false;
+            }
 
-            if (!tileListByType.TryGetValue(type, out Stack<Tile> tileStack))  //Check if stack exist
-                return false;
 
             var requiredAmount = productRequierments[i].Amount;
 

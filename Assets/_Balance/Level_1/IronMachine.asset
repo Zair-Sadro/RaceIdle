@@ -15,7 +15,7 @@ MonoBehaviour:
   productType: 1
   _requierments:
   - _type: 0
-    _amount: -1
+    _amount: 2
   _incomeNumbers:
     startNumber: 1
     deltaNumber: 1.03

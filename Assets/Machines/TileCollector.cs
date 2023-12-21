@@ -21,6 +21,7 @@ public class TileCollector : MonoBehaviour
     [SerializeField] protected List<ProductRequierment> productRequierments;
 
     protected Dictionary<TileType, Stack<Tile>> tileListByType = new();
+    protected int goldCount;
 
     protected byte _requiredTypesCount;
     protected bool _stopCollect;
@@ -42,13 +43,30 @@ public class TileCollector : MonoBehaviour
                 yield break;
 
             var req = reqtype[i];
-            var countneed = productRequierments[i].Amount - tileListByType[req].Count;
 
-            if(countneed==0)
-                continue;
 
-            yield return StartCoroutine(_playerTilesBag.RemoveTilesWthCount
-                (req, countneed, tileStorage.position, RecieveTile,true));
+            if (req == TileType.Gold) 
+            {
+                var countneed = productRequierments[i].Amount - goldCount;
+
+                if (countneed <= 0)
+                    continue;
+
+                yield return StartCoroutine(_playerTilesBag.RemoveGoldWthCount
+                                           (countneed, tileStorage.position, RecieveGold));
+            }
+            else
+            {
+                var countneed = productRequierments[i].Amount - tileListByType[req].Count;
+
+                if (countneed == 0)
+                    continue;
+
+                yield return StartCoroutine(_playerTilesBag.RemoveTilesWthCount
+                                           (req, countneed, tileStorage.position, RecieveTile, true));
+            }
+
+
 
         }
     }
@@ -63,6 +81,10 @@ public class TileCollector : MonoBehaviour
         tileListByType[tile.Type].Push(tile);
 
     }
+    protected virtual void RecieveGold(int goldCount) 
+    {
+        this.goldCount += goldCount;
+    }
 
     protected void InitDictionary()
     {
@@ -72,9 +94,18 @@ public class TileCollector : MonoBehaviour
 
         for (int i = 0; i < _requiredTypesCount; i++)
         {
-            _requiredTypes.Add(productRequierments[i].Type);
+            var type = productRequierments[i].Type;
+            _requiredTypes.Add(type);
 
-            tileListByType.Add(productRequierments[i].Type, new Stack<Tile>());
+            if (type == TileType.Gold) 
+            {
+                goldCount = 0;
+            }
+            else
+            {
+                tileListByType.Add(type, new Stack<Tile>());
+            }
+           
             
         }
     }
