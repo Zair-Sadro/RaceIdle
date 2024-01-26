@@ -2,10 +2,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Android.Types;
 using UnityEngine;
 using UnityTaskManager;
-public class TileMachine : TileCollector,IBuildable,ITilesSave
+public class TileMachine : TileCollector, IBuildable, ITilesSave
 {
 
     public MachineFields machineFields;
@@ -52,7 +51,7 @@ public class TileMachine : TileCollector,IBuildable,ITilesSave
         {
             case MachineState.WAIT_FOR_ENOUGH:
                 if (wait != null)
-                    if (wait.Running|| producing) return;
+                    if (wait.Running || producing) return;
                 wait = new Task(WaitForEnough());
                 break;
 
@@ -138,7 +137,7 @@ public class TileMachine : TileCollector,IBuildable,ITilesSave
         producing = false;
         SetState(MachineState.WAIT_FOR_ENOUGH);
 
-      
+
         yield break;
     }
 
@@ -209,7 +208,7 @@ public class TileMachine : TileCollector,IBuildable,ITilesSave
 
             OnCollect?.Invoke();
 
-       StartCoroutine(UpdateLay());
+        StartCoroutine(UpdateLay());
     }
     IEnumerator UpdateLay()
     {
@@ -267,7 +266,7 @@ public class TileMachine : TileCollector,IBuildable,ITilesSave
 
                 for (int i = 0; i < tilesList[0].Amount; i++)
                 {
-                   
+
                     var tile = _tilesSpawner.GetTile(type);
                     tileListByType[tile.Type].Push(tile);
                     tile.OnStorage(tileStorage);

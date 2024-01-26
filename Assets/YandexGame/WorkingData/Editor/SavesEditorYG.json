@@ -1,5 +1,5 @@
 {
-    "idSave": 13,
+    "idSave": 14,
     "isFirstSession": false,
     "language": "ru",
     "promptDone": false,
@@ -228,13 +228,7 @@
     "raceData": {
         "Cars": [
             {
-                "ValueNumber": 2,
-                "LapReward": 10.0,
-                "CurrentPoint": 27,
-                "Level": 0
-            },
-            {
-                "ValueNumber": 5,
+                "ValueNumber": 0,
                 "LapReward": 10.0,
                 "CurrentPoint": 0,
                 "Level": 0
@@ -242,7 +236,13 @@
             {
                 "ValueNumber": 0,
                 "LapReward": 10.0,
-                "CurrentPoint": 26,
+                "CurrentPoint": 0,
+                "Level": 0
+            },
+            {
+                "ValueNumber": 0,
+                "LapReward": 10.0,
+                "CurrentPoint": 27,
                 "Level": 0
             }
         ]
