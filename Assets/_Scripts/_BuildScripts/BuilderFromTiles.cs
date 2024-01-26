@@ -5,7 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuilderFromTiles : TileCollector
+public class BuilderFromTiles : TileCollector, ITilesSave
 {
     [Tooltip("Off")]
     public GameObject[] collidersAfterBuild, collidersBeforeBuild;
@@ -27,13 +27,12 @@ public class BuilderFromTiles : TileCollector
 
     protected int minCountForCheck;
     protected Action OnEnoughForBuild;
-
+    protected Dictionary<TileType, int> _tilesCountByType = new();
 
     [SerializeField] private AudioName _audioName = AudioName.BUILD;
-    private void Awake()
-    {
 
-    }
+    internal bool IsBuilt;
+
     private void Start()
     {
 
@@ -43,27 +42,63 @@ public class BuilderFromTiles : TileCollector
             BuildEffects(building);
             AfterBuildAction();
         }
-        else 
+        else
         {
             BeforeBuildAction();
             building.SetActive(false);
-
-            InitDictionary();
+            InitLocalDictionary();
 
             for (int i = 0; i < _requiredTypesCount; i++)
             {
                 var count = productRequierments[i].Amount;
                 var type = productRequierments[i].Type;
 
-                if(type!=TileType.Gold)
-                minCountForCheck += count;
-                _counterView.InitCounerValues(type, 0, count);
+
+                if (type == TileType.Gold)
+                {
+                    _counterView.InitCounerValues(type, _tilesCountByType[type], count);
+
+                }
+                else
+                {
+                    currentTilesCount += _tilesCountByType[type];
+                    minCountForCheck += count;
+                    _counterView.InitCounerValues(type, _tilesCountByType[type], count);
+                }
             }
 
-           
-        }
-           
 
+        }
+
+
+    }
+    protected void InitLocalDictionary()
+    {
+        _requiredTypesCount = (byte)productRequierments.Count;
+        _requiredTypes = new List<TileType>();
+
+        for (int i = 0; i < _requiredTypesCount; i++)
+        {
+            var type = productRequierments[i].Type;
+            _requiredTypes.Add(type);
+
+            if (type != TileType.Gold)
+            {
+                tileListByType.Add(type, new Stack<Tile>());
+            }
+
+
+        }
+        for (int i = 0; i < _requiredTypesCount; i++)
+        {
+            var type = productRequierments[i].Type;
+
+            if (!_tilesCountByType.ContainsKey(type))
+                _tilesCountByType.Add(type, 0);
+
+
+
+        }
     }
 
 
@@ -84,7 +119,8 @@ public class BuilderFromTiles : TileCollector
                 collidersAfterBuildOn[i].SetActive(true);
             }
 
-       
+        OnBuild?.Invoke();
+
     }
     protected virtual void BeforeBuildAction()
     {
@@ -121,16 +157,61 @@ public class BuilderFromTiles : TileCollector
         OnCountChange -= _counterView.ChangeCount;
         OnEnoughForBuild -= Build;
     }
+    protected override void Collect()
+    {
+        if (_playerTilesBag._isGivingTiles) return;
 
+        _stopCollect = false;
+        StartCoroutine(CollectCor());
+    }
+    private IEnumerator CollectCor()
+    {
+        var reqtype = new List<TileType>(_requiredTypes);
+        for (int i = 0; i < reqtype.Count; i++)
+        {
+            if (_stopCollect)
+                yield break;
+
+            var req = reqtype[i];
+
+
+            if (req == TileType.Gold)
+            {
+                var countneed = productRequierments[i].Amount - goldCount;
+
+                if (countneed <= 0)
+                    continue;
+
+                yield return StartCoroutine(_playerTilesBag.RemoveGoldWthCount
+                                           (countneed, tileStorage.position, RecieveGold));
+            }
+            else
+            {
+                var countneed = productRequierments[i].Amount - _tilesCountByType[req];
+
+                if (countneed == 0)
+                    continue;
+
+                yield return StartCoroutine(_playerTilesBag.RemoveTilesWthCount
+                                           (req, countneed, tileStorage.position, RecieveTile, true));
+            }
+
+
+
+        }
+    }
+    public event Action OnBuild;
     protected virtual void Build()
     {
         if (EnoughForBuild())
         {
+            IsBuilt = true;
             StopCollect();
             BuildEffects(building);
 
             _buildSaver.GetBuildInfo(this);
             AfterBuildAction();
+            OnBuild?.Invoke();
             InstantcesContainer.Instance.AudioService.PlayAudo(_audioName);
             GameEventSystem.NeedToSaveProgress.Invoke();
         }
@@ -138,21 +219,16 @@ public class BuilderFromTiles : TileCollector
     public virtual void BuildBySaver()
     {
         forceToBuild = true;
-
-        //building.SetActive(true);
-      //  buildingContract?.Build();
-
-       // AfterBuildAction();
     }
     protected virtual void BuildEffects(GameObject b)
     {
         StartCoroutine(BuildCor(b));
 
     }
-    IEnumerator BuildCor(GameObject b) 
+    IEnumerator BuildCor(GameObject b)
     {
-        if(_buildEffectPosition)
-        _buildSaver.BuildEffect(_buildEffectPosition.position);
+        if (_buildEffectPosition)
+            _buildSaver.BuildEffect(_buildEffectPosition.position);
 
         yield return new WaitForSeconds(0.2f);
 
@@ -168,9 +244,10 @@ public class BuilderFromTiles : TileCollector
     protected override void RecieveTile(Tile T)
     {
         base.RecieveTile(T);
+        _tilesCountByType[T.Type]++;
 
         ++currentTilesCount;
-        OnCountChange?.Invoke(T.Type, tileListByType[T.Type].Count);
+        OnCountChange?.Invoke(T.Type, _tilesCountByType[T.Type]);
 
         if (currentTilesCount >= minCountForCheck)
             OnEnoughForBuild();
@@ -190,10 +267,15 @@ public class BuilderFromTiles : TileCollector
         for (int i = 0; i < _requiredTypesCount; i++)
         {
             if (productRequierments[i].Type == TileType.Gold)
-                if (productRequierments[i].Amount > goldCount) 
+                if (productRequierments[i].Amount > goldCount)
                 {
-                        return false;
+                    return false;
                 }
+                else 
+                {
+                    continue;
+                }
+
 
             if (!OneOfRequredTypeIsEnough(i))
                 return false;
@@ -206,17 +288,18 @@ public class BuilderFromTiles : TileCollector
         bool OneOfRequredTypeIsEnough(int i)
         {
             var type = productRequierments[i].Type;
-            Stack<Tile> tileStack=new();
+            int tileCount = 0;
+
             if (type != TileType.Gold)
             {
-                if (!tileListByType.TryGetValue(type, out tileStack))  //Check if stack exist
+                if (!_tilesCountByType.TryGetValue(type, out tileCount))
                     return false;
             }
 
 
             var requiredAmount = productRequierments[i].Amount;
 
-            if (tileStack.Count >= requiredAmount)
+            if (tileCount >= requiredAmount)
                 return true;
 
             return false;
@@ -224,4 +307,56 @@ public class BuilderFromTiles : TileCollector
 
     }
 
+    public void SetTiles(List<ProductRequierment> tilesList)
+    {
+        for (int i = 0; i < tilesList.Count; i++)
+        {
+            IFGold(tilesList[i]);
+
+            var type = tilesList[i].Type;
+            _tilesCountByType[type] = tilesList[i].Amount;
+        }
+
+        bool IFGold(ProductRequierment item)
+        {
+            if (item.Type == TileType.Gold)
+            {
+                goldCount = item.Amount;
+                return true;
+            }
+            return false;
+        }
+    }
+
+    public List<ProductRequierment> GetTiles()
+    {
+        List<ProductRequierment> list = new();
+
+        for (int i = 0; i < _requiredTypesCount; i++)
+        {
+            if (IFGold(productRequierments[i]))
+                continue;
+
+
+            var type = productRequierments[i].Type;
+            var count = _tilesCountByType[type];
+
+            ProductRequierment item = new ProductRequierment(type, count);
+            list.Add(item);
+
+        }
+        return list;
+
+        bool IFGold(ProductRequierment item)
+        {
+            if (item.Type == TileType.Gold)
+            {
+                ProductRequierment goldReq = new(TileType.Gold, goldCount);
+                list.Add(goldReq);
+
+                return true;
+            }
+            return false;
+        }
+    }
 }

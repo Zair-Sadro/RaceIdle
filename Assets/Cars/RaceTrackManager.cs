@@ -41,7 +41,6 @@ public class RaceTrackManager : MonoBehaviour,ISaveLoad<RaceData>
     public void RegisterCar(CarAI car)
     {
         _carsOnTrack.Add(car);
-        _data.Cars.Add(car.CarData);
         CheckCount();
     }
     
@@ -76,6 +75,11 @@ public class RaceTrackManager : MonoBehaviour,ISaveLoad<RaceData>
 
     public RaceData GetData()
     {
+        _data = new();
+        foreach (var item in _carsOnTrack)
+        {
+            _data.Cars.Add(item.CarData);
+        }
         return _data;
     }
 
@@ -88,13 +92,7 @@ public class RaceTrackManager : MonoBehaviour,ISaveLoad<RaceData>
     {
         if (_data.Cars.Count < 1)
             return;
-
-        CarData[] cachedData = new CarData[_data.Cars.Count];
-
         _carSpawner.SpawnByData(_data.Cars);
-
-         _data.Cars.CopyTo(cachedData);
-
        
     }
     private void CheckCount() 

@@ -13,16 +13,38 @@ public sealed class GatesExplosion : BuilderFromTiles
 
     private void Start()
     {
-        InitDictionary();
-
-        for (int i = 0; i < _requiredTypesCount; i++)
+        if (forceToBuild)
         {
-            var count = productRequierments[i].Amount;
-            var type = productRequierments[i].Type;
-
-            minCountForCheck += count;
-            _counterView.InitCounerValues(type, 0, count);
+            StopCollect();
+            BuildEffects(building);
+            AfterBuildAction();
         }
+        else 
+        {
+            InitLocalDictionary();
+
+            for (int i = 0; i < _requiredTypesCount; i++)
+            {
+                var count = productRequierments[i].Amount;
+                var type = productRequierments[i].Type;
+
+                if (type == TileType.Gold)
+                {
+                    _counterView.InitCounerValues(type, _tilesCountByType[type], count);
+                    goldCount = _tilesCountByType[type];
+                }
+                else 
+                {
+                    currentTilesCount += _tilesCountByType[type];
+                    minCountForCheck += count;
+                    _counterView.InitCounerValues(type, _tilesCountByType[type], count);
+                }
+
+           
+            }
+        }
+
+
     }
 
 

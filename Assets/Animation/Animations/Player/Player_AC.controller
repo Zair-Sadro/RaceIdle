@@ -47,7 +47,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: SuperSlash
-  m_Speed: 1.5
+  m_Speed: 1.11
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -3592442001109713307}
@@ -101,7 +101,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Slash
-  m_Speed: 1.6
+  m_Speed: 1.19
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -7201728359328596584}

@@ -7,8 +7,8 @@ public class ProducerFields : ScriptableObject
 
     [Space(2f), Header("Settings")]
 
-    [SerializeField] private MachineNumbersData _incomeNumbers;
-    [SerializeField] private MachineNumbersData _speedNumbers;
+    [SerializeField] private UpgradeNumbersData _incomeNumbers;
+    [SerializeField] private UpgradeNumbersData _speedNumbers;
     [SerializeField] private int _maxTiles = 4;
     [SerializeField] private int[] levelsForCapacityUp;
     [SerializeField, Tooltip("Кэф прибавления вместимости")]
@@ -29,11 +29,11 @@ public class ProducerFields : ScriptableObject
     {
         _incomeNumbers.currentValue = upgradeField.LevelUp(); ;
     }
-    public MachineNumbersData IncomeData()
+    public UpgradeNumbersData IncomeData()
     {
         return _incomeNumbers;
     }
-    public MachineNumbersData SpeedData()
+    public UpgradeNumbersData SpeedData()
     {
         return _speedNumbers;
     }

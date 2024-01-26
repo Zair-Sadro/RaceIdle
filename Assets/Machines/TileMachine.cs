@@ -2,9 +2,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Android.Types;
 using UnityEngine;
 using UnityTaskManager;
-public class TileMachine : TileCollector,IBuildable
+public class TileMachine : TileCollector,IBuildable,ITilesSave
 {
 
     public MachineFields machineFields;
@@ -17,7 +18,7 @@ public class TileMachine : TileCollector,IBuildable
     [SerializeField] private Transform tileStartPos;
     [SerializeField] private Transform tileFinishPos;
 
-    private ResourceTilesSpawn _tilesSpawner => InstantcesContainer.Instance.ResourceTilesSpawn;
+    [SerializeField] private ResourceTilesSpawn _tilesSpawner;
     private WalletSystem _walletSystem => InstantcesContainer.Instance.WalletSystem;
     [SerializeField] private PlayerDetector _detectorForRes;
     public IReadOnlyDictionary<TileType, Stack<Tile>> TilesListsByType => tileListByType;
@@ -148,6 +149,10 @@ public class TileMachine : TileCollector,IBuildable
     }
 
     #endregion
+    private void Start()
+    {
+        OnCollect?.Invoke();
+    }
     protected override void Collect()
     {
         if (_playerTilesBag._isGivingTiles) return;
@@ -193,6 +198,7 @@ public class TileMachine : TileCollector,IBuildable
     #endregion
 
     private int minCountForCheck;
+    private bool waitForUpdateLay;
     protected override void RecieveTile(Tile tile)
     {
         tileListByType[tile.Type].Push(tile);
@@ -202,12 +208,19 @@ public class TileMachine : TileCollector,IBuildable
             && currentState == MachineState.WAIT_FOR_ENOUGH)
 
             OnCollect?.Invoke();
+
        StartCoroutine(UpdateLay());
     }
     IEnumerator UpdateLay()
     {
+        if (waitForUpdateLay)
+            yield break;
+
+        waitForUpdateLay = true;
+
         yield return new WaitForSeconds(0.9f);
         _layoutGroupResource.UpdateLayout();
+        waitForUpdateLay = false;
     }
     private bool EnoughForProduce()
     {
@@ -243,6 +256,35 @@ public class TileMachine : TileCollector,IBuildable
     public void Build()
     {
         TypeInvented?.Invoke(machineFields.ProductType);
+    }
+
+    public void SetTiles(List<ProductRequierment> tilesList)
+    {
+        if (tilesList.Count > 0)
+            if (tilesList[0].Amount > 0)
+            {
+                var type = tilesList[0].Type;
+
+                for (int i = 0; i < tilesList[0].Amount; i++)
+                {
+                   
+                    var tile = _tilesSpawner.GetTile(type);
+                    tileListByType[tile.Type].Push(tile);
+                    tile.OnStorage(tileStorage);
+                }
+                _layoutGroupResource.UpdateLayout();
+
+            }
+
+    }
+
+    public List<ProductRequierment> GetTiles()
+    {
+        List<ProductRequierment> list = new();
+        var type = machineFields.Requierments[0].Type;
+        list.Add(new(machineFields.Requierments[0].Type, tileListByType[type].Count));
+
+        return list;
     }
 }
 

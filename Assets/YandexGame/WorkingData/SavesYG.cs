@@ -1,5 +1,4 @@
-﻿
-namespace YG
+﻿namespace YG
 {
     [System.Serializable]
     public class SavesYG
@@ -26,6 +25,10 @@ namespace YG
         public MachineUpgradeData plasticAutoMachine;
         #endregion
 
+        public TilesInAllStoragesData tilesInAllStoragesData;
+        public float money;
+        public PlayerData playerData;
+
         public RaceIdleData GetMainGameData()
         {
             RaceIdleData _data = new();
@@ -40,6 +43,10 @@ namespace YG
             _data.ironAutoMachine = ironAutoMachine;
             _data.plasticAutoMachine = plasticAutoMachine;
             _data.rubberAutoMachine = rubberAutoMachine;
+
+            _data.tilesInAllStoragesData = tilesInAllStoragesData;
+            _data.money = money;
+            _data.playerData = playerData;
 
             return _data;
         }
@@ -57,6 +64,12 @@ namespace YG
             ironAutoMachine = _data.ironAutoMachine;
             plasticAutoMachine = _data.plasticAutoMachine;
             rubberAutoMachine = _data.rubberAutoMachine;
+
+
+            tilesInAllStoragesData = _data.tilesInAllStoragesData;
+
+            money = _data.money;
+            playerData = _data.playerData;
 
 
         }

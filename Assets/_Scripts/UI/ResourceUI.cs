@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using DG.Tweening;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ResourceUI : MonoBehaviour
@@ -12,6 +13,7 @@ public class ResourceUI : MonoBehaviour
                                       tx_iron,
                                       tx_plastic,
                                       tx_rubber;
+    [SerializeField] private Vector3 _moneyTextPunchVector;
 
     private Dictionary<TileType, TMPro.TMP_Text> textByTileType = new(4);
     private void Awake()
@@ -33,7 +35,9 @@ public class ResourceUI : MonoBehaviour
 
     private void MoneyView(float total)
     {
-        tx_money.text = total.ToString("0.#"); 
+        tx_money.text = total.ToString("0.#");
+        tx_money.transform.DORewind();
+       tx_money.transform.DOPunchScale(_moneyTextPunchVector, 0.2f);
     }
 
     private void SubscribeOnInit(IReadOnlyDictionary<TileType,TileList> dict)
@@ -55,6 +59,8 @@ public class ResourceUI : MonoBehaviour
         var count = tileListInfo.Count;
 
         textByTileType[type].text = count.ToString();
+        textByTileType[type].transform.DORewind();
+        textByTileType[type].transform.DOPunchScale(_moneyTextPunchVector, 0.2f,5);
     }
 }
 

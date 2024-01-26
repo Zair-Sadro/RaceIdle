@@ -65,6 +65,7 @@ GameObject:
   - component: {fileID: 377627881174998359}
   - component: {fileID: 8068446101376716248}
   - component: {fileID: 8714971615252784238}
+  - component: {fileID: 8418222407413739468}
   m_Layer: 0
   m_Name: productStorage
   m_TagString: Untagged
@@ -163,6 +164,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c586d1d487eef54e862b3c58e4e2893, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8418222407413739468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2249411952609361371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a66f587f825f86e47b3bfa7e4d6309f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _resourceTilesSpawn: {fileID: 0}
+  _layoutGroup: {fileID: 377627881174998359}
+  _storage: {fileID: 8714971615252784238}
+  _type: 0
 --- !u!1 &2781251622285526866
 GameObject:
   m_ObjectHideFlags: 0

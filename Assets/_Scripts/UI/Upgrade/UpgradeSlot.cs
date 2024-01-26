@@ -18,7 +18,10 @@ public class UpgradeSlot : MonoBehaviour, ILanguageChange
     }
     public void InitUpgradeSlot(Action action)
     {
-        _button.GetComponent<UI_HoldButton>().myEvent += action;
+        _button.GetComponent<UI_HoldButton>().myEvent += ()=> 
+        {
+            if (_button.interactable) action.Invoke(); 
+        };
     }
     public void ChangeText(float price, float upgrade)
     {
@@ -27,22 +30,31 @@ public class UpgradeSlot : MonoBehaviour, ILanguageChange
         _upgradeText.text = upgrade.ToString("0.##");
 
     }
+    public void ChangeTextDirectly(float price,string text) 
+    {
+        this.price = price;
+        _priceText.text = price.ToString("0.##");
+        _upgradeText.text = text;
+    }
     public void CanUpgrade(float walletMoney)
     {
+        if (isMax)
+            return;
+
         if (price <= walletMoney) _button.interactable = true;
         else _button.interactable = false;
     }
-
+    private bool isMax;
     internal void MaxLevel()
     {
-        _button.interactable = false;
+        isMax = true;
         _priceText.text = maximum;
+        _button.interactable = false;
+
     }
 
 
     private string maximum;
-    [SerializeField] private string ru = "максимум";
-    [SerializeField] private string en;
     public void SubscribeToChange()
     {
         GameEventSystem.OnLanguageChange += ChangeLanguage;
@@ -50,17 +62,23 @@ public class UpgradeSlot : MonoBehaviour, ILanguageChange
 
     public void ChangeLanguage(string key)
     {
+
         switch (key)
         {
             case "ru":
-                maximum = ru;
+                maximum = "максимум";
 
                 break;
 
             case "en":
-                maximum = en;
+                maximum = "max";
 
                 break;
+        }
+
+        if (isMax) 
+        {
+            _priceText.text = maximum;
         }
 
     }

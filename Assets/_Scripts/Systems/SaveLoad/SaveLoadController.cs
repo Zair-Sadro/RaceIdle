@@ -1,6 +1,4 @@
-﻿using System;
-using UnityEngine;
-using UnityEngine.Playables;
+﻿using UnityEngine;
 using YG;
 
 public class SaveLoadController : MonoBehaviour
@@ -17,10 +15,10 @@ public class SaveLoadController : MonoBehaviour
         YandexGame.GetDataEvent += LoadData;
         GameEventSystem.NeedToSaveProgress += SaveProgress;
 
-       // var gameData = (RaceIdleData) FileIOUtility.ReadFromJson<RaceIdleData>("save._data");
+        // var gameData = (RaceIdleData) FileIOUtility.ReadFromJson<RaceIdleData>("save._data");
         //if (gameData != null)
         //{
-           
+
         //    Debug.Log("Save _data has loaded successfully!");
         //}
         //else Debug.Log("Save _data has not loaded!");
@@ -29,19 +27,19 @@ public class SaveLoadController : MonoBehaviour
 
     private void SaveProgress()
     {
-        if (!IsEnable) 
+        if (!IsEnable)
         {
             YandexGame.savesData.SetMainGameData(new RaceIdleData());
             YandexGame.SaveProgress();
         }
-        else 
+        else
         {
             YandexGame.savesData.SetMainGameData(game.GetData());
             YandexGame.SaveProgress();
         }
 
 
-        
+
     }
 
     private void LoadData()
@@ -53,7 +51,7 @@ public class SaveLoadController : MonoBehaviour
         game.Initialize(raceIdleData);
     }
     private void OnApplicationQuit()
-    {   
+    {
         SaveProgress();
     }
 }

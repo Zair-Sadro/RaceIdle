@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
 {
@@ -37,9 +38,11 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
 
 
 
-    private bool _maxCapacity;
+    private bool _isMaxCapacity;
+
     public float CurrentGold => _wallet.TotalMoney;
-    public bool MaxCapacity => _maxCapacity;
+    public bool IsMaxCapacity => _isMaxCapacity;
+    public int MaxCapacity => maxTiles;
 
     public event Action<int> OnTilesCountChanged;
     public event Action<bool> OnTilesMaxCapacity;
@@ -84,7 +87,7 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
     #region AddTile
     public bool TryAddTile(Tile tile)
     {
-        if (_maxCapacity || _isGivingTiles)
+        if (_isMaxCapacity || _isGivingTiles)
             return false;
 
         _layoutGroup.UpdateLayout();
@@ -112,7 +115,7 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
     public bool TryAddTile(TileType type)
     {
         var tile = _resourceTilesSpawn.GetTile(type);
-        if (_maxCapacity)
+        if (_isMaxCapacity)
         {
             tile.ThrowTo(this.transform.position, StaticValues.tileThrowDelay,true);
             return false;
@@ -140,8 +143,8 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
     }
     private void CheckMaxTilesCapacity()
     {
-        _maxCapacity = _colectedTiles.Count >= maxTiles;
-        if (_maxCapacity)
+        _isMaxCapacity = _colectedTiles.Count >= maxTiles;
+        if (_isMaxCapacity)
             OnTilesMaxCapacity?.Invoke(false);
 
     }
@@ -283,10 +286,10 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
         RemoveFromList(tile);
 
         OnTilesCountChanged?.Invoke(_colectedTiles.Count);
-        if (_maxCapacity)
+        if (_isMaxCapacity)
         {
             OnTilesMaxCapacity?.Invoke(false);
-            _maxCapacity = false;
+            _isMaxCapacity = false;
         }
 
 
@@ -314,6 +317,24 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
 
     }
 
+    public void SetCapacity(int value) 
+    {
+        maxTiles = value;
+    }
+
+    public void SetBonus(int value,float duration)
+    {
+        StartCoroutine(MaxTilesTempBonus(value, duration));
+
+    }
+    IEnumerator MaxTilesTempBonus(int value,float duration) 
+    {
+        var t = maxTiles;
+        maxTiles = value;
+
+        yield return new WaitForSeconds(duration);
+        maxTiles = t;
+    }
     public TileSetterData GetData()
     {
         _data._ironTiles = _ironTiles.Count;

@@ -14,6 +14,8 @@ public class JunkCar : MonoBehaviour, IDamageable
 
     [SerializeField] private GameObject[] carParts;
 
+    [SerializeField] private PlayerSlash playerSlash;
+
     private JunkCarManager _junkCarManager;
     private float _currentHealth;
     private int _partsIndex;
@@ -47,7 +49,7 @@ public class JunkCar : MonoBehaviour, IDamageable
             , _startPos.y,
             _startPos.z + Random.Range(-_randDeltaZ, _randDeltaZ));
 
-       
+
     }
 
     public void OnRespawn()
@@ -63,11 +65,13 @@ public class JunkCar : MonoBehaviour, IDamageable
             TakeDamage(0);
     }
 
-    public void TakeDamage(float t)
+    public void TakeDamage(int damage)
     {
-        StartCoroutine(TakeDmg(t));
+        if (_partsIndex == 5)
+            return;
+        StartCoroutine(TakeDmg(playerSlash.Damage));
     }
-    IEnumerator TakeDmg(float t)
+    IEnumerator TakeDmg(int damage)
     {
 
         carParts[4].transform.DORewind();
@@ -75,34 +79,48 @@ public class JunkCar : MonoBehaviour, IDamageable
 
         carParts[4].transform.DOShakeScale(0.2f, 1f);
 
-        //Шатаем часть машины и отключаем ее
-        var carpart = carParts[_partsIndex++];
-        _junkCarManager.ExplodeTile(this);
-        yield return carpart.transform
-           .DOPunchScale(CarPartChangedSize(carpart.transform), 0.2f)
-           .OnComplete(() =>
-           {
-               carpart.gameObject.SetActive(false);
+        for (int i = 0; i < damage; i++)
+        {
+
+            //Шатаем часть машины и отключаем ее
+            var carpart = carParts[_partsIndex++];
+            _junkCarManager.ExplodeTile(this);
+
+            ShakeCarPart(carpart);
+
+            CountDamage();
+
+            if (_currentHealth <= 0)
+            {
+               // yield return new WaitForSeconds(damage * 0.2f);
+                DestroyCar();
+                yield break;
 
 
-           }).WaitForCompletion();
+            }
 
-        CountDamage();
+        }
 
+        void ShakeCarPart(GameObject carpart)
+        {
+            carpart.transform
+               .DOPunchScale(CarPartChangedSize(carpart.transform), 0.2f)
+               .OnComplete(() =>
+               {
+                   carpart.gameObject.SetActive(false);
+
+
+               });
+        }
     }
 
     private void CountDamage()
     {
         _currentHealth -= damagePerHit;
-        hpFillImage.fillAmount = _currentHealth / maxHealth;
-
-        if (_currentHealth <= 0)
-        {
-            DestroyCar();
-        }
+        hpFillImage.fillAmount = Mathf.Clamp(_currentHealth, 0, maxHealth) / maxHealth;
 
     }
-    private bool _destroyed; 
+    private bool _destroyed;
     private void DestroyCar()
     {
         if (_destroyed) return;

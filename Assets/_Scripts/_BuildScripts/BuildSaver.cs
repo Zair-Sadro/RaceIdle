@@ -9,7 +9,7 @@ public class BuildSaver : MonoBehaviour, ISaveLoad<BuildingsData>
     [SerializeField] private ParticleSystem _buildVFX;
 
     private Dictionary<byte, BuilderFromTiles> _buildingsById = new();
-    public int TileInvented => data.machineTileCount;
+    public event Action<byte> OnBuilt;
 
     private void Start()
     {
@@ -36,10 +36,23 @@ public class BuildSaver : MonoBehaviour, ISaveLoad<BuildingsData>
             default:
                 break;
         }
+        OnBuilt?.Invoke(builder.BuildID);
     }
 
     public BuildingsData GetData()
     {
+        data.SavedBuildingsTiles = new();
+
+        foreach (var id in _buildingsById.Keys)
+        {
+            if (_buildingsById[id].IsBuilt)
+                continue;
+
+            var tilesLists = _buildingsById[id].GetTiles();
+
+            data.SavedBuildingsTiles.Add(new(id, tilesLists));
+
+        }
         return data;
     }
 
@@ -49,9 +62,19 @@ public class BuildSaver : MonoBehaviour, ISaveLoad<BuildingsData>
         if (data == null)
             return;
         this.data = data;
+
         foreach (var id in data.Buildings)
         {
             _buildingsById[id].BuildBySaver();
+            OnBuilt?.Invoke(id);
+
+        }
+        for (byte i = 0; i < data.SavedBuildingsTiles.Count; i++)
+        {
+            var id = data.SavedBuildingsTiles[i].ID;
+            var tiles = data.SavedBuildingsTiles[i].SavedTiles;
+
+            _buildingsById[id].SetTiles(tiles);
         }
     }
     public void BuildEffect(Vector3 globalpos)
@@ -69,7 +92,7 @@ public class BuildSaver : MonoBehaviour, ISaveLoad<BuildingsData>
     }
 
 }
-public interface IBuildable 
+public interface IBuildable
 {
     public void Build();
 }
@@ -85,12 +108,26 @@ public class BuildingsData
     public int machineTileCount;
     public int autoMachineTilesCount;
     public List<byte> Buildings;
+    public List<BuildingsTilesData> SavedBuildingsTiles;
 
-    public BuildingsData() 
+    public BuildingsData()
     {
         machineTileCount = 0;
         autoMachineTilesCount = 0;
-        Buildings= new List<byte>();
+        Buildings = new List<byte>();
+        SavedBuildingsTiles = new();
     }
 
+}
+[Serializable]
+public class BuildingsTilesData
+{
+    public byte ID;
+    public List<ProductRequierment> SavedTiles;
+
+    public BuildingsTilesData(byte iD, List<ProductRequierment> savedTiles)
+    {
+        ID = iD;
+        SavedTiles = savedTiles;
+    }
 }

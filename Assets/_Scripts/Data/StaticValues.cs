@@ -48,7 +48,7 @@ public static class StaticValues
             return interfaceComponent;
         }
 
-       // Debug.LogError($"No interface like {typeof(T)} in {gameObject}");
+        Debug.LogError($"No interface like {typeof(T)} in {gameObject}");
         return null;
     }
 }

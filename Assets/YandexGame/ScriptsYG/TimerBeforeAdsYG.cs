@@ -45,7 +45,7 @@ public class TimerBeforeAdsYG : MonoBehaviour
 
             Time.timeScale = 1;
             AudioListener.volume = 1;
-            reward.Invoke();
+            reward?.Invoke();
         });
         
         #endregion

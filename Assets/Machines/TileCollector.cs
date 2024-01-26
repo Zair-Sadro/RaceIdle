@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class TileCollector : MonoBehaviour
 {
-    protected Action<TileType,int> OnCountChange;
+    protected Action<TileType, int> OnCountChange;
 
     [SerializeField] protected virtual int maxTileCount { get; private set; }
     [SerializeField] protected virtual int currentTilesCount { get; set; }
@@ -45,7 +45,7 @@ public class TileCollector : MonoBehaviour
             var req = reqtype[i];
 
 
-            if (req == TileType.Gold) 
+            if (req == TileType.Gold)
             {
                 var countneed = productRequierments[i].Amount - goldCount;
 
@@ -74,14 +74,14 @@ public class TileCollector : MonoBehaviour
     protected virtual void StopCollect()
     {
         _stopCollect = true;
-        _playerTilesBag.StopRemovingTiles();    
+        _playerTilesBag.StopRemovingTiles();
     }
     protected virtual void RecieveTile(Tile tile)
     {
         tileListByType[tile.Type].Push(tile);
 
     }
-    protected virtual void RecieveGold(int goldCount) 
+    protected virtual void RecieveGold(int goldCount)
     {
         this.goldCount += goldCount;
     }
@@ -97,7 +97,7 @@ public class TileCollector : MonoBehaviour
             var type = productRequierments[i].Type;
             _requiredTypes.Add(type);
 
-            if (type == TileType.Gold) 
+            if (type == TileType.Gold)
             {
                 goldCount = 0;
             }
@@ -105,10 +105,21 @@ public class TileCollector : MonoBehaviour
             {
                 tileListByType.Add(type, new Stack<Tile>());
             }
-           
-            
+
+
         }
     }
+
+    //public void CollectTilesFromSave(ProductRequierment typeAndCount) 
+    //{
+    //    var type = typeAndCount.Type;
+    //    var count = typeAndCount.Amount;
+    //    var tile= rec
+
+    //      tileListByType[type].Push(tiles.Amount);
+
+
+    //}
 }
 
 

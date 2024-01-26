@@ -1,22 +1,22 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AutoRepair : MonoBehaviour, IUpgradable
+public class AutoRepair : MonoBehaviour, IUpgradable, ITilesSave
 {
     [SerializeField] private AutoRepairData _data;
-
     [Space(5)]
-    [Header("Points & Storages")]
-
     [SerializeField] private PlayerDetector _detectorForRes;
-
+    [Space(5)]
     [SerializeField] private float delayMachineTakeTile;
     [SerializeField] private int repairLevel;
-
+    [Space(5)]
     [SerializeField] private CarSpawner _carSpawner;
     [SerializeField] private GameObject _needToMergeSign;
+    [SerializeField] private ParticleSystem _buildVFX;
+    [SerializeField] private Transform _oldCar;
 
     [SerializeField] private RaceTrackManager _raceTrackMan;
 
@@ -25,10 +25,11 @@ public class AutoRepair : MonoBehaviour, IUpgradable
     private Dictionary<TileType, int> _tileCountByType = new();
 
     private bool _carRiding;
+    
     private TileSetter _playerTilesBag => InstantcesContainer.Instance.TileSetter;
     private void Collect()
     {
-        if (_playerTilesBag._isGivingTiles || _carRiding) return;
+        if (_playerTilesBag._isGivingTiles || _carRiding|| _needToMergeSign.activeInHierarchy) return;
 
         StartCoroutine(CollectCor());
 
@@ -36,6 +37,10 @@ public class AutoRepair : MonoBehaviour, IUpgradable
     private IEnumerator CollectCor()
     {
         var reqtype = new List<TileType>(_requiredTypes);
+
+        if (reqtype.Count == 0)
+            StartCoroutine(Repair());
+
         for (int i = 0; i < reqtype.Count; i++)
         {
             if (_playerTilesBag._isGivingTiles)
@@ -69,34 +74,83 @@ public class AutoRepair : MonoBehaviour, IUpgradable
 
 
     }
-    private IEnumerator Repair()
+    public IEnumerator RepairByBonus() 
     {
         _carRiding = true;
 
         StopCoroutine(CollectCor());
         SubscribeForTilesDetect(false);
-        _carSpawner.Spawn(0);
+
+        _oldCar.DOScale(Vector3.zero, 0.4f);
+        _buildVFX.Play();
+
+        yield return new WaitForSeconds(0.5f);
+        _carSpawner.Spawn(1);
 
         yield return new WaitForSeconds(2f);
+        _oldCar.DOScale(Vector3.one, 0.7f);
+        _carRiding = false;
+        SubscribeForTilesDetect(true);
+    }
 
+    public event Action OnCarRepairByPlayer;
+
+    private IEnumerator Repair()
+    {
+        _tileCountByType = new();
+        _carRiding = true;
+
+        StopCoroutine(CollectCor());
+        SubscribeForTilesDetect(false);
+
+        _oldCar.DOScale(Vector3.zero,0.4f);
+        _buildVFX.Play();
+
+        yield return new WaitForSeconds(0.5f);
+        _carSpawner.Spawn(0);
+        OnCarRepairByPlayer?.Invoke();
+
+        yield return new WaitForSeconds(2f);
+        _oldCar.DOScale(Vector3.one, 0.7f);
         GetNextTilesRequired();
         _carRiding = false;
 
 
     }
     #region Init&SaveLoad
-
     private void OnEnable()
     {
+        SetFromSave();
         GetNextTilesRequired();
         SubscribeForTilesDetect(true);
         _raceTrackMan.NoSpaceOnTrack += CarsCountCheck;
+    }
+    private void SetFromSave()
+    {
+        if (saveData == null)
+            return;
+        if (saveData.Count == 0)
+            return;
+
+        _tileCountByType = new();
+
+        for (int i = 0; i < saveData.Count; i++)
+        {
+
+            var type = saveData[i].Type;
+            _tileCountByType[type] = saveData[i].Amount;
+        }
+        foreach (var item in _tileCountByType.Keys)
+        {
+            _counterUI.ChangeCount(item, _tileCountByType[item]);
+        }
+
     }
 
     private void CarsCountCheck(bool noSpace)
     {
         _needToMergeSign.SetActive(noSpace);
-           SubscribeForTilesDetect(!noSpace);
+        SubscribeForTilesDetect(!noSpace);
     }
 
     private void OnDisable()
@@ -115,16 +169,25 @@ public class AutoRepair : MonoBehaviour, IUpgradable
 
         _requiredTypes = new List<TileType>();
         _productRequierments = new();
-        _tileCountByType = new();
+
 
         for (int i = 0; i < lenght; i++)
         {
             var colcount = (data.RequiermentsList[i]);
+            var type = colcount.Type;
             _productRequierments.Add(colcount.Type, colcount);
             _requiredTypes.Add(colcount.Type);
-            _tileCountByType.Add(colcount.Type, 0);
 
-            _counterUI.InitCounerValues(colcount.Type,0, colcount.Amount);
+            if (!_tileCountByType.ContainsKey(colcount.Type))
+                _tileCountByType.Add(colcount.Type, 0);
+
+            _counterUI.InitCounerValues(colcount.Type, _tileCountByType[colcount.Type], colcount.Amount);
+
+            if (_tileCountByType[type] >= _productRequierments[type].Amount)
+            {
+                _requiredTypes.Remove(type);
+
+            }
         }
 
         SubscribeForTilesDetect(true);
@@ -156,6 +219,46 @@ public class AutoRepair : MonoBehaviour, IUpgradable
 
     public void UpgradeIncome(int level)
     {
+
+    }
+
+    private List<ProductRequierment> saveData;
+    public void SetTiles(List<ProductRequierment> tilesList)
+    {
+        saveData = tilesList;
+        if (_tileCountByType.Count > 0)
+        {
+            SetFromSave();
+
+            var reqcopy = _requiredTypes.ToArray();
+            foreach (var req in reqcopy)
+            {
+                if (_tileCountByType[req] >= _productRequierments[req].Amount)
+                {
+                    _requiredTypes.Remove(req);
+
+                }
+            }
+
+        }
+
+    }
+
+    public List<ProductRequierment> GetTiles()
+    {
+        List<ProductRequierment> list = new();
+
+        foreach (var tiletype in _tileCountByType.Keys)
+        {
+            var count = _tileCountByType[tiletype];
+
+            ProductRequierment item = new ProductRequierment(tiletype, count);
+            list.Add(item);
+        }
+
+
+
+        return list;
 
     }
 }

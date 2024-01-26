@@ -1,10 +1,8 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class OnObjectClickHelper : MonoBehaviour, IPointerDownHandler,IPointerClickHandler
+public class OnObjectClickHelper : MonoBehaviour, IPointerDownHandler, IPointerClickHandler
 {
     public Action OnObjClick;
     bool _clicked;
@@ -14,7 +12,7 @@ public class OnObjectClickHelper : MonoBehaviour, IPointerDownHandler,IPointerCl
         _clicked = true;
     }
 
-   public bool ClickedIndeed()
+    public bool ClickedIndeed()
     {
         var c = _clicked;
         _clicked = false;

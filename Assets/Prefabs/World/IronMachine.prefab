@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: 821320082}
   - component: {fileID: 3910681362004963631}
   - component: {fileID: 5132754451486783646}
+  - component: {fileID: 2359400069297249419}
   m_Layer: 0
   m_Name: productStorage
   m_TagString: Untagged
@@ -247,6 +248,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c586d1d487eef54e862b3c58e4e2893, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2359400069297249419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 821320080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a66f587f825f86e47b3bfa7e4d6309f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _resourceTilesSpawn: {fileID: 0}
+  _layoutGroup: {fileID: 821320082}
+  _storage: {fileID: 5132754451486783646}
+  _type: 0
 --- !u!1 &1366016240
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,6 +309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5da47d863f8c6e4b90e1b60d3c4e9c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  needTimerForNextInvoke: 0
 --- !u!65 &1366016243
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -381,6 +399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5da47d863f8c6e4b90e1b60d3c4e9c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  needTimerForNextInvoke: 0
 --- !u!1 &4020275157300188238
 GameObject:
   m_ObjectHideFlags: 0
@@ -700,6 +719,7 @@ MonoBehaviour:
   _layoutGroupProduct: {fileID: 821320082}
   tileStartPos: {fileID: 637159844}
   tileFinishPos: {fileID: 506407680}
+  _tilesSpawner: {fileID: 0}
   _detectorForRes: {fileID: 1366016242}
   delayMachineTakeTile: 0
 --- !u!114 &5596029799294174803
@@ -725,7 +745,7 @@ MonoBehaviour:
   - {fileID: 2186227260986771866, guid: 491a84b1c73ee814f9bcd3f31c48c576, type: 3}
   - {fileID: 7631392519518179294, guid: 8aff5dd6459eb1245921d6c3ba2e25e8, type: 3}
   meshFilter: {fileID: 0}
-  machineFields: {fileID: 0}
+  _machineBaseFields: {fileID: 0}
 --- !u!1 &8939031915130202965
 GameObject:
   m_ObjectHideFlags: 0

@@ -124,8 +124,8 @@ public class MachineUpgrade : MonoBehaviour, ISaveLoad<MachineUpgradeData>, IUpg
 [Serializable]
 public class MachineUpgradeData
 {
-    public MachineNumbersData speedData;
-    public MachineNumbersData incomeData;
+    public UpgradeNumbersData speedData;
+    public UpgradeNumbersData incomeData;
 
     public int indexer;
 

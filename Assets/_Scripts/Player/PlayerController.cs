@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using YG;
 
 public class PlayerController : MonoBehaviour
@@ -8,28 +9,26 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private Rigidbody body;
     [SerializeField] private FloatingJoystick joystick;
-    [SerializeField] private ParticleSystem dustParticle;
-
     [SerializeField] private MeshRenderer _hummerr;
 
-
-    [Header("Skins")]
     [SerializeField] private List<Animator> skins = new List<Animator>();
 
-
-    private int _skinAnimatorID;
     private float _curSpeed;
 
     private bool isMobile;
     #region Properties
 
-    public Animator Animator => CurrentAnimator(0);
+    public Animator Animator => skins[0];
     public float CurrentSpeed => _curSpeed;
+    public float MaxSpeed => speed;
 
     #endregion
+
     private void Awake()
     {
+
        YandexGame.GetDataEvent += CheckPlatform;
+
     }
 
     private void CheckPlatform()
@@ -42,11 +41,13 @@ public class PlayerController : MonoBehaviour
         TakeHummer(false);
     }
 
-    private void OnEnable()
+    public void SetSpeed(float speed) 
     {
-        //CheckSkin();
+        this.speed = speed;
     }
+
     bool movedByKey;
+
     private void FixedUpdate()
     {
         if (!isMobile)
@@ -62,7 +63,7 @@ public class PlayerController : MonoBehaviour
   
     }
     private Vector3 curRot = Vector3.zero;
-    private Vector3 vel  = Vector3.zero;
+    private Vector3 velocity  = Vector3.zero;
     private bool MoveByKeys()
     {
         float xMove = Input.GetAxis("Horizontal");
@@ -70,13 +71,13 @@ public class PlayerController : MonoBehaviour
 
         if (xMove == 0 && zMove == 0)
         {
-            vel = Vector3.zero;
+            velocity = Vector3.zero;
             return false;
          
         }
                
 
-        var rotation = Vector3.SmoothDamp(curRot,new Vector3(xMove,0, zMove),ref vel,0.01f);
+        var rotation = Vector3.SmoothDamp(curRot,new Vector3(xMove,0, zMove),ref velocity,0.01f);
         
         transform.rotation = Quaternion.LookRotation(rotation);
         
@@ -85,7 +86,6 @@ public class PlayerController : MonoBehaviour
             zMove * speed );
         return true;
     }
-
     private void JoySkickMove()
     {
         if (joystick.Horizontal != 0 || joystick.Vertical != 0)
@@ -114,8 +114,6 @@ public class PlayerController : MonoBehaviour
             TakeHummer(false);
     }
 
-
-
     private void TakeHummer(bool value)
     {
 
@@ -124,44 +122,21 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void CheckSkin()
-    {
-        if (!PlayerPrefs.HasKey("BodySkin_ID"))
-            PlayerPrefs.SetInt("BodySkin_ID", 1);
-        else
-        {
-            for (int i = 1; i < skins.Count; i++)
-                if (i == PlayerPrefs.GetInt("BodySkin_ID"))
-                    skins[i].gameObject.SetActive(true);
-                else
-                    skins[i].gameObject.SetActive(false);
-        }
-        _skinAnimatorID = PlayerPrefs.GetInt("BodySkin_ID");
-    }
-
-    private Animator CurrentAnimator(int id)
-    {
-        return skins[id];
-    }
-
 }
-public class PlayerSave : MonoBehaviour, ISaveLoad<PlayerData>
-{
-    [SerializeField] private PlayerData _data;
-    [SerializeField] private PlayerController _player;
-    public PlayerData GetData()
-    {
-        _data.position = new(_player.transform.position);
-        return _data;
-    }
 
-    public void Initialize(PlayerData data)
-    {
-        _player.transform.position = _data.position.UnityVector;
-    }
-}
 [Serializable]
 public class PlayerData
 {
-    public SerializableVector3 position;
+    public float SpeedValue;
+    public int SpeedLevel;
+
+    public float CapacityValue;
+    public int CapacityLevel;
+
+    public int DamageValue;
+    public int DamageLevel;
+
+    public float SpeedPriceValue;
+    public float CapacityPriceValue;
+    public float DamagePriceValue;
 }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UniqCar : MonoBehaviour,IDamageable
+public class UniqCar : MonoBehaviour, IDamageable
 {
     [SerializeField] private float damagePerHit;
     [SerializeField] private float maxHealth;
@@ -14,6 +14,7 @@ public class UniqCar : MonoBehaviour,IDamageable
 
     [SerializeField] private GameObject[] carParts;
 
+    [SerializeField] private PlayerSlash playerSlash;
     private UniqCarsManager _uniqCarManager;
     private float _currentHealth;
     private int _partsIndex;
@@ -63,11 +64,11 @@ public class UniqCar : MonoBehaviour,IDamageable
             TakeDamage(0);
     }
 
-    public void TakeDamage(float t)
+    public void TakeDamage(int damage)
     {
-        StartCoroutine(TakeDmg(t));
+        StartCoroutine(TakeDmg(playerSlash.Damage));
     }
-    IEnumerator TakeDmg(float t)
+    IEnumerator TakeDmg(int damage)
     {
 
         carParts[4].transform.DORewind();
@@ -75,31 +76,44 @@ public class UniqCar : MonoBehaviour,IDamageable
 
         carParts[4].transform.DOShakeScale(0.2f, 1f);
 
-        //Шатаем часть машины и отключаем ее
-        var carpart = carParts[_partsIndex++];
-        _uniqCarManager.ExplodeTile(this);
-        yield return carpart.transform
-           .DOPunchScale(CarPartChangedSize(carpart.transform), 0.2f)
-           .OnComplete(() =>
-           {
-               carpart.gameObject.SetActive(false);
+        for (int i = 0; i < damage; i++)
+        {
+            //Шатаем часть машины и отключаем ее
+            var carpart = carParts[_partsIndex++];
+            _uniqCarManager.ExplodeTile(this);
+
+            ShakeCarPart(carpart);
+
+            CountDamage();
+
+            if (_currentHealth <= 0)
+            {
+                yield return new WaitForSeconds(damage * 0.2f);
+                DestroyCar();
+                yield break;
 
 
-           }).WaitForCompletion();
+            }
 
-        CountDamage();
+        }
 
+        void ShakeCarPart(GameObject carpart)
+        {
+            carpart.transform
+               .DOPunchScale(CarPartChangedSize(carpart.transform), 0.2f)
+               .OnComplete(() =>
+               {
+                   carpart.gameObject.SetActive(false);
+
+
+               });
+        }
     }
 
     private void CountDamage()
     {
         _currentHealth -= damagePerHit;
-        hpFillImage.fillAmount = _currentHealth / maxHealth;
-
-        if (_currentHealth <= 0)
-        {
-            DestroyCar();
-        }
+        hpFillImage.fillAmount = Mathf.Clamp(_currentHealth, 0, maxHealth) / maxHealth;
 
     }
     private bool _destroyed;
@@ -115,7 +129,7 @@ public class UniqCar : MonoBehaviour,IDamageable
     {
         this.gameObject.SetActive(false);
         _uniqCarManager.DestroyCar(this);
-        // _uniqCarManager.ExplodeTiles(this);
+
     }
     public List<GameObject> GetCarParts()
     {

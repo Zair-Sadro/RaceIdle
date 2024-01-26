@@ -1,7 +1,7 @@
 using UnityEngine;
 public class RaceIdleGame : MonoBehaviour, ISaveLoad<RaceIdleData>
 {
-    #region Injected controllers/managers
+    #region  controllers/managers
 
     private TileSetter _tileSetter => InstantcesContainer.Instance.TileSetter;
 
@@ -10,17 +10,18 @@ public class RaceIdleGame : MonoBehaviour, ISaveLoad<RaceIdleData>
     private BuildSaver _buildSaver => InstantcesContainer.Instance.BuildSaver;
 
     [SerializeField] private MachineUpgrade _ironMachine;
-
     [SerializeField] private MachineUpgrade _plasticMachine;
-
     [SerializeField] private MachineUpgrade _rubberMachine;
 
     [SerializeField] private AutoMachineUpgrade _ironAutoMachine;
-
     [SerializeField] private AutoMachineUpgrade _plasticAutoMachine;
-
     [SerializeField] private AutoMachineUpgrade _rubberAutoMachine;
+
+    [SerializeField] private TilesLoaderInStorages _tilesLoaderInStorages;
+
     [SerializeField] private RaceTrackManager _raceTrackManager;
+    [SerializeField] private PlayerUpgrade _playerUpgrade;
+
 
 
     #endregion
@@ -49,6 +50,13 @@ public class RaceIdleGame : MonoBehaviour, ISaveLoad<RaceIdleData>
             if (value != null) _raceTrackManager.Initialize(value);
         }
     }
+
+    public TilesInAllStoragesData TilesInAllStoragesData
+    {
+        get => _tilesLoaderInStorages.GetData();
+        set => _tilesLoaderInStorages.Initialize(value);
+    }
+
 
     #region Machines
     public MachineUpgradeData IronMachineData
@@ -126,7 +134,10 @@ public class RaceIdleGame : MonoBehaviour, ISaveLoad<RaceIdleData>
         _data.plasticAutoMachine = PlasticAutoMachineData;
         _data.rubberAutoMachine = RubberAutoMachineData;
 
-        _data.Money =  _walletsystem.TotalMoney;
+        _data.tilesInAllStoragesData = TilesInAllStoragesData;
+
+        _data.money =  _walletsystem.TotalMoney;
+        _data.playerData = _playerUpgrade.GetData();
 
         return _data;
     }
@@ -146,10 +157,12 @@ public class RaceIdleGame : MonoBehaviour, ISaveLoad<RaceIdleData>
         PlasticAutoMachineData = data.plasticAutoMachine;
         RubberAutoMachineData = data.rubberAutoMachine;
 
+        TilesInAllStoragesData = data.tilesInAllStoragesData;
+
         RaceTrackData = data.raceData;
 
-        _walletsystem.Init(_data.Money);
-
+        _walletsystem.Init(data.money);
+        _playerUpgrade.Initialize(data.playerData);
     }
     #endregion
 

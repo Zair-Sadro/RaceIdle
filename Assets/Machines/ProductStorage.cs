@@ -14,6 +14,7 @@ public class ProductStorage : MonoBehaviour
     public void TileToStorage(Tile t)
     {
         _tilesInStorage.Push(t);
+        t.OnStorage(transform.parent);
         t.transform.parent = transform;
         t.transform.rotation = new Quaternion(0, 0, 0, 0);
     }
@@ -55,7 +56,7 @@ public class ProductStorage : MonoBehaviour
 
     private void ThrowTilesToPlayer()
     {
-        if(!_tileSetter.MaxCapacity)
+        if(!_tileSetter.IsMaxCapacity)
         StartCoroutine(ThrowingTileCor());
     }
     private void StopThrow()

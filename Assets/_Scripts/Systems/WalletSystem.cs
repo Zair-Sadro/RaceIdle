@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WalletSystem : MonoBehaviour
 {
-    [SerializeField] private float _totalMoney;
+    [SerializeField] private float _totalMoney=100000;
 
     public float TotalMoney => _totalMoney;
     public string TotalMoneyText => _totalMoney.ToString();
@@ -13,7 +11,6 @@ public class WalletSystem : MonoBehaviour
     public event onTotalMoneyChange OnTotalMoneyChange;
     private void Start()
     {
-        _totalMoney = _moneyFromSave;
         OnTotalMoneyChange?.Invoke(_totalMoney);
     }
     public bool TrySpendMoney(float amount)
@@ -36,7 +33,7 @@ public class WalletSystem : MonoBehaviour
         if (amount > _totalMoney)
             return false;
 
-        else 
+        else
             return true;
 
     }
@@ -46,9 +43,8 @@ public class WalletSystem : MonoBehaviour
         OnTotalMoneyChange?.Invoke(_totalMoney);
 
     }
-    private float _moneyFromSave;
     public void Init(float m)
     {
-        _moneyFromSave = m;
+        _totalMoney = m;
     }
 }

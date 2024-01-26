@@ -11,8 +11,8 @@ public class MachineFields : ScriptableObject
 
     [Space(2f), Header("Settings")]
 
-    [SerializeField] private MachineNumbersData _incomeNumbers = new();
-    [SerializeField] private MachineNumbersData _speedNumbers = new();
+    [SerializeField] private UpgradeNumbersData _incomeNumbers = new();
+    [SerializeField] private UpgradeNumbersData _speedNumbers = new();
 
     [SerializeField] private int _maxTiles = 4;
     [SerializeField] private int[] levelsForCapacityUp;
@@ -37,11 +37,11 @@ public class MachineFields : ScriptableObject
     {
         _incomeNumbers.currentValue = upgradeField.LevelUp(); ;
     }
-    public MachineNumbersData IncomeData()
+    public UpgradeNumbersData IncomeData()
     {
         return _incomeNumbers;
     }
-    public MachineNumbersData SpeedData()
+    public UpgradeNumbersData SpeedData()
     {
         return _speedNumbers;
     }

@@ -18,11 +18,10 @@ public class Localization : MonoBehaviour
 
     void CheckTranslate()
     {
-        if (YandexGame.EnvironmentData.language != "ru"|| YandexGame.EnvironmentData.language!= current)
-        {
+
             var l = YandexGame.EnvironmentData.language;
             GameEventSystem.OnLanguageChange?.Invoke(l);
-        }
+        
         current = YandexGame.EnvironmentData.language;
         YandexGame.GetDataEvent -= CheckTranslate;
 

@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 [System.Serializable]
-public class RaceIdleData 
+public class RaceIdleData
 {
     public TileSetterData tileSetterData;
     public BuildingsData buildSaver;
@@ -16,14 +12,17 @@ public class RaceIdleData
     public MachineUpgradeData rubberAutoMachine;
     public MachineUpgradeData plasticAutoMachine;
 
+    public TilesInAllStoragesData tilesInAllStoragesData;
+
     public RaceData raceData;
 
 
-    public float Money;
+    public float money;
+    public PlayerData playerData;
 
-    public RaceIdleData() 
+    public RaceIdleData()
     {
-        Money = 0;
+        money = 0;
         tileSetterData = new();
         buildSaver = new();
 
@@ -35,9 +34,10 @@ public class RaceIdleData
         rubberAutoMachine = new();
         plasticAutoMachine = new();
 
+        tilesInAllStoragesData = new();
+
         raceData = new();
-
-
+        playerData = new();
 
     }
 

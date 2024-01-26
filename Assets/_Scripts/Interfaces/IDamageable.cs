@@ -2,6 +2,6 @@
 
 public interface IDamageable 
 {
-    void TakeDamage(float delay);
+    void TakeDamage(int damag);
 }
 
