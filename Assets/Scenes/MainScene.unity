@@ -3369,11 +3369,11 @@ MonoBehaviour:
   hideAfterCollect: 1
   productRequierments:
   - _type: 0
-    _amount: 5
+    _amount: 30
   - _type: 1
-    _amount: 5
+    _amount: 50
   - _type: 4
-    _amount: 5
+    _amount: 50
   collidersAfterBuild:
   - {fileID: 341763074}
   collidersBeforeBuild: []
@@ -11688,15 +11688,15 @@ MonoBehaviour:
   hideAfterCollect: 1
   productRequierments:
   - _type: 0
-    _amount: 5
+    _amount: 50
   - _type: 1
-    _amount: 5
+    _amount: 30
   - _type: 2
-    _amount: 5
+    _amount: 30
   - _type: 3
-    _amount: 5
+    _amount: 30
   - _type: 4
-    _amount: 0
+    _amount: 300
   collidersAfterBuild:
   - {fileID: 841358523}
   collidersBeforeBuild: []
@@ -12886,7 +12886,7 @@ MonoBehaviour:
   hideAfterCollect: 1
   productRequierments:
   - _type: 0
-    _amount: 5
+    _amount: 20
   collidersAfterBuild:
   - {fileID: 20453045}
   collidersBeforeBuild: []
@@ -25899,9 +25899,9 @@ MonoBehaviour:
   hideAfterCollect: 1
   productRequierments:
   - _type: 0
-    _amount: 5
+    _amount: 20
   - _type: 4
-    _amount: 5
+    _amount: 10
   collidersAfterBuild:
   - {fileID: 1382560499}
   collidersBeforeBuild: []
@@ -29432,13 +29432,13 @@ MonoBehaviour:
   hideAfterCollect: 1
   productRequierments:
   - _type: 1
-    _amount: 5
+    _amount: 100
   - _type: 2
-    _amount: 5
+    _amount: 50
   - _type: 3
-    _amount: 5
+    _amount: 75
   - _type: 4
-    _amount: 5
+    _amount: 500
   collidersAfterBuild:
   - {fileID: 1469799838}
   collidersBeforeBuild: []
@@ -31166,15 +31166,15 @@ MonoBehaviour:
   hideAfterCollect: 1
   productRequierments:
   - _type: 0
-    _amount: 5
+    _amount: 50
   - _type: 1
-    _amount: 5
+    _amount: 20
   - _type: 2
-    _amount: 5
+    _amount: 20
   - _type: 3
-    _amount: 5
+    _amount: 20
   - _type: 4
-    _amount: 0
+    _amount: 300
   collidersAfterBuild:
   - {fileID: 920759219}
   collidersBeforeBuild: []
@@ -33754,13 +33754,15 @@ MonoBehaviour:
   hideAfterCollect: 1
   productRequierments:
   - _type: 0
-    _amount: 20
+    _amount: 50
   - _type: 1
     _amount: 20
   - _type: 2
-    _amount: 20
+    _amount: 25
   - _type: 3
     _amount: 20
+  - _type: 4
+    _amount: 200
   collidersAfterBuild:
   - {fileID: 755845048}
   collidersBeforeBuild: []
@@ -44788,15 +44790,15 @@ MonoBehaviour:
   hideAfterCollect: 1
   productRequierments:
   - _type: 0
-    _amount: 5
+    _amount: 15
   - _type: 1
-    _amount: 5
+    _amount: 15
   - _type: 2
-    _amount: 5
+    _amount: 15
   - _type: 3
-    _amount: 5
+    _amount: 15
   - _type: 4
-    _amount: 5
+    _amount: 100
   collidersAfterBuild:
   - {fileID: 1601457190}
   collidersBeforeBuild:
@@ -49310,9 +49312,9 @@ MonoBehaviour:
   hideAfterCollect: 1
   productRequierments:
   - _type: 0
-    _amount: 5
+    _amount: 20
   - _type: 1
-    _amount: 5
+    _amount: 10
   collidersAfterBuild:
   - {fileID: 1829162863}
   collidersBeforeBuild: []
@@ -49893,13 +49895,13 @@ MonoBehaviour:
   hideAfterCollect: 1
   productRequierments:
   - _type: 0
-    _amount: 5
+    _amount: 25
   - _type: 1
-    _amount: 5
+    _amount: 25
   - _type: 2
-    _amount: 5
+    _amount: 25
   - _type: 4
-    _amount: 5
+    _amount: 150
   collidersAfterBuild:
   - {fileID: 1731105734}
   collidersBeforeBuild: []
@@ -50552,15 +50554,15 @@ MonoBehaviour:
   hideAfterCollect: 1
   productRequierments:
   - _type: 0
-    _amount: 20
+    _amount: 40
   - _type: 1
-    _amount: 20
+    _amount: 40
   - _type: 2
-    _amount: 20
+    _amount: 40
   - _type: 3
-    _amount: 20
+    _amount: 40
   - _type: 4
-    _amount: 20
+    _amount: 300
   collidersAfterBuild:
   - {fileID: 1875246654}
   collidersBeforeBuild: []
@@ -52396,15 +52398,15 @@ MonoBehaviour:
   hideAfterCollect: 1
   productRequierments:
   - _type: 0
-    _amount: 5
+    _amount: 20
   - _type: 1
-    _amount: 5
+    _amount: 40
   - _type: 2
-    _amount: 5
+    _amount: 40
   - _type: 3
-    _amount: 5
+    _amount: 40
   - _type: 4
-    _amount: 0
+    _amount: 300
   collidersAfterBuild:
   - {fileID: 1555600781}
   collidersBeforeBuild: []
