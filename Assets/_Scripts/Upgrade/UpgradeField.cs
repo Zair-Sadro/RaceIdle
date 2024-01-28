@@ -11,6 +11,7 @@ public class UpgradeField
     private Func<float,float, float> formula;
 
     private UpgradePrice Price;
+    public float CurrentPrice => Price.CurrentPrice;
 
     public float FieldValue => currentField != 0 ? currentField : startField;
     public float StartField => startField;

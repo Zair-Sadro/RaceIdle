@@ -22,6 +22,8 @@ public class RaceIdleGame : MonoBehaviour, ISaveLoad<RaceIdleData>
     [SerializeField] private RaceTrackManager _raceTrackManager;
     [SerializeField] private PlayerUpgrade _playerUpgrade;
 
+    [SerializeField] private TaskSystem _taskSystem;
+
 
 
     #endregion
@@ -138,7 +140,7 @@ public class RaceIdleGame : MonoBehaviour, ISaveLoad<RaceIdleData>
 
         _data.money =  _walletsystem.TotalMoney;
         _data.playerData = _playerUpgrade.GetData();
-
+        _data.taskIndx = _taskSystem.CurrentTaskIndx;
         return _data;
     }
 
@@ -163,6 +165,7 @@ public class RaceIdleGame : MonoBehaviour, ISaveLoad<RaceIdleData>
 
         _walletsystem.Init(data.money);
         _playerUpgrade.Initialize(data.playerData);
+        _taskSystem.SetTaskFromSave(data.taskIndx);
     }
     #endregion
 

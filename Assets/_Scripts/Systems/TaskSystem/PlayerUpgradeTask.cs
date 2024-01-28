@@ -11,20 +11,48 @@ public class PlayerUpgradeTask : MonoBehaviour, IGameTask
 
     public event Action TaskDone;
 
-    public void StartTask()
+    public void EndTask()
     {
         switch (upgradeIndx)
         {
             case 0:
+                player.OnSpeedUpgrade -= CheckUpgradeLevel;
+                break;
+
+            case 1:
+                player.OnDamageUpgrade -= CheckUpgradeLevel;
+                break;
+
+            case 2:
+                player.OnCapacityUpgrade -= CheckUpgradeLevel;
+                break;
+
+        }
+    }
+
+    public void StartTask()
+    {
+        switch (upgradeIndx)
+        {
+            case 0:                
                 player.OnSpeedUpgrade += CheckUpgradeLevel;
+
+                if (player.SpeedLevel >= levelNeed)
+                    TaskDone?.Invoke();
                 break;
 
             case 1:
                 player.OnDamageUpgrade += CheckUpgradeLevel;
+
+                if (player.DamageLevel >= levelNeed)
+                    TaskDone?.Invoke();
                 break;
 
             case 2:
                 player.OnCapacityUpgrade += CheckUpgradeLevel;
+
+                if (player.CapacityLevel >= levelNeed)
+                    TaskDone?.Invoke();
                 break;
 
         }
@@ -34,29 +62,10 @@ public class PlayerUpgradeTask : MonoBehaviour, IGameTask
     {
         if (currentLevel >= levelNeed)
         {
-            UnSubscribe();
             TaskDone?.Invoke();
 
         }
 
-        void UnSubscribe()
-        {
-            switch (upgradeIndx)
-            {
-                case 0:
-                    player.OnSpeedUpgrade -= CheckUpgradeLevel;
-                    break;
-
-                case 1:
-                    player.OnDamageUpgrade -= CheckUpgradeLevel;
-                    break;
-
-                case 2:
-                    player.OnCapacityUpgrade -= CheckUpgradeLevel;
-                    break;
-
-            }
-        }
     }
 }
 

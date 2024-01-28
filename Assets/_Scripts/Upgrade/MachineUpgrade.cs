@@ -60,7 +60,7 @@ public class MachineUpgrade : MonoBehaviour, ISaveLoad<MachineUpgradeData>, IUpg
 
     protected virtual void UpgradeDataInit()
     {
-        if (_speedUpgradesFields != null)
+        if (_speedUpgradesFields.FieldValue != 0)
             return;
 
         _speedUpgradesFields = new UpgradeField(_machineBaseFields.SpeedData(), SpeedFormula, SpeedPriceFormula);

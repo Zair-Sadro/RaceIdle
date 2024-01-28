@@ -219,6 +219,7 @@ public class BuilderFromTiles : TileCollector, ITilesSave
     public virtual void BuildBySaver()
     {
         forceToBuild = true;
+        IsBuilt = true;
     }
     protected virtual void BuildEffects(GameObject b)
     {

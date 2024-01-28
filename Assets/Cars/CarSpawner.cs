@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CarSpawner : MonoBehaviour
@@ -23,7 +24,7 @@ public class CarSpawner : MonoBehaviour
     [SerializeField] private MergeMaster _mergeMaster;
     [SerializeField] private Camera _raceCamera;
 
-
+    public event Action<int> OnCarSpawned;
     private void Awake()
     {
         GameEventSystem.OnCarBought += SpawnByShop;
@@ -41,7 +42,7 @@ public class CarSpawner : MonoBehaviour
 
         car.CarData.Level = level;
         _raceTrackManager.RegisterCar(car);
-
+        OnCarSpawned?.Invoke(level);
 
     }
     public void Spawn(int level, Vector3 pos, Quaternion rot, int currentCarPoint)

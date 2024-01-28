@@ -27,6 +27,7 @@
 
         public TilesInAllStoragesData tilesInAllStoragesData;
         public float money;
+        public int taskIndx;
         public PlayerData playerData;
 
         public RaceIdleData GetMainGameData()
@@ -47,7 +48,7 @@
             _data.tilesInAllStoragesData = tilesInAllStoragesData;
             _data.money = money;
             _data.playerData = playerData;
-
+            _data.taskIndx = taskIndx;
             return _data;
         }
 
@@ -70,6 +71,7 @@
 
             money = _data.money;
             playerData = _data.playerData;
+            taskIndx = _data.taskIndx;
 
 
         }

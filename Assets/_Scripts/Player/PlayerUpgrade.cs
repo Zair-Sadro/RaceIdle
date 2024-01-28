@@ -15,12 +15,11 @@ public class PlayerUpgrade : MonoBehaviour, ISaveLoad<PlayerData>
     [SerializeField] private UpgradeNumbersData DamageData;
     [SerializeField] private UpgradeNumbersData CapacityData;
 
+    public int SpeedLevel => SpeedData.currentLevel;
+    public int DamageLevel => DamageData.currentLevel;
+    public int CapacityLevel=> CapacityData.currentLevel;
+
     public event Action<int> OnSpeedUpgrade,OnDamageUpgrade,OnCapacityUpgrade;
-
-    private void Start()
-    {
-
-    }
 
     private void UpgradeSpeed()
     {

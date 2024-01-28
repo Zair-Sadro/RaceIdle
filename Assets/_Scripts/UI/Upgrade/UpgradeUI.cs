@@ -7,7 +7,6 @@ public class UpgradeUI : MonoBehaviour
     [SerializeField] private GameObject _upgradeObject;
     private IUpgradeMachine _machineUpgrade;
 
-    [SerializeField] private UpgradeBar _upgradeBar;
     [SerializeField] private UpgradeSlot _incomeSlot;
     [SerializeField] private UpgradeSlot _speedCapacitySlot;
     private WalletSystem _wallet => InstantcesContainer.Instance.WalletSystem;

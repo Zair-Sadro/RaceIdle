@@ -9,6 +9,11 @@ public class CarRepairTask : MonoBehaviour, IGameTask
     private int currentCount;
     public event Action TaskDone;
 
+    public void EndTask()
+    {
+        autoRepair.OnCarRepairByPlayer -= CountCar;
+    }
+
     public void StartTask()
     {
         autoRepair.OnCarRepairByPlayer += CountCar;
@@ -20,7 +25,6 @@ public class CarRepairTask : MonoBehaviour, IGameTask
 
         if(currentCount >= count) 
         {
-            autoRepair.OnCarRepairByPlayer -= CountCar;
             TaskDone?.Invoke();
         }
     }

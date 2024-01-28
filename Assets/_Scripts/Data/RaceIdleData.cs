@@ -19,6 +19,7 @@ public class RaceIdleData
 
     public float money;
     public PlayerData playerData;
+    public int taskIndx;
 
     public RaceIdleData()
     {
@@ -38,6 +39,7 @@ public class RaceIdleData
 
         raceData = new();
         playerData = new();
+        taskIndx = 0;
 
     }
 
