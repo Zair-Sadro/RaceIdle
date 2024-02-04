@@ -4,7 +4,6 @@ using UnityEngine;
 //Создать отдельный класс откуда можно получить данные по машинам , цифрам и тд.
 public class StatsValuesInformator : MonoBehaviour
 {
-    private BuildSaver _buildSaver => InstantcesContainer.Instance.BuildSaver;
     [SerializeField] private MachineFields _junkFields;
 
     private List<TileType> _inventedList = new();
@@ -13,9 +12,9 @@ public class StatsValuesInformator : MonoBehaviour
     {
         _inventedList.Add(TileType.Junk);
         machineFieldsByType.Add(TileType.Junk, _junkFields);
-        _machinesIndexex.Add(0);
+       // _machinesIndexex.Add(0);
 
-        int machineIndx = 1;
+        int machineIndx = 0;
         foreach (var item in machinesList)
         {
             machineFieldsByType.Add(item.typeProduced, item.machineFields);

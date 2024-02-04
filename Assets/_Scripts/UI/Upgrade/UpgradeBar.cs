@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.ProBuilder.AutoUnwrapSettings;
 
 public class UpgradeBar : MonoBehaviour,ILanguageChange
 {
@@ -19,30 +21,50 @@ public class UpgradeBar : MonoBehaviour,ILanguageChange
     private void Awake()
     {
         SubscribeToChange();
-        _upgradeUI.OnIncomeUpgraded += FillBar;
+        _upgradeUI.OnSpeedUpgraded += FillBar;
+        _upgradeUI.OnDataInit += FillBarFromData;
 
         float startLevel = levelsArrayIndex == 1 ? 0 : _maxLevel[levelsArrayIndex - 1];
         fillDelta = 1f / (_maxLevel[levelsArrayIndex] - startLevel);
     }
 
-    //For detection which max level should show after Init
-    public void DetectMaxLevel(int currentLevel)
+    private void FillBarFromData()
     {
-        _currentLevel = currentLevel;
 
-        for (int i = 0; i < _maxLevel.Length; i++)
+        _currentLevel = _upgradeUI.SpeedUpgradeFields.Level;
+        if (_currentLevel == 0)
+            return;
+        if (_currentLevel < 10) 
         {
-            if (currentLevel < _maxLevel[i])
+            _fillImage.fillAmount = fillDelta * _currentLevel;
+        }
+        else 
+        {
+            if (_currentLevel >= 100)
             {
-                levelsArrayIndex = i;
-                finishLevel.text = _maxLevel[i].ToString();
-                break;
+
+                _fillImage.fillAmount = 1;
+                _upgradeUI.OnSpeedUpgraded -= FillBar;
+                TextChange(90.ToString(), 100.ToString());
+                return;
             }
+
+            var secondDigit = _currentLevel % 10;
+            var noSecond = _currentLevel - secondDigit;
+            var firstDigit = noSecond / 10;
+            levelsArrayIndex = firstDigit + 1;
+            var fillAm = secondDigit;
+            _fillImage.fillAmount = fillDelta * fillAm;
+
+
+            float startLevel = _maxLevel[levelsArrayIndex - 1];
+            string min = startLevel.ToString();
+            string max = _maxLevel[levelsArrayIndex].ToString();
+            TextChange(min, max);
         }
 
+
     }
-
-
     private void FillBar(int level)
     {
         _currentLevel = level;
@@ -50,14 +72,30 @@ public class UpgradeBar : MonoBehaviour,ILanguageChange
         LevelCheck();
 
     }
+    private bool MaxLevel() 
+    {
+        if (levelsArrayIndex == _maxLevel.Length)
+        {
+            _fillImage.fillAmount = 1;
+            _upgradeUI.OnSpeedUpgraded -= FillBar;
+            return true;
+        }
 
+        return false;
+
+
+    }
     private void LevelCheck()
     {
         if (_currentLevel == _maxLevel[levelsArrayIndex])
         {
+            ++levelsArrayIndex;
+
+            if (MaxLevel())
+                return;
+
             _fillImage.fillAmount = 0;
 
-            ++levelsArrayIndex;
             float startLevel = _maxLevel[levelsArrayIndex - 1];
             fillDelta = 1f / (_maxLevel[levelsArrayIndex] - startLevel);
 
@@ -69,18 +107,16 @@ public class UpgradeBar : MonoBehaviour,ILanguageChange
 
     private void TextChange(string min, string max)
     {
-        finishLevel.text = level + max.ToString(); 
-        startLevel.text = level + min.ToString();
+        finishLevel.text = level + max; 
+        startLevel.text = level + min;
     }
-
     private string level;
     [SerializeField] private string ru = "левел";
-    [SerializeField] private string en;
+    [SerializeField] private string en = "level";
     public void SubscribeToChange()
     {
         GameEventSystem.OnLanguageChange += ChangeLanguage;
     }
-
     public void ChangeLanguage(string key)
     {
         switch (key)

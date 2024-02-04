@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class MergeMaster : MonoBehaviour
@@ -8,6 +9,8 @@ public class MergeMaster : MonoBehaviour
     [SerializeField] private ParticleSystem _mergeVfx;
     private int currentCarPoint;
     private RaceTrackManager _raceTrackManager;
+
+    public event Action CarMergedEvent;
     void Start()
     {
         _raceTrackManager = InstantcesContainer.Instance.RaceTrackManager;
@@ -55,6 +58,7 @@ public class MergeMaster : MonoBehaviour
         Destroy(top.CarAI.gameObject, 0.1f);
        
         _carSpawner.Spawn(nextLevel,topTransform.position, topTransform.rotation, currentCarPoint);
+        CarMergedEvent?.Invoke();
 
         _mergeVfx.transform.position = topTransform.position;
         _mergeVfx.Play();

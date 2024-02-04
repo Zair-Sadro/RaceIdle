@@ -3,7 +3,6 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static System.Net.Mime.MediaTypeNames;
 
 public class PlayerUpgradeView : UIPanel
 {
@@ -28,7 +27,7 @@ public class PlayerUpgradeView : UIPanel
 
         _exitButt.onClick.AddListener(Close);
         _openButt.onClick.AddListener(Open);
-        _openButt.onClick.AddListener(()=>CheckPrice(_wallet.TotalMoney));
+        _openButt.onClick.AddListener(() => CheckPrice(_wallet.TotalMoney));
 
 
     }
@@ -52,13 +51,13 @@ public class PlayerUpgradeView : UIPanel
         SpeedData = data;
         _currentSpeed.text = ((int)data.currentValue).ToString();
 
-        if (data.IsMaxLevel) 
+        if (data.IsMaxLevel)
         {
             _speedSlot.ChangeTextDirectly(0, "");
             _speedSlot.MaxLevel();
             return;
         }
-        else 
+        else
         {
             _speedSlot.ChangeTextDirectly(data.currentPriceValue, $"+{data.DeltaNumber}");
 
@@ -113,7 +112,7 @@ public class PlayerUpgradeView : UIPanel
         }
 
     }
-    private Action CreateUpgradeAction(Action action, UpgradeNumbersData data, UpgradeSlot upgradeSlot,TMP_Text txt)
+    private Action CreateUpgradeAction(Action action, UpgradeNumbersData data, UpgradeSlot upgradeSlot, TMP_Text txt)
     {
         return (() =>
         {
@@ -124,7 +123,7 @@ public class PlayerUpgradeView : UIPanel
                 upgradeSlot.MaxLevel();
             else
                 upgradeSlot.ChangeTextDirectly(data.currentPriceValue, $"+{data.DeltaNumber}");
-
+            CheckPrice(_wallet.TotalMoney);
 
         });
     }

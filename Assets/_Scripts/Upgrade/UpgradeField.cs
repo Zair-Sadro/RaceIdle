@@ -8,7 +8,7 @@ public class UpgradeField
     private int maxLevel;
     private float currentField;
     private float delta;
-    private Func<float,float, float> formula;
+    private Func<float, float, float> formula;
 
     private UpgradePrice Price;
     public float CurrentPrice => Price.CurrentPrice;
@@ -17,16 +17,16 @@ public class UpgradeField
     public float StartField => startField;
     public int Level => level;
 
-    public bool MaxLevel => maxLevel==level;
+    public bool MaxLevel => maxLevel == level;
 
     public float LevelUp()
     {
         level++;
         Price.PriceUp(level);
         currentField = formula(FieldValue, delta);
-  
+
         return currentField;
-       
+
     }
     public UpgradeValues GetValues()
     {
@@ -37,15 +37,17 @@ public class UpgradeField
     }
 
 
-    public UpgradeField(UpgradeNumbersData machineData, 
-        Func<float, float, float> formula, Func<float,float,float> priceFormula)
+    public UpgradeField(UpgradeNumbersData machineData,
+        Func<float, float, float> formula, Func<float, float, float> priceFormula)
     {
         this.currentField = machineData.currentValue;
         this.startField = machineData.startNumber;
         this.delta = machineData.DeltaNumber;
         this.formula = formula;
         this.maxLevel = machineData.maxLevel;
-        Price = new UpgradePrice(machineData.currentPriceValue,machineData.startNumberPrice, machineData.DeltaNumberPrice,priceFormula);
+        level = machineData.currentLevel;
+
+        Price = new UpgradePrice(machineData.currentPriceValue, machineData.startNumberPrice, machineData.DeltaNumberPrice, priceFormula);
     }
 }
 [Serializable]
@@ -55,7 +57,7 @@ public class UpgradePrice
     private float deltaPrice;
     private float currentPrice;
 
-    private Func<float,float, float> priceFormula;
+    private Func<float, float, float> priceFormula;
     public float CurrentPrice => currentPrice != 0 ? currentPrice : startPrice;
     public float StartPrice => startPrice;
     public float PriceUp(int level)
@@ -67,7 +69,7 @@ public class UpgradePrice
     {
         return priceFormula(CurrentPrice, deltaPrice);
     }
-    public UpgradePrice(float currentPriceValue, float startPrice, float deltaPrice, Func<float,float, float> priceFormula)
+    public UpgradePrice(float currentPriceValue, float startPrice, float deltaPrice, Func<float, float, float> priceFormula)
     {
         currentPrice = currentPriceValue;
         this.startPrice = startPrice;

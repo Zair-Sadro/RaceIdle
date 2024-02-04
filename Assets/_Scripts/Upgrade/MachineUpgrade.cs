@@ -1,4 +1,5 @@
 ﻿using System;
+using TMPro;
 using UnityEngine;
 
 public class MachineUpgrade : MonoBehaviour, ISaveLoad<MachineUpgradeData>, IUpgradeMachine
@@ -8,9 +9,10 @@ public class MachineUpgrade : MonoBehaviour, ISaveLoad<MachineUpgradeData>, IUpg
 
     [SerializeField] private MachineFields _machineBaseFields;
 
+    [SerializeField] private TMP_Text _capacityValueText, _speedValueText, _incomeValueText;
+
     private int[] capacityUpLevels;
     private int indexer;
-    private int maxLevelIndex;
 
     private UpgradeField _speedUpgradesFields;
     private UpgradeField _incomeUpgradesFields;
@@ -18,11 +20,14 @@ public class MachineUpgrade : MonoBehaviour, ISaveLoad<MachineUpgradeData>, IUpg
     public UpgradeField IncomeUpgradesFields { get => _incomeUpgradesFields; private set { } }
 
     public event Action<int> OnIncomeUpgraded;
+    public event Action<int> OnSpeedUpgraded;
+
+
+    public event Action OnDataInit;
 
     private void Start()
     {
         capacityUpLevels = _machineBaseFields.GetCapacityLevels();
-        maxLevelIndex = capacityUpLevels.Length - 1;
         UpgradeDataInit();
         _machineBaseFields.SetCapacity(capacityUpLevels[indexer]);
 
@@ -31,13 +36,17 @@ public class MachineUpgrade : MonoBehaviour, ISaveLoad<MachineUpgradeData>, IUpg
     {
 
         _machineBaseFields.UpgradeSpeed(_speedUpgradesFields);
+        
         CapacityUpgradeCheck();
+        OnSpeedUpgraded?.Invoke(_speedUpgradesFields.Level);
+        _speedValueText.text = _speedUpgradesFields.FieldValue.ToString("0.##");
 
         void CapacityUpgradeCheck()
         {
             if (capacityUpLevels[indexer] == _speedUpgradesFields.Level)
             {
                 _machineBaseFields.CapacityUp(_machineBaseFields.CapacityDelta);
+                _capacityValueText.text = _machineBaseFields.MaxTiles.ToString();
                 indexer++;
                 UpgradeMesh();
             }
@@ -48,7 +57,8 @@ public class MachineUpgrade : MonoBehaviour, ISaveLoad<MachineUpgradeData>, IUpg
     {
 
         _machineBaseFields.UpgradeIncome(_incomeUpgradesFields);
-        OnIncomeUpgraded.Invoke(_incomeUpgradesFields.Level);
+        OnIncomeUpgraded?.Invoke(_incomeUpgradesFields.Level);
+        _incomeValueText.text = _incomeUpgradesFields.FieldValue.ToString("0.##");
 
 
     }
@@ -90,6 +100,12 @@ public class MachineUpgrade : MonoBehaviour, ISaveLoad<MachineUpgradeData>, IUpg
 
         _speedUpgradesFields = new(data.speedData, SpeedFormula, SpeedPriceFormula);
         _incomeUpgradesFields = new(data.incomeData, IncomeFormula, IncomePriceFormula);
+
+        _speedValueText.text = _speedUpgradesFields.FieldValue.ToString("0.##");
+        _incomeValueText.text = _incomeUpgradesFields.FieldValue.ToString("0.##");
+        _capacityValueText.text = _machineBaseFields.MaxTiles.ToString();
+
+        OnDataInit.Invoke();
     }
 
     #region Formuly

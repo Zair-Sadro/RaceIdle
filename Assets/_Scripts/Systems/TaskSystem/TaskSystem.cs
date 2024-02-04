@@ -25,7 +25,13 @@ public class TaskSystem : MonoBehaviour
     public int CurrentTaskIndx => _currentTaskIndx;
     private void Awake()
     {
+        GameEventSystem.OnLanguageChange += RewriteTaskText;
         claimButton.onClick.AddListener(ClaimReward);
+    }
+
+    private void RewriteTaskText(string obj)
+    {
+        text.text = _currentTask.TaskName;
     }
 
     private void ClaimReward()
@@ -71,7 +77,7 @@ public class TaskSystem : MonoBehaviour
             if (_currentTask.icon != null)
                 icon.sprite = _currentTask.icon;
 
-            text.text = _currentTask.taskName;
+            text.text = _currentTask.TaskName;
             reward.text = _currentTask.taskReward.ToString();
         }
     }
@@ -94,34 +100,5 @@ public interface IGameTask
     public void StartTask();
     public void EndTask();
 }
-public class CarMergeTask : MonoBehaviour, IGameTask
-{
-    public event Action TaskDone;
 
-    public void EndTask()
-    {
-        throw new NotImplementedException();
-    }
-
-    public void StartTask()
-    {
-        throw new NotImplementedException();
-    }
-}
-
-public class CarSpawnTask : MonoBehaviour, IGameTask
-{
-    [SerializeField] private CarSpawner spawner;
-    public event Action TaskDone;
-
-    public void EndTask()
-    {
-        spawner.OnCarSpawned -= (t) => TaskDone();
-    }
-
-    public void StartTask()
-    {
-        spawner.OnCarSpawned += (t) => TaskDone();
-    }
-}
 

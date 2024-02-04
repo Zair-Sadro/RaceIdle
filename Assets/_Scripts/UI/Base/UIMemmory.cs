@@ -6,7 +6,8 @@ public class UIMemmory : MonoBehaviour
     private bool _inUI;
     public bool InUI => _inUI;
     public void ShowUI(UIController uIController)
-    {        
+    {
+        if(_lastUI!=uIController)
         CloseUI();
 
         _inUI = true;

@@ -1,4 +1,4 @@
-using System;
+using TMPro;
 using UnityEngine;
 
 public class UpgradeUI : MonoBehaviour
@@ -10,8 +10,6 @@ public class UpgradeUI : MonoBehaviour
     [SerializeField] private UpgradeSlot _incomeSlot;
     [SerializeField] private UpgradeSlot _speedCapacitySlot;
     private WalletSystem _wallet => InstantcesContainer.Instance.WalletSystem;
-
-
     private void Awake()
     {
         _machineUpgrade = _upgradeObject.GetInterface<IUpgradeMachine>();
@@ -72,6 +70,8 @@ public class UpgradeUI : MonoBehaviour
         _speedCapacitySlot.ChangeText(upgradeValues.price, upgradeValues.value);
         if (_machineUpgrade.SpeedUpgradeFields.MaxLevel)
             _speedCapacitySlot.MaxLevel();
+
+
     }
     private void RefreshText()
     {

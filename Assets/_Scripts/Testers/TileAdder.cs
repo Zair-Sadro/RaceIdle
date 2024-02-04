@@ -17,7 +17,7 @@ public class TileAdder : MonoBehaviour
     {
         if (type == TileType.Gold)
         {
-            wallet.Income(1000f);
+            wallet.Income(100000f);
             return;
         }
             

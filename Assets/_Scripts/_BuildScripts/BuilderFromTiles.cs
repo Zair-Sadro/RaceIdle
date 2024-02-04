@@ -13,6 +13,7 @@ public class BuilderFromTiles : TileCollector, ITilesSave
     public GameObject[] collidersAfterBuildOn, collidersBeforeBuildOn;
 
     public GameObject building;
+    public GameObject buildingContractObj;
     private IBuildable buildingContract;
 
     [SerializeField] private Transform _buildEffectPosition;
@@ -35,6 +36,9 @@ public class BuilderFromTiles : TileCollector, ITilesSave
 
     private void Start()
     {
+
+        if (buildingContractObj != null)
+            buildingContract = buildingContractObj.GetInterface<IBuildable>();
 
         if (forceToBuild)
         {
@@ -226,6 +230,7 @@ public class BuilderFromTiles : TileCollector, ITilesSave
         StartCoroutine(BuildCor(b));
 
     }
+    [SerializeField] private bool scaleAfterBuild=true;
     IEnumerator BuildCor(GameObject b)
     {
         if (_buildEffectPosition)
@@ -233,11 +238,16 @@ public class BuilderFromTiles : TileCollector, ITilesSave
 
         yield return new WaitForSeconds(0.2f);
 
-        var normalscale = b.transform.localScale;
-        b.transform.localScale = Vector3.zero;
+        if (scaleAfterBuild) 
+        {
+            var normalscale = b.transform.localScale;
+            b.transform.localScale = Vector3.zero;
+            b.SetActive(true);
+            b.transform.DOScale(normalscale, 0.4f);
+        }
         b.SetActive(true);
         buildingContract?.Build();
-        b.transform.DOScale(normalscale, 0.4f);
+
         Destroy(this, 2f);
 
     }
