@@ -15,7 +15,7 @@ public class JunkCar : MonoBehaviour, IDamageable
     [SerializeField] private GameObject[] carParts;
 
     [SerializeField] private PlayerSlash playerSlash;
-
+    [SerializeField] private AudioService audioService;
     private JunkCarManager _junkCarManager;
     private float _currentHealth;
     private int _partsIndex;
@@ -87,7 +87,7 @@ public class JunkCar : MonoBehaviour, IDamageable
             _junkCarManager.ExplodeTile(this);
 
             ShakeCarPart(carpart);
-
+            audioService.PlayAudo(AudioName.HIT);
             CountDamage();
 
             if (_currentHealth <= 0)

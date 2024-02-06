@@ -15,6 +15,7 @@ public class UniqCar : MonoBehaviour, IDamageable
     [SerializeField] private GameObject[] carParts;
 
     [SerializeField] private PlayerSlash playerSlash;
+    [SerializeField] private AudioService audioService;
     private UniqCarsManager _uniqCarManager;
     private float _currentHealth;
     private int _partsIndex;
@@ -83,7 +84,7 @@ public class UniqCar : MonoBehaviour, IDamageable
             _uniqCarManager.ExplodeTile(this);
 
             ShakeCarPart(carpart);
-
+            audioService.PlayAudo(AudioName.HIT);
             CountDamage();
 
             if (_currentHealth <= 0)

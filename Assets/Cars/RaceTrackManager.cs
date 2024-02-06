@@ -38,9 +38,20 @@ public class RaceTrackManager : MonoBehaviour,ISaveLoad<RaceData>
 
     }
 
+    private bool audioMute;
+    public void MuteCarSound(bool mute) 
+    {
+        audioMute = mute;
+        foreach (var item in _carsOnTrack)
+        {
+            item.Mute(mute);
+        }
+    }
+
     public void RegisterCar(CarAI car)
     {
         _carsOnTrack.Add(car);
+        car.Mute(audioMute);
         CheckCount();
     }
     

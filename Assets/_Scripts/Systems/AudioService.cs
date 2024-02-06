@@ -22,6 +22,7 @@ public class AudioService : MonoBehaviour
 }
 public enum AudioName
 {
+    HIT,
     MERGE,
     BUILD,
     FINISHRACE,

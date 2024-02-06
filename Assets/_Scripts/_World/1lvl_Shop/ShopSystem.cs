@@ -42,7 +42,7 @@ public class ShopSystem : MonoBehaviour
                 }
                 else
                 {
-                    _priceByTypeDict[t.Type] = new TileEcoInfo();
+                    _priceByTypeDict[t.Type] = new TileEcoInfo(t.Type);
                 }
             }
 

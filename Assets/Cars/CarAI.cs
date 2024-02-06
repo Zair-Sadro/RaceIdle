@@ -24,9 +24,26 @@ public class CarAI : MonoBehaviour
     {
         if (other.tag == "LapFinish")
         {
-            if (!_carControll.Stopped) 
+            if (!_carControll.Stopped)
             {
                 InstantcesContainer.Instance.LapControll.LapFinished(_carData);
+            }
+        }
+        else if (other.tag == "NoCarZone")
+        {
+            if (_drive)
+            {
+                transform.position = _currentList[_currentPoint].position;
+            }
+        }
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "NoCarZone")
+        {
+            if (_drive)
+            {
+                transform.position = _currentList[_currentPoint].position;
             }
         }
     }
@@ -166,6 +183,13 @@ public class CarAI : MonoBehaviour
     internal void SetFirstTrackPoint(int v)
     {
         firstTrackPoint = v;
+    }
+
+    [SerializeField] private AudioSource _audioEngine,_audioSkid;
+    internal void Mute(bool mute)
+    {
+        _audioEngine.mute = mute;
+        _audioSkid.mute = mute;
     }
 }
 

@@ -293,6 +293,8 @@ MonoBehaviour:
   repairLevel: 0
   _carSpawner: {fileID: 0}
   _needToMergeSign: {fileID: 0}
+  _buildVFX: {fileID: 0}
+  _oldCar: {fileID: 0}
   _raceTrackMan: {fileID: 0}
   _counterUI: {fileID: 0}
 --- !u!1 &5477626598955049521

@@ -12,6 +12,7 @@ TagManager:
   - Destroyable
   - FxTemporaire
   - LapFinish
+  - NoCarZone
   layers:
   - Default
   - TransparentFX

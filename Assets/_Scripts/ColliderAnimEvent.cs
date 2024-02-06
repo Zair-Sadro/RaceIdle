@@ -11,6 +11,7 @@ public class ColliderAnimEvent : MonoBehaviour
     {
         _coll.enabled = true;
         _boomEfect.SetActive(true);
+
     }
     public void ColliderTurnOff() 
     { 
