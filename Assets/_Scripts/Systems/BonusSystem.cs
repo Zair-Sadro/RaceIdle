@@ -14,7 +14,9 @@ public class BonusSystem : MonoBehaviour
         buildSaver.OnBuilt += CheckID;
         YandexGame.RewardVideoEvent += GetBonus;
 
-        buttonForCarReward.onClick.AddListener(() => YandexGame.RewVideoShow(2));
+        buttonForCarReward.onClick.AddListener(() => {
+            Time.timeScale = 0;
+            AudioListener.volume = 0; YandexGame.RewVideoShow(2); });
         buttonForCarReward.gameObject.SetActive(false);
     }
     private void CheckID(byte obj)
@@ -40,14 +42,20 @@ public class BonusSystem : MonoBehaviour
         if (id == 0)
         {
             GetSpeedBonus();
+            Time.timeScale = 1;
+            AudioListener.volume = 1;
         }
         if (id == 1)
         {
             GetCapacityBonus();
+            Time.timeScale = 1;
+            AudioListener.volume = 1;
         }
         if (id == 2)
         {
             GetCarBonus();
+            Time.timeScale = 1;
+            AudioListener.volume = 1;
         }
     }
 
@@ -64,7 +72,8 @@ public class BonusSystem : MonoBehaviour
     private void ActivateCapacityBonus()
     {
         capacityBonusInScene.gameObject.SetActive(true);
-        capacityBonusInScene.OnPlayerEnter += () => { capacityBonusInScene.gameObject.SetActive(false); YandexGame.RewVideoShow(1); };
+        capacityBonusInScene.OnPlayerEnter += () => { capacityBonusInScene.gameObject.SetActive(false); Time.timeScale = 0;
+            AudioListener.volume = 0; YandexGame.RewVideoShow(1); };
     }
     IEnumerator CapacityBonusNextInstantiate()
     {
@@ -99,8 +108,10 @@ public class BonusSystem : MonoBehaviour
     private void ActivateSpeedBonus()
     {
         speedBonusInScene.gameObject.SetActive(true);
-        speedBonusInScene.OnPlayerEnter += () => { speedBonusInScene.gameObject.SetActive(false); YandexGame.RewVideoShow(0); };
+        speedBonusInScene.OnPlayerEnter += () => { speedBonusInScene.gameObject.SetActive(false); Time.timeScale = 0;
+            AudioListener.volume = 0; YandexGame.RewVideoShow(0); };
     }
+    
     IEnumerator SpeedBonusNextInstantiate()
     {
        yield return new WaitForSeconds(speedCoolDown);

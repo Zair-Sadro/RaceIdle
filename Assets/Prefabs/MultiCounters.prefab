@@ -47,13 +47,18 @@ PrefabInstance:
         type: 3}
       propertyPath: _sp
       value: 
-      objectReference: {fileID: 2238764247276462385}
+      objectReference: {fileID: 0}
     - target: {fileID: 4468049853624822575, guid: 36381b875214dbd4e979754b72826cf7,
         type: 3}
       propertyPath: tileType
       value: 
       objectReference: {fileID: 21300000, guid: 68da7073d5d00bb46931c4319874e2de,
         type: 3}
+    - target: {fileID: 4854790988163791295, guid: 36381b875214dbd4e979754b72826cf7,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 4854790988748260744, guid: 36381b875214dbd4e979754b72826cf7,
         type: 3}
       propertyPath: m_RootOrder
@@ -136,12 +141,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36381b875214dbd4e979754b72826cf7, type: 3}
---- !u!212 &2238764247276462385 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 1673547895317234395, guid: 36381b875214dbd4e979754b72826cf7,
-    type: 3}
-  m_PrefabInstance: {fileID: 587740406007899114}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5438022228847699554 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4854790988748260744, guid: 36381b875214dbd4e979754b72826cf7,
@@ -160,13 +159,18 @@ PrefabInstance:
         type: 3}
       propertyPath: _sp
       value: 
-      objectReference: {fileID: 2238764247289746867}
+      objectReference: {fileID: 0}
     - target: {fileID: 4468049853624822575, guid: 36381b875214dbd4e979754b72826cf7,
         type: 3}
       propertyPath: tileType
       value: 
       objectReference: {fileID: 21300000, guid: ce447f2c5a9ed9c4a842455cfa657df6,
         type: 3}
+    - target: {fileID: 4854790988163791295, guid: 36381b875214dbd4e979754b72826cf7,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 4854790988748260744, guid: 36381b875214dbd4e979754b72826cf7,
         type: 3}
       propertyPath: m_RootOrder
@@ -254,12 +258,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36381b875214dbd4e979754b72826cf7, type: 3}
---- !u!212 &2238764247289746867 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 1673547895317234395, guid: 36381b875214dbd4e979754b72826cf7,
-    type: 3}
-  m_PrefabInstance: {fileID: 587740406027933544}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5438022228835554016 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4854790988748260744, guid: 36381b875214dbd4e979754b72826cf7,
@@ -278,13 +276,18 @@ PrefabInstance:
         type: 3}
       propertyPath: _sp
       value: 
-      objectReference: {fileID: 2238764247320541953}
+      objectReference: {fileID: 0}
     - target: {fileID: 4468049853624822575, guid: 36381b875214dbd4e979754b72826cf7,
         type: 3}
       propertyPath: tileType
       value: 
       objectReference: {fileID: 21300000, guid: 39be4688d1ac51448b564906b93ff850,
         type: 3}
+    - target: {fileID: 4854790988163791295, guid: 36381b875214dbd4e979754b72826cf7,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 4854790988748260744, guid: 36381b875214dbd4e979754b72826cf7,
         type: 3}
       propertyPath: m_RootOrder
@@ -367,12 +370,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36381b875214dbd4e979754b72826cf7, type: 3}
---- !u!212 &2238764247320541953 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 1673547895317234395, guid: 36381b875214dbd4e979754b72826cf7,
-    type: 3}
-  m_PrefabInstance: {fileID: 587740406265821658}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5438022228333935698 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4854790988748260744, guid: 36381b875214dbd4e979754b72826cf7,
@@ -391,13 +388,18 @@ PrefabInstance:
         type: 3}
       propertyPath: _sp
       value: 
-      objectReference: {fileID: 2238764246700681941}
+      objectReference: {fileID: 0}
     - target: {fileID: 4468049853624822575, guid: 36381b875214dbd4e979754b72826cf7,
         type: 3}
       propertyPath: tileType
       value: 
       objectReference: {fileID: 21300000, guid: ae7e0dcae325e574d91cce515d91b01b,
         type: 3}
+    - target: {fileID: 4854790988163791295, guid: 36381b875214dbd4e979754b72826cf7,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 4854790988748260744, guid: 36381b875214dbd4e979754b72826cf7,
         type: 3}
       propertyPath: m_RootOrder
@@ -480,12 +482,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36381b875214dbd4e979754b72826cf7, type: 3}
---- !u!212 &2238764246700681941 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 1673547895317234395, guid: 36381b875214dbd4e979754b72826cf7,
-    type: 3}
-  m_PrefabInstance: {fileID: 587740406583453710}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5438022228284763526 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4854790988748260744, guid: 36381b875214dbd4e979754b72826cf7,

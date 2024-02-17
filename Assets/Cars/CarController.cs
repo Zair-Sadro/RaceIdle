@@ -38,8 +38,8 @@ public class CarController : MonoBehaviour
     {
         _skidSound.Play(AudioName.SKID.ToString());
         _skidSound.Pause();
-        _engineSound.volume = 0.3f;
-        _skidSound.volume = 0.3f;
+        _engineSound.volume = 0.02f;
+        _skidSound.volume = 0.02f;
     }
 
     public void SetDrive(float steerValue, float accelValue)

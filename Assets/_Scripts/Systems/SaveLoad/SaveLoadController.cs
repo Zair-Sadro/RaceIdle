@@ -13,7 +13,7 @@ public class SaveLoadController : MonoBehaviour
     private void OnEnable()
     {
         YandexGame.GetDataEvent += LoadData;
-        GameEventSystem.NeedToSaveProgress += SaveProgress;
+        GameEventSystem.NeedToSaveProgress += _SaveProgress;
 
         // var gameData = (RaceIdleData) FileIOUtility.ReadFromJson<RaceIdleData>("save._data");
         //if (gameData != null)
@@ -25,7 +25,7 @@ public class SaveLoadController : MonoBehaviour
 
     }
 
-    private void SaveProgress()
+    private void _SaveProgress()
     {
         if (!IsEnable)
         {
@@ -52,6 +52,6 @@ public class SaveLoadController : MonoBehaviour
     }
     private void OnApplicationQuit()
     {
-        SaveProgress();
+        _SaveProgress();
     }
 }

@@ -24,10 +24,13 @@ public class ProducerFields : ScriptableObject
     public void UpgradeSpeed(UpgradeField upgradeField)
     {
         _speedNumbers.currentValue = upgradeField.LevelUp();
+        _speedNumbers.currentLevel = upgradeField.Level;
+        _speedNumbers.currentPriceValue = upgradeField.CurrentPrice;
     }
     public void UpgradeIncome(UpgradeField upgradeField)
     {
-        _incomeNumbers.currentValue = upgradeField.LevelUp(); ;
+        _incomeNumbers.currentValue = upgradeField.LevelUp();
+        _incomeNumbers.currentPriceValue = upgradeField.CurrentPrice;
     }
     public UpgradeNumbersData IncomeData()
     {
@@ -56,6 +59,9 @@ public class ProducerFields : ScriptableObject
 
         _speedNumbers.currentPriceValue = _speedNumbers.startNumberPrice;
         _incomeNumbers.currentPriceValue = _incomeNumbers.startNumberPrice;
+
+        _speedNumbers.currentLevel = 0;
+        _incomeNumbers.currentLevel = 0;
     }
 }
 

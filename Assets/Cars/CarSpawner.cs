@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static Cinemachine.DocumentationSortingAttribute;
 
 public class CarSpawner : MonoBehaviour
 {
@@ -28,6 +29,25 @@ public class CarSpawner : MonoBehaviour
     private void Awake()
     {
         GameEventSystem.OnCarBought += SpawnByShop;
+    }
+    public void SpawnFirstCar()
+    {
+        var car = Instantiate(_cars[0], _parent);
+        var pointToFollow = 0;
+
+        car.SetPointsList(_points, _toTrackPoint);
+        car.SetMergeMaster(_mergeMaster);
+        car.SetRaceCamera(_raceCamera);
+
+        car.CarData.LapReward = 0;
+
+        car.transform.position = _1saveSpawnPoints[0].position;
+        car.transform.rotation = _1saveSpawnPoints[0].rotation;
+
+
+        car.RideAfterMerge(pointToFollow);
+
+        _raceTrackManager.RegisterCarByData(car);
     }
     public void Spawn(int level)
     {

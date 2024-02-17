@@ -9,14 +9,14 @@ public class MachineUpgradeTask : MonoBehaviour, IGameTask
 
     public void EndTask()
     {
-        machine.OnIncomeUpgraded -= (s) => TaskDone.Invoke();
-        machine.OnSpeedUpgraded -= (s) => TaskDone.Invoke();
+        machine.OnIncomeUpgraded -= (s) => TaskDone?.Invoke();
+        machine.OnSpeedUpgraded -= (s) => TaskDone?.Invoke();
     }
 
     public void StartTask()
     {
-        machine.OnIncomeUpgraded += (s)=>TaskDone.Invoke();
-        machine.OnSpeedUpgraded += (s) => TaskDone.Invoke();
+        machine.OnIncomeUpgraded += (s)=>TaskDone?.Invoke();
+        machine.OnSpeedUpgraded += (s) => TaskDone?.Invoke();
 
     }
 

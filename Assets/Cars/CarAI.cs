@@ -103,7 +103,6 @@ public class CarAI : MonoBehaviour
         {
             _currentPoint++;
         }
-        _carData.CurrentPoint = _currentPoint;
 
     }
     #endregion

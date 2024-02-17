@@ -1,7 +1,7 @@
 {
-    "idSave": 7,
+    "idSave": 4,
     "isFirstSession": false,
-    "language": "ru",
+    "language": "en",
     "promptDone": false,
     "buildData": {
         "machineTileCount": 0,
@@ -239,13 +239,19 @@
         ]
     },
     "tileSetterData": {
-        "_junkTiles": 5,
+        "_junkTiles": 0,
         "_ironTiles": 0,
         "_plasticTiles": 0,
         "_rubberTiles": 0
     },
     "raceData": {
-        "Cars": []
+        "Cars": [
+            {
+                "ValueNumber": 0,
+                "LapReward": 0.0,
+                "Level": 0
+            }
+        ]
     },
     "ironMachine": {
         "speedData": {

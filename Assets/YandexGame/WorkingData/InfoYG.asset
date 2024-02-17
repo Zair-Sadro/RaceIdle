@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efa747916aa66674d96ea40ca8a480b2, type: 3}
   m_Name: InfoYG
   m_EditorClassIdentifier: 
-  scopes: 1
+  scopes: 0
   playerPhotoSize: 0
   autoGameReadyAPI: 1
   playerInfoSimulation:
     authorized: 1
     isMobile: 0
-    language: ru
+    language: eng
     name: Player this
     uniqueID: 000
     photo: https://justplaygames.ru/public/icon_player.png
@@ -26,17 +26,17 @@ MonoBehaviour:
   showFirstAd: 1
   rewardedAfterClosing: 1
   adDisplayCalls: 0
-  fullscreenAdInterval: 60
+  fullscreenAdInterval: 120
   durationOfAdSimulation: 0.5
   loadAdWithDelaySimulation: 0
   testErrorOfRewardedAdsInEditor: 0
   saveCloud: 1
-  flush: 0
+  flush: 1
   localSaveSync: 1
   saveCloudInterval: 5
-  saveOnQuitGame: 0
+  saveOnQuitGame: 1
   quitGameParameters:
-    objectName: YandexGame
+    objectName: SaveLoad
     methodName: _SaveProgress
   leaderboardEnable: 0
   saveScoreAnonymousPlayers: 1
@@ -329,4 +329,4 @@ MonoBehaviour:
   pixelRatioEnable: 0
   pixelRatioValue: 1
   loadGameRun: 0
-  staticRBTInGame: 0
+  staticRBTInGame: 1

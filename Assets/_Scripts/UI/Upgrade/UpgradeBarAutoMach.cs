@@ -1,14 +1,14 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 
-public class UpgradeBar : MonoBehaviour, ILanguageChange
+public class UpgradeBarAutoMach : MonoBehaviour, ILanguageChange
 {
     [SerializeField] private int[] _maxLevel;
 
     [SerializeField] private Image _fillImage;
     [SerializeField] TMPro.TMP_Text startLevel, finishLevel;
 
-    [SerializeField] private MachineUpgrade _upgradeUI;
+    [SerializeField] private AutoMachineUpgrade _autoMachUpgrd;
 
 
     private int _currentLevel;
@@ -19,8 +19,8 @@ public class UpgradeBar : MonoBehaviour, ILanguageChange
     private void Awake()
     {
         SubscribeToChange();
-        _upgradeUI.OnSpeedUpgraded += FillBar;
-        _upgradeUI.OnDataInit += FillBarFromData;
+        _autoMachUpgrd.OnSpeedUpgraded += FillBar;
+        _autoMachUpgrd.OnDataInit += FillBarFromData;
 
         float startLevel = levelsArrayIndex == 1 ? 0 : _maxLevel[levelsArrayIndex - 1];
         fillDelta = 1f / (_maxLevel[levelsArrayIndex] - startLevel);
@@ -29,7 +29,7 @@ public class UpgradeBar : MonoBehaviour, ILanguageChange
     private void FillBarFromData()
     {
 
-        _currentLevel = _upgradeUI.SpeedUpgradeFields.Level;
+        _currentLevel = _autoMachUpgrd.SpeedUpgradeFields.Level;
         if (_currentLevel == 0)
             return;
         if (_currentLevel < 10)
@@ -42,7 +42,7 @@ public class UpgradeBar : MonoBehaviour, ILanguageChange
             {
 
                 _fillImage.fillAmount = 1;
-                _upgradeUI.OnSpeedUpgraded -= FillBar;
+                _autoMachUpgrd.OnSpeedUpgraded -= FillBar;
                 TextChange(90.ToString(), 100.ToString());
                 return;
             }
@@ -75,7 +75,7 @@ public class UpgradeBar : MonoBehaviour, ILanguageChange
         if (levelsArrayIndex == _maxLevel.Length)
         {
             _fillImage.fillAmount = 1;
-            _upgradeUI.OnSpeedUpgraded -= FillBar;
+            _autoMachUpgrd.OnSpeedUpgraded -= FillBar;
             return true;
         }
 
@@ -109,7 +109,7 @@ public class UpgradeBar : MonoBehaviour, ILanguageChange
         startLevel.text = level + min;
     }
     private string level;
-    [SerializeField] private string ru = "ëåâåë";
+    [SerializeField] private string ru = "Ð»ÐµÐ²ÐµÐ»";
     [SerializeField] private string en = "level";
     public void SubscribeToChange()
     {

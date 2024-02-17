@@ -13,6 +13,7 @@ public class CarMergeTask : MonoBehaviour, IGameTask
 
     public void StartTask()
     {
+        
         mergeMaster.CarMergedEvent += TaskDone;
     }
 }
