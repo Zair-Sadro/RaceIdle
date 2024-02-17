@@ -36,7 +36,13 @@ public class GameTask : MonoBehaviour
     private string l;
     private void CheckTranslate()
     {
+#if UNITY_EDITOR
+        l = YandexGame.savesData.language;
+
+#else
         l = YandexGame.EnvironmentData.language;
+#endif
+
     }
 }
 

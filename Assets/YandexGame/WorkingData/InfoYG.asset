@@ -18,7 +18,7 @@ MonoBehaviour:
   playerInfoSimulation:
     authorized: 1
     isMobile: 0
-    language: eng
+    language: en
     name: Player this
     uniqueID: 000
     photo: https://justplaygames.ru/public/icon_player.png
@@ -328,5 +328,5 @@ MonoBehaviour:
   backgroundImageFormat: 3
   pixelRatioEnable: 0
   pixelRatioValue: 1
-  loadGameRun: 0
+  loadGameRun: 1
   staticRBTInGame: 1
