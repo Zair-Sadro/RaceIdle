@@ -1,5 +1,5 @@
 {
-    "idSave": 3,
+    "idSave": 5,
     "isFirstSession": false,
     "language": "en",
     "promptDone": false,
@@ -239,7 +239,7 @@
         ]
     },
     "tileSetterData": {
-        "_junkTiles": 0,
+        "_junkTiles": 5,
         "_ironTiles": 0,
         "_plasticTiles": 0,
         "_rubberTiles": 0
