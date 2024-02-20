@@ -55,7 +55,7 @@ public class UpgradeUI : MonoBehaviour
         _incomeSlot.ChangeText(upgradeValues.price, upgradeValues.value);
 
         if (_machineUpgrade.IncomeUpgradesFields.MaxLevel)
-            _speedCapacitySlot.MaxLevel();
+            _incomeSlot.MaxLevel();
 
     }
     private void CapacitySpeedUpgrade()

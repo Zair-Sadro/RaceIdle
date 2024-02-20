@@ -40,10 +40,10 @@ public class GameTask : MonoBehaviour
         //        l = YandexGame.savesData.language;
 
         //#else
-        //        l = YandexGame.EnvironmentData.language;
+        //                l = YandexGame.EnvironmentData.language;
         //#endif
-        l = YandexGame.savesData.language;
 
+        l = YandexGame.savesData.language;
     }
 }
 

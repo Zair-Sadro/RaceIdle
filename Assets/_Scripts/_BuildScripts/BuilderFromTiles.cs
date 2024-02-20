@@ -236,6 +236,8 @@ public class BuilderFromTiles : TileCollector, ITilesSave
         if (_buildEffectPosition)
             _buildSaver.BuildEffect(_buildEffectPosition.position);
 
+        buildingContract?.Build();
+
         yield return new WaitForSeconds(0.2f);
 
         if (scaleAfterBuild) 
@@ -246,7 +248,7 @@ public class BuilderFromTiles : TileCollector, ITilesSave
             b.transform.DOScale(normalscale, 0.4f);
         }
         b.SetActive(true);
-        buildingContract?.Build();
+
 
         Destroy(this, 2f);
 
