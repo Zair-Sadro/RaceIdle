@@ -6,8 +6,10 @@ using YG;
 public class RewardAfterBuild : MonoBehaviour, IBuildable
 {
     [SerializeField] private TileSetter _tileSetter;
+    [SerializeField] private GameObject _uniqCar;
     public void Build()
     {
+        _uniqCar.SetActive(true);
         if (YandexGame.savesData.buildData.Buildings.Contains(3))
             return;
 

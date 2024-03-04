@@ -456,8 +456,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _carData:
     ValueNumber: 9
-    LapReward: 10
-    CurrentPoint: 0
+    LapReward: 11
     Level: 0
   _pointRange: 14
   _collider: {fileID: 2657870182059087877}

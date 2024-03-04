@@ -16,6 +16,7 @@ public class GameTask : MonoBehaviour
     {
         get
         {
+
             if (l == "ru")
                 return taskNameRU;
             else
@@ -43,7 +44,9 @@ public class GameTask : MonoBehaviour
         //                l = YandexGame.EnvironmentData.language;
         //#endif
 
-        l = YandexGame.savesData.language;
+        l = YandexGame.EnvironmentData.language;
+
+
     }
 }
 

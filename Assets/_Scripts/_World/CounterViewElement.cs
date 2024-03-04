@@ -15,7 +15,15 @@ public class CounterViewElement : MonoBehaviour
     public void InitCount(int currentCount,int max) 
     {
         this.max = max.ToString();
-        counter.text = $"{currentCount}/{this.max}";
+        if(max==0) 
+        {
+            counter.text = "";
+        }
+        else
+        {
+            counter.text = $"{currentCount}/{this.max}";
+        }
+
     }
 
 }

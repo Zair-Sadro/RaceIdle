@@ -123,6 +123,7 @@ public class CarAI : MonoBehaviour
     }
     public void RideFromRepair()
     {
+        if(_dragAndDrop!=null)
         _dragAndDrop.NoDragNow = true;
         StartCoroutine(RidingFromRep());
     }
@@ -142,7 +143,8 @@ public class CarAI : MonoBehaviour
         _currentList = _trackPoints;
         _pointRange = rang;
         _gasPower = 1f;
-        _dragAndDrop.NoDragNow = false;
+        if (_dragAndDrop != null)
+            _dragAndDrop.NoDragNow = false;
 
     }
     public void RideAfterMerge(int pointNumber)

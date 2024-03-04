@@ -320,6 +320,7 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
     public void SetCapacity(int value) 
     {
         maxTiles = value;
+        _isMaxCapacity = false;
     }
 
     public void SetBonus(int value,float duration)

@@ -16,7 +16,9 @@ public class InstantcesContainer : MonoBehaviour
     [SerializeField] private RaceTrackManager _raceTrackManager;
     [SerializeField] private LapControll _lapControll;
     [SerializeField] private AudioService _audioService;
+    [SerializeField] private PlayerSlash _playerSlasher;
 
+    public PlayerSlash PlayerSlasher => _playerSlasher;
     public RaceIdleGame RaceIdleGame => _raceIdleGame;
     public PlayerController PlayerController => _playerController;
     public TileSetter TileSetter => _tileSetter;

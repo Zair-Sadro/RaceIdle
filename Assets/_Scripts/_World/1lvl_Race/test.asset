@@ -15,10 +15,55 @@ MonoBehaviour:
   levels:
   - requierments:
     - _type: 0
-      _amount: 2
+      _amount: 4
+    level: 0
+  - requierments:
+    - _type: 0
+      _amount: 6
+    level: 0
+  - requierments:
+    - _type: 0
+      _amount: 8
+    level: 0
+  - requierments:
+    - _type: 0
+      _amount: 10
+    level: 0
+  - requierments:
+    - _type: 0
+      _amount: 4
     - _type: 1
       _amount: 2
+    level: 0
+  - requierments:
+    - _type: 0
+      _amount: 6
+    - _type: 1
+      _amount: 4
+    level: 0
+  - requierments:
+    - _type: 0
+      _amount: 6
+    - _type: 1
+      _amount: 4
     - _type: 2
-      _amount: 2
+      _amount: 4
+    level: 0
+  - requierments:
+    - _type: 0
+      _amount: 6
+    - _type: 1
+      _amount: 4
+    - _type: 2
+      _amount: 4
+    level: 0
+  - requierments:
+    - _type: 0
+      _amount: 3
+    - _type: 1
+      _amount: 3
+    - _type: 2
+      _amount: 3
     - _type: 3
-      _amount: 2
+      _amount: 3
+    level: 0

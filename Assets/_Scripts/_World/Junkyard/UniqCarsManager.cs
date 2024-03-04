@@ -6,6 +6,7 @@ using UnityEngine;
 public class UniqCarsManager :MonoBehaviour
 {
     [SerializeField] private float spawnCoolDown;
+    [SerializeField] private float spawnCoolDownForFirstCar;
     [SerializeField] private List<UniqCar> uniqCars = new List<UniqCar>();
 
     private ResourceTilesSpawn tileSpawn => InstantcesContainer.Instance.ResourceTilesSpawn;
@@ -34,7 +35,15 @@ public class UniqCarsManager :MonoBehaviour
     }
     public void DestroyCar(UniqCar car)
     {
-        StartCoroutine(CarRespawn(spawnCoolDown, car));
+        if (car.isFirst)
+        {
+            StartCoroutine(CarRespawn(spawnCoolDownForFirstCar, car));
+        }
+        else
+        {
+            StartCoroutine(CarRespawn(spawnCoolDown, car));
+        }
+  
     }
 
     private IEnumerator CarRespawn(float time, UniqCar car)

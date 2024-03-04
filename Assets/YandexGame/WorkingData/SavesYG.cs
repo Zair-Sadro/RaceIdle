@@ -29,6 +29,7 @@
         public float money;
         public int taskIndx;
         public PlayerData playerData;
+        public int autoRepairLevel;
 
         public RaceIdleData GetMainGameData()
         {
@@ -49,6 +50,7 @@
             _data.money = money;
             _data.playerData = playerData;
             _data.taskIndx = taskIndx;
+            _data.autoRepairLevel = autoRepairLevel;
             return _data;
         }
 
@@ -72,6 +74,8 @@
             money = _data.money;
             playerData = _data.playerData;
             taskIndx = _data.taskIndx;
+
+            autoRepairLevel = _data.autoRepairLevel;
 
 
         }

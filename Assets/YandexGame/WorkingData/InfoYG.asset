@@ -328,5 +328,5 @@ MonoBehaviour:
   backgroundImageFormat: 3
   pixelRatioEnable: 0
   pixelRatioValue: 1
-  loadGameRun: 1
+  loadGameRun: 0
   staticRBTInGame: 1

@@ -7,7 +7,7 @@ public class BonusSystem : MonoBehaviour
 {
     [SerializeField] private BuildSaver buildSaver;
     [SerializeField] private byte lastBuildIDForActivateCapacity, lastBuildIDForActivateSpeed, lastBuildIDForActivateCar;
-
+    [SerializeField] private PlayerUpgrade playerUpgs;
 
     private void Awake()
     {
@@ -124,11 +124,11 @@ public class BonusSystem : MonoBehaviour
     }
     IEnumerator SpeedBonusTimer()
     {
-        var t = player.MaxSpeed;
+        var t = playerUpgs.SpeedValue;
         player.SetSpeed(speedValue);
         print("Bonuse reward got it!");
         yield return new WaitForSeconds(speedBonusDuration);
-        player.SetSpeed(t);
+        player.SetSpeedByBonus(t);
 
         StartCoroutine(SpeedBonusNextInstantiate());
     }

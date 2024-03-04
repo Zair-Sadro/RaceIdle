@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using static Cinemachine.DocumentationSortingAttribute;
 
 public class CarSpawner : MonoBehaviour
 {
     [SerializeField] private List<CarAI> _cars;
-    private RaceTrackManager _raceTrackManager 
+    private RaceTrackManager _raceTrackManager
         => InstantcesContainer.Instance.RaceTrackManager;
 
     [SerializeField] private Transform _parent;
@@ -25,19 +24,21 @@ public class CarSpawner : MonoBehaviour
     [SerializeField] private MergeMaster _mergeMaster;
     [SerializeField] private Camera _raceCamera;
 
+    [SerializeField] private CarAI _goldCar;
     public event Action<int> OnCarSpawned;
     private void Awake()
     {
         GameEventSystem.OnCarBought += SpawnByShop;
     }
-    public void SpawnFirstCar()
+    public void SpawnGoldCar()
     {
-        var car = Instantiate(_cars[0], _parent);
+        var car = Instantiate(_goldCar, _parent);
         var pointToFollow = 0;
+
+        car.GetComponent<GoldCar>().carSpawner = this;
 
         car.SetPointsList(_points, _toTrackPoint);
         car.SetMergeMaster(_mergeMaster);
-        car.SetRaceCamera(_raceCamera);
 
         car.CarData.LapReward = 0;
 
@@ -47,7 +48,6 @@ public class CarSpawner : MonoBehaviour
 
         car.RideAfterMerge(pointToFollow);
 
-        _raceTrackManager.RegisterCarByData(car);
     }
     public void Spawn(int level)
     {
@@ -81,7 +81,7 @@ public class CarSpawner : MonoBehaviour
     }
 
 
-    public void SpawnByShop(int level) 
+    public void SpawnByShop(int level)
     {
         var car =
        Instantiate(_cars[level], _shopPoint.position, _shopPoint.rotation, _parent);

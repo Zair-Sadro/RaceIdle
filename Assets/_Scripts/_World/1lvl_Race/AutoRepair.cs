@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AutoRepair : MonoBehaviour, IUpgradable, ITilesSave
+public class AutoRepair : MonoBehaviour, ITilesSave,ISaveLoad<int>
 {
     [SerializeField] private AutoRepairData _data;
     [Space(5)]
@@ -112,6 +112,7 @@ public class AutoRepair : MonoBehaviour, IUpgradable, ITilesSave
 
         yield return new WaitForSeconds(2f);
         _oldCar.DOScale(Vector3.one, 0.7f);
+        repairLevel++;
         GetNextTilesRequired();
         _carRiding = false;
 
@@ -124,6 +125,37 @@ public class AutoRepair : MonoBehaviour, IUpgradable, ITilesSave
         GetNextTilesRequired();
         SubscribeForTilesDetect(true);
         _raceTrackMan.NoSpaceOnTrack += CarsCountCheck;
+    }
+
+    public int GetData()
+    {
+        return repairLevel;
+    }
+
+    public void Initialize(int level)
+    {
+        repairLevel = level;
+    }
+    public void SetTiles(List<ProductRequierment> tilesList)
+    {
+        saveData = tilesList;
+        GetNextTilesRequired();
+        if (_tileCountByType.Count > 0)
+        {
+            SetFromSave();
+
+            var reqcopy = _requiredTypes.ToArray();
+            foreach (var req in reqcopy)
+            {
+                if (_tileCountByType[req] >= _productRequierments[req].Amount)
+                {
+                    _requiredTypes.Remove(req);
+
+                }
+            }
+
+        }
+
     }
     private void SetFromSave()
     {
@@ -144,6 +176,7 @@ public class AutoRepair : MonoBehaviour, IUpgradable, ITilesSave
         {
             _counterUI.ChangeCount(item, _tileCountByType[item]);
         }
+     
 
     }
 
@@ -170,6 +203,7 @@ public class AutoRepair : MonoBehaviour, IUpgradable, ITilesSave
         _requiredTypes = new List<TileType>();
         _productRequierments = new();
 
+        ClearText();
 
         for (int i = 0; i < lenght; i++)
         {
@@ -189,7 +223,13 @@ public class AutoRepair : MonoBehaviour, IUpgradable, ITilesSave
 
             }
         }
-
+        void ClearText()
+        {
+            _counterUI.InitCounerValues(TileType.Junk, 0, 0);
+            _counterUI.InitCounerValues(TileType.Iron, 0, 0);
+            _counterUI.InitCounerValues(TileType.Plastic, 0, 0);
+            _counterUI.InitCounerValues(TileType.Rubber, 0, 0);
+        }
         SubscribeForTilesDetect(true);
 
     }
@@ -212,37 +252,8 @@ public class AutoRepair : MonoBehaviour, IUpgradable, ITilesSave
         _playerTilesBag._isGivingTiles = false;
     }
 
-    public void UpgradeSpeedCapacity(int level)
-    {
-
-    }
-
-    public void UpgradeIncome(int level)
-    {
-
-    }
-
     private List<ProductRequierment> saveData;
-    public void SetTiles(List<ProductRequierment> tilesList)
-    {
-        saveData = tilesList;
-        if (_tileCountByType.Count > 0)
-        {
-            SetFromSave();
 
-            var reqcopy = _requiredTypes.ToArray();
-            foreach (var req in reqcopy)
-            {
-                if (_tileCountByType[req] >= _productRequierments[req].Amount)
-                {
-                    _requiredTypes.Remove(req);
-
-                }
-            }
-
-        }
-
-    }
 
     public List<ProductRequierment> GetTiles()
     {
@@ -261,6 +272,8 @@ public class AutoRepair : MonoBehaviour, IUpgradable, ITilesSave
         return list;
 
     }
+
+
 }
 
 

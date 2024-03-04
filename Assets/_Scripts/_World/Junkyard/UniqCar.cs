@@ -22,6 +22,7 @@ public class UniqCar : MonoBehaviour, IDamageable
 
     private Vector3 _startPos;
     public float RespawnNoDamageTime => respawnNoDamageTime;
+    public bool isFirst;
     private void Start()
     {
         _startPos = transform.position;
@@ -165,6 +166,8 @@ public class UniqCar : MonoBehaviour, IDamageable
 
     #region HPBar visibility (Видимость хп машины)
     bool show;
+  
+
     private void HPBarShow()
     {
         hpFillImage.gameObject.SetActive(true);

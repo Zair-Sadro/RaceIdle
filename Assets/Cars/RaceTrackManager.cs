@@ -101,20 +101,10 @@ public class RaceTrackManager : MonoBehaviour,ISaveLoad<RaceData>
     }
     private void SpawnByData() 
     {
-        if (_data.Cars.Count == 0)
+        _carSpawner.SpawnGoldCar();
+        if (_data.Cars.Count != 0)
         {
-            _carSpawner.SpawnFirstCar();
-        }
-        else if (_data.Cars.Count == 1)
-        {
-            if (_data.Cars[0].LapReward==0)
-                _carSpawner.SpawnFirstCar();
-            else
-                _carSpawner.SpawnByData(_data.Cars);
-
-        }
-        else
-        {
+            
             _carSpawner.SpawnByData(_data.Cars);
         }
         

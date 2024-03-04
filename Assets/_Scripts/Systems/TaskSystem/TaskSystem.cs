@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using YG;
 
 public class TaskSystem : MonoBehaviour
 {
@@ -25,7 +26,7 @@ public class TaskSystem : MonoBehaviour
     public int CurrentTaskIndx => _currentTaskIndx;
     private void Awake()
     {
-        GameEventSystem.OnLanguageChange += RewriteTaskText;
+        YandexGame.GetDataEvent += ()=>RewriteTaskText("s");
         claimButton.onClick.AddListener(ClaimReward);
     }
 

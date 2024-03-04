@@ -6,8 +6,13 @@ public class LapControll : MonoBehaviour
     [SerializeField] private ParticleSystem _goldVFX;
     public void LapFinished(CarData cardata)
     {
-        _walletSystem.Income(cardata.LapReward);
-        InstantcesContainer.Instance.AudioService.PlayAudo(AudioName.FINISHRACE);
+        if (cardata.LapReward > 0)
+        {
+            _walletSystem.Income(cardata.LapReward);
+
+            InstantcesContainer.Instance.AudioService.PlayAudo(AudioName.FINISHRACE);
+        }
+
         //_particleSystem.Play();
     }
 }

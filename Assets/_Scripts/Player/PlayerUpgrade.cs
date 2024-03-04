@@ -16,6 +16,8 @@ public class PlayerUpgrade : MonoBehaviour, ISaveLoad<PlayerData>
     [SerializeField] private UpgradeNumbersData CapacityData;
 
     public int SpeedLevel => SpeedData.currentLevel;
+
+    public float SpeedValue => SpeedData.currentValue;
     public int DamageLevel => DamageData.currentLevel;
     public int CapacityLevel=> CapacityData.currentLevel;
 
@@ -95,6 +97,12 @@ public class PlayerUpgrade : MonoBehaviour, ISaveLoad<PlayerData>
             SpeedData.currentPriceValue = playerData.SpeedPriceValue;
             DamageData.currentPriceValue = playerData.DamagePriceValue;
         }
+        if (SpeedData.currentValue < 9)
+            SpeedData.currentValue = 10;
+
+        if (CapacityData.currentValue < 9)
+            CapacityData.currentValue = 10;
+
         upgradeView.InitSpeed(SpeedData, UpgradeSpeed);
         upgradeView.InitDamage(DamageData, UpgradeDamage);
         upgradeView.InitCapacity(CapacityData, UpgradeCapacity);
