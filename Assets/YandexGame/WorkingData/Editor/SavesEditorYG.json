@@ -1,26 +1,19 @@
 {
-    "idSave": 9,
+    "idSave": 32,
     "isFirstSession": false,
     "language": "ru",
     "promptDone": false,
     "buildData": {
-        "machineTileCount": 2,
+        "machineTileCount": 3,
         "autoMachineTilesCount": 0,
         "Buildings": [
             7,
             5,
-            4
+            4,
+            0,
+            6
         ],
         "SavedBuildingsTiles": [
-            {
-                "ID": 0,
-                "SavedTiles": [
-                    {
-                        "_type": 0,
-                        "_amount": 0
-                    }
-                ]
-            },
             {
                 "ID": 1,
                 "SavedTiles": [
@@ -47,7 +40,7 @@
                 "SavedTiles": [
                     {
                         "_type": 0,
-                        "_amount": 0
+                        "_amount": 3
                     },
                     {
                         "_type": 1,
@@ -60,27 +53,6 @@
                 "SavedTiles": [
                     {
                         "_type": 0,
-                        "_amount": 0
-                    }
-                ]
-            },
-            {
-                "ID": 6,
-                "SavedTiles": [
-                    {
-                        "_type": 0,
-                        "_amount": 0
-                    },
-                    {
-                        "_type": 1,
-                        "_amount": 0
-                    },
-                    {
-                        "_type": 2,
-                        "_amount": 0
-                    },
-                    {
-                        "_type": 4,
                         "_amount": 0
                     }
                 ]
@@ -189,9 +161,9 @@
     },
     "tileSetterData": {
         "_junkTiles": 0,
-        "_ironTiles": 8,
+        "_ironTiles": 11,
         "_plasticTiles": 13,
-        "_rubberTiles": 16
+        "_rubberTiles": 4
     },
     "raceData": {
         "Cars": []
@@ -341,7 +313,7 @@
                 "tilesList": [
                     {
                         "_type": 0,
-                        "_amount": 0
+                        "_amount": 1
                     }
                 ]
             },
@@ -359,7 +331,7 @@
                 "tilesList": [
                     {
                         "_type": 1,
-                        "_amount": 0
+                        "_amount": 1
                     }
                 ]
             },
@@ -395,7 +367,7 @@
                 "tilesList": [
                     {
                         "_type": 0,
-                        "_amount": 1
+                        "_amount": 3
                     }
                 ]
             },
@@ -428,7 +400,7 @@
             }
         ]
     },
-    "money": 197911.0,
+    "money": 197882.0,
     "taskIndx": 0,
     "playerData": {
         "SpeedValue": 10.0,
