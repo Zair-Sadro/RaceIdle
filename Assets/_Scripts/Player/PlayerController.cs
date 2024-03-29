@@ -1,5 +1,4 @@
 using System;
-using System.Diagnostics.Tracing;
 using UnityEngine;
 using YG;
 
@@ -7,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private float angleToExitFight;
-    
+
     [SerializeField] private Rigidbody body;
     [SerializeField] private FloatingJoystick joystick;
 
@@ -19,7 +18,7 @@ public class PlayerController : MonoBehaviour
 
     private bool isMobile;
     private bool movedByKey;
-    private bool isDestroyableInFront;
+    public bool isDestroyableInFront;
     #region Properties
 
     public Animator Animator => _animator;
@@ -71,7 +70,7 @@ public class PlayerController : MonoBehaviour
         if (xMove == 0 && zMove == 0)
         {
             velocity = Vector3.zero;
-            _animator.SetBool("Run", false);
+
             return false;
         }
 
@@ -92,6 +91,8 @@ public class PlayerController : MonoBehaviour
 
         _curSpeed = MathF.Round(body.velocity.magnitude, 2);
 
+        body.velocity = new Vector3(xMove * speed, body.velocity.y,
+           zMove * speed);
 
         return true;
 
@@ -115,44 +116,63 @@ public class PlayerController : MonoBehaviour
     {
         if (joystick.Horizontal != 0 || joystick.Vertical != 0)
         {
-            Vector3 lookDirection = Camera.main.transform.forward;
+            Vector3 lookDirection = transform.forward;
             Vector3 moveDirection = new Vector3(joystick.Horizontal, 0, joystick.Vertical).normalized;
+
 
             // Определяем угол между направлением взгляда и направлением движения
             float angle = Vector3.Angle(lookDirection, moveDirection);
-            CheckFrontAndDirectrion(angle);
 
-            // Применяем поворот
-            transform.rotation = Quaternion.LookRotation(moveDirection);
+            if (!NoEnemy(angle))
+            {
+                transform.rotation = Quaternion.LookRotation(moveDirection);
+
+
+                body.velocity = new Vector3(joystick.Horizontal * speed, body.velocity.y, joystick.Vertical * speed);
+            }
+
+
         }
         else
         {
             _curSpeed = MathF.Round(body.velocity.magnitude, 2);
-            _animator.SetBool("Run", false);
+
             return;
         }
 
         _curSpeed = MathF.Round(body.velocity.magnitude, 2);
 
-        void CheckFrontAndDirectrion(float angle)
+
+        bool NoEnemy(float angle)
         {
-            if (isDestroyableInFront)
+
+            if (isDestroyableInFront || _fightSystem.HasEnemy)
             {
-                if (angle >= angleToExitFight)
-                    _animator.SetBool("Run", true);
+                if (MathF.Abs(angle) >= angleToExitFight)
+                {
+                    return false;
+                }
                 else
-                    _animator.SetBool("Run", false);
+                {
+                    return true;
+                }
+
             }
             else
             {
-                _animator.SetBool("Run", true);
+                return false;
             }
+
         }
     }
+
     [SerializeField] private float _maxDistRay = 5f;
+    [SerializeField] private PlayerSlash _fightSystem;
 
     void Update()
     {
+        _animator.SetFloat("Speed", _curSpeed);
+        print(_curSpeed);
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit, _maxDistRay))
         {
@@ -160,12 +180,40 @@ public class PlayerController : MonoBehaviour
             if (hit.collider.CompareTag("Destroyable"))
             {
                 isDestroyableInFront = true;
+                return;
             }
-            else 
+            else
             {
                 isDestroyableInFront = false;
             }
         }
+        if (Physics.Raycast(transform.position, -transform.right, out hit, _maxDistRay))
+        {
+            // Если луч столкнулся с объектом с указанным тегом
+            if (hit.collider.CompareTag("Destroyable"))
+            {
+                isDestroyableInFront = true;
+                return;
+            }
+            else
+            {
+                isDestroyableInFront = false;
+            }
+        }
+        if (Physics.Raycast(transform.position, transform.right, out hit, _maxDistRay))
+        {
+            // Если луч столкнулся с объектом с указанным тегом
+            if (hit.collider.CompareTag("Destroyable"))
+            {
+                isDestroyableInFront = true;
+                return;
+            }
+            else
+            {
+                isDestroyableInFront = false;
+            }
+        }
+
 
     }
 

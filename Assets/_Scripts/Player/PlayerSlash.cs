@@ -6,7 +6,7 @@ public class PlayerSlash : MonoBehaviour
     [SerializeField] private Collider[] _fightColliders;
 
     [SerializeField] private int damage = 1;
-    [SerializeField] private string[] _attackNames;
+    [SerializeField] private int attacksTypesCount;
 
     private bool _hasEnemy;
     private PlayerController controller => InstantcesContainer.Instance.PlayerController;
@@ -24,6 +24,8 @@ public class PlayerSlash : MonoBehaviour
         {
             controller.Animator.SetBool("Attacking", true);
             _hasEnemy = true;
+            Attack();
+
 
         }
             
@@ -35,6 +37,7 @@ public class PlayerSlash : MonoBehaviour
         {
             controller.Animator.SetBool("Attacking", false);
             _hasEnemy = false;
+            StopAttack();
         }
            
 
@@ -43,26 +46,22 @@ public class PlayerSlash : MonoBehaviour
 
     private void Attack()
     {
-
+    StartCoroutine(AttackingCor());
     }
-    private bool isAttacking;
     IEnumerator AttackingCor()
     {
-        
-        isAttacking = true;
-        yield return new WaitForSeconds(1f);
-        var r = Random.Range(0, _attackNames.Length);
-        controller.Animator.SetTrigger(_attackNames[r]);
+        while (_hasEnemy)
+        {
+            var r = Random.Range(1, attacksTypesCount);
+            controller.Animator.SetInteger("RandomHit", r);
+            yield return new WaitForSeconds(0.9f);
+        }
+
     }
     private void StopAttack()
     {
-        var anim = controller.Animator;
-
-        for (int i = 0; i < _attackNames.Length; i++)
-        {
-            anim.ResetTrigger(_attackNames[i]);
-        }
-        //  anim.SetTrigger("StopFight");
+        controller.Animator.SetInteger("RandomHit", -1);
+        StopAllCoroutines();
 
     }
 }

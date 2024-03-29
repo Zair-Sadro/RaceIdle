@@ -1,5 +1,5 @@
 {
-    "idSave": 74,
+    "idSave": 107,
     "isFirstSession": false,
     "language": "ru",
     "promptDone": false,
@@ -45,7 +45,7 @@
                     },
                     {
                         "_type": 1,
-                        "_amount": 1
+                        "_amount": 4
                     }
                 ]
             },
@@ -152,17 +152,17 @@
         ]
     },
     "tileSetterData": {
-        "_junkTiles": 34,
+        "_junkTiles": 48,
         "_ironTiles": 0,
-        "_plasticTiles": 14,
-        "_rubberTiles": 2
+        "_plasticTiles": 4,
+        "_rubberTiles": 3
     },
     "raceData": {
         "Cars": [
             {
-                "ValueNumber": 2,
-                "LapReward": 3.0,
-                "Level": 2
+                "ValueNumber": 0,
+                "LapReward": 2.0,
+                "Level": 0
             }
         ]
     },
@@ -311,7 +311,7 @@
                 "tilesList": [
                     {
                         "_type": 0,
-                        "_amount": 0
+                        "_amount": 31
                     }
                 ]
             },
@@ -320,7 +320,7 @@
                 "tilesList": [
                     {
                         "_type": 1,
-                        "_amount": 1
+                        "_amount": 10
                     }
                 ]
             },
@@ -338,7 +338,7 @@
                 "tilesList": [
                     {
                         "_type": 2,
-                        "_amount": 5
+                        "_amount": 7
                     }
                 ]
             },
@@ -356,7 +356,7 @@
                 "tilesList": [
                     {
                         "_type": 3,
-                        "_amount": 2
+                        "_amount": 4
                     }
                 ]
             },
@@ -402,7 +402,7 @@
             }
         ]
     },
-    "money": 198025.09375,
+    "money": 198286.6875,
     "taskIndx": 3,
     "playerData": {
         "SpeedValue": 10.0,
