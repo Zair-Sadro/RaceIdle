@@ -1,5 +1,5 @@
 {
-    "idSave": 11,
+    "idSave": 15,
     "isFirstSession": false,
     "language": "ru",
     "promptDone": false,
@@ -184,13 +184,24 @@
         ]
     },
     "tileSetterData": {
-        "_junkTiles": 3,
+        "_junkTiles": 5,
         "_ironTiles": 3,
         "_plasticTiles": 4,
         "_rubberTiles": 3
     },
     "raceData": {
-        "Cars": []
+        "Cars": [
+            {
+                "ValueNumber": 0,
+                "LapReward": 2.0,
+                "Level": 0
+            },
+            {
+                "ValueNumber": 1,
+                "LapReward": 2.0,
+                "Level": 1
+            }
+        ]
     },
     "ironMachine": {
         "speedData": {
@@ -424,8 +435,8 @@
             }
         ]
     },
-    "money": 95351.1328125,
-    "taskIndx": 4,
+    "money": 95361.1328125,
+    "taskIndx": 7,
     "playerData": {
         "SpeedValue": 12.0,
         "SpeedLevel": 9,
