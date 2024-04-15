@@ -11,13 +11,17 @@ public class UniqCar : MonoBehaviour, IDamageable
     [SerializeField] private float respawnNoDamageTime;
     [SerializeField] private Image hpFillImage;
     [SerializeField] private ParticleSystem _boomEffect;
+    [SerializeField] private ParticleSystem _hitEffect;
 
     [SerializeField] private GameObject[] carParts;
+    [SerializeField] private Transform _partParent;
 
     [SerializeField] private PlayerSlash playerSlash;
     [SerializeField] private AudioService audioService;
     private UniqCarsManager _uniqCarManager;
+
     private float _currentHealth;
+    private int _partsDestroyed;
     private int _partsIndex;
 
     private Vector3 _startPos;
@@ -25,17 +29,20 @@ public class UniqCar : MonoBehaviour, IDamageable
     public bool isFirst;
     private void Start()
     {
+        shakecartween = _partParent.DOPunchScale(CarPartChangedSize(_partParent, -0.01f, 0.02f), 0.2f, 100, 100).OnComplete(() => _partParent.DORewind());
+
         _startPos = transform.position;
+        _currentHealth = maxHealth;
+
+        _maxDamageForDestroy = maxHealth / 5f;
+        _partsDestroyed = 1;
+
         Shuffle(carParts);
+        HPBarShow();
     }
     public void Init(UniqCarsManager carManager)
     {
-        _currentHealth = maxHealth;
-        _partsIndex = 0;
         _uniqCarManager = carManager;
-
-        HPBarHide();
-
 
     }
     void FixedUpdate()
@@ -56,48 +63,60 @@ public class UniqCar : MonoBehaviour, IDamageable
     public void OnRespawn()
     {
         _currentHealth = maxHealth;
-        _destroyed = false;
-        _partsIndex = 0;
-        HPBarHide();
+        _partsDestroyed = 1;
+
+        nextpartIndx = 0;
+        damageCountForPartDestroy = 0;
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "weapon")
-            TakeDamage(0);
+        {
+            TakeDamage(playerSlash.Damage);
+            var pos = other.transform.position;
+            _hitEffect.transform.position = pos;
+            _hitEffect.Play();
+        }
     }
 
+    private int nextpartIndx;
+    private float damageCountForPartDestroy;
+    private float _maxDamageForDestroy;
+
+    private Tween shakecartween;
     public void TakeDamage(int damage)
     {
-        StartCoroutine(TakeDmg(playerSlash.Damage));
-    }
-    IEnumerator TakeDmg(int damage)
-    {
+        _currentHealth -= damage;
+        damageCountForPartDestroy += damage;
+        bool damageIsGained = damageCountForPartDestroy >= _maxDamageForDestroy;
 
-        carParts[4].transform.DORewind();
-        HPBarShow();
+        audioService.PlayAudo(AudioName.HIT);
 
-        carParts[4].transform.DOShakeScale(0.2f, 1f);
+        if (!shakecartween.IsPlaying())
+            shakecartween = _partParent.DOPunchScale(CarPartChangedSize(_partParent, -0.01f, 0.02f), 0.2f, 50, 0.1f).OnComplete(() => _partParent.DORewind());
 
-        for (int i = 0; i < damage; i++)
-        {
-            //Шатаем часть машины и отключаем ее
-            var carpart = carParts[_partsIndex++];
-            _uniqCarManager.ExplodeTile(this);
-
-            ShakeCarPart(carpart);
-            audioService.PlayAudo(AudioName.HIT);
-            CountDamage();
-
-            if (_currentHealth <= 0)
+        if (damageIsGained)
+            for (int i = 0; i < (int)(damageCountForPartDestroy / _maxDamageForDestroy); i++)
             {
-                yield return new WaitForSeconds(damage * 0.2f);
-                DestroyCar();
-                yield break;
+                if (_partsDestroyed >= carParts.Length)
+                {
+                    DestroyCar();
+                    return;
+                }
 
+                var carpart = carParts[nextpartIndx];
+                if (!carpart.activeSelf)
+                    return;
 
+                _uniqCarManager.ExplodeTile(this);
+                ShakeCarPart(carpart);
+
+                ++nextpartIndx;
+                ++_partsDestroyed;
+                damageCountForPartDestroy = 0;
             }
 
-        }
+        hpFillImage.fillAmount = Mathf.Clamp(_currentHealth / maxHealth, 0f, 1f);
 
         void ShakeCarPart(GameObject carpart)
         {
@@ -110,13 +129,6 @@ public class UniqCar : MonoBehaviour, IDamageable
 
                });
         }
-    }
-
-    private void CountDamage()
-    {
-        _currentHealth -= damagePerHit;
-        hpFillImage.fillAmount = Mathf.Clamp(_currentHealth, 0, maxHealth) / maxHealth;
-
     }
     private bool _destroyed;
     private void DestroyCar()
@@ -139,13 +151,14 @@ public class UniqCar : MonoBehaviour, IDamageable
         return carParts;
     }
 
-    private Vector3 CarPartChangedSize(Transform part)
+    private Vector3 CarPartChangedSize(Transform part, float min = 0.3f, float max = 0.75f)
     {
-        float randDelta = Random.Range(0.3f, 0.75f);
-        var newSize = new Vector3
-            (part.localScale.x + randDelta,
+        float randDelta = Random.Range(min, max);
+        var newSize = new Vector3(
+            part.localScale.x + randDelta,
             part.localScale.y + randDelta,
-            part.localScale.z + randDelta);
+            part.localScale.z + randDelta
+        );
         return newSize;
     }
 
@@ -164,28 +177,10 @@ public class UniqCar : MonoBehaviour, IDamageable
 
     }
 
-    #region HPBar visibility (Видимость хп машины)
-    bool show;
-  
-
     private void HPBarShow()
     {
         hpFillImage.gameObject.SetActive(true);
 
-        StopCoroutine(ShowTimer());
-        StartCoroutine(ShowTimer());
     }
-    private void HPBarHide()
-    {
-        hpFillImage.gameObject.SetActive(false);
-    }
-    private IEnumerator ShowTimer()
-    {
-        yield return new WaitForSeconds(1f);
-
-        if (hpFillImage.isActiveAndEnabled)
-            HPBarHide();
-    }
-    #endregion
 
 }

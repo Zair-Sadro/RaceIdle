@@ -41,11 +41,16 @@ public class JunkCarManager : MonoBehaviour
 
     private IEnumerator CarRespawn(float time, JunkCar car)
     {
+        car.transform.DOScale(0, 0.4f);
+
+        yield return new WaitForSeconds(0.45f);
+        car.gameObject.SetActive(false);
+
         yield return new WaitForSeconds(time);
         var parts = car.GetCarParts();
 
         //Parts
-        for (int i = 0; i < parts.Count; i++)
+        for (int i = 0; i < parts.Length; i++)
         {
             parts[i].gameObject.SetActive(true);
         }

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class PlayerSlash : MonoBehaviour
 {
@@ -20,36 +21,39 @@ public class PlayerSlash : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        if (other.tag == "Destroyable") 
+        if (other.tag == "Destroyable")
         {
             controller.Animator.SetBool("Attacking", true);
             _hasEnemy = true;
             Attack();
 
-
+            print("enter");
         }
-            
+
     }
     private void OnTriggerExit(Collider other)
     {
 
-        if (other.tag == "Destroyable") 
+        if (other.tag == "Destroyable")
         {
             controller.Animator.SetBool("Attacking", false);
             _hasEnemy = false;
             StopAttack();
+            print("exit");
         }
-           
+
 
 
     }
 
     private void Attack()
     {
-    StartCoroutine(AttackingCor());
+        StartCoroutine(AttackingCor());
     }
+
     IEnumerator AttackingCor()
     {
+        ActivateColliders(true);
         while (_hasEnemy)
         {
             var r = Random.Range(1, attacksTypesCount);
@@ -58,10 +62,19 @@ public class PlayerSlash : MonoBehaviour
         }
 
     }
+
     private void StopAttack()
     {
+        ActivateColliders(false);
         controller.Animator.SetInteger("RandomHit", -1);
         StopAllCoroutines();
 
+    }
+    private void ActivateColliders(bool value)
+    {
+        for (int i = 0; i < _fightColliders.Length; i++)
+        {
+            _fightColliders[i].enabled = value;
+        }
     }
 }

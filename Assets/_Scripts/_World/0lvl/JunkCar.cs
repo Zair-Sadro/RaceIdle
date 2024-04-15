@@ -1,158 +1,157 @@
 ﻿using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class JunkCar : MonoBehaviour, IDamageable
 {
-    [SerializeField] private float damagePerHit;
     [SerializeField] private float maxHealth;
     [SerializeField] private float respawnNoDamageTime;
     [SerializeField] private Image hpFillImage;
-    [SerializeField] private ParticleSystem _boomEffect;
 
-    [SerializeField] private GameObject[] carParts;
+    [SerializeField] private ParticleSystem _boomEffect;
+    [SerializeField] private ParticleSystem _hitEffect;
+
+    [SerializeField] private Transform _partParent;
+    [SerializeField] private GameObject[] carParts; public GameObject[] GetCarParts() => carParts;
+
 
     [SerializeField] private PlayerSlash playerSlash;
     [SerializeField] private AudioService audioService;
+
     private JunkCarManager _junkCarManager;
     private float _currentHealth;
-    private int _partsIndex;
+    private int _partsDestroyed;
 
     private Vector3 _startPos;
+
     public float RespawnNoDamageTime => respawnNoDamageTime;
+
     private void Start()
     {
+
+        shakecartween = _partParent.DOPunchScale(CarPartChangedSize(_partParent, -0.01f, 0.02f), 0.2f, 100, 100).OnComplete(() => _partParent.DORewind());
+
         _startPos = transform.position;
+        _currentHealth = maxHealth;
+
+        _maxDamageForDestroy = maxHealth / 5f;
+        _partsDestroyed = 1;
+
         Shuffle(carParts);
+        HPBarShow();
     }
+
     public void Init(JunkCarManager carManager)
     {
-        _currentHealth = maxHealth;
-        _partsIndex = 0;
         _junkCarManager = carManager;
-
-        HPBarHide();
-
-
     }
+
     void FixedUpdate()
     {
         hpFillImage.transform.LookAt(Camera.main.transform.position);
     }
-    [SerializeField] private float _randDeltaX, _randDeltaZ;
+
     public void RandomPosition()
     {
         transform.position = new Vector3(
-            _startPos.x + Random.Range(-_randDeltaX, _randDeltaX)
-            , _startPos.y,
-            _startPos.z + Random.Range(-_randDeltaZ, _randDeltaZ));
-
-
+            _startPos.x + Random.Range(-1f, 1f),
+            _startPos.y,
+            _startPos.z + Random.Range(-1f, 1f)
+        );
     }
 
     public void OnRespawn()
     {
         _currentHealth = maxHealth;
-        _destroyed = false;
-        _partsIndex = 0;
-        HPBarHide();
+        _partsDestroyed = 1;
+
+        nextpartIndx = 0;
+        damageCountForPartDestroy = 0;
     }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "weapon")
-            TakeDamage(0);
+        if (other.tag == "weapon") 
+        {
+            TakeDamage(playerSlash.Damage);
+            var pos = other.transform.position;
+            _hitEffect.transform.position= pos;
+            _hitEffect.Play();
+        }
+           
     }
 
+    private int nextpartIndx;
+    private float damageCountForPartDestroy;
+    private float _maxDamageForDestroy;
+
+    private Tween shakecartween;
     public void TakeDamage(int damage)
     {
-        if (_partsIndex == 5)
-            return;
-        StartCoroutine(TakeDmg(playerSlash.Damage));
-    }
-    IEnumerator TakeDmg(int damage)
-    {
+        _currentHealth -= damage;
+        damageCountForPartDestroy += damage;
+        bool damageIsGained = damageCountForPartDestroy >= _maxDamageForDestroy;
 
-        carParts[4].transform.DORewind();
-        HPBarShow();
+        audioService.PlayAudo(AudioName.HIT);
+ 
+        if(!shakecartween.IsPlaying())
+            shakecartween = _partParent.DOPunchScale(CarPartChangedSize(_partParent,-0.01f,0.02f), 0.2f,50,0.1f).OnComplete(()=> _partParent.DORewind());
 
-        carParts[4].transform.DOShakeScale(0.2f, 1f);
-
-        for (int i = 0; i < damage; i++)
-        {
-
-            //Шатаем часть машины и отключаем ее
-            var carpart = carParts[_partsIndex++];
-            _junkCarManager.ExplodeTile(this);
-
-            ShakeCarPart(carpart);
-            audioService.PlayAudo(AudioName.HIT);
-            CountDamage();
-
-            if (_currentHealth <= 0)
+        if (damageIsGained)
+            for (int i = 0; i < (int)(damageCountForPartDestroy / _maxDamageForDestroy); i++)
             {
-               // yield return new WaitForSeconds(damage * 0.2f);
-                DestroyCar();
-                yield break;
+                if (_partsDestroyed >= carParts.Length)
+                {
+                    DestroyCar();
+                    return;
+                }
 
+                var carpart = carParts[nextpartIndx];
+                if (!carpart.activeSelf)
+                    return;
 
+                _junkCarManager.ExplodeTile(this);
+                ShakeCarPart(carpart);
+
+                ++nextpartIndx;
+                ++_partsDestroyed;
+                damageCountForPartDestroy = 0;
             }
 
-        }
-
-        void ShakeCarPart(GameObject carpart)
-        {
-            carpart.transform
-               .DOPunchScale(CarPartChangedSize(carpart.transform), 0.2f)
-               .OnComplete(() =>
-               {
-                   carpart.gameObject.SetActive(false);
-
-
-               });
-        }
+        hpFillImage.fillAmount = Mathf.Clamp(_currentHealth / maxHealth, 0f, 1f);
     }
 
-    private void CountDamage()
-    {
-        _currentHealth -= damagePerHit;
-        hpFillImage.fillAmount = Mathf.Clamp(_currentHealth, 0, maxHealth) / maxHealth;
-
-    }
-    private bool _destroyed;
     private void DestroyCar()
     {
-        if (_destroyed) return;
         _boomEffect.Play();
-        transform.DOScale(0, 0.4f).OnComplete(OnCarDestroyed);
-        _destroyed = true;
-    }
-
-    private void OnCarDestroyed()
-    {
-        this.gameObject.SetActive(false);
         _junkCarManager.DestroyCar(this);
     }
-    public List<GameObject> GetCarParts()
+
+    private void ShakeCarPart(GameObject carpart)
     {
-        List<GameObject> carParts = new List<GameObject>(this.carParts);
-        return carParts;
+
+
+        carpart.transform
+            .DOPunchScale(CarPartChangedSize(carpart.transform), 0.2f)
+            .OnComplete(() =>
+            {
+                carpart.gameObject.SetActive(false);
+            });
     }
 
-    private Vector3 CarPartChangedSize(Transform part)
+    private Vector3 CarPartChangedSize(Transform part, float min = 0.3f, float max = 0.75f)
     {
-        float randDelta = Random.Range(0.3f, 0.75f);
-        var newSize = new Vector3
-            (part.localScale.x + randDelta,
+        float randDelta = Random.Range(min, max);
+        var newSize = new Vector3(
+            part.localScale.x + randDelta,
             part.localScale.y + randDelta,
-            part.localScale.z + randDelta);
+            part.localScale.z + randDelta
+        );
         return newSize;
     }
 
-    public static GameObject[] Shuffle(GameObject[] arr)
+    private static GameObject[] Shuffle(GameObject[] arr)
     {
-
         for (int i = arr.Length - 2; i >= 0; i--)
         {
             int j = Random.Range(1, i + 1);
@@ -162,29 +161,14 @@ public class JunkCar : MonoBehaviour, IDamageable
         }
 
         return arr;
-
     }
 
-    #region HPBar visibility (Видимость хп машины)
-    bool show;
+    #region HPBar visibility
     private void HPBarShow()
     {
         hpFillImage.gameObject.SetActive(true);
+    }
 
-        StopCoroutine(ShowTimer());
-        StartCoroutine(ShowTimer());
-    }
-    private void HPBarHide()
-    {
-        hpFillImage.gameObject.SetActive(false);
-    }
-    private IEnumerator ShowTimer()
-    {
-        yield return new WaitForSeconds(1f);
 
-        if (hpFillImage.isActiveAndEnabled)
-            HPBarHide();
-    }
     #endregion
-
 }

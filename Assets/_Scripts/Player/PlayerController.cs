@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UIElements;
 using YG;
 
 public class PlayerController : MonoBehaviour
@@ -172,7 +173,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         _animator.SetFloat("Speed", _curSpeed);
-        print(_curSpeed);
+
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit, _maxDistRay))
         {
@@ -187,7 +188,7 @@ public class PlayerController : MonoBehaviour
                 isDestroyableInFront = false;
             }
         }
-        if (Physics.Raycast(transform.position, -transform.right, out hit, _maxDistRay))
+        if (Physics.Raycast(transform.position, Quaternion.AngleAxis(45f, -transform.right) * transform.forward, out hit, _maxDistRay))
         {
             // Если луч столкнулся с объектом с указанным тегом
             if (hit.collider.CompareTag("Destroyable"))
@@ -200,7 +201,7 @@ public class PlayerController : MonoBehaviour
                 isDestroyableInFront = false;
             }
         }
-        if (Physics.Raycast(transform.position, transform.right, out hit, _maxDistRay))
+        if (Physics.Raycast(transform.position, Quaternion.AngleAxis(45f, transform.right) * transform.forward, out hit, _maxDistRay))
         {
             // Если луч столкнулся с объектом с указанным тегом
             if (hit.collider.CompareTag("Destroyable"))
@@ -215,6 +216,20 @@ public class PlayerController : MonoBehaviour
         }
 
 
+    }
+    private void OnDrawGizmos()
+    {
+        // Определяем начальную точку луча
+        Vector3 rayOrigin = transform.position;
+
+        // Определяем направление луча (например, направление вперед)
+        Vector3 rayDirection1 = Quaternion.Euler(0, -35f, 0) * transform.right;
+        Vector3 rayDirection2 = Quaternion.Euler(0, -35f, 0) * -transform.right;
+
+        // Отрисовываем луч Gizmo
+        Gizmos.color = Color.grey;
+        Gizmos.DrawLine(rayOrigin, rayOrigin + rayDirection1 * _maxDistRay);
+        Gizmos.DrawLine(rayOrigin, rayOrigin + rayDirection2 * _maxDistRay);
     }
 
 

@@ -1,18 +1,17 @@
 {
-    "idSave": 107,
+    "idSave": 11,
     "isFirstSession": false,
     "language": "ru",
     "promptDone": false,
     "buildData": {
-        "machineTileCount": 3,
+        "machineTileCount": 2,
         "autoMachineTilesCount": 0,
         "Buildings": [
-            7,
-            5,
-            4,
             0,
-            6,
-            3
+            3,
+            2,
+            4,
+            5
         ],
         "SavedBuildingsTiles": [
             {
@@ -37,15 +36,48 @@
                 ]
             },
             {
-                "ID": 2,
+                "ID": 6,
                 "SavedTiles": [
                     {
                         "_type": 0,
-                        "_amount": 10
+                        "_amount": 15
                     },
                     {
                         "_type": 1,
-                        "_amount": 4
+                        "_amount": 3
+                    },
+                    {
+                        "_type": 2,
+                        "_amount": 13
+                    },
+                    {
+                        "_type": 4,
+                        "_amount": 30
+                    }
+                ]
+            },
+            {
+                "ID": 7,
+                "SavedTiles": [
+                    {
+                        "_type": 0,
+                        "_amount": 1
+                    },
+                    {
+                        "_type": 1,
+                        "_amount": 1
+                    },
+                    {
+                        "_type": 2,
+                        "_amount": 1
+                    },
+                    {
+                        "_type": 3,
+                        "_amount": 5
+                    },
+                    {
+                        "_type": 4,
+                        "_amount": 50
                     }
                 ]
             },
@@ -129,11 +161,11 @@
                 "SavedTiles": [
                     {
                         "_type": 0,
-                        "_amount": 0
+                        "_amount": 9
                     },
                     {
                         "_type": 1,
-                        "_amount": 0
+                        "_amount": 1
                     },
                     {
                         "_type": 2,
@@ -152,19 +184,13 @@
         ]
     },
     "tileSetterData": {
-        "_junkTiles": 48,
-        "_ironTiles": 0,
+        "_junkTiles": 3,
+        "_ironTiles": 3,
         "_plasticTiles": 4,
         "_rubberTiles": 3
     },
     "raceData": {
-        "Cars": [
-            {
-                "ValueNumber": 0,
-                "LapReward": 2.0,
-                "Level": 0
-            }
-        ]
+        "Cars": []
     },
     "ironMachine": {
         "speedData": {
@@ -172,9 +198,9 @@
             "deltaNumber": 1.0199999809265137,
             "startNumberPrice": 37.73584747314453,
             "deltaNumberPrice": 1.059999942779541,
-            "currentValue": 3.0,
-            "currentPriceValue": 37.73584747314453,
-            "currentLevel": 0,
+            "currentValue": 2.941176414489746,
+            "currentPriceValue": 39.999996185302737,
+            "currentLevel": 1,
             "maxLevel": 100
         },
         "incomeData": {
@@ -182,8 +208,8 @@
             "deltaNumber": 1.0299999713897706,
             "startNumberPrice": 6.0,
             "deltaNumberPrice": 1.0299999713897706,
-            "currentValue": 1.0,
-            "currentPriceValue": 6.0,
+            "currentValue": 1.1255086660385132,
+            "currentPriceValue": 6.753052234649658,
             "currentLevel": 0,
             "maxLevel": 100
         },
@@ -311,7 +337,7 @@
                 "tilesList": [
                     {
                         "_type": 0,
-                        "_amount": 31
+                        "_amount": 0
                     }
                 ]
             },
@@ -320,7 +346,7 @@
                 "tilesList": [
                     {
                         "_type": 1,
-                        "_amount": 10
+                        "_amount": 3
                     }
                 ]
             },
@@ -338,7 +364,7 @@
                 "tilesList": [
                     {
                         "_type": 2,
-                        "_amount": 7
+                        "_amount": 3
                     }
                 ]
             },
@@ -356,7 +382,7 @@
                 "tilesList": [
                     {
                         "_type": 3,
-                        "_amount": 4
+                        "_amount": 0
                     }
                 ]
             },
@@ -365,10 +391,6 @@
                 "tilesList": [
                     {
                         "_type": 0,
-                        "_amount": 0
-                    },
-                    {
-                        "_type": 1,
                         "_amount": 0
                     }
                 ]
@@ -402,18 +424,18 @@
             }
         ]
     },
-    "money": 198286.6875,
-    "taskIndx": 3,
+    "money": 95351.1328125,
+    "taskIndx": 4,
     "playerData": {
-        "SpeedValue": 10.0,
-        "SpeedLevel": 1,
-        "CapacityValue": 55.0,
-        "CapacityLevel": 10,
-        "DamageValue": 1,
-        "DamageLevel": 1,
-        "SpeedPriceValue": 4.0,
-        "CapacityPriceValue": 2048.0,
-        "DamagePriceValue": 50.0
+        "SpeedValue": 12.0,
+        "SpeedLevel": 9,
+        "CapacityValue": 45.0,
+        "CapacityLevel": 9,
+        "DamageValue": 9,
+        "DamageLevel": 9,
+        "SpeedPriceValue": 1024.0,
+        "CapacityPriceValue": 1024.0,
+        "DamagePriceValue": 1281.4453125
     },
-    "autoRepairLevel": 5
+    "autoRepairLevel": 0
 }

@@ -97,11 +97,6 @@ public class PlayerUpgrade : MonoBehaviour, ISaveLoad<PlayerData>
             SpeedData.currentPriceValue = playerData.SpeedPriceValue;
             DamageData.currentPriceValue = playerData.DamagePriceValue;
         }
-        if (SpeedData.currentValue < 9)
-            SpeedData.currentValue = 10;
-
-        if (CapacityData.currentValue < 9)
-            CapacityData.currentValue = 10;
 
         upgradeView.InitSpeed(SpeedData, UpgradeSpeed);
         upgradeView.InitDamage(DamageData, UpgradeDamage);
