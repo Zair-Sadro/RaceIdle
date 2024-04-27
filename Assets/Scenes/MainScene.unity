@@ -3954,6 +3954,7 @@ MonoBehaviour:
   taskNameRU: "\u041F\u043E\u0441\u0442\u0440\u043E\u0439\u0442\u0435 \u0441\u0442\u0430\u043D\u043E\u043A
     \u043F\u043B\u0430\u0441\u0442\u0438\u043A\u0430"
   taskReward: 50
+  taskPosForArrow: {fileID: 0}
   icon: {fileID: 21300000, guid: 4db87cd03080a984a832f4b9950918a7, type: 3}
   objWithTask: {fileID: 99334956}
 --- !u!1 &106473621 stripped
@@ -5118,6 +5119,7 @@ MonoBehaviour:
   taskName: Build shop
   taskNameRU: "\u041F\u043E\u0441\u0442\u0440\u043E\u0439\u0442\u0435 \u043C\u0430\u0433\u0430\u0437\u0438\u043D"
   taskReward: 20
+  taskPosForArrow: {fileID: 0}
   icon: {fileID: 21300000, guid: 1324297384a7b024ba399568a0f76412, type: 3}
   objWithTask: {fileID: 145572804}
 --- !u!4 &145678228 stripped
@@ -9938,6 +9940,7 @@ MonoBehaviour:
   taskNameRU: "\u041F\u043E\u0441\u0442\u0440\u043E\u0439\u0442\u0435 \u0441\u0442\u0430\u043D\u043E\u043A
     \u0436\u0435\u043B\u0435\u0437\u0430"
   taskReward: 10
+  taskPosForArrow: {fileID: 0}
   icon: {fileID: 21300000, guid: 4db87cd03080a984a832f4b9950918a7, type: 3}
   objWithTask: {fileID: 280772726}
 --- !u!1 &280953562
@@ -14204,6 +14207,7 @@ MonoBehaviour:
   taskNameRU: "\u041E\u0442\u043A\u0440\u043E\u0439\u0442\u0435 \u0436\u0435\u043B\u0435\u0437\u043D\u044B\u0435
     \u0432\u043E\u0440\u043E\u0442\u0430"
   taskReward: 250
+  taskPosForArrow: {fileID: 0}
   icon: {fileID: 21300000, guid: 4f0692930e394294dbe37658858398d5, type: 3}
   objWithTask: {fileID: 389132808}
 --- !u!1001 &390908754
@@ -17529,6 +17533,7 @@ MonoBehaviour:
   taskNameRU: "\u041D\u0430\u0447\u043D\u0438\u0442\u0435 \u043F\u0440\u043E\u0438\u0437\u0432\u043E\u0434\u0438\u0442\u044C
     \u043F\u043B\u0430\u0441\u0442\u0438\u043A"
   taskReward: 200
+  taskPosForArrow: {fileID: 0}
   icon: {fileID: 21300000, guid: 163b2c4c297a1664d83def10d1b2611f, type: 3}
   objWithTask: {fileID: 487958323}
 --- !u!1001 &490247353
@@ -19264,6 +19269,7 @@ MonoBehaviour:
   taskName: Build auto repair
   taskNameRU: "\u041F\u043E\u0441\u0442\u0440\u043E\u0439\u0442\u0435 \u0430\u0432\u0442\u043E\u043C\u0430\u0441\u0442\u0435\u0440\u0441\u043A\u0443\u044E"
   taskReward: 100
+  taskPosForArrow: {fileID: 0}
   icon: {fileID: 21300000, guid: c0c0e7c7b4306ac4c95134775930c4b2, type: 3}
   objWithTask: {fileID: 533785388}
 --- !u!1001 &534941128
@@ -20602,6 +20608,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1952942950}
   - {fileID: 694555418}
   - {fileID: 1846949001}
   - {fileID: 1502583156}
@@ -20615,7 +20622,6 @@ Transform:
   - {fileID: 1187454117}
   - {fileID: 85886937}
   - {fileID: 1174143728}
-  - {fileID: 1952942950}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &581427651
@@ -23063,6 +23069,7 @@ MonoBehaviour:
   taskNameRU: "\u041E\u0442\u043A\u0440\u043E\u0439\u0442\u0435 \u0440\u0436\u0430\u0432\u044B\u0435
     \u0432\u043E\u0440\u043E\u0442\u0430"
   taskReward: 50
+  taskPosForArrow: {fileID: 0}
   icon: {fileID: 21300000, guid: ed3fe288644c9c246997ede2c0f74ecb, type: 3}
   objWithTask: {fileID: 657302498}
 --- !u!65 &659331876
@@ -30816,6 +30823,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5da47d863f8c6e4b90e1b60d3c4e9c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &860333434 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 4854790988748260747, guid: 36381b875214dbd4e979754b72826cf7,
+    type: 3}
+  m_PrefabInstance: {fileID: 3229930478253178889}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &861222378 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6511119181799313886, guid: ee3cab0f48e848143802580ed7351cb4,
@@ -31582,6 +31595,7 @@ MonoBehaviour:
   taskNameRU: "\u041D\u0430\u0447\u043D\u0438\u0442\u0435 \u043F\u0440\u043E\u0438\u0437\u0432\u043E\u0434\u0438\u0442\u044C
     \u0440\u0435\u0437\u0438\u043D\u0443"
   taskReward: 150
+  taskPosForArrow: {fileID: 0}
   icon: {fileID: 21300000, guid: 7d82caa6b2eb6b541a9b0beda4953a65, type: 3}
   objWithTask: {fileID: 880339586}
 --- !u!43 &882112689
@@ -32883,6 +32897,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 897356768}
   m_Mesh: {fileID: 8385836491182413749, guid: 0464009179cb7384998771554f91d294, type: 3}
+--- !u!1 &898930722 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6606703979478775967, guid: 36381b875214dbd4e979754b72826cf7,
+    type: 3}
+  m_PrefabInstance: {fileID: 3229930478253178889}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &900915220
 GameObject:
   m_ObjectHideFlags: 0
@@ -34602,6 +34622,7 @@ MonoBehaviour:
   taskNameRU: "\u041F\u043E\u0441\u0442\u0440\u043E\u0439\u0442\u0435 \u0442\u043E\u0440\u0433\u043E\u0432\u0446\u0430
     \u0414\u0436\u044D\u043A\u0430"
   taskReward: 5
+  taskPosForArrow: {fileID: 0}
   icon: {fileID: 21300000, guid: 01ce4ae883273b04ca10e78db5b0c0f0, type: 3}
   objWithTask: {fileID: 932275214}
 --- !u!1 &933311460
@@ -42036,6 +42057,7 @@ MonoBehaviour:
   taskName: Upgrade backpack
   taskNameRU: "\u0423\u043B\u0443\u0447\u0448\u0438\u0442\u0435 \u0440\u044E\u043A\u0437\u0430\u043A"
   taskReward: 5
+  taskPosForArrow: {fileID: 0}
   icon: {fileID: 21300000, guid: dd68516d5fc2eb84c87956c17bf12217, type: 3}
   objWithTask: {fileID: 1213643670}
 --- !u!1 &1218186049
@@ -44312,6 +44334,7 @@ GameObject:
   - component: {fileID: 1255661389}
   - component: {fileID: 1255661390}
   - component: {fileID: 1255661391}
+  - component: {fileID: 1255661392}
   m_Layer: 0
   m_Name: Task 0 bridge
   m_TagString: Untagged
@@ -44349,6 +44372,7 @@ MonoBehaviour:
   taskName: Build bridge
   taskNameRU: "\u041F\u043E\u0441\u0442\u0440\u043E\u0439\u0442\u0435 \u043C\u043E\u0441\u0442"
   taskReward: 5
+  taskPosForArrow: {fileID: 0}
   icon: {fileID: 21300000, guid: 02e50dbffa4167a45bc04eac385dfcb9, type: 3}
   objWithTask: {fileID: 1255661388}
 --- !u!114 &1255661391
@@ -44364,6 +44388,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   builderFromTiles: {fileID: 287743290}
+--- !u!114 &1255661392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1255661388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5823ae07c8874f4391767e813cdcfbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collectCollider: {fileID: 860333434}
+  _locker: {fileID: 898930722}
 --- !u!1 &1256909632
 GameObject:
   m_ObjectHideFlags: 0
@@ -45948,6 +45986,7 @@ MonoBehaviour:
   taskNameRU: "\u041F\u043E\u0441\u0442\u0440\u043E\u0439\u0442\u0435 \u0441\u0442\u0430\u043D\u043E\u043A
     \u0440\u0435\u0437\u0438\u043D\u044B"
   taskReward: 25
+  taskPosForArrow: {fileID: 0}
   icon: {fileID: 21300000, guid: 4db87cd03080a984a832f4b9950918a7, type: 3}
   objWithTask: {fileID: 1335044800}
 --- !u!1 &1335269822
@@ -48534,6 +48573,7 @@ MonoBehaviour:
   taskName: Repair car
   taskNameRU: "\u041F\u043E\u0447\u0438\u043D\u0438\u0442\u0435 \u043C\u0430\u0448\u0438\u043D\u0443"
   taskReward: 50
+  taskPosForArrow: {fileID: 0}
   icon: {fileID: 21300000, guid: d8066fb4569d3274d9f8784318582240, type: 3}
   objWithTask: {fileID: 1416786303}
 --- !u!114 &1416786306
@@ -52376,6 +52416,7 @@ MonoBehaviour:
   taskName: Merge car
   taskNameRU: "\u0421\u043E\u0435\u0434\u0438\u043D\u0438\u0442\u0435 \u043C\u0430\u0448\u0438\u043D\u044B"
   taskReward: 50
+  taskPosForArrow: {fileID: 0}
   icon: {fileID: 21300000, guid: d8066fb4569d3274d9f8784318582240, type: 3}
   objWithTask: {fileID: 1537722174}
 --- !u!1001 &1538662181
@@ -55177,6 +55218,7 @@ MonoBehaviour:
   taskNameRU: "\u0423\u043B\u0443\u0447\u0448\u0438 \u0441\u0442\u0430\u043D\u043E\u043A  
     (\u043D\u0430\u0436\u043C\u0438 \u043D\u0430 \u043D\u0435\u0433\u043E)"
   taskReward: 5
+  taskPosForArrow: {fileID: 0}
   icon: {fileID: 21300000, guid: 4db87cd03080a984a832f4b9950918a7, type: 3}
   objWithTask: {fileID: 1620128313}
 --- !u!1 &1623345436
@@ -55595,6 +55637,7 @@ MonoBehaviour:
   taskName: "Build \u0421ar Shop"
   taskNameRU: "\u041F\u043E\u0441\u0442\u0440\u043E\u0439\u0442\u0435 \u0410\u0432\u0442\u043E\u043C\u0430\u0433\u0430\u0437\u0438\u043D"
   taskReward: 300
+  taskPosForArrow: {fileID: 0}
   icon: {fileID: 21300000, guid: 4ca43de957e32314fb7003a9663cbd9e, type: 3}
   objWithTask: {fileID: 1629718321}
 --- !u!1 &1631065122
@@ -59023,6 +59066,7 @@ MonoBehaviour:
   taskNameRU: "\u041D\u0430\u0447\u043D\u0438\u0442\u0435 \u043F\u0440\u043E\u0438\u0437\u0432\u043E\u0434\u0438\u0442\u044C
     \u0436\u0435\u043B\u0435\u0437\u043E"
   taskReward: 100
+  taskPosForArrow: {fileID: 0}
   icon: {fileID: 21300000, guid: a80e6774299404c4eaee3d4d7c92b506, type: 3}
   objWithTask: {fileID: 1763989924}
 --- !u!1 &1764990379
@@ -60688,11 +60732,11 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4854790988748260744, guid: 36381b875214dbd4e979754b72826cf7,
         type: 3}
-      insertIndex: -1
+      insertIndex: 2
       addedObject: {fileID: 1122576247}
     - targetCorrespondingSourceObject: {fileID: 4854790988748260744, guid: 36381b875214dbd4e979754b72826cf7,
         type: 3}
-      insertIndex: -1
+      insertIndex: 3
       addedObject: {fileID: 1237804653}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4854790989880411316, guid: 36381b875214dbd4e979754b72826cf7,
@@ -79851,6 +79895,11 @@ PrefabInstance:
       propertyPath: processTranslateLabel
       value: 2/2 completed
       objectReference: {fileID: 0}
+    - target: {fileID: 6606703979478775967, guid: 36381b875214dbd4e979754b72826cf7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6611487394963364147, guid: 36381b875214dbd4e979754b72826cf7,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -79865,6 +79914,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.35778618
+      objectReference: {fileID: 0}
+    - target: {fileID: 7535633290996104719, guid: 36381b875214dbd4e979754b72826cf7,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 7535633290996104719, guid: 36381b875214dbd4e979754b72826cf7,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.32
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

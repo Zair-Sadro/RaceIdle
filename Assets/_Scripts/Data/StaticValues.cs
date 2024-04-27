@@ -39,7 +39,7 @@ public static class StaticValues
         return 0;
 
     }
-    public static T GetInterface<T>(this GameObject gameObject) where T : class
+    public static T GetInterface<T>(this GameObject gameObject,bool logError = true) where T : class
     {
         var interfaceComponent = gameObject.GetComponent(typeof(T)) as T;
 
@@ -48,7 +48,11 @@ public static class StaticValues
             return interfaceComponent;
         }
 
-        Debug.LogError($"No interface like {typeof(T)} in {gameObject}");
+        if (logError)
+         Debug.LogError($"No interface like {typeof(T)} in {gameObject}");
+        else
+         Debug.Log($"No interface like {typeof(T)} in {gameObject}");
+
         return null;
     }
 }

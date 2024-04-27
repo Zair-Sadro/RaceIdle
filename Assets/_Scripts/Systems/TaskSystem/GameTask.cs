@@ -6,11 +6,15 @@ public class GameTask : MonoBehaviour
     public string taskName;
     public string taskNameRU;
     public float taskReward;
+
+    public Transform taskPosForArrow;
     public Sprite icon;
 
     [SerializeField] private GameObject objWithTask;
     private IGameTask _igtask;
+    private IUnlockAfterTask _unlockAfterTask;
     public IGameTask Task => _igtask;
+    public IUnlockAfterTask UnlockAfterTask => _unlockAfterTask;
 
     public string TaskName
     {
@@ -33,6 +37,7 @@ public class GameTask : MonoBehaviour
         YandexGame.GetDataEvent += CheckTranslate;
 
         _igtask = objWithTask.GetInterface<IGameTask>();
+        _unlockAfterTask = gameObject.GetInterface<IUnlockAfterTask>(false);
     }
     private string l;
     private void CheckTranslate()

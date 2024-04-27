@@ -1,8 +1,10 @@
 using DG.Tweening;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.ProBuilder.MeshOperations;
 using UnityEngine.UI;
 using YG;
 
@@ -26,11 +28,27 @@ public class TaskSystem : MonoBehaviour
     public int CurrentTaskIndx => _currentTaskIndx;
     private void Awake()
     {
-        YandexGame.GetDataEvent += ()=>RewriteTaskText("s");
+        YandexGame.GetDataEvent += () => RewriteTaskText();
         claimButton.onClick.AddListener(ClaimReward);
     }
 
-    private void RewriteTaskText(string obj)
+    public void SetTaskFromSave(int i)
+    {
+        UnlockPastTasksLocks(i);
+
+        _currentTaskIndx = i;
+        SetTask(i);
+
+        void UnlockPastTasksLocks(int i)
+        {
+            for (int j = 0; j < i; j++)
+            {
+                tasks[j].UnlockAfterTask?.Unlock();
+            }
+        }
+    }
+
+    private void RewriteTaskText()
     {
         text.text = _currentTask.TaskName;
     }
@@ -46,11 +64,7 @@ public class TaskSystem : MonoBehaviour
         SetTask(_currentTaskIndx);
     }
 
-    public void SetTaskFromSave(int i)
-    {
-        _currentTaskIndx = i;
-        SetTask(i);
-    }
+
     private void SetTask(int indx)
     {
 
@@ -101,5 +115,8 @@ public interface IGameTask
     public void StartTask();
     public void EndTask();
 }
-
+public interface IUnlockAfterTask 
+{
+    public void Unlock();
+}
 
