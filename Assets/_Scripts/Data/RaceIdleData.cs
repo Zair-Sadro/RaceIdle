@@ -17,6 +17,7 @@ public class RaceIdleData
     public RaceData raceData;
 
     public int autoRepairLevel;
+    public int firstAutoRepairLevel;
     public float money;
     public PlayerData playerData;
     public int taskIndx;
@@ -41,6 +42,7 @@ public class RaceIdleData
         playerData = new();
         taskIndx = 0;
         autoRepairLevel = 0;
+        firstAutoRepairLevel = 0;
 
     }
 

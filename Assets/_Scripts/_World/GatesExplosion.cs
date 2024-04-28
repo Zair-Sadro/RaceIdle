@@ -30,14 +30,14 @@ public sealed class GatesExplosion : BuilderFromTiles
 
                 if (type == TileType.Gold)
                 {
-                    _counterView.InitCounerValues(type, _tilesCountByType[type], count);
+                    _counterView.InitCounterValues(type, _tilesCountByType[type], count);
                     goldCount = _tilesCountByType[type];
                 }
                 else 
                 {
                     currentTilesCount += _tilesCountByType[type];
                     minCountForCheck += count;
-                    _counterView.InitCounerValues(type, _tilesCountByType[type], count);
+                    _counterView.InitCounterValues(type, _tilesCountByType[type], count);
                 }
 
            

@@ -30,7 +30,7 @@ public class CounterView : CounterViewbase
         }
     }
 
-    public override void InitCounerValues(TileType type, int currentCount, int max)
+    public override void InitCounterValues(TileType type, int currentCount, int max)
     {
         switch (type)
         {
@@ -59,7 +59,7 @@ public class CounterView : CounterViewbase
 public abstract class CounterViewbase : MonoBehaviour
 {
     public abstract void ChangeCount(TileType type, int currentCount);
-    public abstract void InitCounerValues(TileType type, int currentCount, int max);
+    public abstract void InitCounterValues(TileType type, int currentCount, int max);
     
 }
 

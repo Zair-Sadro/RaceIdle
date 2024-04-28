@@ -60,14 +60,14 @@ public class BuilderFromTiles : TileCollector, ITilesSave
 
                 if (type == TileType.Gold)
                 {
-                    _counterView.InitCounerValues(type, _tilesCountByType[type], count);
+                    _counterView.InitCounterValues(type, _tilesCountByType[type], count);
 
                 }
                 else
                 {
                     currentTilesCount += _tilesCountByType[type];
                     minCountForCheck += count;
-                    _counterView.InitCounerValues(type, _tilesCountByType[type], count);
+                    _counterView.InitCounterValues(type, _tilesCountByType[type], count);
                 }
             }
 
@@ -240,17 +240,19 @@ public class BuilderFromTiles : TileCollector, ITilesSave
 
         yield return new WaitForSeconds(0.2f);
 
-        if (scaleAfterBuild) 
+
+        if (scaleAfterBuild&&b!=null) 
         {
             var normalscale = b.transform.localScale;
             b.transform.localScale = Vector3.zero;
             b.SetActive(true);
             b.transform.DOScale(normalscale, 0.4f);
         }
+        if(b!=null)
         b.SetActive(true);
 
 
-        Destroy(this, 2f);
+        Destroy(this, 1f);
 
     }
 

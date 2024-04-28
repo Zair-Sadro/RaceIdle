@@ -4,32 +4,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AutoRepair : MonoBehaviour, ITilesSave,ISaveLoad<int>
+public class AutoRepair : MonoBehaviour, ITilesSave, ISaveLoad<int>
 {
     [SerializeField] private AutoRepairData _data;
     [Space(5)]
     [SerializeField] private PlayerDetector _detectorForRes;
     [Space(5)]
     [SerializeField] private float delayMachineTakeTile;
-    [SerializeField] protected int repairLevel;
+    [SerializeField] private int _repairLevel;
     [Space(5)]
     [SerializeField] private CarSpawner _carSpawner;
     [SerializeField] private GameObject _needToMergeSign;
     [SerializeField] private ParticleSystem _buildVFX;
     [SerializeField] private Transform _oldCar;
 
-    [SerializeField] private RaceTrackManager _raceTrackMan;
-
     private List<TileType> _requiredTypes = new();
     private Dictionary<TileType, ProductRequierment> _productRequierments = new();
     private Dictionary<TileType, int> _tileCountByType = new();
 
     private bool _carRiding;
-    
+
     private TileSetter _playerTilesBag => InstantcesContainer.Instance.TileSetter;
+    private RaceTrackManager _raceTrackMan => InstantcesContainer.Instance.RaceTrackManager;
     private void Collect()
     {
-        if (_playerTilesBag._isGivingTiles || _carRiding|| _needToMergeSign.activeInHierarchy) return;
+        if (_playerTilesBag._isGivingTiles || _carRiding || _needToMergeSign.activeInHierarchy) return;
 
         StartCoroutine(CollectCor());
 
@@ -74,7 +73,7 @@ public class AutoRepair : MonoBehaviour, ITilesSave,ISaveLoad<int>
 
 
     }
-    public IEnumerator RepairByBonus() 
+    public IEnumerator RepairByBonus()
     {
         _carRiding = true;
 
@@ -103,7 +102,7 @@ public class AutoRepair : MonoBehaviour, ITilesSave,ISaveLoad<int>
         StopCoroutine(CollectCor());
         SubscribeForTilesDetect(false);
 
-        _oldCar.DOScale(Vector3.zero,0.4f);
+        _oldCar.DOScale(Vector3.zero, 0.4f);
         _buildVFX.Play();
 
         yield return new WaitForSeconds(0.5f);
@@ -112,7 +111,7 @@ public class AutoRepair : MonoBehaviour, ITilesSave,ISaveLoad<int>
 
         yield return new WaitForSeconds(2f);
         _oldCar.DOScale(Vector3.one, 0.7f);
-        repairLevel++;
+        _repairLevel++;
         GetNextTilesRequired();
         _carRiding = false;
 
@@ -129,12 +128,12 @@ public class AutoRepair : MonoBehaviour, ITilesSave,ISaveLoad<int>
 
     public int GetData()
     {
-        return repairLevel;
+        return _repairLevel;
     }
 
     public void Initialize(int level)
     {
-        repairLevel = level;
+        _repairLevel = level;
     }
     public void SetTiles(List<ProductRequierment> tilesList)
     {
@@ -176,7 +175,7 @@ public class AutoRepair : MonoBehaviour, ITilesSave,ISaveLoad<int>
         {
             _counterUI.ChangeCount(item, _tileCountByType[item]);
         }
-     
+
 
     }
 
@@ -197,7 +196,7 @@ public class AutoRepair : MonoBehaviour, ITilesSave,ISaveLoad<int>
     [SerializeField] private CounterView _counterUI;
     private void GetNextTilesRequired()
     {
-        var data = _data.GetRequierments(repairLevel);
+        var data = _data.GetRequierments(_repairLevel);
         var lenght = data.RequiermentsList.Count;
 
         _requiredTypes = new List<TileType>();
@@ -215,7 +214,7 @@ public class AutoRepair : MonoBehaviour, ITilesSave,ISaveLoad<int>
             if (!_tileCountByType.ContainsKey(colcount.Type))
                 _tileCountByType.Add(colcount.Type, 0);
 
-            _counterUI.InitCounerValues(colcount.Type, _tileCountByType[colcount.Type], colcount.Amount);
+            _counterUI.InitCounterValues(colcount.Type, _tileCountByType[colcount.Type], colcount.Amount);
 
             if (_tileCountByType[type] >= _productRequierments[type].Amount)
             {
@@ -225,10 +224,10 @@ public class AutoRepair : MonoBehaviour, ITilesSave,ISaveLoad<int>
         }
         void ClearText()
         {
-            _counterUI.InitCounerValues(TileType.Junk, 0, 0);
-            _counterUI.InitCounerValues(TileType.Iron, 0, 0);
-            _counterUI.InitCounerValues(TileType.Plastic, 0, 0);
-            _counterUI.InitCounerValues(TileType.Rubber, 0, 0);
+            _counterUI.InitCounterValues(TileType.Junk, 0, 0);
+            _counterUI.InitCounterValues(TileType.Iron, 0, 0);
+            _counterUI.InitCounterValues(TileType.Plastic, 0, 0);
+            _counterUI.InitCounterValues(TileType.Rubber, 0, 0);
         }
         SubscribeForTilesDetect(true);
 

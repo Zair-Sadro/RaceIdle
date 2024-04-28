@@ -18,6 +18,7 @@ public class RaceIdleGame : MonoBehaviour, ISaveLoad<RaceIdleData>
     [SerializeField] private AutoMachineUpgrade _rubberAutoMachine;
 
     [SerializeField] private AutoRepair _autoRepair;
+    [SerializeField] private FirstAutoRepair _firstAutoRepair;
     [SerializeField] private TilesLoaderInStorages _tilesLoaderInStorages;
 
     [SerializeField] private RaceTrackManager _raceTrackManager;
@@ -143,6 +144,7 @@ public class RaceIdleGame : MonoBehaviour, ISaveLoad<RaceIdleData>
         _data.playerData = _playerUpgrade.GetData();
         _data.taskIndx = _taskSystem.CurrentTaskIndx;
         _data.autoRepairLevel = _autoRepair.GetData();
+        _data.firstAutoRepairLevel = _firstAutoRepair.GetData();
         return _data;
     }
 
@@ -169,6 +171,7 @@ public class RaceIdleGame : MonoBehaviour, ISaveLoad<RaceIdleData>
         _playerUpgrade.Initialize(data.playerData);
         _taskSystem.SetTaskFromSave(data.taskIndx);
         _autoRepair.Initialize(data.autoRepairLevel);
+        _firstAutoRepair.Initialize(data.firstAutoRepairLevel);
     }
     #endregion
 

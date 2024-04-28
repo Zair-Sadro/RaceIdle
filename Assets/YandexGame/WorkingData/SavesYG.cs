@@ -30,6 +30,7 @@
         public int taskIndx;
         public PlayerData playerData;
         public int autoRepairLevel;
+        public int firstAutoRepairLevel;
 
         public RaceIdleData GetMainGameData()
         {
@@ -51,6 +52,7 @@
             _data.playerData = playerData;
             _data.taskIndx = taskIndx;
             _data.autoRepairLevel = autoRepairLevel;
+            _data.firstAutoRepairLevel = firstAutoRepairLevel;
             return _data;
         }
 
@@ -76,6 +78,7 @@
             taskIndx = _data.taskIndx;
 
             autoRepairLevel = _data.autoRepairLevel;
+            firstAutoRepairLevel = _data.firstAutoRepairLevel;
 
 
         }
