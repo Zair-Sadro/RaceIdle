@@ -10,7 +10,6 @@ public class AutoRepair : MonoBehaviour, ITilesSave, ISaveLoad<int>
     [Space(5)]
     [SerializeField] private PlayerDetector _detectorForRes;
     [Space(5)]
-    [SerializeField] private float delayMachineTakeTile;
     [SerializeField] private int _repairLevel;
     [Space(5)]
     [SerializeField] private CarSpawner _carSpawner;
@@ -211,8 +210,7 @@ public class AutoRepair : MonoBehaviour, ITilesSave, ISaveLoad<int>
             _productRequierments.Add(colcount.Type, colcount);
             _requiredTypes.Add(colcount.Type);
 
-            if (!_tileCountByType.ContainsKey(colcount.Type))
-                _tileCountByType.Add(colcount.Type, 0);
+            _tileCountByType.TryAdd(colcount.Type, 0);
 
             _counterUI.InitCounterValues(colcount.Type, _tileCountByType[colcount.Type], colcount.Amount);
 

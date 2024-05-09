@@ -1,7 +1,9 @@
-﻿using DG.Tweening;
+﻿using System;
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class JunkCarManager : MonoBehaviour
 {
@@ -10,7 +12,7 @@ public class JunkCarManager : MonoBehaviour
 
     private ResourceTilesSpawn tileSpawn => InstantcesContainer.Instance.ResourceTilesSpawn;
 
-
+    public event Action OnAnyCarDestroy;
     private void Start()
     {
         InitCars();
@@ -42,6 +44,7 @@ public class JunkCarManager : MonoBehaviour
     private IEnumerator CarRespawn(float time, JunkCar car)
     {
         car.transform.DOScale(0, 0.4f);
+        OnAnyCarDestroy?.Invoke();
 
         yield return new WaitForSeconds(0.45f);
         car.gameObject.SetActive(false);
@@ -68,4 +71,6 @@ public class JunkCarManager : MonoBehaviour
         yield return new WaitForSeconds(car.RespawnNoDamageTime);
         car.OnRespawn();
     }
+
+    
 }

@@ -1,5 +1,4 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class ShopSystem : MonoBehaviour
@@ -10,12 +9,7 @@ public class ShopSystem : MonoBehaviour
     [Header("Panels")]
     [SerializeField] private UIPanel _buyPanel;
     [SerializeField] private UIPanel _sellPanel;
-
-    [Tooltip("MultiplyValue x MachineIncome"),
-     Header("Multiply to price")]
-    [SerializeField] private float _sellMulti = 0.5f;
-    [SerializeField] private float _buyMulti = 2.5f;
-
+    
     #region Calculation & field to get calcilation info
 
     private Dictionary<TileType, TileEcoInfo> _priceByTypeDict = new() 
@@ -66,12 +60,7 @@ public class ShopSystem : MonoBehaviour
                 case TileType.Plastic:
                     price = 4.5f;
                     break;
-
-                default:
-
-                    break;
             }
-            //var price = _statsValuesInformator.GetMachineIncome(type) * _sellMulti + 1f;
             return price;
         }
 
@@ -108,11 +97,8 @@ public class ShopSystem : MonoBehaviour
                 case TileType.Plastic:
                     price = 9;
                     break;
-
-                default:
-                    break;
             }
-            //var price = _statsValuesInformator.GetMachineIncome(type) * _buyMulti;
+           
             return price;
         }
 
@@ -121,7 +107,6 @@ public class ShopSystem : MonoBehaviour
 
     private void OnEnable()
     {
-
         ShowPanelAfterDetectPlayer();
     }
 

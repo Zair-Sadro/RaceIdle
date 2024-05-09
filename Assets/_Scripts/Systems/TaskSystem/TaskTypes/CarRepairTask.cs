@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class CarRepairTask : MonoBehaviour, IGameTask
 {
-    [SerializeField] private AutoRepair autoRepair;
+    [SerializeField] private FirstAutoRepair autoRepair;
     [SerializeField] private int count;
+    [SerializeField] private int finalRepairLevelTarget;
 
     private int currentCount;
     public event Action TaskDone;
@@ -16,6 +17,12 @@ public class CarRepairTask : MonoBehaviour, IGameTask
 
     public void StartTask()
     {
+        if (autoRepair.RepairLevel == finalRepairLevelTarget|| !autoRepair.gameObject.activeSelf)
+        {
+            TaskDone.Invoke();
+            return;
+        }
+           
         autoRepair.OnCarRepairByPlayer += CountCar;
     }
 

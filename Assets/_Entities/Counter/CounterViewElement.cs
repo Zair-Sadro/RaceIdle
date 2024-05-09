@@ -6,11 +6,14 @@ public class CounterViewElement : MonoBehaviour
     [SerializeField] protected TMPro.TMP_Text counter;
 
     private string max;
+    private static readonly int Plus = Animator.StringToHash("Plus");
 
     public void ChangeCount(int currentCount) 
     {
         counter.text = $"{currentCount}/{max}";
-        counterAnimator.SetTrigger("Plus");
+        
+        if(counterAnimator.runtimeAnimatorController!=null)
+            counterAnimator.SetTrigger(Plus);
     }
     public void InitCount(int currentCount,int max) 
     {

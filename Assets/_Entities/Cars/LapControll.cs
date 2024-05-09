@@ -12,8 +12,6 @@ public class LapControll : MonoBehaviour
 
             InstantcesContainer.Instance.AudioService.PlayAudo(AudioName.FINISHRACE);
         }
-
-        //_particleSystem.Play();
     }
 }
 

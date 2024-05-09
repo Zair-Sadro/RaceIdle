@@ -17,19 +17,21 @@ public class FirstAutoRepair : MonoBehaviour, ISaveLoad<int>
     [SerializeField] private ParticleSystem _destroyVFX;
 
     [SerializeField] private BuilderFromTiles _nextAutoRapirBuilder;
-    [SerializeField] private float _delayMachineTakeTile;
     [SerializeField] private float _destroyedObjAppDelay;
     [SerializeField] private int _repairLevel;
 
     [Space(5)]
     [SerializeField] private CarSpawner _carSpawner;
 
+    [Space(5)] 
+    [SerializeField] private SimpleComics _simpleComics;
+
     private List<TileType> _requiredTypes = new();
     private Dictionary<TileType, ProductRequierment> _productRequierments = new();
     private Dictionary<TileType, int> _tileCountByType = new();
 
     private bool _carRiding;
-
+    public int RepairLevel=>_repairLevel;
     private TileSetter _playerTilesBag => InstantcesContainer.Instance.TileSetter;
     private void Collect()
     {
@@ -41,10 +43,7 @@ public class FirstAutoRepair : MonoBehaviour, ISaveLoad<int>
     private IEnumerator CollectCor()
     {
         var reqtype = new List<TileType>(_requiredTypes);
-
-        //if (reqtype.Count == 0)
-        //     StartCoroutine(Repair());
-
+        
         for (int i = 0; i < reqtype.Count; i++)
         {
             if (_playerTilesBag._isGivingTiles)
@@ -83,7 +82,7 @@ public class FirstAutoRepair : MonoBehaviour, ISaveLoad<int>
 
     private IEnumerator Repair()
     {
-        if (_repairLevel < 3)
+        if (_repairLevel < 2)
         {
             _tileCountByType = new();
             _carRiding = true;
@@ -100,15 +99,26 @@ public class FirstAutoRepair : MonoBehaviour, ISaveLoad<int>
 
             yield return new WaitForSeconds(2f);
             _oldCar.DOScale(Vector3.one, 0.7f);
-            _repairLevel++;
+            ++_repairLevel;
             GetNextTilesRequired();
             _carRiding = false;
         }
         else
         {
-            _destroyVFX.Play();
-            yield return new WaitForSeconds(_destroyedObjAppDelay);
+            ++_repairLevel;
+            _oldCar.gameObject.SetActive(false);
+            SubscribeForTilesDetect(false);
+            
+            _buildVFX.Play();
+            _carSpawner.Spawn(1);
+            OnCarRepairByPlayer?.Invoke();
 
+            var waitForDestroyedObjAppDelay = new WaitForSeconds(_destroyedObjAppDelay);
+            yield return waitForDestroyedObjAppDelay ;
+            _destroyVFX.Play();
+            yield return waitForDestroyedObjAppDelay;
+            
+            InstantcesContainer.Instance.ComicsService.ShowComics(_simpleComics);
             CreateNextAutoRepair();
 
         }
@@ -136,13 +146,14 @@ public class FirstAutoRepair : MonoBehaviour, ISaveLoad<int>
 
     public void Initialize(int level)
     {
-        if (level < 3)
+        if (level < 2)
         {
             _repairLevel = level;
             _nextAutoRapirBuilder.gameObject.SetActive(false);
         }
         else
         {
+            _repairLevel = level;
             if (_nextAutoRapirBuilder != null)
                 _nextAutoRapirBuilder.gameObject.SetActive(true);
 
@@ -199,8 +210,7 @@ public class FirstAutoRepair : MonoBehaviour, ISaveLoad<int>
             _productRequierments.Add(colcount.Type, colcount);
             _requiredTypes.Add(colcount.Type);
 
-            if (!_tileCountByType.ContainsKey(colcount.Type))
-                _tileCountByType.Add(colcount.Type, 0);
+            _tileCountByType.TryAdd(colcount.Type, 0);
 
             _counterUI.InitCounterValues(colcount.Type, _tileCountByType[colcount.Type], colcount.Amount);
 

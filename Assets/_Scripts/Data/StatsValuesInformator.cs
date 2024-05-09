@@ -73,5 +73,10 @@ public class StatsValuesInformator : MonoBehaviour
             item.ProducerFields.ToDefault();
         }
     }
+
+    public bool IsTypeInvented(TileType tileType)
+    {
+        return _inventedList.Contains(tileType);
+    }
 }
 

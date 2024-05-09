@@ -19,7 +19,7 @@ public class ResourceTilesSpawn : MonoBehaviour
     private ObjectPooler<Tile> _rubberPool;
 
     private List<ObjectPooler<Tile>> _poolList = new();
-
+    private StatsValuesInformator _statsValuesInformator => InstantcesContainer.Instance.StatsValuesInformator;
     private TileSetter _tileSetter => InstantcesContainer.Instance.TileSetter;
     private string[] _tileTypesNames;
 
@@ -66,10 +66,11 @@ public class ResourceTilesSpawn : MonoBehaviour
     }
     private TileType RandomTileType()
     {
-        var r = UnityEngine.Random.Range(0, _tileTypesNames.Length-1);
+        
+        var r = UnityEngine.Random.Range(0, _statsValuesInformator.GetMaxGainedType().Count);
 
-        var name = _tileTypesNames[r];
-        return (TileType)Enum.Parse(typeof(TileType), name);
+        var typeName = _tileTypesNames[r];
+        return (TileType)Enum.Parse(typeof(TileType), typeName);
     }
     public void ToPool(Tile t)
     {

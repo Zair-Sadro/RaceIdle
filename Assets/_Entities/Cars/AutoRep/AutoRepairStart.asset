@@ -24,8 +24,4 @@ MonoBehaviour:
   - requierments:
     - _type: 0
       _amount: 6
-    level: 0
-  - requierments:
-    - _type: 0
-      _amount: 2
     level: 1

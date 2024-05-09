@@ -8,9 +8,9 @@ public class GameTask : MonoBehaviour
     public float taskReward;
 
     public Transform taskPosForArrow;
+    public GameObject arrowInUI;
     public Sprite icon;
-
-    [SerializeField] private GameObject objWithTask;
+    
     private IGameTask _igtask;
     private IUnlockAfterTask _unlockAfterTask;
     public IGameTask Task => _igtask;
@@ -18,25 +18,15 @@ public class GameTask : MonoBehaviour
 
     public string TaskName
     {
-        get
-        {
-
-            if (l == "ru")
-                return taskNameRU;
-            else
-                return taskName;
-        }
+        get { return l == "ru" ? taskNameRU : taskName; }
     }
-
-
-
 
     private void Awake()
     {
 
         YandexGame.GetDataEvent += CheckTranslate;
 
-        _igtask = objWithTask.GetInterface<IGameTask>();
+        _igtask = gameObject.GetInterface<IGameTask>();
         _unlockAfterTask = gameObject.GetInterface<IUnlockAfterTask>(false);
     }
     private string l;

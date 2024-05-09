@@ -1,34 +1,29 @@
-using DG.Tweening;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.ProBuilder.MeshOperations;
 using UnityEngine.UI;
 using YG;
 
 public class TaskSystem : MonoBehaviour
 {
-    [SerializeField] private TMP_Text text;
-    [SerializeField] private TMP_Text reward;
-    [SerializeField] private CanvasGroup OnDonePanel;
-    [SerializeField] private Image buttonGraphic;
     [SerializeField] private Button claimButton;
-    [SerializeField] private Image icon;
-    [SerializeField] private GameObject taskPanel;
 
+    [SerializeField] private GameObject taskPanel;
+    [SerializeField] private Transform _tutorialArrow;
+
+    [SerializeField] private TaskView _taskView;
     [SerializeField] private WalletSystem wallet;
     [SerializeField] private List<GameTask> tasks;
 
     private int _currentTaskIndx;
     private GameTask _currentTask;
     private float _currentReward;
+    private GameObject _taskUiArrow;
 
     public int CurrentTaskIndx => _currentTaskIndx;
     private void Awake()
     {
-        YandexGame.GetDataEvent += () => RewriteTaskText();
+        YandexGame.GetDataEvent += () => _taskView.RewriteTaskText(_currentTask.TaskName);
         claimButton.onClick.AddListener(ClaimReward);
     }
 
@@ -39,27 +34,21 @@ public class TaskSystem : MonoBehaviour
         _currentTaskIndx = i;
         SetTask(i);
 
-        void UnlockPastTasksLocks(int i)
+        void UnlockPastTasksLocks(int taskIndx)
         {
-            for (int j = 0; j < i; j++)
+            for (int j = 0; j < taskIndx; j++)
             {
                 tasks[j].UnlockAfterTask?.Unlock();
             }
         }
     }
 
-    private void RewriteTaskText()
-    {
-        text.text = _currentTask.TaskName;
-    }
+
 
     private void ClaimReward()
     {
         wallet.Income(_currentReward);
-        OnDonePanel.blocksRaycasts = false;
-        OnDonePanel.DOFade(0, 0.4f);
-        buttonGraphic.DORewind();
-        buttonGraphic.DOKill();
+        _taskView.OnClaimReward();
 
         SetTask(_currentTaskIndx);
     }
@@ -70,14 +59,14 @@ public class TaskSystem : MonoBehaviour
 
         if (indx == -1 || indx == tasks.Count)
         {
-            _currentTaskIndx = -1;
-            taskPanel.SetActive(false);
+            OnTaskFinished();
             return;
         }
 
         _currentTask = tasks[indx];
 
-        TaskView();
+        _taskView.SetTaskTextData(_currentTask);
+        SetArrow();
 
         _currentTask.Task.TaskDone += OnTaskDone;
         _currentReward = _currentTask.taskReward;
@@ -85,27 +74,53 @@ public class TaskSystem : MonoBehaviour
 
         _currentTask.Task.StartTask();
 
-
-
-        void TaskView()
+        void SetArrow()
         {
-            if (_currentTask.icon != null)
-                icon.sprite = _currentTask.icon;
+            var pos = _currentTask.taskPosForArrow;
+            _taskUiArrow = _currentTask.arrowInUI;
 
-            text.text = _currentTask.TaskName;
-            reward.text = _currentTask.taskReward.ToString();
+            if (pos != null)
+            {
+                _tutorialArrow.gameObject.SetActive(true);
+                _tutorialArrow.transform.position = pos.transform.position;
+            }
+               
+            
+            if (_taskUiArrow != null)
+                _taskUiArrow.SetActive(true);
         }
+
+    }
+
+    private void OnTaskFinished()
+    {
+
+        DisableArrows();
+        
+        _currentTaskIndx = -1;
+        taskPanel.SetActive(false);
+        
     }
 
     private void OnTaskDone()
     {
+        DisableArrows();
+        
+        _currentTask.UnlockAfterTask?.Unlock();
         _currentTask.Task.EndTask();
         _currentTask.Task.TaskDone -= OnTaskDone;
         ++_currentTaskIndx;
 
-        OnDonePanel.blocksRaycasts = true;
-        OnDonePanel.DOFade(1, 0.4f);
-        buttonGraphic.DOColor(Color.green, 0.6f).SetLoops(-1, LoopType.Yoyo);
+        _taskView.OnTaskDone();
+
+    }
+   private  void DisableArrows()
+    {
+        if (_taskUiArrow != null)
+            _taskUiArrow.SetActive(false);
+
+        _taskUiArrow = null;
+        _tutorialArrow.gameObject.SetActive(false);
     }
 
 }
@@ -115,8 +130,9 @@ public interface IGameTask
     public void StartTask();
     public void EndTask();
 }
-public interface IUnlockAfterTask 
+public interface IUnlockAfterTask
 {
     public void Unlock();
 }
+
 

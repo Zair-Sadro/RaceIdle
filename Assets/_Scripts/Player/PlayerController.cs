@@ -1,12 +1,12 @@
 using System;
 using UnityEngine;
-using UnityEngine.UIElements;
 using YG;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private float angleToExitFight;
+    [SerializeField] private float _gravity = -3f;
 
     [SerializeField] private Rigidbody body;
     [SerializeField] private FloatingJoystick joystick;
@@ -54,6 +54,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!isMobile)
         {
+            
             movedByKey = MoveByKeys();
         }
 
@@ -61,6 +62,12 @@ public class PlayerController : MonoBehaviour
             return;
 
         JoySkickMove();
+
+            // РџСЂРёРјРµРЅСЏРµРј РіСЂР°РІРёС‚Р°С†РёСЋ Рє РѕР±СЉРµРєС‚Сѓ
+            var velocity1 = body.velocity;
+            body.AddForce(Vector3.down*_gravity, ForceMode.VelocityChange);
+          
+        
     }
 
     private bool MoveByKeys()
@@ -80,35 +87,36 @@ public class PlayerController : MonoBehaviour
         Vector3 lookDirection = Camera.main.transform.forward;
         Vector3 moveDirection = new Vector3(xMove, 0, zMove).normalized;
 
-        // Определяем угол между направлением взгляда и направлением движения
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         float angle = Vector3.Angle(lookDirection, moveDirection);
 
         CheckFrontAndDirectrion(angle);
 
 
-        // Применяем поворот
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         var rotation = Vector3.SmoothDamp(curRot, moveDirection, ref velocity, 0.01f);
         transform.rotation = Quaternion.LookRotation(rotation);
 
         _curSpeed = MathF.Round(body.velocity.magnitude, 2);
 
+      
         body.velocity = new Vector3(xMove * speed, body.velocity.y,
            zMove * speed);
 
         return true;
 
-        void CheckFrontAndDirectrion(float angle)
+        void CheckFrontAndDirectrion(float currentAngle)
         {
             if (isDestroyableInFront)
             {
-                if (angle >= angleToExitFight)
-                    _animator.SetBool("Run", true);
+                if (currentAngle >= angleToExitFight)
+                    _animator.SetBool(Run, true);
                 else
-                    _animator.SetBool("Run", false);
+                    _animator.SetBool(Run, false);
             }
             else
             {
-                _animator.SetBool("Run", true);
+                _animator.SetBool(Run, true);
             }
         }
     }
@@ -121,7 +129,7 @@ public class PlayerController : MonoBehaviour
             Vector3 moveDirection = new Vector3(joystick.Horizontal, 0, joystick.Vertical).normalized;
 
 
-            // Определяем угол между направлением взгляда и направлением движения
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             float angle = Vector3.Angle(lookDirection, moveDirection);
 
             if (!NoEnemy(angle))
@@ -129,7 +137,7 @@ public class PlayerController : MonoBehaviour
                 transform.rotation = Quaternion.LookRotation(moveDirection);
 
 
-                body.velocity = new Vector3(joystick.Horizontal * speed, body.velocity.y, joystick.Vertical * speed);
+                body.velocity = new Vector3(joystick.Horizontal * speed, _gravity, joystick.Vertical * speed);
             }
 
 
@@ -169,15 +177,16 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float _maxDistRay = 5f;
     [SerializeField] private PlayerSlash _fightSystem;
+    private static readonly int Run = Animator.StringToHash("Run");
+    private static readonly int Speed = Animator.StringToHash("Speed");
 
     void Update()
     {
-        _animator.SetFloat("Speed", _curSpeed);
-
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, _maxDistRay))
+        _animator.SetFloat(Speed, _curSpeed);
+        
+        if (Physics.Raycast(transform.position, transform.forward, out var hit, _maxDistRay))
         {
-            // Если луч столкнулся с объектом с указанным тегом
+            // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
             if (hit.collider.CompareTag("Destroyable"))
             {
                 isDestroyableInFront = true;
@@ -190,7 +199,7 @@ public class PlayerController : MonoBehaviour
         }
         if (Physics.Raycast(transform.position, Quaternion.AngleAxis(45f, -transform.right) * transform.forward, out hit, _maxDistRay))
         {
-            // Если луч столкнулся с объектом с указанным тегом
+            // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
             if (hit.collider.CompareTag("Destroyable"))
             {
                 isDestroyableInFront = true;
@@ -203,11 +212,10 @@ public class PlayerController : MonoBehaviour
         }
         if (Physics.Raycast(transform.position, Quaternion.AngleAxis(45f, transform.right) * transform.forward, out hit, _maxDistRay))
         {
-            // Если луч столкнулся с объектом с указанным тегом
+            // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
             if (hit.collider.CompareTag("Destroyable"))
             {
                 isDestroyableInFront = true;
-                return;
             }
             else
             {
@@ -219,14 +227,17 @@ public class PlayerController : MonoBehaviour
     }
     private void OnDrawGizmos()
     {
-        // Определяем начальную точку луча
-        Vector3 rayOrigin = transform.position;
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+        var playerTransform = transform;
+        Vector3 rayOrigin = playerTransform.position;
 
-        // Определяем направление луча (например, направление вперед)
-        Vector3 rayDirection1 = Quaternion.Euler(0, -35f, 0) * transform.right;
-        Vector3 rayDirection2 = Quaternion.Euler(0, -35f, 0) * -transform.right;
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ)
+        var right = playerTransform.right;
+        
+        Vector3 rayDirection1 = Quaternion.Euler(0, -35f, 0) * right;
+        Vector3 rayDirection2 = Quaternion.Euler(0, -35f, 0) * -right;
 
-        // Отрисовываем луч Gizmo
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ Gizmo
         Gizmos.color = Color.grey;
         Gizmos.DrawLine(rayOrigin, rayOrigin + rayDirection1 * _maxDistRay);
         Gizmos.DrawLine(rayOrigin, rayOrigin + rayDirection2 * _maxDistRay);

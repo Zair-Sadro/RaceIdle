@@ -63,6 +63,8 @@ public class UniqCar : MonoBehaviour, IDamageable
     public void OnRespawn()
     {
         _currentHealth = maxHealth;
+        hpFillImage.fillAmount = Mathf.Clamp(_currentHealth / maxHealth, 0f, 1f);
+
         _partsDestroyed = 1;
 
         nextpartIndx = 0;

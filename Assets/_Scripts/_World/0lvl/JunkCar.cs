@@ -63,6 +63,8 @@ public class JunkCar : MonoBehaviour, IDamageable
     public void OnRespawn()
     {
         _currentHealth = maxHealth;
+        hpFillImage.fillAmount = Mathf.Clamp(_currentHealth / maxHealth, 0f, 1f);
+
         _partsDestroyed = 1;
 
         nextpartIndx = 0;
@@ -102,6 +104,7 @@ public class JunkCar : MonoBehaviour, IDamageable
             {
                 if (_partsDestroyed >= carParts.Length)
                 {
+                    _junkCarManager.ExplodeTile(this);
                     DestroyCar();
                     return;
                 }

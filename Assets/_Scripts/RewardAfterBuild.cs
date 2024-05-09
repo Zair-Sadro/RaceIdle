@@ -14,9 +14,7 @@ public class RewardAfterBuild : MonoBehaviour, IBuildable
             return;
 
         _tileSetter.TryAddTile(TileType.Junk);
-        _tileSetter.TryAddTile(TileType.Iron);
-        _tileSetter.TryAddTile(TileType.Plastic);
-        _tileSetter.TryAddTile(TileType.Rubber);
+
     }
 
   

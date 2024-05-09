@@ -10,27 +10,22 @@ public class ShopUI : UIPanel
 
     [SerializeField] private ShopSystem _sellSystem;
     [SerializeField] private List<GameObject> _slots;
-
-
-
+    
     private List<IRegisterSlot> _registerSlots = new List<IRegisterSlot>();
 
     protected override void Start()
     {
-        base.Awake();
         GetIRegister();
         PanelInit(GetPanelAnimation());
     }
-
-
+    
     private void GetIRegister()
     {
-      
-       for (int i = 0; i < _slots.Count; i++)
-       {
-          var ireg = _slots[i].GetInterface<IRegisterSlot>();
-         _registerSlots.Add(ireg);
-       }   
+        for (int i = 0; i < _slots.Count; i++)
+        {
+            var ireg = _slots[i].GetInterface<IRegisterSlot>();
+            _registerSlots.Add(ireg);
+        }   
       
     }
 

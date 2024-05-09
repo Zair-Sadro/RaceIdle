@@ -32,12 +32,6 @@ public class UIController : MonoBehaviour
 
 
     }
-    public void PanelInit() 
-    {
-        _noTween = true;
-        if (showOnAwake) Show();
-    }
-
     public bool showOnAwake = false;
     private OnHideAction onHideAction = OnHideAction.Disable;
 

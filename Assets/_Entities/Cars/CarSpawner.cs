@@ -42,8 +42,9 @@ public class CarSpawner : MonoBehaviour
 
         car.CarData.LapReward = 0;
 
-        car.transform.position = _1saveSpawnPoints[0].position;
-        car.transform.rotation = _1saveSpawnPoints[0].rotation;
+        var transform1 = car.transform;
+        transform1.position = _1saveSpawnPoints[0].position;
+        transform1.rotation = _1saveSpawnPoints[0].rotation;
 
 
         car.RideAfterMerge(pointToFollow);
@@ -60,7 +61,7 @@ public class CarSpawner : MonoBehaviour
 
         car.RideFromRepair();
 
-        car.CarData.Level = level;
+        car.CarData.ValueNumber = level;
         _raceTrackManager.RegisterCar(car);
         OnCarSpawned?.Invoke(level);
 
@@ -75,7 +76,7 @@ public class CarSpawner : MonoBehaviour
         car.SetRaceCamera(_raceCamera);
 
         car.RideAfterMerge(currentCarPoint);
-        car.CarData.Level = level;
+        car.CarData.ValueNumber = level;
         _raceTrackManager.RegisterCar(car);
 
     }
@@ -142,7 +143,7 @@ public class CarSpawner : MonoBehaviour
 
     private void SpawnCarByDataFirstPoints(List<CarData> data, int lastindx, int pointToFollow, int savePointIndx)
     {
-        var car = Instantiate(_cars[data[lastindx].Level], _parent);
+        var car = Instantiate(_cars[data[lastindx].ValueNumber], _parent);
 
         car.SetPointsList(_points, _toTrackPoint);
         car.SetMergeMaster(_mergeMaster);
@@ -159,7 +160,7 @@ public class CarSpawner : MonoBehaviour
     }
     private void SpawnCarByDataSecondPoints(List<CarData> data, int lastindx, int pointToFollow, int savePointIndx)
     {
-        var car = Instantiate(_cars[data[lastindx].Level], _parent);
+        var car = Instantiate(_cars[data[lastindx].ValueNumber], _parent);
 
         car.SetPointsList(_points, _toTrackPoint);
         car.SetMergeMaster(_mergeMaster);

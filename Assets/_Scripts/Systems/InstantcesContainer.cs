@@ -17,6 +17,9 @@ public class InstantcesContainer : MonoBehaviour
     [SerializeField] private LapControll _lapControll;
     [SerializeField] private AudioService _audioService;
     [SerializeField] private PlayerSlash _playerSlasher;
+    [SerializeField] private ComicsService _comicsService;
+
+
 
     public PlayerSlash PlayerSlasher => _playerSlasher;
     public RaceIdleGame RaceIdleGame => _raceIdleGame;
@@ -32,7 +35,7 @@ public class InstantcesContainer : MonoBehaviour
     public LapControll LapControll => _lapControll;
     public AudioService AudioService => _audioService;
 
-
+    public ComicsService ComicsService => _comicsService;
 
     private void Awake()
     {

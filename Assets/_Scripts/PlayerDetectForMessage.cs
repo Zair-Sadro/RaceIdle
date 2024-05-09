@@ -7,7 +7,7 @@ public class PlayerDetectForMessage : PlayerDetector
 {
     [SerializeField] private Transform _messageObj;
     [SerializeField] private Vector3 _scale;
-    // Start is called before the first frame update
+
     void Start()
     {
         OnPlayerEnter += ShowMessage;

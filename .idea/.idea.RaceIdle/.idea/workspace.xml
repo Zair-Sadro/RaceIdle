@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -26,15 +29,170 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9c470db8-1fc5-4606-9403-dd9e30755c2c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/AssetStore/Cars/Car yellow/Prefabs With Colliders/Free_Racing_Car_Yellow.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetStore/Cars/Car yellow/Prefabs With Colliders/Free_Racing_Car_Yellow.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/HierarchyDecorator/Settings.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HierarchyDecorator/Settings.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/CarTest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/CarTest.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Entities/Cars/Low-poly cars/Materials/Car_02_skin_2 1.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Entities/Cars/Low-poly cars/Materials/Car_02_skin_2 1.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Entities/Comics.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Entities/Comics/ComicsPageView.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Entities/Comics/ComicsPageView.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Entities/Comics/ComicsService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Entities/Comics/ComicsService.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Entities/Comics/IComics.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Entities/Comics/IComics.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Entities/Comics/SimpleComics.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Entities/Comics/SimpleComics.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Entities/Comics/autorepBoom3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Entities/Comics/autorepBoom3.jpg.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Systems/InstantcesContainer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Systems/InstantcesContainer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/TaskTypes/BuildTask.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/TaskTypes/CarMergeTask.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/TaskTypes/CarRepairTask.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/TaskTypes/DestroyCarTask.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/TaskTypes/DestroyCarTask.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/TaskTypes/MachineUpgradeTask.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/TaskTypes/PlayerUpgradeTask.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/TaskTypes/SellResTask.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/TaskView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.RaceIdle/.idea/contentModel.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.RaceIdle/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RaceIdle/.idea/indexLayout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.RaceIdle/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.RaceIdle/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RaceIdle/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.RaceIdle/riderModule.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetStore/UIController/Scripts/UIController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetStore/UIController/Scripts/UIController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/20_db SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/20_db SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/Ivan SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/Ivan SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/IzhitsaC SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/IzhitsaC SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/Kaori SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/Kaori SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/London SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/London SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/MOD SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/MOD SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/Megen SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/Megen SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/Metro SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/Metro SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/New_Zelek SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/New_Zelek SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/PaladinPCRus SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/PaladinPCRus SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_AlgeriusNr SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_AlgeriusNr SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_AlternaTitulB SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_AlternaTitulB SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_AssuanBrk SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_AssuanBrk SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_BentTitulDcFr SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_BentTitulDcFr SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_BighausTitulOtlDr SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_BighausTitulOtlDr SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_BosaNovaDcFr SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_BosaNovaDcFr SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_BraggaStrip SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_BraggaStrip SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_BraggaTitul SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_BraggaTitul SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_BremenDcFr SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_BremenDcFr SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_CampusGrav SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_CampusGrav SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_CampusMarine SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_CampusMarine SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_CampusPrLy SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_CampusPrLy SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_CampusStrip SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_CampusStrip SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_ConceptoTit SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_ConceptoTit SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_DiscoSerif SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_DiscoSerif SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_DiscoSerifDbl SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_DiscoSerifDbl SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_GildiaLnBk SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_GildiaLnBk SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_GlobusLnBk SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_GlobusLnBk SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_Groto SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_Groto SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_GrotoGr SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_GrotoGr SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_LatinoTitulBr SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_LatinoTitulBr SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_MachinaOrtoDgStr SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_MachinaOrtoDgStr SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_MachinaOrtoSht SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_MachinaOrtoSht SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_ModernoDcFr SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_ModernoDcFr SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_PlakatTitulHlStr SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Art/a_PlakatTitulHlStr SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/LCD/a_LCDNovaObl SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/LCD/a_LCDNovaObl SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Outline/a_AvanteCpsL SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Outline/a_AvanteCpsL SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Outline/a_BighausTitulBrkHil SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Outline/a_BighausTitulBrkHil SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Outline/a_BosaNovaOtl SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Outline/a_BosaNovaOtl SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Outline/a_BraggaOtl SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Outline/a_BraggaOtl SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Outline/a_BraggaOtlSh SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Outline/a_BraggaOtlSh SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Outline/a_CampusOtl SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Outline/a_CampusOtl SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Outline/a_CampusPrsp SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Outline/a_CampusPrsp SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/GameText_1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/GameText_1.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/Movavi Grotesque Black Italic SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/Movavi Grotesque Black Italic SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/Movavi Grotesque Black SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/Movavi Grotesque Black SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/PTSans SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/PTSans SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/PTSansCaption SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/PTSansCaption SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/PTSansCaption_Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/PTSansCaption_Bold SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/PTSans_b_it SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/PTSans_b_it SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/PTSans_bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/PTSans_bold SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/PTSans_it SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/PTSans_it SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/Philosopher-Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/Philosopher-Bold SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/Philosopher-BoldItalic SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/Philosopher-BoldItalic SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/Philosopher-Italic SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/Philosopher-Italic SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/Philosopher-Regular SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/Philosopher-Regular SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/Play-Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/Play-Bold SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/Play-Regular SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/Play-Regular SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/a_AlternaSw SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/a_AlternaSw SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/a_AntiqueTitulGr SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/a_AntiqueTitulGr SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/a_BighausTitul SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/a_BighausTitul SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/a_Bremen SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/a_Bremen SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/a_BremenCaps SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/a_BremenCaps SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/a_ConceptoTitulNrFy SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/a_ConceptoTitulNrFy SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/a_GlobusOblique SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/a_GlobusOblique SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/a_MachinaOrtoSls SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/a_MachinaOrtoSls SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/ThinLine/GardensC SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/ThinLine/GardensC SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/ThinLine/Hagin Caps Thin SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/ThinLine/Hagin Caps Thin SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/ThinLine/Montblanc SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/ThinLine/Montblanc SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/ThinLine/a_Empirial SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/ThinLine/a_Empirial SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Car_0.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Car_0.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Car_0.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Car_0.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Car_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Car_1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Car_1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Car_1.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Car_3.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Car_3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Car_3.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Car_3.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Car_6.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Car_6.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Car_6.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Car_6.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Car_7.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Car_7.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Car_7.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Car_7.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Car_8.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Car_8.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Car_8.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Car_8.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Other/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/WorkingData/Editor/SavesEditorYG.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YandexGame/WorkingData/Editor/SavesEditorYG.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Entities/Cars/AutoRep/AutoRepair.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Entities/Cars/AutoRep/AutoRepair.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Entities/Cars/AutoRep/AutoRepairStart.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Entities/Cars/AutoRep/AutoRepairStart.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Entities/Cars/AutoRep/FirstAutoRepair.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Entities/Cars/AutoRep/FirstAutoRepair.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Entities/Cars/CarSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Entities/Cars/CarSpawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Entities/Cars/LapControll.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Entities/Cars/LapControll.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Entities/Cars/Low-poly cars/Materials/Car_02_skin_2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Entities/Cars/Low-poly cars/Materials/Car_02_skin_2.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Entities/Cars/Low-poly cars/Materials/Car_02_skin_3.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Entities/Cars/Low-poly cars/Materials/Car_02_skin_3.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Entities/Cars/Low-poly cars/Materials/Car_03_skin_2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Entities/Cars/Low-poly cars/Materials/Car_03_skin_2.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Entities/Cars/Low-poly cars/Materials/Car_07_skin_3.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Entities/Cars/Low-poly cars/Materials/Car_07_skin_3.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Entities/Cars/Low-poly cars/Materials/Car_07_skin_4.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Entities/Cars/Low-poly cars/Materials/Car_07_skin_4.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Entities/Cars/Low-poly cars/Materials/Car_08_skin_2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Entities/Cars/Low-poly cars/Materials/Car_08_skin_2.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Entities/Cars/Low-poly cars/Textures/car_2_skin_2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Entities/Cars/Low-poly cars/Textures/car_2_skin_2.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Entities/Cars/MergeScripts/CarData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Entities/Cars/MergeScripts/CarData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Entities/Counter/CounterViewElement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Entities/Counter/CounterViewElement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Entities/Counter/JunkCounter.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Entities/Counter/JunkCounter.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Entities/Machines/IRONmachineToolAuto.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Entities/Machines/IRONmachineToolAuto.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Entities/Tiles/JunkTile.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Entities/Tiles/JunkTile.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Entities/Tiles/PlasticTile.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Entities/Tiles/PlasticTile.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Data/StatsValuesInformator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Data/StatsValuesInformator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Player/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Player/PlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/PlayerDetectForMessage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/PlayerDetectForMessage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/RewardAfterBuild.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/RewardAfterBuild.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Systems/ResourceTilesSpawn.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Systems/ResourceTilesSpawn.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/BuildTask.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/BuildTask.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/CarMergeTask.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/CarMergeTask.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/CarRepairTask.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/CarRepairTask.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/GameTask.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/GameTask.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/MachineUpgradeTask.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/MachineUpgradeTask.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/PlayerUpgradeTask.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/PlayerUpgradeTask.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/TaskSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/TaskSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/TileCollectorLock.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/TileCollectorLock.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/UI/ResourceUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/UI/ResourceUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/UI/Shop_tiles/ShopUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/UI/Shop_tiles/ShopUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Utils/InstantcesContainer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Utils/InstantcesContainer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/_World/0lvl/JunkCar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/_World/0lvl/JunkCar.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/_World/0lvl/JunkCarManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/_World/0lvl/JunkCarManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/_World/0lvl/UniqCar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/_World/0lvl/UniqCar.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/_World/1lvl_Shop/ShopSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/_World/1lvl_Shop/ShopSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2022.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2022.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +203,13 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Installers/RaceTrackInstaller.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/0f/f5b43ff2/IReadOnlyDictionary`2.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Systems/InstantcesContainer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/TaskTypes/SellResTask.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -59,24 +223,65 @@
       </list>
     </option>
   </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectId" id="2KiAYWzDlaQKe8aLpppBwjYw1cY" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="Discover.Launch.Via.Unity" value="true" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
-  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;full.screen.before.presentation.mode&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;YandexGame&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\Alks\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\Alks\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\Alks\\AppData\\Local\\Symbols\\src&quot;
+    ]
+  }
+}</component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor &amp; Play">
+    <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.13f1\Editor\Unity.exe" />
+      <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Users\Alks\Desktop\Projects\RaceIdle -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\Alks\Desktop\Projects\RaceIdle" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.13f1\Editor\Unity.exe" />
+      <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Users\Alks\Desktop\Projects\RaceIdle -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\Alks\Desktop\Projects\RaceIdle" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
+      <option name="projectPathOnTarget" />
       <option name="selectedOptions">
-        <set />
+        <list />
       </option>
       <method v="2" />
     </configuration>
@@ -84,8 +289,9 @@
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
+      <option name="projectPathOnTarget" />
       <option name="selectedOptions">
-        <set />
+        <list />
       </option>
       <method v="2" />
     </configuration>
@@ -101,12 +307,22 @@
       <workItem from="1674447115877" duration="4624000" />
       <workItem from="1674899781430" duration="5695000" />
       <workItem from="1675933628437" duration="2641000" />
+      <workItem from="1714805866432" duration="1078000" />
+      <workItem from="1714809590103" duration="3166000" />
+      <workItem from="1714929147712" duration="2264000" />
+      <workItem from="1714932069229" duration="1772000" />
+      <workItem from="1714933868395" duration="381000" />
+      <workItem from="1714985300140" duration="5924000" />
+      <workItem from="1715088509922" duration="5116000" />
+      <workItem from="1715174430950" duration="6973000" />
+      <workItem from="1715236492515" duration="5369000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
   <component name="Vcs.Log.Tabs.Properties">
@@ -119,9 +335,13 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

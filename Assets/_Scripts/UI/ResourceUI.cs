@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using System;
+using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +7,7 @@ public class ResourceUI : MonoBehaviour
 {
     private WalletSystem _wallet => InstantcesContainer.Instance.WalletSystem;
     private TileSetter _tileSetter => InstantcesContainer.Instance.TileSetter;
+    private StatsValuesInformator _statsValuesInformator => InstantcesContainer.Instance.StatsValuesInformator;
 
     [SerializeField] private TMPro.TMP_Text tx_money;
     [SerializeField] private TMPro.TMP_Text 
@@ -13,9 +15,14 @@ public class ResourceUI : MonoBehaviour
                                       tx_iron,
                                       tx_plastic,
                                       tx_rubber;
+    
+    [SerializeField] private GameObject _iron,
+                                        _plastic,
+                                        _rubber;
+    
     [SerializeField] private Vector3 _moneyTextPunchVector;
 
-    private Dictionary<TileType, TMPro.TMP_Text> textByTileType = new(4);
+    private readonly Dictionary<TileType, TMPro.TMP_Text> textByTileType = new(4);
     private void Awake()
     {
 
@@ -30,6 +37,34 @@ public class ResourceUI : MonoBehaviour
     {
         SubscribeOnInit(_tileSetter.TilesListsByType);
         _wallet.OnTotalMoneyChange += MoneyView;
+        
+        SetActiveInventedTileType();
+
+        void SetActiveInventedTileType()
+        {
+            _iron.SetActive(false);
+            _rubber.SetActive(false);
+            _plastic.SetActive(false);
+            
+            var listTypes = _statsValuesInformator.GetMaxGainedType();
+            foreach (var type in listTypes)
+            {
+                switch (type)
+                {
+                    case TileType.Junk:
+                        break;
+                    case TileType.Iron:
+                        _iron.SetActive(true);
+                        break;
+                    case TileType.Rubber:
+                        _rubber.SetActive(true);
+                        break;
+                    case TileType.Plastic:
+                        _plastic.SetActive(true);
+                        break;
+                }
+            }
+        }
     }
 
 
@@ -58,9 +93,39 @@ public class ResourceUI : MonoBehaviour
         var type = tileListInfo.ListType;
         var count = tileListInfo.Count;
 
+        CheckDisabledType(type);
+
         textByTileType[type].text = count.ToString();
         textByTileType[type].transform.DORewind();
         textByTileType[type].transform.DOPunchScale(_moneyTextPunchVector, 0.2f,5);
+    }
+
+    private void CheckDisabledType(TileType tileType)
+    {
+        switch (tileType)
+        {
+            case TileType.Junk:
+                return;
+            
+            case TileType.Iron:
+                
+                if(!_iron.activeSelf)
+                    _iron.SetActive(true);
+                break;
+            
+            case TileType.Rubber:
+                
+                if(!_rubber.activeSelf)
+                    _rubber.SetActive(true);
+                break;
+            
+            case TileType.Plastic:
+                
+                if(!_plastic.activeSelf)
+                    _plastic.SetActive(true);
+                break;
+
+        }
     }
 }
 
