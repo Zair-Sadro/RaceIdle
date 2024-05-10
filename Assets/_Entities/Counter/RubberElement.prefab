@@ -57,7 +57,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 3816066642512467953, guid: 650bae26953fe6f4290e86833c8034bb, type: 2}
+  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -101,9 +101,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0/8
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 650bae26953fe6f4290e86833c8034bb, type: 2}
-  m_sharedMaterial: {fileID: 3816066642512467953, guid: 650bae26953fe6f4290e86833c8034bb,
-    type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -265,7 +264,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 216601202390207750}
-  - component: {fileID: 7815467569826539104}
   - component: {fileID: 3655569172266026919}
   m_Layer: 0
   m_Name: RubberElement
@@ -291,27 +289,6 @@ Transform:
   - {fileID: 7298309193170603252}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -22.3, y: 0, z: 0}
---- !u!95 &7815467569826539104
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4459100373812967980}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2db1feb1324e7b34784fff57eb32963d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &3655569172266026919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -324,5 +301,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32b21e0ef63fb60409177f5939a4b761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  counterAnimator: {fileID: 7815467569826539104}
+  counterAnimator: {fileID: 0}
   counter: {fileID: 4900044534408309127}
