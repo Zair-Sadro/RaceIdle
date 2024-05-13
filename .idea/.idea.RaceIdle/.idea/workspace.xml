@@ -29,6 +29,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9c470db8-1fc5-4606-9403-dd9e30755c2c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.RaceIdle/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RaceIdle/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Entities/Counter/CounterViewElement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Entities/Counter/CounterViewElement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_NewMats/GreyPlane.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_NewMats/GreyPlane.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2022.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2022.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -153,6 +156,8 @@
       <workItem from="1715088509922" duration="5116000" />
       <workItem from="1715174430950" duration="6973000" />
       <workItem from="1715236492515" duration="5964000" />
+      <workItem from="1715332313816" duration="604000" />
+      <workItem from="1715583500930" duration="51000" />
     </task>
     <servers />
   </component>

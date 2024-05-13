@@ -12,8 +12,7 @@ public class CounterViewElement : MonoBehaviour
     {
         counter.text = $"{currentCount}/{max}";
         
-        if(counterAnimator.runtimeAnimatorController!=null)
-            counterAnimator.SetTrigger(Plus);
+        if(counterAnimator!=null && counterAnimator.runtimeAnimatorController!=null) counterAnimator.SetTrigger(Plus);
     }
     public void InitCount(int currentCount,int max) 
     {
