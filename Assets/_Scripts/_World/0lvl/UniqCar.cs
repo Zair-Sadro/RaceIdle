@@ -1,15 +1,12 @@
 using DG.Tweening;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class UniqCar : MonoBehaviour, IDamageable
 {
-    [SerializeField] private float damagePerHit;
     [SerializeField] private float maxHealth;
     [SerializeField] private float respawnNoDamageTime;
-    [SerializeField] private Image hpFillImage;
+
     [SerializeField] private ParticleSystem _boomEffect;
     [SerializeField] private ParticleSystem _hitEffect;
 
@@ -19,8 +16,7 @@ public class UniqCar : MonoBehaviour, IDamageable
     [SerializeField] private PlayerSlash playerSlash;
     [SerializeField] private AudioService audioService;
     private UniqCarsManager _uniqCarManager;
-
-    private float _currentHealth;
+    
     private int _partsDestroyed;
     private int _partsIndex;
 
@@ -30,26 +26,18 @@ public class UniqCar : MonoBehaviour, IDamageable
     private void Start()
     {
         shakecartween = _partParent.DOPunchScale(CarPartChangedSize(_partParent, -0.01f, 0.02f), 0.2f, 100, 100).OnComplete(() => _partParent.DORewind());
-
-        _startPos = transform.position;
-        _currentHealth = maxHealth;
+        
 
         _maxDamageForDestroy = maxHealth / 5f;
         _partsDestroyed = 1;
 
         Shuffle(carParts);
-        HPBarShow();
     }
     public void Init(UniqCarsManager carManager)
     {
         _uniqCarManager = carManager;
 
     }
-    void FixedUpdate()
-    {
-        hpFillImage.transform.LookAt(Camera.main.transform.position);
-    }
-
     [SerializeField] private float _randDeltaX, _randDeltaZ;
     public void RandomPosition()
     {
@@ -62,9 +50,6 @@ public class UniqCar : MonoBehaviour, IDamageable
 
     public void OnRespawn()
     {
-        _currentHealth = maxHealth;
-        hpFillImage.fillAmount = Mathf.Clamp(_currentHealth / maxHealth, 0f, 1f);
-
         _partsDestroyed = 1;
 
         nextpartIndx = 0;
@@ -72,7 +57,7 @@ public class UniqCar : MonoBehaviour, IDamageable
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "weapon")
+        if (other.CompareTag("weapon"))
         {
             TakeDamage(playerSlash.Damage);
             var pos = other.transform.position;
@@ -88,7 +73,6 @@ public class UniqCar : MonoBehaviour, IDamageable
     private Tween shakecartween;
     public void TakeDamage(int damage)
     {
-        _currentHealth -= damage;
         damageCountForPartDestroy += damage;
         bool damageIsGained = damageCountForPartDestroy >= _maxDamageForDestroy;
 
@@ -118,7 +102,7 @@ public class UniqCar : MonoBehaviour, IDamageable
                 damageCountForPartDestroy = 0;
             }
 
-        hpFillImage.fillAmount = Mathf.Clamp(_currentHealth / maxHealth, 0f, 1f);
+     
 
         void ShakeCarPart(GameObject carpart)
         {
@@ -153,33 +137,25 @@ public class UniqCar : MonoBehaviour, IDamageable
     private Vector3 CarPartChangedSize(Transform part, float min = 0.3f, float max = 0.75f)
     {
         float randDelta = Random.Range(min, max);
+        var localScale = part.localScale;
         var newSize = new Vector3(
-            part.localScale.x + randDelta,
-            part.localScale.y + randDelta,
-            part.localScale.z + randDelta
+            localScale.x + randDelta,
+            localScale.y + randDelta,
+            localScale.z + randDelta
         );
         return newSize;
     }
 
-    public static GameObject[] Shuffle(GameObject[] arr)
+    private void Shuffle(GameObject[] arr)
     {
 
         for (int i = arr.Length - 2; i >= 0; i--)
         {
             int j = Random.Range(1, i + 1);
-            var temp = arr[j];
-            arr[j] = arr[i];
-            arr[i] = temp;
+            (arr[j], arr[i]) = (arr[i], arr[j]);
         }
-
-        return arr;
-
-    }
-
-    private void HPBarShow()
-    {
-        hpFillImage.gameObject.SetActive(true);
+        
 
     }
-
+    
 }

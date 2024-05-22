@@ -1,77 +1,26 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class TileCollector : MonoBehaviour
 {
-    protected Action<TileType, int> OnCountChange;
 
-    [SerializeField] protected virtual int maxTileCount { get; private set; }
-    [SerializeField] protected virtual int currentTilesCount { get; set; }
     [SerializeField] protected CounterViewbase _counterView;
-
-
-    protected TileSetter _playerTilesBag => InstantcesContainer.Instance.TileSetter;
     [SerializeField] protected Transform tileStorage;
-    [SerializeField] protected bool hideAfterCollect = true;
-
-    //<<<<<<<<<<<<<<<<<<<<<<<< Required tiles fields >>>>>>>>>>>>>>>>>>>>>>>>>>>\\
-    [SerializeField] protected virtual List<TileType> _requiredTypes { get; set; }
     [SerializeField] protected List<ProductRequierment> productRequierments;
 
+    protected TileSetter _playerTilesBag => InstantcesContainer.Instance.TileSetter;
+    protected List<TileType> _requiredTypes { get; set; }
     protected Dictionary<TileType, Stack<Tile>> tileListByType = new();
+    protected Action<TileType, int> OnCountChange;
+    protected virtual int maxTileCount { get; private set; }
+    protected int currentTilesCount { get; set; }
     protected int goldCount;
 
     protected byte _requiredTypesCount;
     protected bool _stopCollect;
 
-    protected virtual void Collect()
-    {
-        if (_playerTilesBag._isGivingTiles) return;
-
-        _stopCollect = false;
-        StartCoroutine(CollectCor());
-
-    }
-    private IEnumerator CollectCor()
-    {
-        var reqtype = new List<TileType>(_requiredTypes);
-        for (int i = 0; i < reqtype.Count; i++)
-        {
-            if (_stopCollect)
-                yield break;
-
-            var req = reqtype[i];
-
-
-            if (req == TileType.Gold)
-            {
-                var countneed = productRequierments[i].Amount - goldCount;
-
-                if (countneed <= 0)
-                    continue;
-
-                yield return StartCoroutine(_playerTilesBag.RemoveGoldWthCount
-                                           (countneed, tileStorage.position, RecieveGold));
-            }
-            else
-            {
-                var countneed = productRequierments[i].Amount - tileListByType[req].Count;
-
-                if (countneed == 0)
-                    continue;
-
-                yield return StartCoroutine(_playerTilesBag.RemoveTilesWthCount
-                                           (req, countneed, tileStorage.position, RecieveTile, true));
-            }
-
-
-
-        }
-    }
-
-    protected virtual void StopCollect()
+    protected void StopCollect()
     {
         _stopCollect = true;
         _playerTilesBag.StopRemovingTiles();
@@ -81,9 +30,9 @@ public class TileCollector : MonoBehaviour
         tileListByType[tile.Type].Push(tile);
 
     }
-    protected virtual void RecieveGold(int goldCount)
+    protected virtual void RecieveGold(int goldAmount)
     {
-        this.goldCount += goldCount;
+        this.goldCount += goldAmount;
     }
 
     protected void InitDictionary()
@@ -109,17 +58,7 @@ public class TileCollector : MonoBehaviour
 
         }
     }
-
-    //public void CollectTilesFromSave(ProductRequierment typeAndCount) 
-    //{
-    //    var type = typeAndCount.Type;
-    //    var count = typeAndCount.Amount;
-    //    var tile= rec
-
-    //      tileListByType[type].Push(tiles.Amount);
-
-
-    //}
+    
 }
 
 

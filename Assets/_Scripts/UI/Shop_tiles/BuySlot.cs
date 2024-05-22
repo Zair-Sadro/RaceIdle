@@ -24,7 +24,7 @@ public class BuySlot : MonoBehaviour, IRegisterSlot
         _type = type;
         _price = price;
 
-        _priceText.text = price.ToString("0.##");
+        _priceText.text = "-" + price.ToString("0.##");
 
         Reprice(_wallet.TotalMoney);
         gameObject.SetActive(true);
@@ -34,7 +34,7 @@ public class BuySlot : MonoBehaviour, IRegisterSlot
     void Start()
     {
         _wallet.OnTotalMoneyChange += Reprice;
-        _buyOneButt.onClick.AddListener(() => OnBuy());
+        _buyOneButt.onClick.AddListener(OnBuy);
         _tileSetter.OnTilesMaxCapacity += OnMaxCount;
     }
 
@@ -44,7 +44,7 @@ public class BuySlot : MonoBehaviour, IRegisterSlot
     private void OnBuy()
     {
         if(_wallet.TrySpendMoney(_price))
-        GameEventSystem.TileBought.Invoke(_type);
+            GameEventSystem.TileBought.Invoke(_type);
     }
 
 

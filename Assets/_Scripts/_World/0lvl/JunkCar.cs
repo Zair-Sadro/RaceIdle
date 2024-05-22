@@ -1,12 +1,10 @@
 ﻿using DG.Tweening;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class JunkCar : MonoBehaviour, IDamageable
 {
     [SerializeField] private float maxHealth;
     [SerializeField] private float respawnNoDamageTime;
-    [SerializeField] private Image hpFillImage;
 
     [SerializeField] private ParticleSystem _boomEffect;
     [SerializeField] private ParticleSystem _hitEffect;
@@ -19,7 +17,6 @@ public class JunkCar : MonoBehaviour, IDamageable
     [SerializeField] private AudioService audioService;
 
     private JunkCarManager _junkCarManager;
-    private float _currentHealth;
     private int _partsDestroyed;
 
     private Vector3 _startPos;
@@ -32,25 +29,17 @@ public class JunkCar : MonoBehaviour, IDamageable
         shakecartween = _partParent.DOPunchScale(CarPartChangedSize(_partParent, -0.01f, 0.02f), 0.2f, 100, 100).OnComplete(() => _partParent.DORewind());
 
         _startPos = transform.position;
-        _currentHealth = maxHealth;
-
         _maxDamageForDestroy = maxHealth / 5f;
         _partsDestroyed = 1;
 
         Shuffle(carParts);
-        HPBarShow();
     }
 
     public void Init(JunkCarManager carManager)
     {
         _junkCarManager = carManager;
     }
-
-    void FixedUpdate()
-    {
-        hpFillImage.transform.LookAt(Camera.main.transform.position);
-    }
-
+    
     public void RandomPosition()
     {
         transform.position = new Vector3(
@@ -62,9 +51,6 @@ public class JunkCar : MonoBehaviour, IDamageable
 
     public void OnRespawn()
     {
-        _currentHealth = maxHealth;
-        hpFillImage.fillAmount = Mathf.Clamp(_currentHealth / maxHealth, 0f, 1f);
-
         _partsDestroyed = 1;
 
         nextpartIndx = 0;
@@ -73,7 +59,7 @@ public class JunkCar : MonoBehaviour, IDamageable
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "weapon") 
+        if (other.CompareTag("weapon")) 
         {
             TakeDamage(playerSlash.Damage);
             var pos = other.transform.position;
@@ -90,7 +76,6 @@ public class JunkCar : MonoBehaviour, IDamageable
     private Tween shakecartween;
     public void TakeDamage(int damage)
     {
-        _currentHealth -= damage;
         damageCountForPartDestroy += damage;
         bool damageIsGained = damageCountForPartDestroy >= _maxDamageForDestroy;
 
@@ -120,8 +105,6 @@ public class JunkCar : MonoBehaviour, IDamageable
                 ++_partsDestroyed;
                 damageCountForPartDestroy = 0;
             }
-
-        hpFillImage.fillAmount = Mathf.Clamp(_currentHealth / maxHealth, 0f, 1f);
     }
 
     private void DestroyCar()
@@ -145,33 +128,23 @@ public class JunkCar : MonoBehaviour, IDamageable
     private Vector3 CarPartChangedSize(Transform part, float min = 0.3f, float max = 0.75f)
     {
         float randDelta = Random.Range(min, max);
+        var localScale = part.localScale;
         var newSize = new Vector3(
-            part.localScale.x + randDelta,
-            part.localScale.y + randDelta,
-            part.localScale.z + randDelta
+            localScale.x + randDelta,
+            localScale.y + randDelta,
+            localScale.z + randDelta
         );
         return newSize;
     }
 
-    private static GameObject[] Shuffle(GameObject[] arr)
+    private void Shuffle(GameObject[] arr)
     {
         for (int i = arr.Length - 2; i >= 0; i--)
         {
             int j = Random.Range(1, i + 1);
-            var temp = arr[j];
-            arr[j] = arr[i];
-            arr[i] = temp;
+            (arr[j], arr[i]) = (arr[i], arr[j]);
         }
-
-        return arr;
+        
     }
 
-    #region HPBar visibility
-    private void HPBarShow()
-    {
-        hpFillImage.gameObject.SetActive(true);
-    }
-
-
-    #endregion
 }

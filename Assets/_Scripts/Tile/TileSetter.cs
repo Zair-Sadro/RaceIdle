@@ -3,7 +3,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI;
 
 public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
 {
@@ -17,7 +16,6 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
     [SerializeField] private float powerTileJump = 2f;
     [Space]
     [SerializeField, Range(0.1f, 1f)] private float timeToRemoveTile;
-    [SerializeField] private float delayToRemoveTile = 0.7f;
 
     private ResourceTilesSpawn _resourceTilesSpawn => InstantcesContainer.Instance.ResourceTilesSpawn;
     private WalletSystem _wallet=> InstantcesContainer.Instance.WalletSystem;
@@ -28,10 +26,10 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
     [SerializeField]
     private List<Tile> _colectedTiles = new List<Tile>();
 
-    private TileList _junkTiles = new(TileType.Junk);
-    private TileList _ironTiles = new(TileType.Iron);
-    private TileList _plasticTiles = new(TileType.Plastic);
-    private TileList _rubberTiles = new(TileType.Rubber);
+    private readonly TileList _junkTiles = new(TileType.Junk);
+    private readonly TileList _ironTiles = new(TileType.Iron);
+    private readonly TileList _plasticTiles = new(TileType.Plastic);
+    private readonly TileList _rubberTiles = new(TileType.Rubber);
 
     private Dictionary<TileType, TileList> tilesListsByType = new(4);
     public IReadOnlyDictionary<TileType, TileList> TilesListsByType => tilesListsByType;
@@ -43,8 +41,6 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
     public float CurrentGold => _wallet.TotalMoney;
     public bool IsMaxCapacity => _isMaxCapacity;
     public int MaxCapacity => maxTiles;
-
-    public event Action<int> OnTilesCountChanged;
     public event Action<bool> OnTilesMaxCapacity;
 
     private void Awake()
@@ -58,7 +54,7 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
 
     private void Start()
     {
-        GameEventSystem.TileSold += (type) => RemoveBySoldTile(type);
+        GameEventSystem.TileSold += RemoveBySoldTile;
         GameEventSystem.TileBought += (type) =>
         {
             TryAddTile(type);
@@ -95,16 +91,16 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
         tile.OnTake();
         tile.JumpTween(setupPoint.position, powerTileJump, () =>
         {
-            tile.transform.SetParent(setupPoint);
-            tile.transform.localRotation = Quaternion.identity;
+            Transform tileTransform;
+            (tileTransform = tile.transform).SetParent(setupPoint);
+            tileTransform.localRotation = Quaternion.identity;
             _layoutGroup.UpdateLayout();
         });
 
 
         _colectedTiles.Add(tile);
         tilesListsByType[tile.Type].AddTile(tile);
-
-        OnTilesCountChanged?.Invoke(_colectedTiles.Count);
+        
         CheckMaxTilesCapacity();
         return true;
     }
@@ -124,15 +120,15 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
         {
            
             tile.OnTake();
-            tile.transform.SetParent(setupPoint);
+            Transform tileTransform;
+            (tileTransform = tile.transform).SetParent(setupPoint);
 
-            tile.transform.localRotation = Quaternion.identity;
+            tileTransform.localRotation = Quaternion.identity;
 
 
             _colectedTiles.Add(tile);
             tilesListsByType[tile.Type].AddTile(tile);
-
-            OnTilesCountChanged?.Invoke(_colectedTiles.Count);
+            
             CheckMaxTilesCapacity();
             InstantcesContainer.Instance.AudioService.PlayAudo(AudioName.TILE);
             _layoutGroup.UpdateLayout();
@@ -208,8 +204,6 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
 
         TileList tiles = tilesListsByType[type];
 
-        yield return new WaitForSeconds(delayToRemoveTile);
-
         for (int i = count - 1; i >= 0; i--)
         {
             print($"removed{type}:{i}");
@@ -245,13 +239,13 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
 
         TileList neededTilesList = tilesListsByType[type];
 
-        yield return new WaitForSeconds(delayToRemoveTile);
         for (int i = neededTilesList.Count - 1; i >= 0; i--)
         {
+
             var tile = neededTilesList[i];
             tile.ThrowTo(tilesPlace, timeToRemoveTile);
             interatorCall?.Invoke(tile);
-            // InstantcesContainer.Instance.AudioService.PlayAudo(AudioName.TILE);
+
             yield return WaitAndClearTile(needClear, tile);
 
             if (_isGivingTiles == false)
@@ -284,8 +278,7 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
                 ClearTiles(tile, timeToRemoveTile);
         }
         RemoveFromList(tile);
-
-        OnTilesCountChanged?.Invoke(_colectedTiles.Count);
+        
         if (_isMaxCapacity)
         {
             OnTilesMaxCapacity?.Invoke(false);
@@ -352,9 +345,10 @@ public class TileSetter : MonoBehaviour, ISaveLoad<TileSetterData>
             var tile = _resourceTilesSpawn.GetTile(type);
 
             tile.OnTake();
-            tile.transform.SetParent(setupPoint);
+            Transform tileTransform;
+            (tileTransform = tile.transform).SetParent(setupPoint);
 
-            tile.transform.localRotation = Quaternion.identity;
+            tileTransform.localRotation = Quaternion.identity;
 
 
             _colectedTiles.Add(tile);

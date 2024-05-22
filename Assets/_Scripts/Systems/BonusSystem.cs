@@ -34,7 +34,6 @@ public class BonusSystem : MonoBehaviour
         if (obj == lastBuildIDForActivateCar)
         {
             ActivateCarBonus();
-            return;
         }
     }
     private void GetBonus(int id)

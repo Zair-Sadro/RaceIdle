@@ -9,13 +9,7 @@ public class Tile : MonoBehaviour
     [SerializeField] private TileType type;
     [SerializeField] private Collider coll;
     [SerializeField] private Rigidbody body;
-
-    [Space(20)]
-    [Header("Tile Move Options")]
-
-    [SerializeField] private bool _Rotate;
-    [SerializeField] private Vector3 _rotationIn;
-    [SerializeField] private Ease _ease;
+    
 
     private TileSetter _tileSetter;
     private Tween _tween;
@@ -31,9 +25,9 @@ public class Tile : MonoBehaviour
     }
  
 
-    public bool IsTaken { get; private set; } = false;
+    public bool IsTaken { get; private set; }
 
-    [SerializeField] private MeshRenderer _tileRenderer;
+
     public void OnTake()
     {
         IsTaken = true;
@@ -50,8 +44,9 @@ public class Tile : MonoBehaviour
     public IEnumerator AppearFromZero(Vector3 scale,Vector3 pos,float dur)
     {
         _tween?.Kill();
-        transform.localScale = Vector3.zero;
-        transform.position=pos;
+        var tileTrsrm = transform;
+        tileTrsrm.localScale = Vector3.zero;
+        tileTrsrm.position=pos;
 
         yield return transform.DOScale(scale, dur).WaitForCompletion();
     }

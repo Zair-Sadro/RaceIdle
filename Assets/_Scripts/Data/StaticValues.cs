@@ -39,11 +39,9 @@ public static class StaticValues
         return 0;
 
     }
-    public static T GetInterface<T>(this GameObject gameObject,bool logError = true) where T : class
+    public static T GetInterface<T>(this GameObject gameObject,bool logError = true) where T : class 
     {
-        var interfaceComponent = gameObject.GetComponent(typeof(T)) as T;
-
-        if (interfaceComponent is T)
+        if (gameObject.GetComponent(typeof(T)) is T interfaceComponent)
         {
             return interfaceComponent;
         }

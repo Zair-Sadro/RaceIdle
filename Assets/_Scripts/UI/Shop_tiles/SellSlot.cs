@@ -28,7 +28,7 @@ public class SellSlot : MonoBehaviour, IRegisterSlot
         _count = count;
 
         _countTileText.text = count.ToString();
-        _priceText.text = price.ToString();
+        _priceText.text = "+" + price.ToString();
 
         gameObject.SetActive(true);
     }
@@ -36,7 +36,7 @@ public class SellSlot : MonoBehaviour, IRegisterSlot
     #region Events
     private void OnEnable()
     {
-        _sellOneButt.onClick.AddListener(() => OnSell());   
+        _sellOneButt.onClick.AddListener(OnSell);   
     }
 
     private void OnDisable()

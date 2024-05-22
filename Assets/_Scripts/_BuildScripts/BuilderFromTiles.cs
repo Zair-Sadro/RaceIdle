@@ -97,11 +97,7 @@ public class BuilderFromTiles : TileCollector, ITilesSave
         {
             var type = productRequierments[i].Type;
 
-            if (!_tilesCountByType.ContainsKey(type))
-                _tilesCountByType.Add(type, 0);
-
-
-
+            _tilesCountByType.TryAdd(type, 0);
         }
     }
 
@@ -161,7 +157,7 @@ public class BuilderFromTiles : TileCollector, ITilesSave
         OnCountChange -= _counterView.ChangeCount;
         OnEnoughForBuild -= Build;
     }
-    protected override void Collect()
+    protected virtual void Collect()
     {
         if (_playerTilesBag._isGivingTiles) return;
 
@@ -249,7 +245,7 @@ public class BuilderFromTiles : TileCollector, ITilesSave
             b.transform.DOScale(normalscale, 0.4f);
         }
         if(b!=null)
-        b.SetActive(true);
+            b.SetActive(true);
 
 
         Destroy(this, 1f);
@@ -267,9 +263,9 @@ public class BuilderFromTiles : TileCollector, ITilesSave
         if (currentTilesCount >= minCountForCheck)
             OnEnoughForBuild();
     }
-    protected override void RecieveGold(int goldCount)
+    protected override void RecieveGold(int goldAmount)
     {
-        base.RecieveGold(goldCount);
+        base.RecieveGold(goldAmount);
 
         OnCountChange?.Invoke(TileType.Gold, this.goldCount);
 
@@ -332,14 +328,13 @@ public class BuilderFromTiles : TileCollector, ITilesSave
             _tilesCountByType[type] = tilesList[i].Amount;
         }
 
-        bool IFGold(ProductRequierment item)
+        void IFGold(ProductRequierment item)
         {
             if (item.Type == TileType.Gold)
             {
                 goldCount = item.Amount;
-                return true;
             }
-            return false;
+
         }
     }
 

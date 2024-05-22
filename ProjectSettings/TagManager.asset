@@ -13,6 +13,7 @@ TagManager:
   - FxTemporaire
   - LapFinish
   - NoCarZone
+  - Joystick
   layers:
   - Default
   - TransparentFX

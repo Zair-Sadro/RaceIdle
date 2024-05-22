@@ -37,8 +37,6 @@ public class TileMachine : TileCollector, IBuildable, ITilesSave
     private bool gaining;
 
     public Task wait { get; private set; }
-    public Task produce { get; private set; }
-    public Task gainTiles { get; private set; }
     public TileType typeProduced => machineFields.ProductType;
 
 
@@ -57,13 +55,13 @@ public class TileMachine : TileCollector, IBuildable, ITilesSave
 
             case MachineState.PRODUCE:
                 if (producing) return;
-                produce = new Task(TileManufacture());
+                StartCoroutine(TileManufacture());
 
                 break;
 
             case MachineState.GAIN:
                 if (gaining) return;
-                gainTiles = new Task(GainTiles());
+                StartCoroutine(GainTiles());
 
                 break;
 
@@ -152,7 +150,7 @@ public class TileMachine : TileCollector, IBuildable, ITilesSave
     {
         OnCollect?.Invoke();
     }
-    protected override void Collect()
+    protected virtual void Collect()
     {
         if (_playerTilesBag._isGivingTiles) return;
 
@@ -181,7 +179,6 @@ public class TileMachine : TileCollector, IBuildable, ITilesSave
 
     private void OnEnable()
     {
-        hideAfterCollect = false;
         OnCollect += (() => SetState(MachineState.WAIT_FOR_ENOUGH));
         SetState(MachineState.WAIT_FOR_ENOUGH);
 

@@ -9,7 +9,6 @@ public class Localization : MonoBehaviour
     {
         YandexGame.GetDataEvent += CheckTranslate;
     }
-    private string current;
     IEnumerator Start()
     {
         yield return new WaitForSeconds(0.3F);
@@ -21,8 +20,7 @@ public class Localization : MonoBehaviour
 
             var l = YandexGame.EnvironmentData.language;
             GameEventSystem.OnLanguageChange?.Invoke(l);
-        
-        current = YandexGame.EnvironmentData.language;
+
         YandexGame.GetDataEvent -= CheckTranslate;
 
     }

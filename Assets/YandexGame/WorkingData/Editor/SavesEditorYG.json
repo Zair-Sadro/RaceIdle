@@ -1,5 +1,5 @@
 {
-    "idSave": 24,
+    "idSave": 33,
     "isFirstSession": false,
     "language": "ru",
     "promptDone": false,
@@ -7,7 +7,8 @@
         "machineTileCount": 1,
         "autoMachineTilesCount": 0,
         "Buildings": [
-            4
+            4,
+            40
         ],
         "SavedBuildingsTiles": [
             {
@@ -15,7 +16,7 @@
                 "SavedTiles": [
                     {
                         "_type": 0,
-                        "_amount": 0
+                        "_amount": 9
                     },
                     {
                         "_type": 2,
@@ -74,20 +75,11 @@
                 "SavedTiles": [
                     {
                         "_type": 0,
-                        "_amount": 0
+                        "_amount": 7
                     },
                     {
                         "_type": 1,
-                        "_amount": 0
-                    }
-                ]
-            },
-            {
-                "ID": 40,
-                "SavedTiles": [
-                    {
-                        "_type": 0,
-                        "_amount": 0
+                        "_amount": 5
                     }
                 ]
             },
@@ -96,11 +88,11 @@
                 "SavedTiles": [
                     {
                         "_type": 0,
-                        "_amount": 0
+                        "_amount": 1
                     },
                     {
                         "_type": 1,
-                        "_amount": 2
+                        "_amount": 5
                     },
                     {
                         "_type": 4,
@@ -282,8 +274,8 @@
             "deltaNumber": 1.0299999713897706,
             "startNumberPrice": 6.0,
             "deltaNumberPrice": 1.0299999713897706,
-            "currentValue": 1.4257605075836182,
-            "currentPriceValue": 8.554561614990235,
+            "currentValue": 1.0299999713897706,
+            "currentPriceValue": 6.179999828338623,
             "currentLevel": 0,
             "maxLevel": 100
         },
@@ -420,7 +412,7 @@
                 "tilesList": [
                     {
                         "_type": 1,
-                        "_amount": 3
+                        "_amount": 0
                     }
                 ]
             },
@@ -498,8 +490,8 @@
             }
         ]
     },
-    "money": 6.293274879455566,
-    "taskIndx": 7,
+    "money": 32.11327362060547,
+    "taskIndx": 9,
     "playerData": {
         "SpeedValue": 12.0,
         "SpeedLevel": 1,

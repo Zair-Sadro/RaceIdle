@@ -4,15 +4,13 @@ using System.Collections.Generic;
 [Serializable]
 public class TileList : List<Tile>
 {
-    private TileType _type;
+    public event Action<TileType,int> OnTileAdded, OnTileRemoved;
 
-    public event Action<TileListInfo> OnTileAdded, OnTileRemoved;
-
-    public TileType Type => _type;
+    public TileType Type { get; }
 
     public TileList(TileType type)
     {
-        _type = type;
+        Type = type;
     }
     public int TilesCount => this.Count;
 
@@ -20,23 +18,12 @@ public class TileList : List<Tile>
     {
 
         this.Add(t);
-        OnTileAdded?.Invoke(new TileListInfo(this));
+        OnTileAdded?.Invoke(Type,this.Count);
     }
     public void RemoveTile(Tile t)
     {
         this.Remove(t);
-        OnTileRemoved?.Invoke(new TileListInfo(this));
-    }
-}
-public class TileListInfo
-{
-    private TileList _list;
-    public int Count => _list.TilesCount;
-    public TileType ListType => _list.Type;
-    public TileListInfo(TileList list)
-    {
-        _list = list;
-       
+        OnTileRemoved?.Invoke(Type,this.Count);
     }
 }
 

@@ -1,21 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
-using UnityEngine.Rendering;
+
 
 public class AudioService : MonoBehaviour
 {
     [SerializeField] private AudioYB _audioPlayer1;
     [SerializeField] private AudioYB _audioPlayer2;
-    public void PlayAudo(AudioName name) 
+    public void PlayAudo(AudioName audioName) 
     {
         if(_audioPlayer1.isPlaying) 
         {
-            _audioPlayer2.Play(name.ToString(), true);
+            _audioPlayer2.Play(audioName.ToString(), true);
         }
         else 
         {
-            _audioPlayer1.Play(name.ToString(),true);
+            _audioPlayer1.Play(audioName.ToString(),true);
         }
     }
 

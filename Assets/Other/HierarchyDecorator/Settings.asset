@@ -487,8 +487,6 @@ MonoBehaviour:
       shown: 0
     - name: UIDocument
       shown: 0
-    - name: NetworkMatch
-      shown: 0
     - name: VisualEffect
       shown: 0
     - name: VFXRenderer
@@ -498,6 +496,38 @@ MonoBehaviour:
     - name: VideoPlayer
       shown: 0
     - name: WindZone
+      shown: 0
+    - name: BeaconAnimator
+      shown: 0
+    - name: CompassIconEventHandler
+      shown: 0
+    - name: CompassPro
+      shown: 0
+    - name: CompassProFogVolume
+      shown: 0
+    - name: CompassProPOI
+      shown: 0
+    - name: CompassBarMeshModifier
+      shown: 0
+    - name: CompassButtonHandler
+      shown: 0
+    - name: CompassPOIElements
+      shown: 0
+    - name: GizmoElements
+      shown: 0
+    - name: LetterAnimator
+      shown: 0
+    - name: MiniMapIconElements
+      shown: 0
+    - name: MiniMapInteraction
+      shown: 0
+    - name: DiscoverArea
+      shown: 0
+    - name: FreeCameraMove
+      shown: 0
+    - name: LevelManager
+      shown: 0
+    - name: POIHeartbeatAnimator
       shown: 0
     - name: Enemy
       shown: 0
@@ -511,35 +541,11 @@ MonoBehaviour:
       shown: 0
     - name: DynamicTextManager
       shown: 0
+    - name: CameraControl
+      shown: 0
+    - name: FighterAnimationDemo
+      shown: 0
     - name: UIController
-      shown: 0
-    - name: CarAI
-      shown: 0
-    - name: CarController
-      shown: 0
-    - name: CarSpawner
-      shown: 0
-    - name: CollisionIngore
-      shown: 0
-    - name: LapControll
-      shown: 0
-    - name: BottomMergeDetect
-      shown: 0
-    - name: DragAndDrop
-      shown: 0
-    - name: MergeDetect
-      shown: 0
-    - name: MergeMaster
-      shown: 0
-    - name: TopMergeDetect
-      shown: 0
-    - name: RaceTrackManager
-      shown: 0
-    - name: TileCollector
-      shown: 0
-    - name: TileMachine
-      shown: 0
-    - name: TileProducerMachine
       shown: 0
     - name: CFX_AutoStopLoopedEffect
       shown: 0
@@ -575,6 +581,8 @@ MonoBehaviour:
       shown: 0
     - name: VariableJoystick
       shown: 0
+    - name: SimpleCollectibleScript
+      shown: 0
     - name: CircleSlider
       shown: 0
     - name: JustRotate
@@ -587,9 +595,69 @@ MonoBehaviour:
       shown: 0
     - name: ToggleChangeTextColor
       shown: 0
-    - name: BuilderFromTiles
+    - name: AudioStreamCash
       shown: 0
-    - name: BuildSaver
+    - name: AudioYB
+      shown: 0
+    - name: AdNotificationYG
+      shown: 0
+    - name: TimerBeforeAdsYG
+      shown: 0
+    - name: AutoRepair
+      shown: 0
+    - name: FirstAutoRepair
+      shown: 0
+    - name: CarAI
+      shown: 0
+    - name: CarController
+      shown: 0
+    - name: CarSpawner
+      shown: 0
+    - name: LapControll
+      shown: 0
+    - name: BottomMergeDetect
+      shown: 0
+    - name: DragAndDrop
+      shown: 0
+    - name: MergeDetect
+      shown: 0
+    - name: MergeMaster
+      shown: 0
+    - name: TopMergeDetect
+      shown: 0
+    - name: RaceTrackManager
+      shown: 0
+    - name: CarButton
+      shown: 0
+    - name: CarShop
+      shown: 0
+    - name: CarShopUI
+      shown: 0
+    - name: ComicsPageView
+      shown: 0
+    - name: ComicsService
+      shown: 0
+    - name: CounterView
+      shown: 0
+    - name: CounterViewbase
+      shown: 0
+    - name: CounterViewElement
+      shown: 0
+    - name: ClickableObject
+      shown: 0
+    - name: MachineUI
+      shown: 0
+    - name: ProductStorage
+      shown: 0
+    - name: TileCollector
+      shown: 0
+    - name: TileMachine
+      shown: 0
+    - name: TileProducerMachine
+      shown: 0
+    - name: TilesLoaderBySave
+      shown: 0
+    - name: TilesLoaderInStorages
       shown: 0
     - name: ColliderAnimEvent
       shown: 0
@@ -597,23 +665,33 @@ MonoBehaviour:
       shown: 0
     - name: StatsValuesInformator
       shown: 0
-    - name: ProductView
-      shown: 0
-    - name: RecourceView
+    - name: GoldCar
       shown: 0
     - name: PlayerController
       shown: 0
-    - name: PlayerSave
-      shown: 0
     - name: PlayerDetector
-      shown: 0
-    - name: SlashDetector
       shown: 0
     - name: PlayerSlash
       shown: 0
-    - name: ProductStorage
+    - name: PlayerUpgrade
+      shown: 0
+    - name: PlayerUpgradeView
+      shown: 0
+    - name: PlayerDetectForMessage
+      shown: 0
+    - name: SoundMuteButton
+      shown: 0
+    - name: SpeedBoost
+      shown: 0
+    - name: AudioService
+      shown: 0
+    - name: BonusSystem
       shown: 0
     - name: InputManager
+      shown: 0
+    - name: InstantcesContainer
+      shown: 0
+    - name: Localization
       shown: 0
     - name: ResourceTilesSpawn
       shown: 0
@@ -622,6 +700,28 @@ MonoBehaviour:
     - name: SaveLoadController
       shown: 0
     - name: SwipeSystem
+      shown: 0
+    - name: GameTask
+      shown: 0
+    - name: TaskSystem
+      shown: 0
+    - name: BuildTask
+      shown: 0
+    - name: CarMergeTask
+      shown: 0
+    - name: CarRepairTask
+      shown: 0
+    - name: DestroyCarTask
+      shown: 0
+    - name: MachineUpgradeTask
+      shown: 0
+    - name: PlayerUpgradeTask
+      shown: 0
+    - name: SellResTask
+      shown: 0
+    - name: TaskView
+      shown: 0
+    - name: TileCollectorLock
       shown: 0
     - name: WalletSystem
       shown: 0
@@ -633,15 +733,13 @@ MonoBehaviour:
       shown: 0
     - name: TileSetter
       shown: 0
+    - name: TweenOnEnable
+      shown: 0
     - name: UIMemmory
       shown: 0
     - name: UIPanel
       shown: 0
-    - name: MachineUI
-      shown: 0
     - name: ResourceUI
-      shown: 0
-    - name: SafeAreaDetection
       shown: 0
     - name: BuySlot
       shown: 0
@@ -653,51 +751,57 @@ MonoBehaviour:
       shown: 0
     - name: UpgradeBar
       shown: 0
+    - name: UpgradeBarAutoMach
+      shown: 0
+    - name: UpgradePanel
+      shown: 0
     - name: UpgradeSlot
       shown: 0
     - name: UpgradeUI
       shown: 0
     - name: ButtonClickBehaviour
       shown: 0
+    - name: SafeAreaDetection
+      shown: 0
     - name: UI_HoldButton
       shown: 0
     - name: UI_Manager
       shown: 0
-    - name: MachineUpgrade
+    - name: AutoMachineUpgrade
       shown: 0
-    - name: InstantcesContainer
+    - name: MachineUpgrade
       shown: 0
     - name: MathKnowledge
       shown: 0
     - name: Singleton`1
       shown: 0
+    - name: BuilderFromTiles
+      shown: 0
+    - name: BuildSaver
+      shown: 0
+    - name: RewardAfterBuild
+      shown: 0
     - name: JunkCar
       shown: 0
     - name: JunkCarManager
-      shown: 0
-    - name: AutoRepair
-      shown: 0
-    - name: MultuCounterView
-      shown: 0
-    - name: ShopSystem
-      shown: 0
-    - name: CounterView
-      shown: 0
-    - name: GatesExplosion
       shown: 0
     - name: UniqCar
       shown: 0
     - name: UniqCarsManager
       shown: 0
-    - name: OnObjectClickHelper
+    - name: ShopSystem
       shown: 0
-    - name: Race
+    - name: GatesExplosion
+      shown: 0
+    - name: OnObjectClickHelper
       shown: 0
     - name: TaskManager
       shown: 0
     - name: DebuggingModeYG
       shown: 0
     - name: ActivityOnAuthorizationYG
+      shown: 0
+    - name: YandexGame
       shown: 0
     - name: BannerYG
       shown: 0
@@ -729,33 +833,11 @@ MonoBehaviour:
       shown: 0
     - name: ViewingAdsYG
       shown: 0
-    - name: YandexGame
-      shown: 0
     - name: LangMethods
       shown: 0
     - name: CallingAnEvent
       shown: 0
     - name: ConfigYG
-      shown: 0
-    - name: DebugViewing
-      shown: 0
-    - name: GetPlayerData
-      shown: 0
-    - name: LanguageExample
-      shown: 0
-    - name: NewResultLBExample
-      shown: 0
-    - name: OpenAuthorizationDialog
-      shown: 0
-    - name: ReceivingPurchaseExample
-      shown: 0
-    - name: RewardedAd
-      shown: 0
-    - name: SaverTest
-      shown: 0
-    - name: SwitchSceneTest
-      shown: 0
-    - name: YandexMetricaExample
       shown: 0
     - name: GridLayoutGroup3D
       shown: 0
@@ -768,6 +850,116 @@ MonoBehaviour:
     - name: YAxisLayoutGroup3D
       shown: 0
     - name: ZAxisLayoutGroup3D
+      shown: 0
+    - name: UvScroller
+      shown: 0
+    - name: Buoyancy
+      shown: 0
+    - name: LinearMotion
+      shown: 0
+    - name: OrbitMotion
+      shown: 0
+    - name: CompassMenuExtensions
+      shown: 0
+    - name: _FrameRequestComponent
+      shown: 0
+    - name: RecorderComponent
+      shown: 0
+    - name: ExampleScript
+      shown: 0
+    - name: ExampleScript2
+      shown: 0
+    - name: ExampleScriptWithIcon
+      shown: 0
+    - name: LightAnchor
+      shown: 0
+    - name: CameraSwitcher
+      shown: 0
+    - name: FreeCamera
+      shown: 0
+    - name: DebugUpdater
+      shown: 0
+    - name: ProbeTouchupVolume
+      shown: 0
+    - name: ProbeVolume
+      shown: 0
+    - name: ProbeVolumePerSceneData
+      shown: 0
+    - name: LensFlareComponentSRP
+      shown: 0
+    - name: SceneRenderPipeline
+      shown: 0
+    - name: Volume
+      shown: 0
+    - name: DebugUIHandlerBitField
+      shown: 0
+    - name: DebugUIHandlerButton
+      shown: 0
+    - name: DebugUIHandlerCanvas
+      shown: 0
+    - name: DebugUIHandlerColor
+      shown: 0
+    - name: DebugUIHandlerContainer
+      shown: 0
+    - name: DebugUIHandlerEnumField
+      shown: 0
+    - name: DebugUIHandlerEnumHistory
+      shown: 0
+    - name: DebugUIHandlerField`1
+      shown: 0
+    - name: DebugUIHandlerFloatField
+      shown: 0
+    - name: DebugUIHandlerFoldout
+      shown: 0
+    - name: DebugUIHandlerGroup
+      shown: 0
+    - name: DebugUIHandlerHBox
+      shown: 0
+    - name: DebugUIHandlerIndirectFloatField
+      shown: 0
+    - name: DebugUIHandlerIndirectToggle
+      shown: 0
+    - name: DebugUIHandlerIntField
+      shown: 0
+    - name: DebugUIHandlerMessageBox
+      shown: 0
+    - name: DebugUIHandlerObject
+      shown: 0
+    - name: DebugUIHandlerObjectList
+      shown: 0
+    - name: DebugUIHandlerObjectPopupField
+      shown: 0
+    - name: DebugUIHandlerPanel
+      shown: 0
+    - name: DebugUIHandlerPersistentCanvas
+      shown: 0
+    - name: DebugUIHandlerProgressBar
+      shown: 0
+    - name: DebugUIHandlerRow
+      shown: 0
+    - name: DebugUIHandlerToggle
+      shown: 0
+    - name: DebugUIHandlerToggleHistory
+      shown: 0
+    - name: DebugUIHandlerUIntField
+      shown: 0
+    - name: DebugUIHandlerValue
+      shown: 0
+    - name: DebugUIHandlerValueTuple
+      shown: 0
+    - name: DebugUIHandlerVBox
+      shown: 0
+    - name: DebugUIHandlerVector2
+      shown: 0
+    - name: DebugUIHandlerVector3
+      shown: 0
+    - name: DebugUIHandlerVector4
+      shown: 0
+    - name: DebugUIHandlerWidget
+      shown: 0
+    - name: UIFoldout
+      shown: 0
+    - name: GameViewEventCatcher
       shown: 0
     - name: PixelPerfectCamera
       shown: 0
@@ -787,113 +979,13 @@ MonoBehaviour:
       shown: 0
     - name: UniversalAdditionalLightData
       shown: 0
-    - name: AnimatorParamTest
+    - name: NavMeshLink
       shown: 0
-    - name: BoxGroupTest
+    - name: NavMeshModifier
       shown: 0
-    - name: ButtonTest
+    - name: NavMeshModifierVolume
       shown: 0
-    - name: CurveRangeTest
-      shown: 0
-    - name: DisableIfTest
-      shown: 0
-    - name: DropdownTest
-      shown: 0
-    - name: EnableIfTest
-      shown: 0
-    - name: EnumFlagsTest
-      shown: 0
-    - name: ExpandableTest
-      shown: 0
-    - name: FoldoutTest
-      shown: 0
-    - name: HideIfTest
-      shown: 0
-    - name: HorizontalLineTest
-      shown: 0
-    - name: InfoBoxTest
-      shown: 0
-    - name: InputAxisTest
-      shown: 0
-    - name: LabelTest
-      shown: 0
-    - name: LayerTest
-      shown: 0
-    - name: MinMaxSliderTest
-      shown: 0
-    - name: MinMaxValueTest
-      shown: 0
-    - name: OnValueChangedTest
-      shown: 0
-    - name: ProgressBarTest
-      shown: 0
-    - name: ReadOnlyTest
-      shown: 0
-    - name: ReorderableListTest
-      shown: 0
-    - name: RequiredTest
-      shown: 0
-    - name: ResizableTextAreaTest
-      shown: 0
-    - name: SceneTest
-      shown: 0
-    - name: ShowAssetPreviewTest
-      shown: 0
-    - name: ShowIfTest
-      shown: 0
-    - name: ShowNativePropertyTest
-      shown: 0
-    - name: ShowNonSerializedFieldTest
-      shown: 0
-    - name: SortingLayerTest
-      shown: 0
-    - name: TagTest
-      shown: 0
-    - name: ValidateInputTest
-      shown: 0
-    - name: _NaughtyComponent
-      shown: 0
-    - name: ExampleScript
-      shown: 0
-    - name: ExampleScript2
-      shown: 0
-    - name: ExampleScriptWithIcon
-      shown: 0
-    - name: PlaymodeTestsController
-      shown: 0
-    - name: PlayerQuitHandler
-      shown: 0
-    - name: PlayModeRunnerCallback
-      shown: 0
-    - name: RemoteTestResultSender
-      shown: 0
-    - name: TestResultRendererCallback
-      shown: 0
-    - name: SignalReceiver
-      shown: 0
-    - name: TextContainer
-      shown: 0
-    - name: TextMeshPro
-      shown: 0
-    - name: TextMeshProUGUI
-      shown: 0
-    - name: TMP_Dropdown
-      shown: 0
-    - name: TMP_InputField
-      shown: 0
-    - name: TMP_ScrollbarEventHandler
-      shown: 0
-    - name: TMP_SelectionCaret
-      shown: 0
-    - name: TMP_SpriteAnimator
-      shown: 0
-    - name: TMP_SubMesh
-      shown: 0
-    - name: TMP_SubMeshUI
-      shown: 0
-    - name: TMP_Text
-      shown: 0
-    - name: DropdownItem
+    - name: NavMeshSurface
       shown: 0
     - name: BezierShape
       shown: 0
@@ -910,10 +1002,6 @@ MonoBehaviour:
     - name: TriggerBehaviour
       shown: 0
     - name: ProBuilderShape
-      shown: 0
-    - name: AsyncJobSystem
-      shown: 0
-    - name: Singleton`1
       shown: 0
     - name: Button
       shown: 0
@@ -1003,229 +1091,109 @@ MonoBehaviour:
       shown: 0
     - name: DropdownItem
       shown: 0
-    - name: CinemachineCameraOffset
+    - name: SignalReceiver
       shown: 0
-    - name: CinemachineRecomposer
+    - name: AnimatorParamTest
       shown: 0
-    - name: CinemachineTouchInputMapper
+    - name: BoxGroupTest
       shown: 0
-    - name: Cinemachine3rdPersonAim
+    - name: ButtonTest
       shown: 0
-    - name: CinemachineBlendListCamera
+    - name: CurveRangeTest
       shown: 0
-    - name: CinemachineBrain
+    - name: DisableIfTest
       shown: 0
-    - name: CinemachineClearShot
+    - name: DropdownTest
       shown: 0
-    - name: CinemachineCollider
+    - name: EnableIfTest
       shown: 0
-    - name: CinemachineConfiner
+    - name: EnumFlagsTest
       shown: 0
-    - name: CinemachineConfiner2D
+    - name: ExpandableTest
       shown: 0
-    - name: CinemachineDollyCart
+    - name: FoldoutTest
       shown: 0
-    - name: CinemachineExternalCamera
+    - name: HideIfTest
       shown: 0
-    - name: CinemachineFollowZoom
+    - name: HorizontalLineTest
       shown: 0
-    - name: CinemachineFreeLook
+    - name: InfoBoxTest
       shown: 0
-    - name: CinemachineMixingCamera
+    - name: InputAxisTest
       shown: 0
-    - name: CinemachinePath
+    - name: LabelTest
       shown: 0
-    - name: CinemachinePipeline
+    - name: LayerTest
       shown: 0
-    - name: CinemachinePixelPerfect
+    - name: MinMaxSliderTest
       shown: 0
-    - name: CinemachineSmoothPath
+    - name: MinMaxValueTest
       shown: 0
-    - name: CinemachineStateDrivenCamera
+    - name: OnValueChangedTest
       shown: 0
-    - name: CinemachineStoryboard
+    - name: ProgressBarTest
       shown: 0
-    - name: CinemachineTargetGroup
+    - name: ReadOnlyTest
       shown: 0
-    - name: CinemachineVirtualCamera
+    - name: ReorderableListTest
       shown: 0
-    - name: Cinemachine3rdPersonFollow
+    - name: RequiredTest
       shown: 0
-    - name: CinemachineBasicMultiChannelPerlin
+    - name: ResizableTextAreaTest
       shown: 0
-    - name: CinemachineComposer
+    - name: SceneTest
       shown: 0
-    - name: CinemachineFramingTransposer
+    - name: ShowAssetPreviewTest
       shown: 0
-    - name: CinemachineGroupComposer
+    - name: ShowIfTest
       shown: 0
-    - name: CinemachineHardLockToTarget
+    - name: ShowNativePropertyTest
       shown: 0
-    - name: CinemachineHardLookAt
+    - name: ShowNonSerializedFieldTest
       shown: 0
-    - name: CinemachineOrbitalTransposer
+    - name: SortingLayerTest
       shown: 0
-    - name: CinemachinePOV
+    - name: TagTest
       shown: 0
-    - name: CinemachineSameAsFollowTarget
+    - name: ValidateInputTest
       shown: 0
-    - name: CinemachineTrackedDolly
+    - name: _NaughtyComponent
       shown: 0
-    - name: CinemachineTransposer
+    - name: PlaymodeTestsController
       shown: 0
-    - name: CinemachineComponentBase
+    - name: PlayerQuitHandler
       shown: 0
-    - name: CinemachineExtension
+    - name: PlayModeRunnerCallback
       shown: 0
-    - name: CinemachinePathBase
+    - name: RemoteTestResultSender
       shown: 0
-    - name: CinemachineVirtualCameraBase
+    - name: TestResultRendererCallback
       shown: 0
-    - name: CinemachineInputProvider
+    - name: TextContainer
       shown: 0
-    - name: CinemachineTriggerAction
+    - name: TextMeshPro
       shown: 0
-    - name: GroupWeightManipulator
+    - name: TextMeshProUGUI
       shown: 0
-    - name: CinemachineCollisionImpulseSource
+    - name: TMP_Dropdown
       shown: 0
-    - name: CinemachineImpulseListener
+    - name: TMP_InputField
       shown: 0
-    - name: CinemachineImpulseSource
+    - name: TMP_ScrollbarEventHandler
       shown: 0
-    - name: CinemachineIndependentImpulseListener
+    - name: TMP_SelectionCaret
       shown: 0
-    - name: CinemachinePostProcessing
+    - name: TMP_SpriteAnimator
       shown: 0
-    - name: CinemachineVolumeSettings
+    - name: TMP_SubMesh
       shown: 0
-    - name: TCP2_CameraDepth
+    - name: TMP_SubMeshUI
       shown: 0
-    - name: TCP2_GetPosOnWater
+    - name: TMP_Text
       shown: 0
-    - name: TCP2_PlanarReflection
+    - name: DropdownItem
       shown: 0
-    - name: TCP2_ShaderUpdateUnityTime
-      shown: 0
-    - name: SceneRenderPipeline
-      shown: 0
-    - name: LightAnchor
-      shown: 0
-    - name: ProbeVolume
-      shown: 0
-    - name: ProbeVolumePerSceneData
-      shown: 0
-    - name: CameraSwitcher
-      shown: 0
-    - name: FreeCamera
-      shown: 0
-    - name: DebugUpdater
-      shown: 0
-    - name: LensFlareComponentSRP
-      shown: 0
-    - name: Volume
-      shown: 0
-    - name: DebugUIHandlerBitField
-      shown: 0
-    - name: DebugUIHandlerButton
-      shown: 0
-    - name: DebugUIHandlerCanvas
-      shown: 0
-    - name: DebugUIHandlerColor
-      shown: 0
-    - name: DebugUIHandlerContainer
-      shown: 0
-    - name: DebugUIHandlerEnumField
-      shown: 0
-    - name: DebugUIHandlerEnumHistory
-      shown: 0
-    - name: DebugUIHandlerFloatField
-      shown: 0
-    - name: DebugUIHandlerFoldout
-      shown: 0
-    - name: DebugUIHandlerGroup
-      shown: 0
-    - name: DebugUIHandlerHBox
-      shown: 0
-    - name: DebugUIHandlerIndirectFloatField
-      shown: 0
-    - name: DebugUIHandlerIndirectToggle
-      shown: 0
-    - name: DebugUIHandlerIntField
-      shown: 0
-    - name: DebugUIHandlerMessageBox
-      shown: 0
-    - name: DebugUIHandlerPanel
-      shown: 0
-    - name: DebugUIHandlerPersistentCanvas
-      shown: 0
-    - name: DebugUIHandlerRow
-      shown: 0
-    - name: DebugUIHandlerToggle
-      shown: 0
-    - name: DebugUIHandlerToggleHistory
-      shown: 0
-    - name: DebugUIHandlerUIntField
-      shown: 0
-    - name: DebugUIHandlerValue
-      shown: 0
-    - name: DebugUIHandlerVBox
-      shown: 0
-    - name: DebugUIHandlerVector2
-      shown: 0
-    - name: DebugUIHandlerVector3
-      shown: 0
-    - name: DebugUIHandlerVector4
-      shown: 0
-    - name: DebugUIHandlerWidget
-      shown: 0
-    - name: UIFoldout
-      shown: 0
-    - name: GameViewEventCatcher
-      shown: 0
-    - name: BlankUser
-      shown: 0
-    - name: EdgeColliderGenerator
-      shown: 0
-    - name: LengthCalculator
-      shown: 0
-    - name: MeshGenerator
-      shown: 0
-    - name: Node
-      shown: 0
-    - name: ObjectBender
-      shown: 0
-    - name: ObjectController
-      shown: 0
-    - name: ParticleController
-      shown: 0
-    - name: PathGenerator
-      shown: 0
-    - name: PolygonColliderGenerator
-      shown: 0
-    - name: SplineComputer
-      shown: 0
-    - name: SplineFollower
-      shown: 0
-    - name: SplineMesh
-      shown: 0
-    - name: SplineMorph
-      shown: 0
-    - name: SplinePositioner
-      shown: 0
-    - name: SplineProjector
-      shown: 0
-    - name: SplineRenderer
-      shown: 0
-    - name: SplineTracer
-      shown: 0
-    - name: SplineUser
-      shown: 0
-    - name: SurfaceGenerator
-      shown: 0
-    - name: TubeGenerator
-      shown: 0
-    - name: WaveformGenerator
+    - name: RecorderBindings
       shown: 0
     - name: AsyncAwakeTrigger
       shown: 0
@@ -1383,18 +1351,104 @@ MonoBehaviour:
       shown: 0
     - name: AsyncUpdateSelectedTrigger
       shown: 0
-    - name: EmittedMonoBehaviour
+    - name: CinemachineCameraOffset
       shown: 0
-    - name: EmittedMonoBehaviour`1
+    - name: CinemachineRecomposer
+      shown: 0
+    - name: CinemachineTouchInputMapper
+      shown: 0
+    - name: Cinemachine3rdPersonAim
+      shown: 0
+    - name: CinemachineBlendListCamera
+      shown: 0
+    - name: CinemachineBrain
+      shown: 0
+    - name: CinemachineClearShot
+      shown: 0
+    - name: CinemachineCollider
+      shown: 0
+    - name: CinemachineConfiner
+      shown: 0
+    - name: CinemachineConfiner2D
+      shown: 0
+    - name: CinemachineDollyCart
+      shown: 0
+    - name: CinemachineExternalCamera
+      shown: 0
+    - name: CinemachineFollowZoom
+      shown: 0
+    - name: CinemachineFreeLook
+      shown: 0
+    - name: CinemachineMixingCamera
+      shown: 0
+    - name: CinemachinePath
+      shown: 0
+    - name: CinemachinePipeline
+      shown: 0
+    - name: CinemachinePixelPerfect
+      shown: 0
+    - name: CinemachineSmoothPath
+      shown: 0
+    - name: CinemachineStateDrivenCamera
+      shown: 0
+    - name: CinemachineStoryboard
+      shown: 0
+    - name: CinemachineTargetGroup
+      shown: 0
+    - name: CinemachineVirtualCamera
+      shown: 0
+    - name: Cinemachine3rdPersonFollow
+      shown: 0
+    - name: CinemachineBasicMultiChannelPerlin
+      shown: 0
+    - name: CinemachineComposer
+      shown: 0
+    - name: CinemachineFramingTransposer
+      shown: 0
+    - name: CinemachineGroupComposer
+      shown: 0
+    - name: CinemachineHardLockToTarget
+      shown: 0
+    - name: CinemachineHardLookAt
+      shown: 0
+    - name: CinemachineOrbitalTransposer
+      shown: 0
+    - name: CinemachinePOV
+      shown: 0
+    - name: CinemachineSameAsFollowTarget
+      shown: 0
+    - name: CinemachineTrackedDolly
+      shown: 0
+    - name: CinemachineTransposer
+      shown: 0
+    - name: CinemachineComponentBase
+      shown: 0
+    - name: CinemachineExtension
+      shown: 0
+    - name: CinemachinePathBase
+      shown: 0
+    - name: CinemachineVirtualCameraBase
+      shown: 0
+    - name: CinemachineInputProvider
+      shown: 0
+    - name: CinemachineTriggerAction
+      shown: 0
+    - name: GroupWeightManipulator
+      shown: 0
+    - name: CinemachineCollisionImpulseSource
+      shown: 0
+    - name: CinemachineImpulseListener
+      shown: 0
+    - name: CinemachineImpulseSource
+      shown: 0
+    - name: CinemachineIndependentImpulseListener
+      shown: 0
+    - name: CinemachinePostProcessing
+      shown: 0
+    - name: CinemachineVolumeSettings
       shown: 0
     - name: DOTweenComponent
       shown: 0
-    - name: SerializedBehaviour
-      shown: 0
-    - name: SerializedComponent
-      shown: 0
-    - name: SerializedMonoBehaviour
-      shown: 0
     customComponents: []
-    unityVersion: 2021.3.21f1
+    unityVersion: 2022.3.13f1
     isDirty: 0

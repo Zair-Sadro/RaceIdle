@@ -88,11 +88,8 @@ public class ResourceUI : MonoBehaviour
         dict[TileType.Rubber].OnTileRemoved += ChangeTextTileCount;
     }
 
-    private void ChangeTextTileCount(TileListInfo tileListInfo)
+    private void ChangeTextTileCount(TileType type,int count)
     {
-        var type = tileListInfo.ListType;
-        var count = tileListInfo.Count;
-
         CheckDisabledType(type);
 
         textByTileType[type].text = count.ToString();

@@ -13,7 +13,8 @@ public class PlayerDetector : MonoBehaviour
         if (isTimer)
             return;
 
-        if (OnPlayerEnter != null)
+        if (OnPlayerEnter == null) return;
+        
         if (IsPlayer(other.gameObject))
         {
             OnPlayerEnter.Invoke();
@@ -21,10 +22,8 @@ public class PlayerDetector : MonoBehaviour
     }
     protected virtual void OnTriggerExit(Collider other)
     {
-
-
-        if (OnPlayerExit != null)
-        if (IsPlayer(other.gameObject))
+        
+        if (OnPlayerExit != null && IsPlayer(other.gameObject))
         {
             OnPlayerExit.Invoke();
         }
@@ -32,25 +31,29 @@ public class PlayerDetector : MonoBehaviour
         if (needTimerForNextInvoke)
             StartCoroutine(TimerForNext());
     }
+
+
+      /*
     protected virtual void OnTriggerStay(Collider other)
     {
+       
         if (isTimer)
             return;
 
-        if (OnPlayerStay!=null)
+        if (OnPlayerStay == null) return;
+        
         if (IsPlayer(other.gameObject))
         {
             OnPlayerStay.Invoke();
         }
+        
     }
+     */
 
 
     public static bool IsPlayer(GameObject ob)
     {
-        if (ob.CompareTag("Player"))
-            return true;
-
-        return false;
+        return ob.CompareTag("Player");
     }
     IEnumerator TimerForNext() 
     {

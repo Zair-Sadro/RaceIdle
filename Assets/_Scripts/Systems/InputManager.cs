@@ -4,9 +4,7 @@ using UnityEngine.EventSystems;
 
 public class InputManager : MonoBehaviour
 {
-    private float startTime = 0;
-
-    public bool onGUI = false;
+    private float startTime;
 
     private RaycastHit _raycastHit;
     private List<RaycastResult> uiRaycastResults = new List<RaycastResult>();
@@ -41,7 +39,7 @@ public class InputManager : MonoBehaviour
 
                 if (Physics.Raycast(_ray, out _raycastHit, Mathf.Infinity))
                 {
-                    if (_raycastHit.collider && _raycastHit.transform.tag == "UIOpenable")
+                    if (_raycastHit.collider && _raycastHit.transform.CompareTag("UIOpenable"))
                     {
                         GameEventSystem.ObjectTaped?.Invoke(_raycastHit.collider.gameObject);
 
@@ -61,22 +59,10 @@ public class InputManager : MonoBehaviour
 
         if (uiRaycastResults.Count == 1)
         {
-            if (uiRaycastResults[0].gameObject.tag == "Joystick")
+            if (uiRaycastResults[0].gameObject.CompareTag("Joystick"))
                 return false;
         }
         return uiRaycastResults.Count > 1;
-    }
-
-    public void DisableRaycast()
-    {
-        onGUI = true;
-        //closeHandler.gameObject.SetActive(true);
-    }
-
-    public void EnableRaycast()
-    {
-        onGUI = false;
-        //closeHandler.gameObject.SetActive(false);
     }
 
     public void Close()

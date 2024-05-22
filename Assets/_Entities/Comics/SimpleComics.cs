@@ -1,12 +1,10 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.UI;
 using YG;
 
 [Serializable]
 public class SimpleComics : IComics
 {
-    [SerializeField] private string _comicsID; 
     [SerializeField] private Sprite _image;
     [SerializeField,TextArea] private string _ruComicsText;
     [SerializeField,TextArea] private string _engComicsText;

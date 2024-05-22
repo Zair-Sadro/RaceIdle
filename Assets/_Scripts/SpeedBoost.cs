@@ -6,12 +6,12 @@ public class SpeedBoost : MonoBehaviour
     [SerializeField] private PlayerUpgrade playerUpgrade;
     private void OnTriggerStay(Collider other)
     {
-        if(other.gameObject.tag=="Player")
+        if(other.gameObject.CompareTag("Player"))
         player.SetSpeed(17.1f);
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Player") 
+        if (other.gameObject.CompareTag("Player")) 
         {
             if (player.MaxSpeed >= 17.5f)
                 return;

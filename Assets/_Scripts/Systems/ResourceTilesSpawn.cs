@@ -17,8 +17,7 @@ public class ResourceTilesSpawn : MonoBehaviour
     private ObjectPooler<Tile> _ironPool;
     private ObjectPooler<Tile> _plastPool;
     private ObjectPooler<Tile> _rubberPool;
-
-    private List<ObjectPooler<Tile>> _poolList = new();
+    
     private StatsValuesInformator _statsValuesInformator => InstantcesContainer.Instance.StatsValuesInformator;
     private TileSetter _tileSetter => InstantcesContainer.Instance.TileSetter;
     private string[] _tileTypesNames;
@@ -40,7 +39,7 @@ public class ResourceTilesSpawn : MonoBehaviour
         {
             var pool = new ObjectPooler<Tile>(pref, _tilesParent);
             pool.CreatePool(maxTilesAmount);
-            _poolList.Add(pool);
+
             pool.AutoExpand = true;
 
             return pool;

@@ -12,7 +12,7 @@ public class ShopSystem : MonoBehaviour
     
     #region Calculation & field to get calcilation info
 
-    private Dictionary<TileType, TileEcoInfo> _priceByTypeDict = new() 
+    private readonly Dictionary<TileType, TileEcoInfo> _priceByTypeDict = new() 
     { 
      { TileType.Junk, new TileEcoInfo(TileType.Junk) },
      { TileType.Iron, new TileEcoInfo(TileType.Iron) },
@@ -128,6 +128,9 @@ public class ShopSystem : MonoBehaviour
     {
         _playerDetectOnSell.OnPlayerEnter += ShowSellOffer;
         _playerDetectOnBuy.OnPlayerEnter += ShowBuyOffer;
+        
+        _playerDetectOnSell.OnPlayerExit += _sellPanel.Hide;
+        _playerDetectOnBuy.OnPlayerExit +=  _buyPanel.Hide;
     }
 
 
