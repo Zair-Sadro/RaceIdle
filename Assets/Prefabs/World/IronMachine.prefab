@@ -746,6 +746,9 @@ MonoBehaviour:
   - {fileID: 7631392519518179294, guid: 8aff5dd6459eb1245921d6c3ba2e25e8, type: 3}
   meshFilter: {fileID: 0}
   _machineBaseFields: {fileID: 0}
+  _capacityValueText: {fileID: 0}
+  _speedValueText: {fileID: 0}
+  _incomeValueText: {fileID: 0}
 --- !u!1 &8939031915130202965
 GameObject:
   m_ObjectHideFlags: 0
