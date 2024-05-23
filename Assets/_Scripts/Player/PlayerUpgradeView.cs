@@ -14,6 +14,9 @@ public class PlayerUpgradeView : UIPanel
     [SerializeField] private Button _exitButt;
     [SerializeField] private Button _openButt;
 
+    [SerializeField] private CanvasGroup highlightImage;
+    
+
     private UpgradeNumbersData SpeedData;
     private UpgradeNumbersData DamageData;
     private UpgradeNumbersData CapacityData;
@@ -28,9 +31,47 @@ public class PlayerUpgradeView : UIPanel
         _exitButt.onClick.AddListener(Close);
         _openButt.onClick.AddListener(Open);
         _openButt.onClick.AddListener(() => CheckPrice(_wallet.TotalMoney));
+        _wallet.OnTotalMoneyChange += CheckAndHighlighUIIcon;
 
 
     }
+
+    private void CheckAndHighlighUIIcon(float total)
+    {
+        if (_speedSlot.CanUpgrade(total))
+        {
+            HighLighUIIcon(true);
+            return;
+        }
+        
+        if (_damageSlot.CanUpgrade(total))
+        {
+            HighLighUIIcon(true);
+            return;
+        }
+        
+        if (_capacitySlot.CanUpgrade(total))
+        {
+            HighLighUIIcon(true);
+            return;
+        }
+        
+        HighLighUIIcon(false);
+    }
+
+    private void HighLighUIIcon(bool highlight)
+    {
+        if (highlight)
+        {
+            highlightImage.DOFade(1f, 0.5f);
+        }
+        else
+        {
+            highlightImage.DOFade(0f, 0.5f);
+        }
+        
+    }
+
     private void SubscribeEvents()
     {
         _wallet.OnTotalMoneyChange += CheckPrice;

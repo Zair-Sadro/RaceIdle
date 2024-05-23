@@ -36,13 +36,17 @@ public class UpgradeSlot : MonoBehaviour, ILanguageChange
         _priceText.text = price.ToString("0.##");
         _upgradeText.text = text;
     }
-    public void CanUpgrade(float walletMoney)
+    public bool CanUpgrade(float walletMoney)
     {
         if (isMax)
-            return;
+            return false;
 
-        if (price <= walletMoney) _button.interactable = true;
+        var isEnough = price <= walletMoney;
+
+        if (isEnough) _button.interactable = true;
         else _button.interactable = false;
+
+        return isEnough;
     }
     private bool isMax;
     internal void MaxLevel()
@@ -66,7 +70,7 @@ public class UpgradeSlot : MonoBehaviour, ILanguageChange
         switch (key)
         {
             case "ru":
-                maximum = "ìàêñèìóì";
+                maximum = "Ð¼Ð°ÐºÑÐ¸Ð¼ÑƒÐ¼";
 
                 break;
 

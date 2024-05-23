@@ -29,42 +29,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9c470db8-1fc5-4606-9403-dd9e30755c2c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/_BuildScripts/RewardAfterBuild.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/_BuildScripts/RewardAfterBuild.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.RaceIdle/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RaceIdle/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/HierarchyDecorator/Settings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/HierarchyDecorator/Settings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/= UI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/= UI.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/GameText_1 1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/GameText_1 1.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/World/IronMachine.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/World/IronMachine.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/YandexGame/WorkingData/Editor/SavesEditorYG.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YandexGame/WorkingData/Editor/SavesEditorYG.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Entities/Comics/SimpleComics.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Entities/Comics/SimpleComics.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Entities/Machines/TileCollector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Entities/Machines/TileCollector.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Entities/Machines/TileMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Entities/Machines/TileMachine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Data/StaticValues.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Data/StaticValues.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Player/PlayerDetector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Player/PlayerDetector.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/PlayerDetectForMessage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/PlayerDetectForMessage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/RewardAfterBuild.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/RewardAfterBuild.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/SoundMuteButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/SoundMuteButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/SpeedBoost.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/SpeedBoost.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Systems/AudioService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Systems/AudioService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Systems/BonusSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Systems/BonusSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Systems/GameEventSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Systems/GameEventSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Systems/InputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Systems/InputManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Systems/Localization.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Systems/Localization.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Systems/ResourceTilesSpawn.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Systems/ResourceTilesSpawn.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Systems/SwipeSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Systems/SwipeSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/TaskTypes/CarMergeTask.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/TaskTypes/CarMergeTask.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Tile/Tile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Tile/Tile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Tile/TileList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Tile/TileList.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Tile/TileSetter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Tile/TileSetter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/UI/ResourceUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/UI/ResourceUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/UI/Shop_tiles/BuySlot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/UI/Shop_tiles/BuySlot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/UI/Shop_tiles/SellSlot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/UI/Shop_tiles/SellSlot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/_BuildScripts/BuilderFromTiles.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/_BuildScripts/BuilderFromTiles.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/_World/0lvl/JunkCar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/_World/0lvl/JunkCar.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/_World/0lvl/UniqCar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/_World/0lvl/UniqCar.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/_World/1lvl_Shop/ShopSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/_World/1lvl_Shop/ShopSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Player/PlayerUpgradeView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Player/PlayerUpgradeView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/UI/Upgrade/UpgradeSlot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/UI/Upgrade/UpgradeSlot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Upgrade/MachineUpgrade.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Upgrade/MachineUpgrade.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2022.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2022.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -194,7 +167,8 @@
       <workItem from="1715583500930" duration="2510000" />
       <workItem from="1715669711504" duration="3625000" />
       <workItem from="1715763487825" duration="28000" />
-      <workItem from="1716398854035" duration="1523000" />
+      <workItem from="1716398854035" duration="1841000" />
+      <workItem from="1716483804803" duration="2760000" />
     </task>
     <servers />
   </component>

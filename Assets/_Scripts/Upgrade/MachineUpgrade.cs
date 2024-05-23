@@ -10,19 +10,19 @@ public class MachineUpgrade : MonoBehaviour, ISaveLoad<MachineUpgradeData>, IUpg
     [SerializeField] private MachineFields _machineBaseFields;
 
     [SerializeField] private TMP_Text _capacityValueText, _speedValueText, _incomeValueText;
-
+    [SerializeField] private GameObject upgradeArrow;
     private int[] capacityUpLevels;
     private int indexer;
 
     private UpgradeField _speedUpgradesFields;
     private UpgradeField _incomeUpgradesFields;
+
+    [SerializeField] private WalletSystem Wallet;
     public UpgradeField SpeedUpgradeFields { get => _speedUpgradesFields; private set { } }
     public UpgradeField IncomeUpgradesFields { get => _incomeUpgradesFields; private set { } }
-
+    
     public event Action<int> OnIncomeUpgraded;
     public event Action<int> OnSpeedUpgraded;
-
-
     public event Action OnDataInit;
 
     private void Start()
@@ -31,7 +31,27 @@ public class MachineUpgrade : MonoBehaviour, ISaveLoad<MachineUpgradeData>, IUpg
         UpgradeDataInit();
         _machineBaseFields.SetCapacity(capacityUpLevels[indexer]);
 
+     
+
     }
+
+    private void OnEnable()
+    {
+        Wallet.OnTotalMoneyChange += HighlightUpgrade;
+    }
+
+    private void HighlightUpgrade(float total)
+    {
+        if (total > _speedUpgradesFields.CurrentPrice || total > _incomeUpgradesFields.CurrentPrice)
+        {
+            upgradeArrow.SetActive(true);
+        }
+        else
+        {
+            upgradeArrow.SetActive(false);
+        }
+    }
+
     public void UpgradeSpeedCapacity(int level = 0)
     {
 
