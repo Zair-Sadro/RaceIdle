@@ -1,5 +1,5 @@
 {
-    "idSave": 43,
+    "idSave": 46,
     "isFirstSession": false,
     "language": "ru",
     "promptDone": false,
@@ -217,7 +217,7 @@
         ]
     },
     "tileSetterData": {
-        "_junkTiles": 2,
+        "_junkTiles": 8,
         "_ironTiles": 0,
         "_plasticTiles": 0,
         "_rubberTiles": 0
@@ -269,8 +269,8 @@
             "deltaNumber": 1.0299999713897706,
             "startNumberPrice": 9.0,
             "deltaNumberPrice": 1.0299999713897706,
-            "currentValue": 1.6390904188156129,
-            "currentPriceValue": 9.834542274475098,
+            "currentValue": 1.5,
+            "currentPriceValue": 9.0,
             "currentLevel": 0,
             "maxLevel": 100
         },
@@ -462,7 +462,7 @@
             }
         ]
     },
-    "money": 100006.4609375,
+    "money": 100012.4609375,
     "taskIndx": 11,
     "playerData": {
         "SpeedValue": 12.0,
