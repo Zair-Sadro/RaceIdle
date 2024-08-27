@@ -6,7 +6,6 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private float angleToExitFight;
-    [SerializeField] private float _gravity = -3f;
 
     [SerializeField] private Rigidbody body;
     [SerializeField] private FloatingJoystick joystick;
@@ -62,10 +61,7 @@ public class PlayerController : MonoBehaviour
             return;
 
         JoySkickMove();
-
-            // Применяем гравитацию к объекту
-            var velocity1 = body.velocity;
-            body.AddForce(Vector3.down*_gravity, ForceMode.VelocityChange);
+        
           
         
     }
@@ -137,7 +133,7 @@ public class PlayerController : MonoBehaviour
                 transform.rotation = Quaternion.LookRotation(moveDirection);
 
 
-                body.velocity = new Vector3(joystick.Horizontal * speed, _gravity, joystick.Vertical * speed);
+                body.velocity = new Vector3(joystick.Horizontal * speed, body.velocity.y, joystick.Vertical * speed);
             }
 
 

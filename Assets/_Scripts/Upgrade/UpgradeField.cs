@@ -42,12 +42,12 @@ public class UpgradeField
     {
         this.currentField = machineData.currentValue;
         this.startField = machineData.startNumber;
-        this.delta = machineData.DeltaNumber;
+        this.delta = machineData.deltaNumber;
         this.formula = formula;
         this.maxLevel = machineData.maxLevel;
         level = machineData.currentLevel;
 
-        Price = new UpgradePrice(machineData.currentPriceValue, machineData.startNumberPrice, machineData.DeltaNumberPrice, priceFormula);
+        Price = new UpgradePrice(machineData.currentPriceValue, machineData.startNumberPrice, machineData.deltaNumberPrice, priceFormula);
     }
 }
 [Serializable]

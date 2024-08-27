@@ -23,17 +23,17 @@ MonoBehaviour:
     deltaNumberPrice: 1.03
     currentValue: 1
     currentPriceValue: 6
-    currentLevel: 0
+    currentLevel: 1
     maxLevel: 100
   _speedNumbers:
     startNumber: 3
     deltaNumber: 1.02
     startNumberPrice: 37.735847
     deltaNumberPrice: 1.06
-    currentValue: 3
-    currentPriceValue: 37.735847
-    currentLevel: 0
+    currentValue: 7.013801
+    currentPriceValue: 53.802277
+    currentLevel: 30
     maxLevel: 100
-  _maxTiles: 10
+  _maxTiles: 30
   levelsForCapacityUp: 0a000000140000001e00000028000000320000003c00000046000000500000005a00000064000000
   _capacityDelta: 5

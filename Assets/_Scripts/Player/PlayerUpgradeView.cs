@@ -100,7 +100,7 @@ public class PlayerUpgradeView : UIPanel
         }
         else
         {
-            _speedSlot.ChangeTextDirectly(data.currentPriceValue, $"+{data.DeltaNumber}");
+            _speedSlot.ChangeTextDirectly(data.currentPriceValue, $"+{data.deltaNumber}");
 
             Action upgradeAction = CreateUpgradeAction(action, SpeedData, _speedSlot, _currentSpeed);
             _speedSlot.InitUpgradeSlot(upgradeAction);
@@ -123,7 +123,7 @@ public class PlayerUpgradeView : UIPanel
         }
         else
         {
-            _damageSlot.ChangeTextDirectly(data.currentPriceValue, $"+{data.DeltaNumber}");
+            _damageSlot.ChangeTextDirectly(data.currentPriceValue, $"+{data.deltaNumber}");
 
             Action upgradeAction = CreateUpgradeAction(action, DamageData, _damageSlot, _currentDamage);
             _damageSlot.InitUpgradeSlot(upgradeAction);
@@ -146,7 +146,7 @@ public class PlayerUpgradeView : UIPanel
         }
         else
         {
-            _capacitySlot.ChangeTextDirectly(data.currentPriceValue, $"+{data.DeltaNumber}");
+            _capacitySlot.ChangeTextDirectly(data.currentPriceValue, $"+{data.deltaNumber}");
 
             Action upgradeAction = CreateUpgradeAction(action, CapacityData, _capacitySlot, _currentCapacity);
             _capacitySlot.InitUpgradeSlot(upgradeAction);
@@ -163,7 +163,7 @@ public class PlayerUpgradeView : UIPanel
             if (data.IsMaxLevel)
                 upgradeSlot.MaxLevel();
             else
-                upgradeSlot.ChangeTextDirectly(data.currentPriceValue, $"+{data.DeltaNumber}");
+                upgradeSlot.ChangeTextDirectly(data.currentPriceValue, $"+{data.deltaNumber}");
             CheckPrice(_wallet.TotalMoney);
 
         });

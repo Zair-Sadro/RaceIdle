@@ -16,12 +16,11 @@ public class GoldCar : MonoBehaviour
     private float _currentHealth;
     public CarSpawner carSpawner;
     public Transform _startCoinPos;
-    public bool isFirst;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "weapon")
-            TakeDamage(0);
+        if (other.CompareTag("weapon"))
+            TakeDamage(1);
     }
     private void OnEnable()
     {
@@ -38,17 +37,17 @@ public class GoldCar : MonoBehaviour
     }
     public void TakeDamage(int damage)
     {
-        StartCoroutine(TakeDmg(1));
+        if (_currentHealth > 0)
+            StartCoroutine(TakeDmg(1));
     }
     IEnumerator TakeDmg(int damage)
     {
+     
 
         this.transform.DORewind();
         this.transform.DOShakeScale(0.2f, 1f);
         GoldCoinAnim();
 
-        for (int i = 0; i < damage; i++)
-        {
             _wallet.Income(2f);
 
             audioService.PlayAudo(AudioName.HIT);
@@ -56,14 +55,14 @@ public class GoldCar : MonoBehaviour
 
             if (_currentHealth <= 0)
             {
-                yield return new WaitForSeconds(damage * 0.2f);
+                yield return new WaitForSeconds(0.2f);
                 DestroyCar();
                 yield break;
 
 
             }
-
-        }
+            
+        
         void GoldCoinAnim()
         {
 

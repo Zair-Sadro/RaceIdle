@@ -29,9 +29,904 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9c470db8-1fc5-4606-9403-dd9e30755c2c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/CustomBuildScriptExample.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/CustomBuildScriptExample.txt.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/BRTSkin.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/BRTSkin/Alt.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/BRTSkin/Alt.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/BRTSkin/AltDark.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/BRTSkin/AltDark.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/BRTSkin/Border1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/BRTSkin/Border1.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/BRTSkin/IconHovered.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/BRTSkin/IconHovered.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/BRTSkin/IconHoveredDark.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/BRTSkin/IconHoveredDark.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/BRTSkin/IconInvalid.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/BRTSkin/IconInvalid.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/BRTSkin/IconValid.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/BRTSkin/IconValid.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/BRTSkin/IndentStyle1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/BRTSkin/IndentStyle1.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/BRTSkin/IndentStyle2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/BRTSkin/IndentStyle2.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/BRTSkin/Selected.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/BRTSkin/Selected.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/BRTSkin/SelectedDark.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/BRTSkin/SelectedDark.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/BRTSkin/SimpleBoxRounded-Highlight-Outlined.psd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/BRTSkin/SimpleBoxRounded-Highlight-Outlined.psd.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/BRTSkin/SimpleBoxRounded-Outlined.psd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/BRTSkin/SimpleBoxRounded-Outlined.psd.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/BRTSkin/SimpleBoxRounded.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/BRTSkin/SimpleBoxRounded.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/BRTSkin/SimpleBoxRoundedDark.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/BRTSkin/SimpleBoxRoundedDark.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/BRTSkin/Warning.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/BRTSkin/Warning.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/BuildReportWindow.guiskin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/BuildReportWindow.guiskin.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/BuildReportWindowDark.guiskin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/BuildReportWindowDark.guiskin.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/BigToolbar-Button-Left-Active.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/BigToolbar-Button-Left-Active.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/BigToolbar-Button-Left-Normal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/BigToolbar-Button-Left-Normal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/BigToolbar-Button-Left-OnActive.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/BigToolbar-Button-Left-OnActive.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/BigToolbar-Button-Left-OnNormal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/BigToolbar-Button-Left-OnNormal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/BigToolbar-Button-Mid-Active.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/BigToolbar-Button-Mid-Active.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/BigToolbar-Button-Mid-Normal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/BigToolbar-Button-Mid-Normal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/BigToolbar-Button-Mid-OnActive.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/BigToolbar-Button-Mid-OnActive.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/BigToolbar-Button-Mid-OnNormal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/BigToolbar-Button-Mid-OnNormal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/BigToolbar-Button-Right-Active.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/BigToolbar-Button-Right-Active.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/BigToolbar-Button-Right-Normal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/BigToolbar-Button-Right-Normal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/BigToolbar-Button-Right-OnActive.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/BigToolbar-Button-Right-OnActive.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/BigToolbar-Button-Right-OnNormal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/BigToolbar-Button-Right-OnNormal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Button-Depressed-Normal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Button-Depressed-Normal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Button-Depressed-Pressed.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Button-Depressed-Pressed.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Button-Normal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Button-Normal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Button-Pressed.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Button-Pressed.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Checkbox-Blank-Pressed.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Checkbox-Blank-Pressed.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Checkbox-Blank.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Checkbox-Blank.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Checkbox-Checked-Pressed.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Checkbox-Checked-Pressed.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Checkbox-Checked.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Checkbox-Checked.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/ColumnHeader-Sort-Asc-Active.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/ColumnHeader-Sort-Asc-Active.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/ColumnHeader-Sort-Asc-Normal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/ColumnHeader-Sort-Asc-Normal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/ColumnHeader-Sort-Asc-OnActive.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/ColumnHeader-Sort-Asc-OnActive.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/ColumnHeader-Sort-Asc-OnNormal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/ColumnHeader-Sort-Asc-OnNormal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/ColumnHeader-Sort-Desc-Active.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/ColumnHeader-Sort-Desc-Active.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/ColumnHeader-Sort-Desc-Normal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/ColumnHeader-Sort-Desc-Normal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/ColumnHeader-Sort-Desc-OnActive.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/ColumnHeader-Sort-Desc-OnActive.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/ColumnHeader-Sort-Desc-OnNormal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/ColumnHeader-Sort-Desc-OnNormal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/ExpandDownButton-Normal.psd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/ExpandDownButton-Normal.psd.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/ExpandDownButton-Pressed.psd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/ExpandDownButton-Pressed.psd.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/ExpandUpButton-Normal.psd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/ExpandUpButton-Normal.psd.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/ExpandUpButton-Pressed.psd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/ExpandUpButton-Pressed.psd.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/MiniToolbar-Active.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/MiniToolbar-Active.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/MiniToolbar-Normal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/MiniToolbar-Normal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/MiniToolbar-Popup-Active.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/MiniToolbar-Popup-Active.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/MiniToolbar-Popup-Normal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/MiniToolbar-Popup-Normal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/PopupPanel.psd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/PopupPanel.psd.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Scrollbar-Horizontal-Left-Active.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Scrollbar-Horizontal-Left-Active.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Scrollbar-Horizontal-Left.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Scrollbar-Horizontal-Left.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Scrollbar-Horizontal-Right-Active.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Scrollbar-Horizontal-Right-Active.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Scrollbar-Horizontal-Right.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Scrollbar-Horizontal-Right.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Scrollbar-Horizontal-Thumb.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Scrollbar-Horizontal-Thumb.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Scrollbar-Horizontal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Scrollbar-Horizontal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Scrollbar-Vertical-Down-Active.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Scrollbar-Vertical-Down-Active.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Scrollbar-Vertical-Down.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Scrollbar-Vertical-Down.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Scrollbar-Vertical-Thumb.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Scrollbar-Vertical-Thumb.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Scrollbar-Vertical-Up-Active.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Scrollbar-Vertical-Up-Active.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Scrollbar-Vertical-Up.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Scrollbar-Vertical-Up.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Scrollbar-Vertical.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Scrollbar-Vertical.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/StatusBar.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/StatusBar.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Tab-Left-Active.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Tab-Left-Active.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Tab-Left-Normal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Tab-Left-Normal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Tab-Left-OnActive.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Tab-Left-OnActive.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Tab-Left-OnNormal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Tab-Left-OnNormal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Tab-Mid-Active.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Tab-Mid-Active.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Tab-Mid-Normal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Tab-Mid-Normal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Tab-Mid-OnActive.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Tab-Mid-OnActive.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Tab-Mid-OnNormal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Tab-Mid-OnNormal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Tab-Right-Active.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Tab-Right-Active.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Tab-Right-Normal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Tab-Right-Normal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Tab-Right-OnActive.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Tab-Right-OnActive.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Tab-Right-OnNormal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Tab-Right-OnNormal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Textfield-Focused.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Textfield-Focused.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Textfield.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Textfield.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/ToolBar-Bg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/ToolBar-Bg.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/ToolBar-Button-Active.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/ToolBar-Button-Active.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/ToolBar-Button-Normal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/ToolBar-Button-Normal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/ToolBar-Button-OnActive.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/ToolBar-Button-OnActive.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/ToolBar-Button-OnNormal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/ToolBar-Button-OnNormal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Tooltip1.psd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Dark/Tooltip1.psd.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/BigToolbar-Button-Left-Active.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/BigToolbar-Button-Left-Active.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/BigToolbar-Button-Left-Normal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/BigToolbar-Button-Left-Normal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/BigToolbar-Button-Left-OnActive.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/BigToolbar-Button-Left-OnActive.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/BigToolbar-Button-Left-OnNormal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/BigToolbar-Button-Left-OnNormal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/BigToolbar-Button-Mid-Active.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/BigToolbar-Button-Mid-Active.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/BigToolbar-Button-Mid-Normal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/BigToolbar-Button-Mid-Normal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/BigToolbar-Button-Mid-OnActive.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/BigToolbar-Button-Mid-OnActive.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/BigToolbar-Button-Mid-OnNormal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/BigToolbar-Button-Mid-OnNormal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/BigToolbar-Button-Right-Active.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/BigToolbar-Button-Right-Active.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/BigToolbar-Button-Right-Normal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/BigToolbar-Button-Right-Normal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/BigToolbar-Button-Right-OnActive.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/BigToolbar-Button-Right-OnActive.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/BigToolbar-Button-Right-OnNormal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/BigToolbar-Button-Right-OnNormal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/ColumnHeader-Sort-Asc-Active.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/ColumnHeader-Sort-Asc-Active.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/ColumnHeader-Sort-Asc-Normal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/ColumnHeader-Sort-Asc-Normal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/ColumnHeader-Sort-Asc-OnActive.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/ColumnHeader-Sort-Asc-OnActive.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/ColumnHeader-Sort-Asc-OnNormal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/ColumnHeader-Sort-Asc-OnNormal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/ColumnHeader-Sort-Desc-Active.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/ColumnHeader-Sort-Desc-Active.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/ColumnHeader-Sort-Desc-Normal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/ColumnHeader-Sort-Desc-Normal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/ColumnHeader-Sort-Desc-OnActive.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/ColumnHeader-Sort-Desc-OnActive.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/ColumnHeader-Sort-Desc-OnNormal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/ColumnHeader-Sort-Desc-OnNormal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/ExpandDownButton-Normal.psd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/ExpandDownButton-Normal.psd.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/ExpandDownButton-Pressed.psd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/ExpandDownButton-Pressed.psd.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/ExpandUpButton-Normal.psd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/ExpandUpButton-Normal.psd.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/ExpandUpButton-Pressed.psd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/ExpandUpButton-Pressed.psd.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/MiniToolbar-Active.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/MiniToolbar-Active.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/MiniToolbar-Normal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/MiniToolbar-Normal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/MiniToolbar-Popup-Active.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/MiniToolbar-Popup-Active.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/MiniToolbar-Popup-Normal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/MiniToolbar-Popup-Normal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/PopupPanel.psd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/PopupPanel.psd.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/StatusBar.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/StatusBar.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/Tab-Left-Active.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/Tab-Left-Active.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/Tab-Left-Normal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/Tab-Left-Normal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/Tab-Left-OnActive.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/Tab-Left-OnActive.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/Tab-Left-OnNormal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/Tab-Left-OnNormal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/Tab-Mid-Active.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/Tab-Mid-Active.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/Tab-Mid-Normal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/Tab-Mid-Normal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/Tab-Mid-OnActive.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/Tab-Mid-OnActive.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/Tab-Mid-OnNormal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/Tab-Mid-OnNormal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/Tab-Right-Active.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/Tab-Right-Active.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/Tab-Right-Normal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/Tab-Right-Normal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/Tab-Right-OnActive.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/Tab-Right-OnActive.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/Tab-Right-OnNormal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/Tab-Right-OnNormal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/TextField-Search-Clear-Pressed.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/TextField-Search-Clear-Pressed.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/TextField-Search-Clear.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/TextField-Search-Clear.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/TextField-Search-Text.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/TextField-Search-Text.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/TextField-Search.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/TextField-Search.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/TextField-SearchWithDropDown-Active.psd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/TextField-SearchWithDropDown-Active.psd.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/TextField-SearchWithDropDown.psd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/TextField-SearchWithDropDown.psd.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/ToolBar-Bg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/ToolBar-Bg.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/ToolBar-Button-Active.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/ToolBar-Button-Active.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/ToolBar-Button-Normal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/ToolBar-Button-Normal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/ToolBar-Button-OnActive.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/ToolBar-Button-OnActive.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/ToolBar-Button-OnNormal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkin/Light/ToolBar-Button-OnNormal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkinExtraIcons.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkinExtraIcons/Dark.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkinExtraIcons/Dark/Column.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkinExtraIcons/Dark/Column.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkinExtraIcons/Dark/Down.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkinExtraIcons/Dark/Down.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkinExtraIcons/Dark/Left.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkinExtraIcons/Dark/Left.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkinExtraIcons/Dark/Right.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkinExtraIcons/Dark/Right.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkinExtraIcons/Dark/Toolbar-Help.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkinExtraIcons/Dark/Toolbar-Help.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkinExtraIcons/Dark/Toolbar-Log.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkinExtraIcons/Dark/Toolbar-Log.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkinExtraIcons/Dark/Toolbar-Open.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkinExtraIcons/Dark/Toolbar-Open.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkinExtraIcons/Dark/Toolbar-Options.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkinExtraIcons/Dark/Toolbar-Options.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkinExtraIcons/Dark/Toolbar-Save.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkinExtraIcons/Dark/Toolbar-Save.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkinExtraIcons/Dark/Up.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkinExtraIcons/Dark/Up.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkinExtraIcons/Light.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkinExtraIcons/Light/Column.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkinExtraIcons/Light/Column.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkinExtraIcons/Light/Down.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkinExtraIcons/Light/Down.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkinExtraIcons/Light/Left.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkinExtraIcons/Light/Left.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkinExtraIcons/Light/Right.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkinExtraIcons/Light/Right.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkinExtraIcons/Light/Toolbar-Help.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkinExtraIcons/Light/Toolbar-Help.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkinExtraIcons/Light/Toolbar-Log.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkinExtraIcons/Light/Toolbar-Log.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkinExtraIcons/Light/Toolbar-Open.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkinExtraIcons/Light/Toolbar-Open.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkinExtraIcons/Light/Toolbar-Options.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkinExtraIcons/Light/Toolbar-Options.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkinExtraIcons/Light/Toolbar-Save.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkinExtraIcons/Light/Toolbar-Save.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkinExtraIcons/Light/Up.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/GUI/NativeSkinExtraIcons/Light/Up.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/README.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/README.txt.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/BRT_VersionInfo.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/BRT_VersionInfo.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/FuzzyString.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/FuzzyString/ApproximatelyEquals.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/FuzzyString/ApproximatelyEquals.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/FuzzyString/FuzzyStringComparisonOptions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/FuzzyString/FuzzyStringComparisonOptions.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/FuzzyString/FuzzyStringComparisonTolerance.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/FuzzyString/FuzzyStringComparisonTolerance.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/FuzzyString/FuzzyStringLicense.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/FuzzyString/FuzzyStringLicense.txt.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/FuzzyString/HammingDistance.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/FuzzyString/HammingDistance.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/FuzzyString/JaccardDistance.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/FuzzyString/JaccardDistance.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/FuzzyString/JaroDistance.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/FuzzyString/JaroDistance.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/FuzzyString/JaroWinklerDistance.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/FuzzyString/JaroWinklerDistance.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/FuzzyString/LevenshteinDistance.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/FuzzyString/LevenshteinDistance.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/FuzzyString/LongestCommonSubsequence.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/FuzzyString/LongestCommonSubsequence.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/FuzzyString/LongestCommonSubstring.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/FuzzyString/LongestCommonSubstring.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/FuzzyString/Operations.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/FuzzyString/Operations.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/FuzzyString/OverlapCoefficient.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/FuzzyString/OverlapCoefficient.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/FuzzyString/RatcliffObershelpSimilarity.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/FuzzyString/RatcliffObershelpSimilarity.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/FuzzyString/SorensenDiceDistance.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/FuzzyString/SorensenDiceDistance.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/FuzzyString/TanimotoCoefficient.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/FuzzyString/TanimotoCoefficient.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/MiniJSON.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/MiniJSON/MiniJSON.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/MiniJSON/MiniJSON.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Options.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Options/BRT_FileFilters.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Options/BRT_FileFilters.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Options/BRT_FiltersUsed.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Options/BRT_FiltersUsed.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Options/BRT_Options.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Options/BRT_Options.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/ReportData.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/ReportData/BRT_AssetDependencies.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/ReportData/BRT_AssetDependencies.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/ReportData/BRT_AssetList.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/ReportData/BRT_AssetList.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/ReportData/BRT_BuildInfo.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/ReportData/BRT_BuildInfo.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/ReportData/BRT_BuildInfo_Commands.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/ReportData/BRT_BuildInfo_Commands.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/ReportData/BRT_BuildPlatformType.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/ReportData/BRT_BuildPlatformType.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/ReportData/BRT_BuildSettingsCategoryType.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/ReportData/BRT_BuildSettingsCategoryType.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/ReportData/BRT_IDataFile.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/ReportData/BRT_IDataFile.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/ReportData/BRT_MeshData.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/ReportData/BRT_MeshData.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/ReportData/BRT_SizePart.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/ReportData/BRT_SizePart.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/ReportData/BRT_TextureData.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/ReportData/BRT_TextureData.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/ReportData/BRT_UnityBuildReport.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/ReportData/BRT_UnityBuildReport.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/ReportData/BRT_UnityBuildSettings.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/ReportData/BRT_UnityBuildSettings.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/ReportGeneration.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/ReportGeneration/BRT_AssetDependencyGenerator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/ReportGeneration/BRT_AssetDependencyGenerator.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/ReportGeneration/BRT_MeshDataGenerator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/ReportGeneration/BRT_MeshDataGenerator.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/ReportGeneration/BRT_ReportGenerator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/ReportGeneration/BRT_ReportGenerator.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/ReportGeneration/BRT_ReportGenerator_PublicAPI.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/ReportGeneration/BRT_ReportGenerator_PublicAPI.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/ReportGeneration/BRT_TextureDataGenerator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/ReportGeneration/BRT_TextureDataGenerator.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/ReportGeneration/BRT_UnityBuildSettingsUtility.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/ReportGeneration/BRT_UnityBuildSettingsUtility.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Utility.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Utility/BRT_AssetList_Sort.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Utility/BRT_AssetList_Sort.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Utility/BRT_AssetList_Sort_Mesh.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Utility/BRT_AssetList_Sort_Mesh.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Utility/BRT_AssetList_Sort_Texture.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Utility/BRT_AssetList_Sort_Texture.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Utility/BRT_LibCacheUtil.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Utility/BRT_LibCacheUtil.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Utility/BRT_Util.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Utility/BRT_Util.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Utility/DldUtil_BackwardFileReader.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Utility/DldUtil_BackwardFileReader.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Utility/DldUtil_BigFileReader.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Utility/DldUtil_BigFileReader.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Utility/DldUtil_GetRspDefines.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Utility/DldUtil_GetRspDefines.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Utility/DldUtil_TraverseDirectory.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Utility/DldUtil_TraverseDirectory.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Utility/DldUtil_UnityVersion.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Utility/DldUtil_UnityVersion.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Utility/ImageDimensions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Utility/ImageDimensions.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Window.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Window/BRT_BuildReportWindow.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Window/BRT_BuildReportWindow.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Window/BRT_WindowLabels.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Window/BRT_WindowLabels.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Window/BRT_WindowSettings.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Window/BRT_WindowSettings.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Window/BRT_WindowUtility.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Window/BRT_WindowUtility.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Window/Screen.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Window/Screen/BRT_AssetListScreen.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Window/Screen/BRT_AssetListScreen.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Window/Screen/BRT_AssetListScreen_AssetUsage.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Window/Screen/BRT_AssetListScreen_AssetUsage.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Window/Screen/BRT_AssetListScreen_Delete.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Window/Screen/BRT_AssetListScreen_Delete.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Window/Screen/BRT_AssetListScreen_Search.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Window/Screen/BRT_AssetListScreen_Search.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Window/Screen/BRT_BaseScreen.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Window/Screen/BRT_BaseScreen.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Window/Screen/BRT_BuildSettingsScreen.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Window/Screen/BRT_BuildSettingsScreen.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Window/Screen/BRT_BuildStepsScreen.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Window/Screen/BRT_BuildStepsScreen.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Window/Screen/BRT_ExtraDataScreen.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Window/Screen/BRT_ExtraDataScreen.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Window/Screen/BRT_HelpScreen.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Window/Screen/BRT_HelpScreen.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Window/Screen/BRT_OptionsScreen.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Window/Screen/BRT_OptionsScreen.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Window/Screen/BRT_OverviewScreen.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Window/Screen/BRT_OverviewScreen.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Window/Screen/BRT_SizeStatsScreen.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/Scripts/Editor/Window/Screen/BRT_SizeStatsScreen.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/VERSION.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/VERSION.txt.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/license.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/BuildReport/license.txt.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/YandexGame/Manual EN PluginYG.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/YandexGame/Manual EN PluginYG.pdf.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/YandexGame/Prefabs/Ads/ErrorAdMessage.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/YandexGame/Prefabs/Ads/ErrorAdMessage.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/YandexGame/Prefabs/Ads/ErrorRewardedAdMessage.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/YandexGame/Prefabs/Ads/ErrorRewardedAdMessage.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Language/Editor.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Language/Editor/AutoLocalizationMasseWindow.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Language/Editor/AutoLocalizationMasseWindow.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Language/Editor/CSVFileEditorWindow.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Language/Editor/CSVFileEditorWindow.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Language/Editor/CSVManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Language/Editor/CSVManager.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Language/Editor/FontMasseInstallEditorWindow.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Language/Editor/FontMasseInstallEditorWindow.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Language/Editor/LanguageYGEditor.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Language/Editor/LanguageYGEditor.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Language/Editor/TranslationTableEditorWindow.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Language/Editor/TranslationTableEditorWindow.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Language/LangYGAdditionalText.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Language/LangYGAdditionalText.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Language/LanguageYG.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Language/LanguageYG.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Language/UtilsLang.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Language/UtilsLang.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Payments/Editor.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Payments/Editor/Payments_build.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Payments/Editor/Payments_build.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Payments/Editor/Payments_js.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Payments/Editor/Payments_js.js.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Payments/InternalScripts.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Payments/InternalScripts/Payments_yg.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Payments/InternalScripts/Payments_yg.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Payments/InternalScripts/UtilsPayments.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Payments/InternalScripts/UtilsPayments.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Payments/Plugins.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Payments/Plugins/Payments.jslib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Payments/Plugins/Payments.jslib.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/YandexMetrica/Plugins.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/YandexMetrica/Plugins/YandexMetricaPlugin.jslib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/YandexMetrica/Plugins/YandexMetricaPlugin.jslib.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Entities/TaskSystem.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Entities/TaskSystem/ClaimButtonTween.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Entities/TaskSystem/ClaimButtonTween.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Entities/TaskSystem/GameTask.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Entities/TaskSystem/GameTask.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Entities/TaskSystem/TaskSystem.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Entities/TaskSystem/TaskSystem.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Entities/TaskSystem/TaskTypes.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Entities/TaskSystem/TaskTypes/BuildTask.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Entities/TaskSystem/TaskTypes/BuildTask.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Entities/TaskSystem/TaskTypes/CarMergeTask.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Entities/TaskSystem/TaskTypes/CarMergeTask.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Entities/TaskSystem/TaskTypes/CarRepairTask.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Entities/TaskSystem/TaskTypes/CarRepairTask.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Entities/TaskSystem/TaskTypes/DestroyCarTask.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Entities/TaskSystem/TaskTypes/DestroyCarTask.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Entities/TaskSystem/TaskTypes/MachineUpgradeTask.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Entities/TaskSystem/TaskTypes/MachineUpgradeTask.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Entities/TaskSystem/TaskTypes/PlayerUpgradeTask.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Entities/TaskSystem/TaskTypes/PlayerUpgradeTask.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Entities/TaskSystem/TaskTypes/SellResTask.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Entities/TaskSystem/TaskTypes/SellResTask.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Entities/TaskSystem/TaskView.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Entities/TaskSystem/TaskView.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Entities/TaskSystem/TileCollectorLock.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Entities/TaskSystem/TileCollectorLock.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProjectSettings/BuildReportToolOptions.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.RaceIdle/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RaceIdle/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/WorkingData/Editor/SavesEditorYG.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YandexGame/WorkingData/Editor/SavesEditorYG.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Systems/AudioService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Systems/AudioService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetStore/FlatKit/[Render Pipeline] URP/ExampleSettings/[FlatKit] Example Settings URP.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetStore/FlatKit/[Render Pipeline] URP/ExampleSettings/[FlatKit] Example Settings URP.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/GameText_1 1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/GameText_1 1.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/GameText_1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/GameText_1.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/a_BighausTitul SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Collection01/Regular/a_BighausTitul SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Other/HierarchyDecorator/Settings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/HierarchyDecorator/Settings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Other/OtherAssets/HierarchyDecorator/Resources/Icons/checkmark.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/OtherAssets/HierarchyDecorator/Resources/Icons/checkmark.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Other/OtherAssets/rostov SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/OtherAssets/rostov SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/BuyShop_1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/BuyShop_1.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Car_0.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Car_0.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Car_1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Car_1.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Car_10.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Car_10.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Car_2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Car_2.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Car_3.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Car_3.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Car_4.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Car_4.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Car_5.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Car_5.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Car_6.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Car_6.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Car_7.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Car_7.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Car_8.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Car_8.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Car_9.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Car_9.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/IRONmachineToolAuto_1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/IRONmachineToolAuto_1.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Model_1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Model_1.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Models_1 1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/Models_1 1.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/PLASTICmachineToolAuto_1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/PLASTICmachineToolAuto_1.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/RUBBERmachineToolAuto_1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/RUBBERmachineToolAuto_1.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/SellShop_1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/SellShop_1.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/new/AutoRepair_1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/new/AutoRepair_1.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/new/Bridge_1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/new/Bridge_1.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/new/CarShop_1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/new/CarShop_1.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/new/Models_1 1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/new/Models_1 1.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/new/Models_1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/RapidIcon/Exports/new/Models_1.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Other/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Other/TextMesh Pro/Sprites/EmojiOne.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/TextMesh Pro/Sprites/EmojiOne.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Fonts/Distance Font SDF.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Fonts/Distance Font SDF.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Fonts/Title Font SDF.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Fonts/Title Font SDF.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Prefabs/CompassBarIcon.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Prefabs/CompassBarIcon.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Prefabs/CompassPOI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Prefabs/CompassPOI.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Prefabs/POIGizmo.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Prefabs/POIGizmo.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sounds/reveal4.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sounds/reveal4.wav.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/Bar1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/Bar1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/Bar10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/Bar10.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/Bar11.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/Bar11.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/Bar12.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/Bar12.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/Bar13.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/Bar13.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/Bar14.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/Bar14.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/Bar2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/Bar2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/Bar3-Black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/Bar3-Black.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/Bar3-White.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/Bar3-White.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/Bar4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/Bar4.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/Bar5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/Bar5.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/Bar6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/Bar6.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/Bar7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/Bar7.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/Bar8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/Bar8.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/Bar9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/Bar9.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/MiniMapBorder_Fantasy1_Mask.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/MiniMapBorder_Fantasy1_Mask.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/MiniMapBorder_Fantasy2_Mask.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/MiniMapBorder_Fantasy2_Mask.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/MiniMapBorder_Fantasy3_Mask.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/MiniMapBorder_Fantasy3_Mask.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/MiniMapBorder_Fantasy4_Mask.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/MiniMapBorder_Fantasy4_Mask.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/MiniMapBorder_Fantasy5_Mask.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/MiniMapBorder_Fantasy5_Mask.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/MiniMapBorder_Fantasy6_Mask.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/MiniMapBorder_Fantasy6_Mask.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/MiniMapBorder_SciFi1_Mask.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/MiniMapBorder_SciFi1_Mask.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/MiniMapBorder_SciFi2_Mask.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/MiniMapBorder_SciFi2_Mask.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/MiniMapBorder_SciFi3_Mask.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/MiniMapBorder_SciFi3_Mask.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/MiniMapBorder_SciFi4_Mask.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/MiniMapBorder_SciFi4_Mask.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/MiniMapCardinals.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/MiniMapCardinals.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/MiniMapMask.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/MiniMapMask.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/MiniMapMaskSolidBox.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/MiniMapMaskSolidBox.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/MiniMapMaskSolidCircle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/MiniMapMaskSolidCircle.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/OffscreenIndicatorIcon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/OffscreenIndicatorIcon.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/buttonHover.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/buttonHover.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/buttonNormal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/buttonNormal.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/compassIcon.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/compassIcon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/compassIcon.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/compassIcon.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/icon-arrow-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/icon-arrow-black.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/icon-arrow-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/icon-arrow-white.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/icon-cave-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/icon-cave-black.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/icon-cave-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/icon-cave-white.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/icon-city-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/icon-city-black.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/icon-city-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/icon-city-white.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/icon-dock-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/icon-dock-black.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/icon-dock-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/icon-dock-white.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/icon-dungeon-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/icon-dungeon-black.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/icon-dungeon-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/icon-dungeon-white.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/icon-forest-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/icon-forest-black.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/icon-forest-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/icon-forest-white.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/icon-lighthouse-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/icon-lighthouse-black.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/icon-lighthouse-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/icon-lighthouse-white.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/icon-mine-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/icon-mine-black.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/icon-mine-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/icon-mine-white.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/icon-monolith-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/icon-monolith-black.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/icon-monolith-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/icon-monolith-white.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/icon-north.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/icon-north.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/icon-palace-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/icon-palace-black.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/icon-palace-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/icon-palace-white.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/icon-tower-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/icon-tower-black.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/icon-tower-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/icon-tower-white.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/player-icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/player-icon.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/zoomMinus.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/zoomMinus.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/zoomPlus.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/zoomPlus.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/zoomToggle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Kronnect/CompassNavigatorPro/Resources/CNPro/Sprites/zoomToggle.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/= UI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/= UI.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/UpgradePanel.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/UpgradePanel.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/World/IronMachine.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/World/IronMachine.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI textures/improvement 1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI textures/improvement 1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WebGLTemplates/Notices.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/WebGLTemplates/Notices.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WebGLTemplates/PluginYG/TemplateData/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/WebGLTemplates/PluginYG/TemplateData/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WebGLTemplates/PluginYG/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/WebGLTemplates/PluginYG/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WebGLTemplates/PluginYG/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/WebGLTemplates/PluginYG/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WebGLTemplates/PluginYG/logo.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/WebGLTemplates/PluginYG/logo.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WebGLTemplates/PluginYG/thumbnail.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/WebGLTemplates/PluginYG/thumbnail.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/DebuggingMode/Scripts/DebuggingModeYG.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YandexGame/DebuggingMode/Scripts/DebuggingModeYG.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/Manual EN PluginYG .pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/Manual EN PluginYG .pdf.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/Manual RU PluginYG.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YandexGame/Manual RU PluginYG.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/Manual RU PluginYG.pdf.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YandexGame/Manual RU PluginYG.pdf.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/Plugins/YandexMetricaPlugin.jslib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/Plugins/YandexMetricaPlugin.jslib.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/Plugins/YandexProvider.jslib" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YandexGame/Plugins/YandexProvider.jslib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/Prefabs/Ads/Ad Notification.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YandexGame/Prefabs/Ads/Ad Notification.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/Prefabs/Ads/Timer Before Ads.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YandexGame/Prefabs/Ads/Timer Before Ads.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/Prefabs/Banners.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/Prefabs/Banners/RBT1.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/Prefabs/Banners/RBT1.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/Prefabs/Banners/RBT2.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/Prefabs/Banners/RBT2.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/Prefabs/Banners/RBT3.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/Prefabs/Banners/RBT3.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/Prefabs/Banners/RBT4.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/Prefabs/Banners/RBT4.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/Prefabs/Banners/RBT5.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/Prefabs/Banners/RBT5.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/Prefabs/Banners/RBT6.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/Prefabs/Banners/RBT6.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/Prefabs/ErrorAdMessage.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/Prefabs/ErrorAdMessage.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/Prefabs/ErrorRewardedAdMessage.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/Prefabs/ErrorRewardedAdMessage.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/Readme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YandexGame/Readme.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/AdNotificationYG.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/AdNotificationYG.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Authorization/Auth_yg.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Authorization/Auth_yg.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/CustomRBT.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/CustomRBT/BannerYG.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/CustomRBT/BannerYG.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/CustomRBT/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/CustomRBT/Editor/BannerYGEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/CustomRBT/Editor/BannerYGEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Editor/CreateYandexGameEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Editor/CreateYandexGameEditor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Editor/Icons/Icon_RBTYG.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Editor/Icons/Icon_RBTYG.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Editor/PostProcessBuild/ModifyIndexFile/BackgroundFormat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Editor/PostProcessBuild/ModifyIndexFile/BackgroundFormat.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Editor/PostProcessBuild/ModifyIndexFile/BuildLogYG.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Editor/PostProcessBuild/ModifyIndexFile/BuildLogYG.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Editor/PostProcessBuild/ModifyIndexFile/ModifyBuildManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Editor/PostProcessBuild/ModifyIndexFile/ModifyBuildManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Editor/Utils/DefineSymbols.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Editor/Utils/DefineSymbols.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Editor/Utils/ModificationScripts.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Editor/Utils/ModificationScripts.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Editor/Utils/PackageDownloader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Editor/Utils/PackageDownloader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/EnvironmentData/Editor/EnvirData_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/EnvironmentData/Editor/EnvirData_js.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/EnvironmentData/EnvirData_yg.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/EnvironmentData/EnvirData_yg.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/GraphicSettingsYG.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/GraphicSettingsYG.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/InfoYG/Editor/InfoYGEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/InfoYG/Editor/InfoYGEditor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/InfoYG/InfoYG.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/InfoYG/InfoYG.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Initialization/InitYGAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Initialization/InitYGAttribute.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Language Translation.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Language Translation/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Language Translation/Editor/AutoLocalizationMasseWindow.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Language Translation/Editor/AutoLocalizationMasseWindow.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Language Translation/Editor/CSVFileEditorWindow.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Language Translation/Editor/CSVFileEditorWindow.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Language Translation/Editor/CSVManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Language Translation/Editor/CSVManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Language Translation/Editor/FontMasseInstallEditorWindow.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Language Translation/Editor/FontMasseInstallEditorWindow.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Language Translation/Editor/LanguageYGEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Language Translation/Editor/LanguageYGEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Language Translation/Editor/TranslationTableEditorWindow.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Language Translation/Editor/TranslationTableEditorWindow.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Language Translation/LangYGAdditionalText.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Language Translation/LangYGAdditionalText.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Language Translation/LanguageYG.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Language Translation/LanguageYG.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Language Translation/UtilsLang.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Language Translation/UtilsLang.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Language.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Language.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Language/Lang_yg.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Language/Lang_yg.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Leaderboard/LeaderboardYG.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Leaderboard/LeaderboardYG.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Payments/PaymentsCatalogYG.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Payments/PaymentsCatalogYG.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Payments/PurchaseYG.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Payments/PurchaseYG.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Payments/UtilsPayments.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Payments/UtilsPayments.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Storage/Storage_yg.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/Storage/Storage_yg.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/TimerBeforeAdsYG.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/TimerBeforeAdsYG.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/ViewingAdsYG.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/ViewingAdsYG.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/YandexGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YandexGame/ScriptsYG/YandexGame.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/WorkingData/Editor/SavesEditorYG.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/WorkingData/Editor/SavesEditorYG.json.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/WorkingData/InfoYG.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YandexGame/WorkingData/InfoYG.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YandexGame/WorkingData/SavesYG.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YandexGame/WorkingData/SavesYG.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Balance/Level_1/IronMachine.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Balance/Level_1/IronMachine.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Entities/Cars/GoldCar.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Entities/Cars/GoldCar.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/GoldCar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/GoldCar.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Player/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Player/PlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Player/PlayerDetector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Player/PlayerDetector.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Player/PlayerUpgrade.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Player/PlayerUpgrade.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Player/PlayerUpgradeView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Player/PlayerUpgradeView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Scriptables/UpgradeNumbersData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Scriptables/UpgradeNumbersData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/SoundMuteButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/SoundMuteButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Systems/SaveLoad/SaveLoadController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Systems/SaveLoad/SaveLoadController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/GameTask.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/GameTask.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/TaskSystem.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/TaskSystem.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/TaskTypes.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/TaskTypes/BuildTask.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/TaskTypes/BuildTask.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/TaskTypes/CarMergeTask.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/TaskTypes/CarMergeTask.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/TaskTypes/CarRepairTask.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/TaskTypes/CarRepairTask.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/TaskTypes/DestroyCarTask.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/TaskTypes/DestroyCarTask.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/TaskTypes/MachineUpgradeTask.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/TaskTypes/MachineUpgradeTask.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/TaskTypes/PlayerUpgradeTask.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/TaskTypes/PlayerUpgradeTask.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/TaskTypes/SellResTask.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/TaskTypes/SellResTask.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/TaskView.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/TaskView.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/TileCollectorLock.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/TileCollectorLock.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/TweenOnEnable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/TweenOnEnable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Upgrade/MachineUpgrade.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Upgrade/MachineUpgrade.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Upgrade/UpgradeField.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Upgrade/UpgradeField.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/zTrash.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/zTrash/CAR.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/zTrash/CAR.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/zTrash/MUSIC.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/zTrash/MUSIC.ogg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/zTrash/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/zTrash/Materials/3.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/zTrash/Materials/3.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/zTrash/Materials/Black.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/zTrash/Materials/Black.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/zTrash/Materials/Blue 1.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/zTrash/Materials/Blue 1.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/zTrash/Materials/Blue Ligth.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/zTrash/Materials/Blue Ligth.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/zTrash/Materials/Blue.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/zTrash/Materials/Blue.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/zTrash/Materials/Brown.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/zTrash/Materials/Brown.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/zTrash/Materials/Gray 1.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/zTrash/Materials/Gray 1.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/zTrash/Materials/Gray.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/zTrash/Materials/Gray.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/zTrash/Materials/Gray1.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/zTrash/Materials/Gray1.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/zTrash/Materials/Gray2.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/zTrash/Materials/Gray2.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/zTrash/Materials/Green.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/zTrash/Materials/Green.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/zTrash/Materials/JunkMetall1.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/zTrash/Materials/JunkMetall1.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/zTrash/Materials/Orange.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/zTrash/Materials/Orange.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/zTrash/Materials/Red 1.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/zTrash/Materials/Red 1.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/zTrash/Materials/Red.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/zTrash/Materials/Red.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/zTrash/Materials/Skybox_Mat.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/zTrash/Materials/Skybox_Mat.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/zTrash/Materials/White.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/zTrash/Materials/White.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/zTrash/Materials/junkMetall 1.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/zTrash/Materials/junkMetall 1.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/zTrash/Materials/junkMetall 2.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/zTrash/Materials/junkMetall 2.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/zTrash/Materials/junkMetall.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/zTrash/Materials/junkMetall.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2022.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2022.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,10 +942,8 @@
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/0f/f5b43ff2/IReadOnlyDictionary`2.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Entities/TaskSystem/ClaimButtonTween.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Systems/InstantcesContainer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Systems/TaskSystem/TaskTypes/SellResTask.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -68,6 +961,9 @@
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2KiAYWzDlaQKe8aLpppBwjYw1cY" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -79,6 +975,8 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Attach to Unity Editor.Attach to Unity Editor &amp; Play.executor&quot;: &quot;Debug&quot;,
+    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
@@ -89,20 +987,20 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
     &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\Alks\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\Alks\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\Alks\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\Alks\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache&quot;,
       &quot;C:\\Users\\Alks\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
 }</component>
-  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor &amp; Play">
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.13f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.26f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Users\Alks\Desktop\Projects\RaceIdle -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\Alks\Desktop\Projects\RaceIdle" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -110,7 +1008,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.13f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.26f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Users\Alks\Desktop\Projects\RaceIdle -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\Alks\Desktop\Projects\RaceIdle" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -127,10 +1025,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="50288">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="50288" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -164,7 +1062,15 @@
       <workItem from="1715763487825" duration="28000" />
       <workItem from="1716398854035" duration="1841000" />
       <workItem from="1716483804803" duration="2926000" />
-      <workItem from="1716718518861" duration="1287000" />
+      <workItem from="1716718518861" duration="3117000" />
+      <workItem from="1716821803188" duration="2881000" />
+      <workItem from="1716830408651" duration="591000" />
+      <workItem from="1720953080051" duration="5000" />
+      <workItem from="1720955431212" duration="4026000" />
+      <workItem from="1720960532906" duration="1214000" />
+      <workItem from="1720962513808" duration="480000" />
+      <workItem from="1720963018141" duration="1475000" />
+      <workItem from="1721049867929" duration="1523000" />
     </task>
     <servers />
   </component>
@@ -173,6 +1079,11 @@
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityProjectDiscoverer">
+    <option name="hasUnityReference" value="true" />
+    <option name="unityProject" value="true" />
+    <option name="unityProjectFolder" value="true" />
+  </component>
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ID_ORDER">
@@ -202,10 +1113,85 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/_Scripts/Upgrade/MachineUpgrade.cs</url>
+          <line>92</line>
+          <properties documentPath="C:\Users\Alks\Desktop\Projects\RaceIdle\Assets\_Scripts\Upgrade\MachineUpgrade.cs" containingFunctionPresentation="Method 'UpgradeDataInit'">
+            <startOffsets>
+              <option value="2657" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2698" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/_Scripts/UI/Upgrade/UpgradeUI.cs</url>
+          <line>77</line>
+          <properties documentPath="C:\Users\Alks\Desktop\Projects\RaceIdle\Assets\_Scripts\UI\Upgrade\UpgradeUI.cs" containingFunctionPresentation="Method 'RefreshText'">
+            <startOffsets>
+              <option value="2262" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2339" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/_Scripts/Upgrade/UpgradeField.cs</url>
+          <line>44</line>
+          <properties documentPath="C:\Users\Alks\Desktop\Projects\RaceIdle\Assets\_Scripts\Upgrade\UpgradeField.cs" containingFunctionPresentation="Constructor 'UpgradeField'">
+            <startOffsets>
+              <option value="1131" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1168" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/_Scripts/Upgrade/MachineUpgrade.cs</url>
+          <line>104</line>
+          <properties documentPath="C:\Users\Alks\Desktop\Projects\RaceIdle\Assets\_Scripts\Upgrade\MachineUpgrade.cs" containingFunctionPresentation="Method 'GetData'">
+            <startOffsets>
+              <option value="3056" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3104" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/_Scripts/Upgrade/MachineUpgrade.cs</url>
+          <line>113</line>
+          <properties documentPath="C:\Users\Alks\Desktop\Projects\RaceIdle\Assets\_Scripts\Upgrade\MachineUpgrade.cs" containingFunctionPresentation="Method 'Initialize'">
+            <startOffsets>
+              <option value="3291" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3314" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
       <default-breakpoints>
         <breakpoint enabled="true" type="CidrExceptionBreakpoint" />
       </default-breakpoints>
     </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="Type#UpgradeNumbersData" memberName="DeltaNumber" />
+        <PinnedItemInfo parentTag="Type#UpgradeNumbersData" memberName="DeltaNumberPrice" />
+        <PinnedItemInfo parentTag="Type#UpgradeNumbersData" memberName="deltaNumber" />
+        <PinnedItemInfo parentTag="Type#UpgradeNumbersData" memberName="deltaNumberPrice" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

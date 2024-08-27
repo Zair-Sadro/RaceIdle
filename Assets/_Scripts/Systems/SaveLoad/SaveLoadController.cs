@@ -25,7 +25,7 @@ public class SaveLoadController : MonoBehaviour
 
     }
 
-    private void _SaveProgress()
+    public void _SaveProgress()
     {
         if (!IsEnable)
         {

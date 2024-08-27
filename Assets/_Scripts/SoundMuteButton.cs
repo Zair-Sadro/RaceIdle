@@ -6,7 +6,7 @@ public class SoundMuteButton : MonoBehaviour
 {
     [SerializeField] private Button soundButton;
     [SerializeField] private GameObject _muteIcon, _soundIcon;
-    [SerializeField] private AudioSource _source1, _source2;
+    [SerializeField] private AudioSource[] _audioSources;
     [SerializeField] private RaceTrackManager _carsManager;
     private bool _muted;
 
@@ -23,8 +23,9 @@ public class SoundMuteButton : MonoBehaviour
             _soundIcon.SetActive(true);
 
             _muted = false;
-            _source1.mute = false;
-            _source2.mute = false;
+            foreach (var audioSource in _audioSources)
+                audioSource.mute = false;
+
 
             _carsManager.MuteCarSound(false);
 
@@ -35,8 +36,8 @@ public class SoundMuteButton : MonoBehaviour
             _muteIcon.SetActive(true);
 
             _muted = true;
-            _source1.mute = true;
-            _source2.mute = true;
+            foreach (var audioSource in _audioSources)
+                audioSource.mute = true;
 
             _carsManager.MuteCarSound(true);
 

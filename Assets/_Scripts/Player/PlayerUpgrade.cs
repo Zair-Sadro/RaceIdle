@@ -29,8 +29,8 @@ public class PlayerUpgrade : MonoBehaviour, ISaveLoad<PlayerData>
             return;
 
         SpeedData.currentLevel++;
-        SpeedData.currentValue += SpeedData.DeltaNumber;
-        SpeedData.currentPriceValue *= SpeedData.DeltaNumberPrice;
+        SpeedData.currentValue += SpeedData.deltaNumber;
+        SpeedData.currentPriceValue *= SpeedData.deltaNumberPrice;
 
         controller.SetSpeed(SpeedData.currentValue);
 
@@ -42,8 +42,8 @@ public class PlayerUpgrade : MonoBehaviour, ISaveLoad<PlayerData>
             return;
 
         CapacityData.currentLevel++;
-        CapacityData.currentValue += CapacityData.DeltaNumber;
-        CapacityData.currentPriceValue *= CapacityData.DeltaNumberPrice;
+        CapacityData.currentValue += CapacityData.deltaNumber;
+        CapacityData.currentPriceValue *= CapacityData.deltaNumberPrice;
 
         tileSetter.SetCapacity((int)CapacityData.currentValue);
 
@@ -55,8 +55,8 @@ public class PlayerUpgrade : MonoBehaviour, ISaveLoad<PlayerData>
             return;
 
         DamageData.currentLevel++;
-        DamageData.currentValue += DamageData.DeltaNumber;
-        DamageData.currentPriceValue *= DamageData.DeltaNumberPrice;
+        DamageData.currentValue += DamageData.deltaNumber;
+        DamageData.currentPriceValue *= DamageData.deltaNumberPrice;
 
         playerSlash.SetDamage((int)DamageData.currentValue);
 

@@ -803,8 +803,6 @@ MonoBehaviour:
       shown: 0
     - name: YandexGame
       shown: 0
-    - name: BannerYG
-      shown: 0
     - name: ForVisualScriptYG
       shown: 0
     - name: GetPlayerYG
@@ -864,12 +862,6 @@ MonoBehaviour:
     - name: _FrameRequestComponent
       shown: 0
     - name: RecorderComponent
-      shown: 0
-    - name: ExampleScript
-      shown: 0
-    - name: ExampleScript2
-      shown: 0
-    - name: ExampleScriptWithIcon
       shown: 0
     - name: LightAnchor
       shown: 0
@@ -961,6 +953,112 @@ MonoBehaviour:
       shown: 0
     - name: GameViewEventCatcher
       shown: 0
+    - name: NavMeshLink
+      shown: 0
+    - name: NavMeshModifier
+      shown: 0
+    - name: NavMeshModifierVolume
+      shown: 0
+    - name: NavMeshSurface
+      shown: 0
+    - name: AnimatorParamTest
+      shown: 0
+    - name: BoxGroupTest
+      shown: 0
+    - name: ButtonTest
+      shown: 0
+    - name: CurveRangeTest
+      shown: 0
+    - name: DisableIfTest
+      shown: 0
+    - name: DropdownTest
+      shown: 0
+    - name: EnableIfTest
+      shown: 0
+    - name: EnumFlagsTest
+      shown: 0
+    - name: ExpandableTest
+      shown: 0
+    - name: FoldoutTest
+      shown: 0
+    - name: HideIfTest
+      shown: 0
+    - name: HorizontalLineTest
+      shown: 0
+    - name: InfoBoxTest
+      shown: 0
+    - name: InputAxisTest
+      shown: 0
+    - name: LabelTest
+      shown: 0
+    - name: LayerTest
+      shown: 0
+    - name: MinMaxSliderTest
+      shown: 0
+    - name: MinMaxValueTest
+      shown: 0
+    - name: OnValueChangedTest
+      shown: 0
+    - name: ProgressBarTest
+      shown: 0
+    - name: ReadOnlyTest
+      shown: 0
+    - name: ReorderableListTest
+      shown: 0
+    - name: RequiredTest
+      shown: 0
+    - name: ResizableTextAreaTest
+      shown: 0
+    - name: SceneTest
+      shown: 0
+    - name: ShowAssetPreviewTest
+      shown: 0
+    - name: ShowIfTest
+      shown: 0
+    - name: ShowNativePropertyTest
+      shown: 0
+    - name: ShowNonSerializedFieldTest
+      shown: 0
+    - name: SortingLayerTest
+      shown: 0
+    - name: TagTest
+      shown: 0
+    - name: ValidateInputTest
+      shown: 0
+    - name: _NaughtyComponent
+      shown: 0
+    - name: TextContainer
+      shown: 0
+    - name: TextMeshPro
+      shown: 0
+    - name: TextMeshProUGUI
+      shown: 0
+    - name: TMP_Dropdown
+      shown: 0
+    - name: TMP_InputField
+      shown: 0
+    - name: TMP_ScrollbarEventHandler
+      shown: 0
+    - name: TMP_SelectionCaret
+      shown: 0
+    - name: TMP_SpriteAnimator
+      shown: 0
+    - name: TMP_SubMesh
+      shown: 0
+    - name: TMP_SubMeshUI
+      shown: 0
+    - name: TMP_Text
+      shown: 0
+    - name: DropdownItem
+      shown: 0
+    - name: RecorderBindings
+      shown: 0
+    - name: ExampleScript
+      shown: 0
+    - name: ExampleScript2
+      shown: 0
+    - name: ExampleScriptWithIcon
+      shown: 0
     - name: PixelPerfectCamera
       shown: 0
     - name: CinemachineUniversalPixelPerfect
@@ -978,14 +1076,6 @@ MonoBehaviour:
     - name: UniversalAdditionalCameraData
       shown: 0
     - name: UniversalAdditionalLightData
-      shown: 0
-    - name: NavMeshLink
-      shown: 0
-    - name: NavMeshModifier
-      shown: 0
-    - name: NavMeshModifierVolume
-      shown: 0
-    - name: NavMeshSurface
       shown: 0
     - name: BezierShape
       shown: 0
@@ -1093,72 +1183,6 @@ MonoBehaviour:
       shown: 0
     - name: SignalReceiver
       shown: 0
-    - name: AnimatorParamTest
-      shown: 0
-    - name: BoxGroupTest
-      shown: 0
-    - name: ButtonTest
-      shown: 0
-    - name: CurveRangeTest
-      shown: 0
-    - name: DisableIfTest
-      shown: 0
-    - name: DropdownTest
-      shown: 0
-    - name: EnableIfTest
-      shown: 0
-    - name: EnumFlagsTest
-      shown: 0
-    - name: ExpandableTest
-      shown: 0
-    - name: FoldoutTest
-      shown: 0
-    - name: HideIfTest
-      shown: 0
-    - name: HorizontalLineTest
-      shown: 0
-    - name: InfoBoxTest
-      shown: 0
-    - name: InputAxisTest
-      shown: 0
-    - name: LabelTest
-      shown: 0
-    - name: LayerTest
-      shown: 0
-    - name: MinMaxSliderTest
-      shown: 0
-    - name: MinMaxValueTest
-      shown: 0
-    - name: OnValueChangedTest
-      shown: 0
-    - name: ProgressBarTest
-      shown: 0
-    - name: ReadOnlyTest
-      shown: 0
-    - name: ReorderableListTest
-      shown: 0
-    - name: RequiredTest
-      shown: 0
-    - name: ResizableTextAreaTest
-      shown: 0
-    - name: SceneTest
-      shown: 0
-    - name: ShowAssetPreviewTest
-      shown: 0
-    - name: ShowIfTest
-      shown: 0
-    - name: ShowNativePropertyTest
-      shown: 0
-    - name: ShowNonSerializedFieldTest
-      shown: 0
-    - name: SortingLayerTest
-      shown: 0
-    - name: TagTest
-      shown: 0
-    - name: ValidateInputTest
-      shown: 0
-    - name: _NaughtyComponent
-      shown: 0
     - name: PlaymodeTestsController
       shown: 0
     - name: PlayerQuitHandler
@@ -1168,32 +1192,6 @@ MonoBehaviour:
     - name: RemoteTestResultSender
       shown: 0
     - name: TestResultRendererCallback
-      shown: 0
-    - name: TextContainer
-      shown: 0
-    - name: TextMeshPro
-      shown: 0
-    - name: TextMeshProUGUI
-      shown: 0
-    - name: TMP_Dropdown
-      shown: 0
-    - name: TMP_InputField
-      shown: 0
-    - name: TMP_ScrollbarEventHandler
-      shown: 0
-    - name: TMP_SelectionCaret
-      shown: 0
-    - name: TMP_SpriteAnimator
-      shown: 0
-    - name: TMP_SubMesh
-      shown: 0
-    - name: TMP_SubMeshUI
-      shown: 0
-    - name: TMP_Text
-      shown: 0
-    - name: DropdownItem
-      shown: 0
-    - name: RecorderBindings
       shown: 0
     - name: AsyncAwakeTrigger
       shown: 0
@@ -1450,5 +1448,5 @@ MonoBehaviour:
     - name: DOTweenComponent
       shown: 0
     customComponents: []
-    unityVersion: 2022.3.13f1
+    unityVersion: 2022.3.26f1
     isDirty: 0

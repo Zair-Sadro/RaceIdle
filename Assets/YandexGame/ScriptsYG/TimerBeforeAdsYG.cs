@@ -1,54 +1,40 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using YG;
 
 public class TimerBeforeAdsYG : MonoBehaviour
 {
-    [SerializeField] private GameObject secondsPanelObject;
-    [SerializeField] private GameObject[] secondObjects;
+    [SerializeField,
+        Tooltip("Объект таймера перед показом рекламы. Он будет активироваться и деактивироваться в нужное время.")]
+    private GameObject secondsPanelObject;
+    [SerializeField,
+        Tooltip("Массив объектов, которые будут показываться по очереди через секунду. Сколько объектов вы поместите в массив, столько секунд будет отчитываться перед показом рекламы.\n\nНапример, поместите в массив три объекта: певый с текстом '3', второй с текстом '2', третий с текстом '1'.\nВ таком случае произойдёт отчет трёх секунд с показом объектов с цифрами перед рекламой.")]
+    private GameObject[] secondObjects;
 
-    private Action reward;
+    [SerializeField,
+        Tooltip("Работа таймера в реальном времени, независимо от time scale.")]
+    private bool realtimeSeconds;
+
+    [Space(20)]
+    [SerializeField]
+    private UnityEvent onShowTimer;
+    [SerializeField]
+    private UnityEvent onHideTimer;
+    private int objSecCounter;
+
     private void Start()
     {
-        #region FullScreen
-        YandexGame.Instance.CloseFullscreenAd.AddListener(() =>
-        {
-            CloseAllObj();
-            Time.timeScale = 1;
-            AudioListener.volume = 1;
-        });
+        if (secondsPanelObject)
+            secondsPanelObject.SetActive(false);
 
-        YandexGame.Instance.ErrorFullscreenAd.AddListener(() =>
-        {
-            CloseAllObj();
-            Time.timeScale = 1;
-            AudioListener.volume = 1;
-        });
-        #endregion
+        for (int i = 0; i < secondObjects.Length; i++)
+            secondObjects[i].SetActive(false);
 
-        #region RewardAdd
-        YandexGame.Instance.ErrorVideoAd.AddListener(() =>
-        {
-
-            Time.timeScale = 1;
-            AudioListener.volume = 1;
-        });
-        YandexGame.Instance.CloseVideoAd.AddListener(() =>
-        {
-
-            Time.timeScale = 1;
-            AudioListener.volume = 1;
-        });
-        YandexGame.Instance.RewardVideoAd.AddListener(() =>
-        {
-
-            Time.timeScale = 1;
-            AudioListener.volume = 1;
-            reward?.Invoke();
-        });
-        
-        #endregion
+        if (secondObjects.Length > 0)
+            StartCoroutine(CheckTimerAd());
+        else
+            Debug.LogError("Fill in the array 'secondObjects'");
     }
     public void TryToShowAdd()
     {
@@ -59,44 +45,79 @@ public class TimerBeforeAdsYG : MonoBehaviour
 
 
     }
-    public void TryRewardVideo(Action reward) 
+
+    IEnumerator CheckTimerAd()
     {
-        this.reward = reward;
-        YandexGame.RewVideoShow(0);
+        while (true)
+        {
+            if (YandexGame.timerShowAd >= YandexGame.Instance.infoYG.fullscreenAdInterval)
+            {
+                onShowTimer?.Invoke();
+                objSecCounter = 0;
+                if (secondsPanelObject)
+                    secondsPanelObject.SetActive(true);
+
+                StartCoroutine(TimerAdShow());
+                yield break;
+            }
+
+            if (!realtimeSeconds)
+                yield return new WaitForSeconds(1.0f);
+            else
+                yield return new WaitForSecondsRealtime(1.0f);
+        }
     }
 
     IEnumerator TimerAdShow()
     {
-        yield return new WaitForSecondsRealtime(0.5f);
-
-        Time.timeScale = 0;
-        AudioListener.volume = 0;
-
-        secondsPanelObject.SetActive(true);
-
-        for (int i = 0; i < secondObjects.Length; i++)
+        while (true)
         {
-            secondObjects[i].SetActive(true);
+            if (objSecCounter < secondObjects.Length)
+            {
+                for (int i2 = 0; i2 < secondObjects.Length; i2++)
+                    secondObjects[i2].SetActive(false);
 
-            yield return new WaitForSecondsRealtime(1f);
-            secondObjects[i].SetActive(false);
+                secondObjects[objSecCounter].SetActive(true);
+                objSecCounter++;
+
+                if (!realtimeSeconds)
+                    yield return new WaitForSeconds(1.0f);
+                else
+                    yield return new WaitForSecondsRealtime(1.0f);
+            }
+
+            if (objSecCounter == secondObjects.Length)
+            {
+                YandexGame.FullscreenShow();
+                StartCoroutine(BackupTimerClosure());
+
+                while (!YandexGame.nowFullAd)
+                    yield return null;
+
+                RestartTimer();
+                yield break;
+            }
         }
-
-        YandexGame.FullscreenShow();
-        yield return new WaitForSecondsRealtime(2.5f);
-        CloseAllObj();
     }
-    private void CloseAllObj()
+
+    IEnumerator BackupTimerClosure()
     {
-        if (!secondsPanelObject.activeInHierarchy)
-            return;
+        if (!realtimeSeconds)
+            yield return new WaitForSeconds(2.5f);
+        else
+            yield return new WaitForSecondsRealtime(2.5f);
 
-        secondsPanelObject.SetActive(false);
-        for (int i = 0; i < secondObjects.Length; i++)
+        if (objSecCounter != 0)
         {
-            secondObjects[i].SetActive(false);
-
+            RestartTimer();
         }
     }
 
+    private void RestartTimer()
+    {
+        secondsPanelObject.SetActive(false);
+        onHideTimer?.Invoke();
+        objSecCounter = 0;
+        StartCoroutine(CheckTimerAd());
+    }
 }

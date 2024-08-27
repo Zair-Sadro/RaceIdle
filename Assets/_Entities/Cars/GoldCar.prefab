@@ -377,7 +377,6 @@ MonoBehaviour:
   _carData:
     ValueNumber: 999
     LapReward: 10
-    Level: 9999
   _pointRange: 14
   _collider: {fileID: 5607356538116736079}
   _topDetector: {fileID: 8345494228714219818}
@@ -446,14 +445,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb1a93ce4ec86874cbdab3bc63c489b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 11
+  maxHealth: 15
   _boomEffect: {fileID: 6888102557752936456}
   _goldCoin: {fileID: 7620813287918601218}
   _carAI: {fileID: 1302594923493626835}
   arrow: {fileID: 319662125553969555}
   carSpawner: {fileID: 0}
   _startCoinPos: {fileID: 849468523752713221}
-  isFirst: 0
 --- !u!1 &3610846196757256373
 GameObject:
   m_ObjectHideFlags: 0

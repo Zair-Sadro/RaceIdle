@@ -4,9 +4,10 @@ using UnityEngine;
 public class TweenOnEnable : MonoBehaviour
 {
 
+    [SerializeField] private float _endYValue = 5f;
     private void OnEnable()
     {
-        transform.DOMoveY(5, 0.7f).SetLoops(-1,LoopType.Yoyo);
+        transform.DOMoveY(_endYValue, 0.7f).SetLoops(-1,LoopType.Yoyo);
     }
     private void OnDisable()
     {

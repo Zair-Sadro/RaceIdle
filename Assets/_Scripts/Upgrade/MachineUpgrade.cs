@@ -18,9 +18,9 @@ public class MachineUpgrade : MonoBehaviour, ISaveLoad<MachineUpgradeData>, IUpg
     private UpgradeField _incomeUpgradesFields;
 
     [SerializeField] private WalletSystem Wallet;
-    public UpgradeField SpeedUpgradeFields { get => _speedUpgradesFields; private set { } }
-    public UpgradeField IncomeUpgradesFields { get => _incomeUpgradesFields; private set { } }
-    
+    public UpgradeField SpeedUpgradeFields => _speedUpgradesFields;
+    public UpgradeField IncomeUpgradesFields => _incomeUpgradesFields;
+
     public event Action<int> OnIncomeUpgraded;
     public event Action<int> OnSpeedUpgraded;
     public event Action OnDataInit;
